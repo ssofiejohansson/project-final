@@ -12,9 +12,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Endpoints with listEndpoints
 app.get("/", (req, res) => {
-  res.send("Hello Technigo!");
-});
+  const endpoints = listEndpoints(app)
+  res.json({
+    message: "Welcome to Subscribee",
+    endpoints: endpoints
+  })
+
+})
 
 // Start the server
 app.listen(port, () => {
