@@ -31,7 +31,7 @@ router.post("/", async (req, res) => {
   }
 })
 
-// To log in an existing user
+// To login an existing user
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
