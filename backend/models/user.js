@@ -2,6 +2,12 @@ import crypto from "crypto"
 import mongoose from "mongoose"
 
 const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    minlenght: 3,
+    maxlenght: 100
+  },
   email: {
     type: String,
     required: true,
