@@ -5,11 +5,13 @@ import { About } from './pages/About';
 import { Admin } from './pages/Admin';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
+import { Navbar } from './comp/layout/Navbar';
 
 export const App = () => {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-100 text-gray-900">
+      <Navbar />
+      <div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
