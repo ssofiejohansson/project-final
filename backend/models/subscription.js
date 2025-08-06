@@ -12,8 +12,18 @@ const subscriptionSchema = new mongoose.Schema({
     required: true,
     min: 0,
   },
+  freeTrial: {
+    type: Boolean,
+    default: false,
+  },
   expirationDate: {
     type: Date,
+    required: true,
+  },
+  status: {
+    type: String,
+    enum: ['active', 'inactive'],
+    default: 'active',
     required: true,
   },
   createdAt: {
