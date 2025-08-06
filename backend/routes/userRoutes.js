@@ -5,6 +5,7 @@ import { User } from "../models/User";
 
 const router = express.Router();
 
+// To get all users
 router.get("/", async (req, res) => {
   const { email } = req.params
 
@@ -54,8 +55,8 @@ router.post("/", async (req, res) => {
     res.status(400).json({
       success: false,
       message: "Failed to create user",
-      error: error.message
-      //response: error
+      error: error.message,
+      response: error
     })
   }
 })
@@ -92,44 +93,5 @@ router.post("/login", async (req, res) => {
 
 export default router;
 
-// KOLLA Skillnad???
-// app.get("/users", async (req, res) => {
-//   const { email } = req.params
 
-//   try{
-//     const user = await User.find(email)
-
-//     if(!user) {
-//       return res.status(404).json({
-//         success: false,
-//         response: null,
-//         message: "No matching user"
-//       })
-//     }
-
-//     res.status(200).json({
-//       success: true,
-//       response: user
-//     }) 
-
-//   } catch (error) {
-//     res.status(500).json({
-//       success: false,
-//       response: error,
-//       message: "Failed to fetch user"
-//     })
-//   }
-// })
-
-// app.post("/users", postUser)
-
-// app.post("/login", async (req, res) => {
-//   const user = await User.findOne({eamil: req.body.email})
-
-//   if(user && bcrypt.compareSync(req.body.password, user.password)){
-//     res.status(200).json({userId: user._id, accessToken: user.accessToken})
-//   } else {
-//     res.status(401).json({ error: "Invalid email or password"})
-//   }
-// })
 
