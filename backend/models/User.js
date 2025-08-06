@@ -5,21 +5,21 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    minlenght: 3,
-    maxlenght: 100
+    minlength: 3,
+    maxlength: 100
   },
   email: {
     type: String,
     required: true,
     unique: true,
-    minlenght: 5,
-    maxlenght: 100,
+    minlength: 5,
+    maxlength: 100,
   },
   password: {
     type: String,
     required: true,
-    minlenght: 3,
-    maxlenght: 100,
+    minlength: 3,
+    maxlength: 100,
   },
   accesToken: {
     type: String,
