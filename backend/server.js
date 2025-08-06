@@ -7,6 +7,7 @@ import userRoutes from './routes/userRoutes';
 import subscriptionRoutes from './routes/subscriptionRoutes';
 
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/final-project';
+
 mongoose.connect(mongoUrl);
 mongoose.Promise = Promise;
 
@@ -66,6 +67,7 @@ app.get('/admin', (req, res) => {
     description: 'Administrative functions and user management',
   });
 });
+
 
 // Route connections
 app.use('/users', userRoutes);
