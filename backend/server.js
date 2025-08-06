@@ -1,24 +1,12 @@
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-import express from 'express';
 import cors from 'cors';
+import express from 'express';
+import expressListEndpoints from 'express-list-endpoints';
 import mongoose from 'mongoose';
 
-const mongoUrl =
-  'mongodb+srv://sofieannamatilda:rQ58C4zpa5QANMx9@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority';
-const port = 5000;
-=======
->>>>>>> Stashed changes
-import cors from "cors";
-import express from "express";
-import expressListEndpoints from "express-list-endpoints";
-import mongoose from "mongoose";
+import userRoutes from './routes/userRoutes';
+import subscriptionRoutes from './routes/subscriptionRoutes';
 
-import userRoutes from "./routes/userRoutes";
-
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project";
->>>>>>> 094fc6a22273daeb63887a83968a365d9e0769b6
+const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/final-project';
 mongoose.connect(mongoUrl);
 mongoose.Promise = Promise;
 
@@ -28,30 +16,60 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Endpoints with listEndpoints
-<<<<<<< HEAD
+// Root endpoint with API documentation
 app.get('/', (req, res) => {
-  const endpoints = listEndpoints(app);
+  const endpoints = expressListEndpoints(app);
   res.json({
-    message: 'Welcome to Subscribee',
+    message: 'Welcome to Subscribee API',
     endpoints: endpoints,
   });
 });
-=======
-app.get("/", (req, res) => {
-  const endpoints = expressListEndpoints(app)
+
+// Page endpoints
+app.get('/home', (req, res) => {
   res.json({
-    message: "Welcome to Subscribee",
-    endpoints: endpoints
-  })
-})
->>>>>>> 094fc6a22273daeb63887a83968a365d9e0769b6
+    page: 'home',
+    message: 'Welcome to Subscribee - Your subscription management platform',
+    features: ['Manage subscriptions', 'Track expenses', 'Get insights'],
+  });
+});
 
-//Connection to routes
-app.use("/users", userRoutes);
+app.get('/about', (req, res) => {
+  res.json({
+    page: 'about',
+    message: 'About Subscribee',
+    description:
+      'Subscribee helps you manage and track all your subscriptions in one place',
+  });
+});
 
-//Connection to routes
-app.use("/users", userRoutes);
+app.get('/login', (req, res) => {
+  res.json({
+    page: 'login',
+    message: 'Login to your Subscribee account',
+    endpoint: '/users/login',
+  });
+});
+
+app.get('/signup', (req, res) => {
+  res.json({
+    page: 'signup',
+    message: 'Create a new Subscribee account',
+    endpoint: '/users/register',
+  });
+});
+
+app.get('/admin', (req, res) => {
+  res.json({
+    page: 'admin',
+    message: 'Admin dashboard',
+    description: 'Administrative functions and user management',
+  });
+});
+
+// Route connections
+app.use('/users', userRoutes);
+app.use('/subscriptions', subscriptionRoutes);
 
 // Start the server
 app.listen(port, () => {
