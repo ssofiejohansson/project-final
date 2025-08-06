@@ -22,4 +22,6 @@ const subscriptionSchema = new mongoose.Schema({
   },
 });
 
+//test
+
 export const Subscription = mongoose.model('Subscription', subscriptionSchema);
