@@ -24,11 +24,7 @@ const userSchema = new mongoose.Schema({
   accesToken: {
     type: String,
     default: () => crypto.randomBytes(128).toString("hex")
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
   }
 })
 
-export const user = mongoose.model("User", userSchema)
+export const User = mongoose.model("User", userSchema)
