@@ -1,11 +1,12 @@
-import cors from "cors";
-import express from "express";
-import expressListEndpoints from "express-list-endpoints";
-import mongoose from "mongoose";
+import cors from 'cors';
+import express from 'express';
+import expressListEndpoints from 'express-list-endpoints';
+import mongoose from 'mongoose';
 
-import userRoutes from "./routes/userRoutes";
+import userRoutes from './routes/userRoutes';
+import subscriptionRoutes from './routes/subscriptionRoutes';
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project";
+const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/final-project';
 
 mongoose.connect(mongoUrl);
 mongoose.Promise = Promise;
@@ -16,17 +17,61 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Endpoints with listEndpoints
-app.get("/", (req, res) => {
-  const endpoints = expressListEndpoints(app)
+// Root endpoint with API documentation
+app.get('/', (req, res) => {
+  const endpoints = expressListEndpoints(app);
   res.json({
-    message: "Welcome to Subscribee",
-    endpoints: endpoints
-  })
-})
+    message: 'Welcome to Subscribee API',
+    endpoints: endpoints,
+  });
+});
 
-//Connection to routes
-app.use("/users", userRoutes);
+// Page endpoints
+app.get('/home', (req, res) => {
+  res.json({
+    page: 'home',
+    message: 'Welcome to Subscribee - Your subscription management platform',
+    features: ['Manage subscriptions', 'Track expenses', 'Get insights'],
+  });
+});
+
+app.get('/about', (req, res) => {
+  res.json({
+    page: 'about',
+    message: 'About Subscribee',
+    description:
+      'Subscribee helps you manage and track all your subscriptions in one place',
+  });
+});
+
+app.get('/login', (req, res) => {
+  res.json({
+    page: 'login',
+    message: 'Login to your Subscribee account',
+    endpoint: '/users/login',
+  });
+});
+
+app.get('/signup', (req, res) => {
+  res.json({
+    page: 'signup',
+    message: 'Create a new Subscribee account',
+    endpoint: '/users/register',
+  });
+});
+
+app.get('/admin', (req, res) => {
+  res.json({
+    page: 'admin',
+    message: 'Admin dashboard',
+    description: 'Administrative functions and user management',
+  });
+});
+
+
+// Route connections
+app.use('/users', userRoutes);
+app.use('/subscriptions', subscriptionRoutes);
 
 // Start the server
 app.listen(port, () => {
