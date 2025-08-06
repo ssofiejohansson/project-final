@@ -5,13 +5,41 @@ import { User } from "../models/User";
 
 const router = express.Router();
 
+router.get("/", async (req, res) => {
+  const { email } = req.params
+
+  try{
+    const user = await User.find(email)
+
+    if(!user) {
+      return res.status(404).json({
+        success: false,
+        response: null,
+        message: "No matching user"
+      })
+    }
+
+    res.status(200).json({
+      success: true,
+      response: user
+    }) 
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      response: error,
+      message: "Failed to fetch user"
+    })
+  }
+})
+
 // To register a new user
 router.post("/", async (req, res) => {
   try {
-    const { email, password } = req.body
+    const { name, email, password } = req.body
     const salt = bcrypt.genSaltSync()
 
-    const user = new User({ email, password: bcrypt.hashSync(password, salt) })
+    const user = new User({ name, email, password: bcrypt.hashSync(password, salt) })
     await user.save()
 
     res.status(200).json({
@@ -26,7 +54,8 @@ router.post("/", async (req, res) => {
     res.status(400).json({
       success: false,
       message: "Failed to create user",
-      response: error
+      error: error.message
+      //response: error
     })
   }
 })
@@ -60,6 +89,8 @@ router.post("/login", async (req, res) => {
     });
   }
 });
+
+export default router;
 
 // KOLLA Skillnad???
 // app.get("/users", async (req, res) => {

@@ -18,17 +18,13 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlenght: 3,
-    maxlenght: 100,
+    //minlenght: 3,
+    //maxlenght: 100,
   },
   accesToken: {
     type: String,
     default: () => crypto.randomBytes(128).toString("hex")
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
   }
 })
 
-export const user = mongoose.model("User", userSchema)
+export const User = mongoose.model("User", userSchema)

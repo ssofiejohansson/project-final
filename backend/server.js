@@ -1,8 +1,9 @@
 import cors from "cors";
 import express from "express";
+import expressListEndpoints from "express-list-endpoints";
 import mongoose from "mongoose";
 
-import userRoutes from "./routes/userRoutes.js";
+import userRoutes from "./routes/userRoutes";
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project";
 mongoose.connect(mongoUrl);
@@ -16,12 +17,11 @@ app.use(express.json());
 
 // Endpoints with listEndpoints
 app.get("/", (req, res) => {
-  const endpoints = listEndpoints(app)
+  const endpoints = expressListEndpoints(app)
   res.json({
     message: "Welcome to Subscribee",
     endpoints: endpoints
   })
-
 })
 
 //Connection to routes
