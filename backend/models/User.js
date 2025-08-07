@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 100,
   },
-  accesToken: {
+  accessToken: {
     type: String,
     default: () => crypto.randomBytes(128).toString("hex")
   }
