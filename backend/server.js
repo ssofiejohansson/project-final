@@ -3,8 +3,8 @@ import express from 'express';
 import expressListEndpoints from 'express-list-endpoints';
 import mongoose from 'mongoose';
 
-import userRoutes from './routes/userRoutes';
 import subscriptionRoutes from './routes/subscriptionRoutes';
+import userRoutes from './routes/userRoutes';
 
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/final-project';
 

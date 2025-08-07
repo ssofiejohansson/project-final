@@ -9,10 +9,10 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   const { email } = req.params
 
-  try{
+  try {
     const user = await User.find(email)
 
-    if(!user) {
+    if (!user) {
       return res.status(404).json({
         success: false,
         response: null,
@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
     res.status(200).json({
       success: true,
       response: user
-    }) 
+    })
 
   } catch (error) {
     res.status(500).json({
@@ -37,6 +37,8 @@ router.get("/", async (req, res) => {
 // To register a new user
 router.post("/", async (req, res) => {
   try {
+    console.log('Incoming signup data:', req.body); // Testing user data
+
     const { name, email, password } = req.body
     const salt = bcrypt.genSaltSync()
 
@@ -92,6 +94,3 @@ router.post("/login", async (req, res) => {
 });
 
 export default router;
-
-
-
