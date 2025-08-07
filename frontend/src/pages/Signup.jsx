@@ -1,9 +1,11 @@
-import Form from '../comp/user/Form';
+import { Usersignup } from '../comp/user/Usersignup';
 
 export const Signup = () => {
+
+
   return (
     <>
-      <Form />
+      <Usersignup />
     </>
   );
 };
