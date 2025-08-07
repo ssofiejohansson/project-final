@@ -1,4 +1,4 @@
-import { Userlogin } from './comp/user/Userlogin';
+import { Userlogin } from '../comp/user/Userlogin';
 
 export const Login = () => {
   return (
