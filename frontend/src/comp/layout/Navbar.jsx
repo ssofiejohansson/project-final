@@ -8,8 +8,10 @@ export const Navbar = () => {
     <nav>
       {!isHome && <Link to="/">Home</Link>}
       <Link to="/about">About</Link>
-      <Link to="/login">Login</Link>
+
       <Link to="#">Contact</Link>
+      <Link to="/login">Login</Link>
+      <Link to="/signup">Sign Up</Link>
     </nav>
   );
 };

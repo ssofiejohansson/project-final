@@ -1,4 +1,4 @@
-
+import { Footer } from "../comp/layout/Footer";
 
 export const Admin = () => {
   return (
@@ -8,6 +8,7 @@ export const Admin = () => {
         <p>Welcome XX, here are your subscriptions.</p> {/* Placeholder for admin name */}
         <button>Log out</button>
       </div>
+      <Footer />
     </>
   );
 }

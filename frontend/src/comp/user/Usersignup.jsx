@@ -34,7 +34,6 @@ export const Usersignup = () => {
       if (response.ok) {
         console.log('User created:', data);
         setSuccess(true);
-        alert('Account created!');
         setFormData({ name: '', email: '', password: '' });
       } else {
         setError(data.message || 'Something went wrong');
