@@ -36,8 +36,12 @@ export const Userlogin = () => {
       },
     })
 
+    //console.log("User before response:", user);
+
     const data = await response.json();
     console.log("Login response data:", data);
+    
+
 
     // if(data.notFound) {
     //   setError("User not found, please try again!");
