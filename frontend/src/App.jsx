@@ -1,11 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
-import { Home } from './pages/Home';
+import { Navbar } from './comp/layout/Navbar';
 import { About } from './pages/About';
 import { Admin } from './pages/Admin';
+import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
-import { Navbar } from './comp/layout/Navbar';
 
 export const App = () => {
   return (

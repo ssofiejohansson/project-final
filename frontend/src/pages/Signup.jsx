@@ -1,4 +1,4 @@
-import Form from './comp/user/Form';
+import Form from "../comp/user/Form";
 
 export const Signup = () => {
   return (
