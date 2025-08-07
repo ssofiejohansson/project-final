@@ -1,50 +1,62 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useUserStore from '../../stores/useUserStore';
 
 export const Usersignup = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
-
+  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
+  const setUser = useUserStore((state) => state.setUser);
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      // Sign up
       const response = await fetch('http://localhost:8080/users', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        console.log('User created:', data);
         setSuccess(true);
-        setFormData({ name: '', email: '', password: '' });
+
+        // Auto-login after successful signup
+        const loginRes = await fetch('http://localhost:8080/users/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: formData.email, password: formData.password }),
+        });
+
+        const loginData = await loginRes.json();
+
+        if (loginRes.ok) {
+          setUser({
+            name: loginData.name,
+            token: loginData.accessToken,
+          });
+
+          navigate('/admin'); // When successful signup, redirect to admin page
+        } else {
+          setError('Signup succeeded, but login failed');
+        }
       } else {
-        setError(data.message || 'Something went wrong');
-        console.error('Signup failed:', data);
+        setError(data.message || 'Signup failed');
       }
     } catch (err) {
       setError('Server error');
-      console.error('Error:', err);
+      console.error(err);
     }
   };
-
   return (
     <div className='max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md'>
       <h2 className='text-2xl font-bold mb-6 text-center'>Sign Up</h2>

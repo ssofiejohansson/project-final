@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
+// SOFIE ADD: import Zustand
+import useUserStore from '../../stores/useUserStore';
+
 export const Userlogin = () => {
 
   const navigate = useNavigate()
@@ -14,62 +18,75 @@ export const Userlogin = () => {
 
   let [error, setError] = useState([]);
 
+  //  SOFIE ADD: get setUser from Zustand store 
+  const setUser = useUserStore((state) => state.setUser);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Login form submitted');
-  
-
-  if(!formData.email.trim() || !formData.password.trim()){
-    setError("Please fill in both email and password!");
-    return;
-  }
-
-  try {
-    const response = await fetch(`${urlAPI}`, {
-      method: "POST",
-      body: JSON.stringify({
-        email: formData.email,
-        password: formData.password
-      }),
-      headers: {
-        "Content-Type": "application/json"  
-      },
-    })
-
-    //console.log("User before response:", user);
-
-    const data = await response.json();
-    console.log("Login response data:", data);
-    
 
 
-    // if(data.notFound) {
-    //   setError("User not found, please try again!");
-    //   return;
-    // }
-
-    if (data.success && data.id) {      
-      //localStorage.setItem("userId", data.id);
-      localStorage.setItem("user", JSON.stringify(data));
-      e.target.reset();
-      navigate("/Admin");
-    } else {
-      setError("Login failed. Please check your credentials.");
+    if (!formData.email.trim() || !formData.password.trim()) {
+      setError("Please fill in both email and password!");
+      return;
     }
 
-    // localStorage.setItem("accessToken", data.accessToken);
-    // localStorage.setItem("userId", data.userID); ///KOLLA att denna verkligen är rätt!!!!
+    try {
+      const response = await fetch(`${urlAPI}`, {
+        method: "POST",
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        },
+      })
 
-    // e.target.reset();
+      //console.log("User before response:", user);
 
-    // navigate("/Admin");    
+      const data = await response.json();
+      console.log("Login response data:", data);
 
-  } catch ( error ) {
-    console.error("Signin error:", error);
-    setError("Can´t login, please try again!");    
-  }
 
-};
+
+      // if(data.notFound) {
+      //   setError("User not found, please try again!");
+      //   return;
+      // }
+
+      if (data.success && data.id) {
+        //localStorage.setItem("userId", data.id);
+        localStorage.setItem("user", JSON.stringify(data));
+
+        // SOFIE ADD: Update with logged-in user info 
+        setUser({
+          name: data.name,
+          token: data.accessToken,
+          email: data.email,
+          id: data.id,
+        });
+
+
+        e.target.reset();
+        navigate("/Admin");
+      } else {
+        setError("Login failed. Please check your credentials.");
+      }
+
+      // localStorage.setItem("accessToken", data.accessToken);
+      // localStorage.setItem("userId", data.userID); ///KOLLA att denna verkligen är rätt!!!!
+
+      // e.target.reset();
+
+      // navigate("/Admin");    
+
+    } catch (error) {
+      console.error("Signin error:", error);
+      setError("Can´t login, please try again!");
+    }
+
+  };
 
 
   return (
@@ -82,11 +99,12 @@ export const Userlogin = () => {
           onSubmit={handleSubmit}
           className='mt-6 max-w-sm mx-auto space-y-4'
         >
-          {error && <div style={{color: "red"}}>{error}</div>}
+          {error && <div style={{ color: "red" }}>{error}</div>}
           <div>
             <input
               onChange={(e) => setFormData({
-                ...formData, email: e.target.value})}
+                ...formData, email: e.target.value
+              })}
               type='email'
               name='email'
               id='email'
@@ -100,7 +118,8 @@ export const Userlogin = () => {
           <div>
             <input
               onChange={(e) => setFormData({
-                ...formData, password: e.target.value              })}
+                ...formData, password: e.target.value
+              })}
               type='password'
               name='password'
               id='password'
@@ -119,12 +138,12 @@ export const Userlogin = () => {
           </button>
         </form>
       </div>
-      <div>           
-           <button 
-            onClick={() => navigate('/signup')}
-            >  Don't have an account?            
-           </button>
-        </div>       
+      <div>
+        <button
+          onClick={() => navigate('/signup')}
+        >  Don't have an account?
+        </button>
+      </div>
     </>
   );
 };
