@@ -1,6 +1,6 @@
 import { Footer } from "../comp/layout/Footer";
 import useUserStore from '../stores/useUserStore';
-import { Logout } from '../comp/LogoutBtn';
+import { Logout } from '../comp/user/LogoutBtn';
 
 export const Admin = () => {
   const user = useUserStore((state) => state.user);

@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import useUserStore from '../../stores/useUserStore';
-import { Logout } from '../../comp/LogoutBtn';
+import { Logout } from '../../comp/user/LogoutBtn';
 
 export const Navbar = () => {
   const location = useLocation();
@@ -15,7 +15,11 @@ export const Navbar = () => {
       <Link to="#">Contact</Link>
 
       {user ? (
-        <Logout />
+        <>
+          <Link to="/admin">Your dashboard</Link>
+          <span>Hi {user.name}!</span>
+          <Logout />
+        </>
       ) : (
         <>
           <Link to="/login">Login</Link>
