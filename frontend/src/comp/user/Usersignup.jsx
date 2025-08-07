@@ -17,9 +17,12 @@ export const Usersignup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const urlAPI = "https://project-final-xhjy.onrender.com/users";
+
+
     try {
       // Sign up
-      const response = await fetch('http://localhost:8080/users', {
+      const response = await fetch(`${urlAPI}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -31,7 +34,7 @@ export const Usersignup = () => {
         setSuccess(true);
 
         // Auto-login after successful signup
-        const loginRes = await fetch('http://localhost:8080/users/login', {
+        const loginRes = await fetch(`${urlAPI}/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: formData.email, password: formData.password }),
