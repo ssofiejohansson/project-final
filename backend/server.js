@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 
 import userRoutes from './routes/userRoutes';
 import subscriptionRoutes from './routes/subscriptionRoutes';
+import emailRoutes from './routes/email';
 
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/final-project';
 
@@ -68,10 +69,10 @@ app.get('/admin', (req, res) => {
   });
 });
 
-
 // Route connections
 app.use('/users', userRoutes);
 app.use('/subscriptions', subscriptionRoutes);
+app.use('/api/email', emailRoutes);
 
 // Start the server
 app.listen(port, () => {
