@@ -3,8 +3,8 @@ import express from 'express';
 import expressListEndpoints from 'express-list-endpoints';
 import mongoose from 'mongoose';
 
-import userRoutes from './routes/userRoutes';
 import subscriptionRoutes from './routes/subscriptionRoutes';
+import userRoutes from './routes/userRoutes';
 
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/final-project';
 
@@ -71,7 +71,7 @@ app.get('/admin', (req, res) => {
 
 // Route connections
 app.use('/users', userRoutes);
-app.use('/subscriptions', subscriptionRoutes);
+//app.use('/subscriptions', subscriptionRoutes);
 
 // Start the server
 app.listen(port, () => {
