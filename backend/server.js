@@ -74,7 +74,7 @@ app.get('/admin', (req, res) => {
 
 // Route connections
 app.use('/users', userRoutes);
-//app.use('/subscriptions', subscriptionRoutes);
+app.use('/subscriptions', subscriptionRoutes);
 
 // Start the server
 app.listen(port, () => {
