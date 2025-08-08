@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { authenticateUser } from "../authMiddleware"
-import { Subscription } from '../models/Subscription_temp';
+import { Subscription } from '../models/Subscription';
 
 const router = express.Router();
 
