@@ -16,6 +16,7 @@ const subscriptionSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  //Next payment?
   expirationDate: {
     type: Date,
     required: true,
@@ -30,8 +31,11 @@ const subscriptionSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true
+  },
 });
-
-//test
 
 export const Subscription = mongoose.model('Subscription', subscriptionSchema);
