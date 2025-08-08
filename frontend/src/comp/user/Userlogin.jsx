@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 // SOFIE ADD: import Zustand
 import useUserStore from '../../stores/useUserStore';
 
@@ -66,7 +65,6 @@ export const Userlogin = () => {
           email: data.email,
           id: data.id,
         });
-
 
         e.target.reset();
         navigate("/Admin");
