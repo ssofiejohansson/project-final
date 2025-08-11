@@ -1,5 +1,5 @@
-import { Header } from "../comp/layout/Header";
 import { Footer } from "../comp/layout/Footer";
+import { Header } from "../comp/layout/Header";
 
 export const Home = () => {
   return (
