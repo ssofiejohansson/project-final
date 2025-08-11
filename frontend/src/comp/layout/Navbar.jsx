@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
-import useUserStore from '../../stores/useUserStore';
+
 import { Logout } from '../../comp/user/LogoutBtn';
+import useUserStore from '../../stores/useUserStore';
 
 export const Navbar = () => {
   const location = useLocation();
@@ -12,6 +13,7 @@ export const Navbar = () => {
     <nav>
       {!isHome && <Link to="/">Home</Link>}
       <Link to="/about">About</Link>
+      <Link to="/aboutapi">AboutAPI</Link>
       <Link to="#">Contact</Link>
 
       {user ? (
