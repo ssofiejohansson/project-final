@@ -29,7 +29,7 @@ const subscriptionSchema = new mongoose.Schema({
   status: {
     type: String,
     enum: [
-      "active", 
+      "active",
       "inactive"],
     default: "active",
     required: true,
@@ -40,7 +40,7 @@ const subscriptionSchema = new mongoose.Schema({
       "Entertainment",
       "Food",
       "Health",
-      "Learning",      
+      "Learning",
       "Other"],
     required: true,
   },

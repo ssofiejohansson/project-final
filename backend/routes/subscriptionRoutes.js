@@ -6,10 +6,11 @@ import { Subscription } from '../models/Subscription';
 const router = express.Router();
 
 //To get all subscriptions
-router.get("/", async (req, res) => {
+router.get("/", authenticateUser, async (req, res) => {
 
   try {
-    const subscriptions = await Subscription.find({})
+    const subscriptions = await Subscription.find({ user: req.user._id }) // SOFIE ADD
+
 
     if (!subscriptions || subscriptions.length === 0) {
       return res.status(404).json({
@@ -33,11 +34,12 @@ router.get("/", async (req, res) => {
 });
 
 //To get one subscription based on id (endpoint is /subscriptions/:id)
-router.get("/:id", async (req, res) => {
+router.get("/:id", authenticateUser, async (req, res) => {
   const { id } = req.params
 
   try {
-    const subscription = await Subscription.findById(id)
+    const subscription = await Subscription.findOne({ _id: id, user: req.user._id }) // SOFIE ADD
+
 
     if (!subscription) {
       return res.status(404).json({
@@ -101,12 +103,16 @@ router.patch("/:id", authenticateUser, async (req, res) => {
   const { name, cost, freeTrial, trialDays, reminderDate, status, category } = req.body
 
   try {
-    const editSubscription = await Subscription.findByIdAndUpdate(id, { name: name, cost: cost, freeTrial: freeTrial, trialDays: trialDays, reminderDate: reminderDate, status: status, category: category, },
-      { new: true, runValidators: true })
+    const editSubscription = await Subscription.findOneAndUpdate(
+      { _id: id, user: req.user._id },
+      { name, cost, freeTrial, trialDays, reminderDate, status, category },
+      {
+        new: true, runValidators: true
+      })
     if (!editSubscription) {
       return res.status(404).json({ error: "Subscription not found" })
     }
-    res.status(201).json(editSubscription)
+    res.status(200).json(editSubscription)
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -115,5 +121,18 @@ router.patch("/:id", authenticateUser, async (req, res) => {
     })
   }
 })
+
+// SOFIE ADD: To delete a subscription
+router.delete("/:id", authenticateUser, async (req, res) => {
+  try {
+    const deleted = await Subscription.findOneAndDelete({ _id: req.params.id, user: req.user._id });
+    if (!deleted) {
+      return res.status(404).json({ message: "Subscription not found" });
+    }
+    res.status(200).json({ success: true, message: "Subscription deleted" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Failed to delete subscription", error });
+  }
+});
 
 export default router; 

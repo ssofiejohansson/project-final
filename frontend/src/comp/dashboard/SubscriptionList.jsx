@@ -1,6 +1,7 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { BriefcaseIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import { Button, Card, CardBody, CardHeader, Typography } from "@material-tailwind/react";
+import { useEffect } from "react";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 
@@ -60,6 +61,12 @@ const SubscriptionCard = ({ name, cost, freeTrial, trialDays, reminderDate, stat
 // Main Subscription List
 export const SubscriptionList = () => {
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
+  // SOFIE ADD
+  const fetchSubscriptions = useSubscriptionStore((state) => state.fetchSubscriptions);
+
+  useEffect(() => {
+    fetchSubscriptions();
+  }, []);
 
   return (
     <section className="max-w-4xl mx-auto px-8 py-20 w-full">

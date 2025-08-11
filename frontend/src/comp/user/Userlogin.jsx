@@ -35,30 +35,18 @@ export const Userlogin = () => {
         method: "POST",
         body: JSON.stringify(
           formData
-          // {
-          // email: formData.email,
-          // password: formData.password}
         ),
         headers: {
           "Content-Type": "application/json"
         },
       })
 
-      //console.log("User before response:", user);
-
       const data = await response.json();
       console.log("Login response data:", data);
 
-
-
-      // if(data.notFound) {
-      //   setError("User not found, please try again!");
-      //   return;
-      // }
-
       if (data.success && data.id) {
-        //localStorage.setItem("userId", data.id);
         localStorage.setItem("user", JSON.stringify(data));
+        localStorage.setItem("accessToken", data.accessToken);
 
         // SOFIE ADD: Update with logged-in user info 
         setUser({
@@ -77,9 +65,6 @@ export const Userlogin = () => {
       // localStorage.setItem("accessToken", data.accessToken);
       // localStorage.setItem("userId", data.userID); ///KOLLA att denna verkligen är rätt!!!!
 
-      // e.target.reset();
-
-      // navigate("/Admin");    
 
     } catch (error) {
       console.error("Signin error:", error);
@@ -93,7 +78,6 @@ export const Userlogin = () => {
     <>
       <div className='p-6 text-center'>
         <h1 className='text-3xl font-bold'>User Login</h1>
-        <p>This is a test to see if the page loads</p>
 
         <form
           onSubmit={handleSubmit}
