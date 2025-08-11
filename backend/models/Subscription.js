@@ -22,18 +22,27 @@ const subscriptionSchema = new mongoose.Schema({
     minlength: 0,
   },
   //Next remider email
-  remiderDate: {
+  reminderDate: {
     type: Date,
     required: true,
   },
   status: {
     type: String,
-    enum: ['active', 'inactive'],
-    default: 'active',
+    enum: [
+      "active", 
+      "inactive"],
+    default: "active",
     required: true,
   },
   category: {
-    type: String
+    type: String,
+    enum: [
+      "Entertainment",
+      "Food",
+      "Health",
+      "Learning",      
+      "Other"],
+    required: true,
   },
   createdAt: {
     type: Date,

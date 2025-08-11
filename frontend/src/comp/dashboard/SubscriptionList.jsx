@@ -1,13 +1,64 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { BriefcaseIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import { Button, Card, CardBody, CardHeader, Typography } from "@material-tailwind/react";
-import "../../index.css";
-
+import { useState } from "react";
 
 import subscriptions from "../../data/subscriptions.json";
+import useSubscriptionStore from "../../stores/useSubscriptionStore";
+
+import "../../index.css";
 
 // Single Subscription Card
-const SubscriptionCard = ({ name, cost, freeTrial, trialDays, remiderDate, status, category }) => {
+const SubscriptionCard = ({ name, cost, freeTrial, trialDays, reminderDate, status, category }) => {
+
+  // const urlAPI = "https://project-final-xhjy.onrender.com/subscriptions";
+
+  // let [error, setError] = useState([]);
+  // const [success, setSuccess] = useState(false);
+  
+  // useEffect(() => {
+  //   const token = localStorage.getItem("accessToken"); 
+    
+  //   fetch(apiUrl, {
+  //     headers: {
+  //       "Authorization": token,
+  //       "Content-Type": "application/json"
+  //     }
+  //   })
+    
+  //   },
+  //  [])  
+
+//     try {
+//       const response = await fetch(`${urlAPI}`, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(formData),
+//       })
+
+//       const data = await response.json();
+
+//     if(response.ok) {
+//       setSuccess(true);
+//       setFormData({
+//         name: "",
+//         cost: 0, 
+//         freeTrial: false, 
+//         trialDays: 0, 
+//         reminderDate: "",
+//         status: "active", 
+//         category: "Other"  
+//       });
+//     } else {
+//       setError(data.message || "Failed to create subscription");
+//     }
+    
+//   } catch (error) {
+//     console.error("Subscription creation error:", error);
+//     setError("Failed to create subscription. Please try again.");
+//   }
+// }
+
   return (
     <Card shadow={false} className="rounded-lg border border-gray-300 p-4">
       <div className="mb-4 flex items-start justify-between">
@@ -48,12 +99,12 @@ const SubscriptionCard = ({ name, cost, freeTrial, trialDays, remiderDate, statu
             <span className="text-gray-600 font-medium">Trial Days:</span> <span className="font-bold">{trialDays}</span>
           </>
         )}
-        <span className="text-gray-600 font-medium">Reminder Date:</span> <span className="font-bold">{new Date(remiderDate).toLocaleDateString()}</span>
+        <span className="text-gray-600 font-medium">Reminder Date:</span> <span className="font-bold">{new Date(reminderDate).toLocaleDateString()}</span>
         <span className="text-gray-600 font-medium">Status:</span> <span className="font-bold">{status}</span>
       </div>
     </Card>
-  );
-};
+  ) };
+
 
 // Main Subscription List
 export const SubscriptionList = () => {

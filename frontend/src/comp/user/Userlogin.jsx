@@ -33,10 +33,12 @@ export const Userlogin = () => {
     try {
       const response = await fetch(`${urlAPI}`, {
         method: "POST",
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password
-        }),
+        body: JSON.stringify(
+          formData
+          // {
+          // email: formData.email,
+          // password: formData.password}
+        ),
         headers: {
           "Content-Type": "application/json"
         },
