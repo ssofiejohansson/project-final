@@ -16,8 +16,13 @@ const subscriptionSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  //Next payment?
-  expirationDate: {
+  //days of free trial
+  trialDays: {
+    type: Number,
+    minlength: 0,
+  },
+  //Next remider email
+  remiderDate: {
     type: Date,
     required: true,
   },

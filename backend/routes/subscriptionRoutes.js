@@ -62,7 +62,7 @@ router.get("/:id", async (req, res) => {
 
 //To create/save a subscription to the db (endpoint is /subscriptions)
 router.post("/", authenticateUser, async (req, res) => {
-  const { name, cost, freeTrial, expirationDate, status, createdAt } = req.body  
+  const { name, cost, freeTrial, trialDays, reminderDate, status, createdAt } = req.body  
 
   if(!req.user) {
     return res.status(403).json({ error: "You must be logged in to add a subscription" })
@@ -73,7 +73,8 @@ router.post("/", authenticateUser, async (req, res) => {
       name, 
       cost, 
       freeTrial, 
-      expirationDate, 
+      trialDays, 
+      reminderDate, 
       status, 
       createdAt,
       user: req.user._id,
@@ -96,10 +97,10 @@ router.post("/", authenticateUser, async (req, res) => {
 //To edit a subscription (endpoint is /subscriptions/:id)
 router.patch("/:id", authenticateUser, async (req, res) => {
   const { id } = req.params
-  const { name, cost, freeTrial, expirationDate, status } = req.body
+  const { name, cost, freeTrial, trialDays, reminderDate, status } = req.body
 
   try {
-    const editSubscription = await Subscription.findByIdAndUpdate(id, { name: name, cost: cost, freeTrial: freeTrial, expirationDate: expirationDate, status: status },
+    const editSubscription = await Subscription.findByIdAndUpdate(id, { name: name, cost: cost, freeTrial: freeTrial, trialDays: trialDays, reminderDate: reminderDate, status: status },
       { new: true, runValidators: true })
     if (!editSubscription) {
       return res.status(404).json({ error: "Subscription not found" })
