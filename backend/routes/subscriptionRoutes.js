@@ -7,11 +7,11 @@ const router = express.Router();
 
 //To get all subscriptions
 router.get("/", async (req, res) => {
-  
-  try{
+
+  try {
     const subscriptions = await Subscription.find({})
 
-    if(!subscriptions || subscriptions.length === 0){
+    if (!subscriptions || subscriptions.length === 0) {
       return res.status(404).json({
         success: false,
         response: null,
@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
       success: true,
       response: subscriptions,
     })
-  } catch (error){
+  } catch (error) {
     res.status(500).json({
       success: false,
       response: error,
@@ -35,7 +35,7 @@ router.get("/", async (req, res) => {
 //To get one subscription based on id (endpoint is /subscriptions/:id)
 router.get("/:id", async (req, res) => {
   const { id } = req.params
-  
+
   try {
     const subscription = await Subscription.findById(id)
 
@@ -62,24 +62,24 @@ router.get("/:id", async (req, res) => {
 
 //To create/save a subscription to the db (endpoint is /subscriptions)
 router.post("/", authenticateUser, async (req, res) => {
-  const { name, cost, freeTrial, trialDays, reminderDate, status, category, createdAt } = req.body  
+  const { name, cost, freeTrial, trialDays, reminderDate, status, category, createdAt } = req.body
 
-  if(!req.user) {
+  if (!req.user) {
     return res.status(403).json({ error: "You must be logged in to add a subscription" })
-  } 
+  }
 
   try {
-    const newSubscription = await new Subscription({ 
-      name, 
-      cost, 
-      freeTrial, 
-      trialDays, 
-      reminderDate, 
+    const newSubscription = await new Subscription({
+      name,
+      cost,
+      freeTrial,
+      trialDays,
+      reminderDate,
       status,
-      category, 
+      category,
       createdAt,
       user: req.user._id,
-     }).save()
+    }).save()
 
     res.status(201).json({
       success: true,
@@ -89,7 +89,7 @@ router.post("/", authenticateUser, async (req, res) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      response: error, 
+      response: error,
       message: "Couldn't create subscription"
     })
   }

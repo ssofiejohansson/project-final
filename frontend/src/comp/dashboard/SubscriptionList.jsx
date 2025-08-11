@@ -1,63 +1,13 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { BriefcaseIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import { Button, Card, CardBody, CardHeader, Typography } from "@material-tailwind/react";
-import { useState } from "react";
 
-import subscriptions from "../../data/subscriptions.json";
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 
 import "../../index.css";
 
 // Single Subscription Card
 const SubscriptionCard = ({ name, cost, freeTrial, trialDays, reminderDate, status, category }) => {
-
-  // const urlAPI = "https://project-final-xhjy.onrender.com/subscriptions";
-
-  // let [error, setError] = useState([]);
-  // const [success, setSuccess] = useState(false);
-  
-  // useEffect(() => {
-  //   const token = localStorage.getItem("accessToken"); 
-    
-  //   fetch(apiUrl, {
-  //     headers: {
-  //       "Authorization": token,
-  //       "Content-Type": "application/json"
-  //     }
-  //   })
-    
-  //   },
-  //  [])  
-
-//     try {
-//       const response = await fetch(`${urlAPI}`, {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify(formData),
-//       })
-
-//       const data = await response.json();
-
-//     if(response.ok) {
-//       setSuccess(true);
-//       setFormData({
-//         name: "",
-//         cost: 0, 
-//         freeTrial: false, 
-//         trialDays: 0, 
-//         reminderDate: "",
-//         status: "active", 
-//         category: "Other"  
-//       });
-//     } else {
-//       setError(data.message || "Failed to create subscription");
-//     }
-    
-//   } catch (error) {
-//     console.error("Subscription creation error:", error);
-//     setError("Failed to create subscription. Please try again.");
-//   }
-// }
 
   return (
     <Card shadow={false} className="rounded-lg border border-gray-300 p-4">
@@ -103,11 +53,14 @@ const SubscriptionCard = ({ name, cost, freeTrial, trialDays, reminderDate, stat
         <span className="text-gray-600 font-medium">Status:</span> <span className="font-bold">{status}</span>
       </div>
     </Card>
-  ) };
+  )
+};
 
 
 // Main Subscription List
 export const SubscriptionList = () => {
+  const subscriptions = useSubscriptionStore((state) => state.subscriptions);
+
   return (
     <section className="max-w-4xl mx-auto px-8 py-20 w-full">
       <Card shadow={false}>

@@ -1,4 +1,4 @@
-import { SubscriptionForm } from "../comp/dashboard/SubscriptionForm"
+import { SubscriptionForm } from "../comp/dashboard/SubscriptionForm";
 import { SubscriptionList } from "../comp/dashboard/SubscriptionList";
 import { Footer } from "../comp/layout/Footer";
 import { Logout } from '../comp/user/LogoutBtn';
