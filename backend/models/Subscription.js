@@ -32,6 +32,9 @@ const subscriptionSchema = new mongoose.Schema({
     default: 'active',
     required: true,
   },
+  category: {
+    type: String
+  },
   createdAt: {
     type: Date,
     default: Date.now,
