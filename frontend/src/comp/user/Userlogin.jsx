@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import useLoadingStore from "../../stores/useLoadingStore"
 // SOFIE ADD: import Zustand
 import useUserStore from '../../stores/useUserStore';
 
 export const Userlogin = () => {
+
+  const setLoading = useLoadingStore((state) => state.setLoading);
 
   const navigate = useNavigate()
 
@@ -29,6 +32,8 @@ export const Userlogin = () => {
       setError("Please fill in both email and password!");
       return;
     }
+
+    setLoading(true);
 
     try {
       const response = await fetch(`${urlAPI}`, {
@@ -69,6 +74,8 @@ export const Userlogin = () => {
     } catch (error) {
       console.error("Signin error:", error);
       setError("Can´t login, please try again!");
+    } finally {
+      setLoading(false)
     }
 
   };
