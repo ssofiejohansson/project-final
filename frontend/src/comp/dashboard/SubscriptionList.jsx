@@ -59,7 +59,6 @@ const SubscriptionCard = ({ name, cost, freeTrial, trialDays, reminderDate, stat
   )
 };
 
-
 // Main Subscription List
 export const SubscriptionList = () => {
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
@@ -151,7 +150,6 @@ export const SubscriptionList = () => {
         </CardBody>
       </Card>
 
-      {/* Modal included here so it’s part of this component tree */}
       <SubscriptionModal open={isModalOpen} setOpen={setIsModalOpen} />
 
     </section>
