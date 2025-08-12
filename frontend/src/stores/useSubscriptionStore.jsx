@@ -1,5 +1,7 @@
 import { create } from 'zustand';
 
+import useLoadingStore from "./useLoadingStore";
+
 const useSubscriptionStore = create((set) => ({
   subscriptions: [],
 
@@ -11,6 +13,8 @@ const useSubscriptionStore = create((set) => ({
 
   clearSubscriptions: () => set({ subscriptions: [] }),
 
+
+
   //SOFIE ADD
   fetchSubscriptions: async () => {
     const token = localStorage.getItem("user")
@@ -21,6 +25,8 @@ const useSubscriptionStore = create((set) => ({
       set({ subscriptions: [] }); // Clear if no token
       return;
     }
+
+    useLoadingStore.getState().setLoading(true);
 
     try {
       const response = await fetch("https://project-final-xhjy.onrender.com/subscriptions", {
@@ -38,6 +44,8 @@ const useSubscriptionStore = create((set) => ({
     } catch (error) {
       console.error("Error fetching subscriptions:", error);
       set({ subscriptions: [] });
+    } finally {
+      useLoadingStore.getState().setLoading(false);
     }
   },
 }));
