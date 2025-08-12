@@ -13,9 +13,9 @@ import {
 } from '@material-tailwind/react';
 import { useEffect, useState } from 'react';
 
-import useSubscriptionStore from "../../stores/useSubscriptionStore";
-import { DashboardNavbar } from "./DashboardNavbar";
-import { SubscriptionModal } from "./SubscriptionModal";
+import useSubscriptionStore from '../../stores/useSubscriptionStore';
+import { DashboardNavbar } from './DashboardNavbar';
+import { SubscriptionModal } from './SubscriptionModal';
 
 import '../../index.css';
 
@@ -140,32 +140,31 @@ export const SubscriptionList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // State for filter and sort
-  const [filterCategory, setFilterCategory] = useState("");
-  const [sortKey, setSortKey] = useState("");
+  const [filterCategory, setFilterCategory] = useState('');
+  const [sortKey, setSortKey] = useState('');
 
   useEffect(() => {
     fetchSubscriptions();
   }, []);
 
-
   // Filter subscriptions based on category
   const filteredSubs = filterCategory
-    ? subscriptions.filter(sub => sub.category === filterCategory)
+    ? subscriptions.filter((sub) => sub.category === filterCategory)
     : subscriptions;
 
   // Sort subscriptions based on sortKey
   const sortedSubs = [...filteredSubs].sort((a, b) => {
     if (!sortKey) return 0; // no sorting
 
-    if (sortKey === "name") {
+    if (sortKey === 'name') {
       return a.name.localeCompare(b.name);
     }
 
-    if (sortKey === "cost") {
+    if (sortKey === 'cost') {
       return a.cost - b.cost;
     }
 
-    if (sortKey === "reminderDate") {
+    if (sortKey === 'reminderDate') {
       return new Date(a.reminderDate) - new Date(b.reminderDate);
     }
 
@@ -193,10 +192,10 @@ export const SubscriptionList = () => {
           </div>
           <div className='w-full'>
             <Button
-              size="sm"
-              variant="outlined"
-              color="gray"
-              className="flex justify-center gap-3 md:max-w-fit w-full ml-auto"
+              size='sm'
+              variant='outlined'
+              color='gray'
+              className='flex justify-center gap-3 md:max-w-fit w-full ml-auto'
               onClick={() => setIsModalOpen(true)}
             >
               <PlusIcon strokeWidth={3} className='h-4 w-4' />
@@ -211,15 +210,18 @@ export const SubscriptionList = () => {
           sortKey={sortKey}
           setSortKey={setSortKey}
         />
-        <CardBody className="flex flex-col gap-4 p-4">
+        <CardBody className='flex flex-col gap-4 p-4'>
           {sortedSubs.length === 0 ? (
-            <Typography color="gray" className="text-center italic">
-              You have no subscriptions listed under {filterCategory || "this category"}.
+            <Typography color='gray' className='text-center italic'>
+              You have no subscriptions listed under{' '}
+              {filterCategory || 'this category'}.
             </Typography>
           ) : (
-            sortedSubs.map((sub, index) => (
-              <SubscriptionCard key={index} {...sub} />
-            ))
+            sortedSubs.map((sub, index) => {
+              return (
+                <SubscriptionCard key={sub.id || index} {...sub} id={sub._id} />
+              );
+            })
           )}
         </CardBody>
       </Card>
