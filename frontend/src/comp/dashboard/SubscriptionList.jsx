@@ -4,6 +4,7 @@ import { Button, Card, CardBody, CardHeader, Typography } from "@material-tailwi
 import { useEffect, useState } from "react";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
+import { DashboardNavbar } from "./DashboardNavbar"
 import { SubscriptionModal } from "./SubscriptionModal";
 
 import "../../index.css";
@@ -66,9 +67,39 @@ export const SubscriptionList = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // State for filter and sort
+  const [filterCategory, setFilterCategory] = useState("");
+  const [sortKey, setSortKey] = useState("");
+
   useEffect(() => {
     fetchSubscriptions();
   }, []);
+
+
+  // Filter subscriptions based on category
+  const filteredSubs = filterCategory
+    ? subscriptions.filter(sub => sub.category === filterCategory)
+    : subscriptions;
+
+  // Sort subscriptions based on sortKey
+  const sortedSubs = [...filteredSubs].sort((a, b) => {
+    if (!sortKey) return 0; // no sorting
+
+    if (sortKey === "name") {
+      return a.name.localeCompare(b.name);
+    }
+
+    if (sortKey === "cost") {
+      return a.cost - b.cost;
+    }
+
+    if (sortKey === "reminderDate") {
+      return new Date(a.reminderDate) - new Date(b.reminderDate);
+    }
+
+    return 0;
+  });
+
 
   return (
     <section className="max-w-4xl mx-auto px-8 py-20 w-full">
@@ -99,11 +130,22 @@ export const SubscriptionList = () => {
             </Button>
           </div>
         </CardHeader>
-
+        <DashboardNavbar
+          filterCategory={filterCategory}
+          setFilterCategory={setFilterCategory}
+          sortKey={sortKey}
+          setSortKey={setSortKey}
+        />
         <CardBody className="flex flex-col gap-4 p-4">
-          {subscriptions.map((sub, index) => (
-            <SubscriptionCard key={index} {...sub} />
-          ))}
+          {sortedSubs.length === 0 ? (
+            <Typography color="gray" className="text-center italic">
+              You have no subscriptions listed under {filterCategory || "this category"}.
+            </Typography>
+          ) : (
+            sortedSubs.map((sub, index) => (
+              <SubscriptionCard key={index} {...sub} />
+            ))
+          )}
         </CardBody>
       </Card>
 
