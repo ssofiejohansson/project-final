@@ -1,9 +1,10 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { BriefcaseIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import { Button, Card, CardBody, CardHeader, Typography } from "@material-tailwind/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
+import { SubscriptionModal } from "./SubscriptionModal";
 
 import "../../index.css";
 
@@ -64,6 +65,8 @@ export const SubscriptionList = () => {
   // SOFIE ADD
   const fetchSubscriptions = useSubscriptionStore((state) => state.fetchSubscriptions);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     fetchSubscriptions();
   }, []);
@@ -90,6 +93,7 @@ export const SubscriptionList = () => {
               variant="outlined"
               color="gray"
               className="flex justify-center gap-3 md:max-w-fit w-full ml-auto"
+              onClick={() => setIsModalOpen(true)} // <- Open modal
             >
               <PlusIcon strokeWidth={3} className="h-4 w-4" />
               Add new subscription
@@ -103,6 +107,10 @@ export const SubscriptionList = () => {
           ))}
         </CardBody>
       </Card>
+
+      {/* Modal included here so it’s part of this component tree */}
+      <SubscriptionModal open={isModalOpen} setOpen={setIsModalOpen} />
+
     </section>
   );
 };
