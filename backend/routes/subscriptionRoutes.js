@@ -1,73 +1,84 @@
 import express from 'express';
 
-import { authenticateUser } from "../authMiddleware"
+import { authenticateUser } from '../authMiddleware';
 import { Subscription } from '../models/Subscription';
 
 const router = express.Router();
 
 //To get all subscriptions
-router.get("/", authenticateUser, async (req, res) => {
-
+router.get('/', authenticateUser, async (req, res) => {
   try {
-    const subscriptions = await Subscription.find({ user: req.user._id }) // SOFIE ADD
-
+    const subscriptions = await Subscription.find({ user: req.user._id }); // SOFIE ADD
 
     if (!subscriptions || subscriptions.length === 0) {
       return res.status(404).json({
         success: false,
         response: null,
-        message: "No subscription was found",
-      })
+        message: 'No subscription was found',
+      });
     }
 
     res.status(200).json({
       success: true,
       response: subscriptions,
-    })
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
       response: error,
-      message: "Failed to fetch subscription"
-    })
+      message: 'Failed to fetch subscription',
+    });
   }
 });
 
 //To get one subscription based on id (endpoint is /subscriptions/:id)
-router.get("/:id", authenticateUser, async (req, res) => {
-  const { id } = req.params
+router.get('/:id', authenticateUser, async (req, res) => {
+  const { id } = req.params;
 
   try {
-    const subscription = await Subscription.findOne({ _id: id, user: req.user._id }) // SOFIE ADD
-
+    const subscription = await Subscription.findOne({
+      _id: id,
+      user: req.user._id,
+    }); // SOFIE ADD
 
     if (!subscription) {
       return res.status(404).json({
         success: false,
         response: null,
-        message: "Subscription not found"
-      })
+        message: 'Subscription not found',
+      });
     }
 
     res.status(200).json({
       success: true,
-      response: subscription
-    })
+      response: subscription,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
       response: error,
-      message: "Subscription couldn't be found"
-    })
+      message: "Subscription couldn't be found",
+    });
   }
-})
+});
 
 //To create/save a subscription to the db (endpoint is /subscriptions)
-router.post("/", authenticateUser, async (req, res) => {
-  const { name, cost, freeTrial, trialDays, reminderDate, status, category, createdAt } = req.body
+router.post('/', authenticateUser, async (req, res) => {
+  const {
+    name,
+    cost,
+    freeTrial,
+    trialDays,
+    reminderDate,
+    status,
+    category,
+    createdAt,
+  } = req.body;
 
   if (!req.user) {
-    return res.status(403).json({ error: "You must be logged in to add a subscription" })
+    return res
+      .status(403)
+      .json({ error: 'You must be logged in to add a subscription' });
   }
 
   try {
@@ -81,58 +92,74 @@ router.post("/", authenticateUser, async (req, res) => {
       category,
       createdAt,
       user: req.user._id,
-    }).save()
+    }).save();
 
     res.status(201).json({
       success: true,
       response: newSubscription,
-      message: "Subscription created successfully"
-    })
+      message: 'Subscription created successfully',
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
       response: error,
-      message: "Couldn't create subscription"
-    })
+      message: "Couldn't create subscription",
+    });
   }
-})
+});
 
 //To edit a subscription (endpoint is /subscriptions/:id)
-router.patch("/:id", authenticateUser, async (req, res) => {
-  const { id } = req.params
-  const { name, cost, freeTrial, trialDays, reminderDate, status, category } = req.body
+router.patch('/:id', authenticateUser, async (req, res) => {
+  const { id } = req.params;
+  const { name, cost, freeTrial, trialDays, reminderDate, status, category } =
+    req.body;
 
   try {
     const editSubscription = await Subscription.findOneAndUpdate(
       { _id: id, user: req.user._id },
       { name, cost, freeTrial, trialDays, reminderDate, status, category },
       {
-        new: true, runValidators: true
-      })
+        new: true,
+        runValidators: true,
+      }
+    );
     if (!editSubscription) {
-      return res.status(404).json({ error: "Subscription not found" })
+      return res.status(404).json({ error: 'Subscription not found' });
     }
-    res.status(200).json(editSubscription)
+    res.status(200).json(editSubscription);
   } catch (error) {
     res.status(500).json({
       success: false,
       response: error,
-      message: "Failed to fetch subscription"
-    })
-  }
-})
-
-// SOFIE ADD: To delete a subscription
-router.delete("/:id", authenticateUser, async (req, res) => {
-  try {
-    const deleted = await Subscription.findOneAndDelete({ _id: req.params.id, user: req.user._id });
-    if (!deleted) {
-      return res.status(404).json({ message: "Subscription not found" });
-    }
-    res.status(200).json({ success: true, message: "Subscription deleted" });
-  } catch (error) {
-    res.status(500).json({ success: false, message: "Failed to delete subscription", error });
+      message: 'Failed to fetch subscription',
+    });
   }
 });
 
-export default router; 
+// SOFIE ADD: To delete a subscription
+router.delete('/:id', authenticateUser, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Find and delete subscription only if it belongs to the authenticated user
+    const deletedSubscription = await Subscription.findOneAndDelete({
+      _id: id,
+      user: req.user._id,
+    });
+
+    if (!deletedSubscription) {
+      return res.status(404).json({ error: 'Subscription not found' });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: 'Subscription deleted successfully',
+      deletedSubscription,
+    });
+  } catch (error) {
+    console.error('Error deleting subscription:', error);
+    res.status(500).json({ error: 'Failed to delete subscription' });
+  }
+});
+
+export default router;
