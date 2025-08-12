@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+
 import useUserStore from '../../stores/useUserStore';
 
 export const Logout = () => {
@@ -6,8 +7,10 @@ export const Logout = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    clearUser();           // Clear user data in store
-    navigate('/login');    // Redirect to login page
+    clearUser();                            // Clear user data in store     
+    localStorage.removeItem("accessToken"); // Remove the access token
+    localStorage.removeItem('user');        // Remove stored user object    
+    navigate('/login');                     // Redirect to login page
   };
 
   return (
