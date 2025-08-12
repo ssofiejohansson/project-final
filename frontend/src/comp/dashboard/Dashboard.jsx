@@ -1,11 +1,12 @@
-import { Footer } from "../comp/layout/Footer";
-import { Logout } from '../comp/user/LogoutBtn';
-import useUserStore from '../stores/useUserStore';
-import { SubscriptionForm } from "../user/SubscriptionForm";
-import { SubscriptionList } from "../user/SubscriptionList";
 import { Link } from "react-router-dom";
 
-import "../index.css";
+import useUserStore from '../../stores/useUserStore';
+import { SubscriptionForm } from "../dashboard/SubscriptionForm";
+import { SubscriptionList } from "../dashboard/SubscriptionList";
+import { Footer } from "../layout/Footer";
+import { Logout } from '../user/LogoutBtn';
+
+import "../../../src/index.css";
 
 export const Dashboard = () => {
   const user = useUserStore((state) => state.user);
