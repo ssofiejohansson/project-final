@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import useUserStore from '../../stores/useUserStore';
 import { SubscriptionForm } from "../dashboard/SubscriptionForm";
 import { SubscriptionList } from "../dashboard/SubscriptionList";
-import { Footer } from "../layout/Footer";
 import { Logout } from '../user/LogoutBtn';
 
 import "../../../src/index.css";
@@ -28,15 +27,14 @@ export const Dashboard = () => {
   }
 
   return (
-    <>
-      <div className="p-6 text-center">
-        <h1 className="text-3xl font-bold">Admin</h1>
-        <p>Welcome {user.name}! Here are your subscriptions.</p>
-        <Logout />
-        <SubscriptionForm />
-        <SubscriptionList />
-      </div>
-      <Footer />
-    </>
+
+    <div className="p-6 text-center">
+      <h1 className="text-3xl font-bold">Admin</h1>
+      <p>Welcome {user.name}! Here are your subscriptions.</p>
+      <Logout />
+      <SubscriptionForm />
+      <SubscriptionList />
+    </div>
+
   );
 };
