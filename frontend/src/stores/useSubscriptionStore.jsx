@@ -14,7 +14,7 @@ const useSubscriptionStore = create((set) => ({
   //SOFIE ADD
   fetchSubscriptions: async () => {
     const token = localStorage.getItem("user")
-      ? JSON.parse(localStorage.getItem("user")).accessToken
+      ? JSON.parse(localStorage.getItem("user")).token
       : null;
 
     if (!token) {
