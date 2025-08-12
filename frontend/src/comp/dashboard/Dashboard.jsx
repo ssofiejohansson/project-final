@@ -19,9 +19,7 @@ export const Dashboard = () => {
           <Link to="/login" className="text-blue-600 underline">
             Go to Login
           </Link>
-
-        </div>
-        <Footer />
+        </div>        
       </>
     );
   }
