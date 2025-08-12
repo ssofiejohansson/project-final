@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import useUserStore from '../../stores/useUserStore';
+import useLoadingStore from "../../stores/useLoadingStore";
+import useUserStore from "../../stores/useUserStore";
 
 export const Usersignup = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -10,6 +11,8 @@ export const Usersignup = () => {
 
   const setUser = useUserStore((state) => state.setUser);
   const navigate = useNavigate();
+
+  const setLoading = useLoadingStore((state) => state.setLoading);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,6 +23,7 @@ export const Usersignup = () => {
 
     const urlAPI = "https://project-final-xhjy.onrender.com/users";
 
+    setLoading(true);
 
     try {
       // Sign up
@@ -59,6 +63,8 @@ export const Usersignup = () => {
     } catch (err) {
       setError('Server error');
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
   return (

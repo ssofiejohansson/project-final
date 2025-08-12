@@ -1,21 +1,24 @@
 import { create } from 'zustand';
 
-const useSubscriptionStore = create((set, get) => ({
+import useLoadingStore from "./useLoadingStore";
+
+const useSubscriptionStore = create((set) => ({
   subscriptions: [],
 
   setSubscriptions: (subscriptions) => set({ subscriptions }),
 
-  addSubscription: (subscription) =>
-    set((state) => ({
-      subscriptions: [subscription, ...state.subscriptions],
-    })),
+  addSubscription: (subscription) => set((state) => ({
+    subscriptions: [subscription, ...state.subscriptions],
+  })),
 
   clearSubscriptions: () => set({ subscriptions: [] }),
 
+
+
   //SOFIE ADD
   fetchSubscriptions: async () => {
-    const token = localStorage.getItem('user')
-      ? JSON.parse(localStorage.getItem('user')).token
+    const token = localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user")).token
       : null;
 
     if (!token) {
@@ -23,33 +26,27 @@ const useSubscriptionStore = create((set, get) => ({
       return;
     }
 
-    try {
-      const response = await fetch(
-        'https://project-final-xhjy.onrender.com/subscriptions',
-        {
-          headers: {
-            Authorization: token,
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+    useLoadingStore.getState().setLoading(true);
 
-      if (!response.ok) throw new Error('Failed to fetch subscriptions');
+    try {
+      const response = await fetch("https://project-final-xhjy.onrender.com/subscriptions", {
+        headers: {
+          Authorization: token,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) throw new Error("Failed to fetch subscriptions");
 
       const data = await response.json();
 
       set({ subscriptions: data.response || [] });
     } catch (error) {
-      console.error('Error fetching subscriptions:', error);
+      console.error("Error fetching subscriptions:", error);
       set({ subscriptions: [] });
+    } finally {
+      useLoadingStore.getState().setLoading(false);
     }
-  },
-
-  removeSubscription: (id) => {
-    const currentSubscriptions = get().subscriptions;
-    set({
-      subscriptions: currentSubscriptions.filter((sub) => sub._id !== id),
-    });
   },
 }));
 

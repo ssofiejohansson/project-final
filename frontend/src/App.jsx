@@ -1,26 +1,34 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import { Navbar } from './comp/layout/Navbar';
+import { Loader } from "./comp/Loader";
 import { About } from './pages/About';
 import { Admin } from './pages/Admin';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
+import useLoadingStore from "./stores/useLoadingStore";
 
 export const App = () => {
-  return (
-    <Router>
-      <Navbar />
-      <div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-      </div>
-    </Router>
+  const loading = useLoadingStore((state) => state.loading);
 
+  return (
+    <>  
+      <Router>       
+        <Navbar />     
+         
+        {loading && <Loader/>} 
+
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+        </div>
+      </Router>
+    </>
   );
 };
