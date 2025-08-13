@@ -16,22 +16,43 @@ const subscriptionSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  expirationDate: {
+  //days of free trial
+  trialDays: {
+    type: Number,
+    minlength: 0,
+  },
+  //Next remider email
+  reminderDate: {
     type: Date,
     required: true,
   },
   status: {
     type: String,
-    enum: ['active', 'inactive'],
-    default: 'active',
+    enum: [
+      "active",
+      "inactive"],
+    default: "active",
+    required: true,
+  },
+  category: {
+    type: String,
+    enum: [
+      "Entertainment",
+      "Food",
+      "Health",
+      "Learning",
+      "Other"],
     required: true,
   },
   createdAt: {
     type: Date,
     default: Date.now,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true
+  },
 });
-
-//test
 
 export const Subscription = mongoose.model('Subscription', subscriptionSchema);

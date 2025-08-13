@@ -6,13 +6,13 @@ import { User } from '../models/User.js';
 const router = express.Router();
 
 // To get all users
-router.get('/', async (req, res) => {
-  const { email } = req.params;
+router.get("/", async (req, res) => { 
 
-  try {
-    const user = await User.find(email);
+  try {    
+    const users = await User.find({})
 
-    if (!user) {
+    if (!users || users.length === 0) {
+
       return res.status(404).json({
         success: false,
         response: null,
@@ -22,8 +22,11 @@ router.get('/', async (req, res) => {
 
     res.status(200).json({
       success: true,
-      response: user,
-    });
+
+      response: users
+    })
+
+
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -36,8 +39,12 @@ router.get('/', async (req, res) => {
 // To register a new user
 router.post('/', async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const salt = bcrypt.genSaltSync();
+
+    console.log('Incoming signup data:', req.body); // Testing user data
+
+    const { name, email, password } = req.body
+    const salt = bcrypt.genSaltSync()
+
 
     const user = new User({
       name,
@@ -77,6 +84,8 @@ router.post('/login', async (req, res) => {
         success: true,
         message: 'Login successful',
         id: user.id,
+        name: user.name,
+        email: user.email,
         accessToken: user.accessToken,
       });
     } else {
