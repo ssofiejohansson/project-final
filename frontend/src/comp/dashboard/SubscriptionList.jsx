@@ -1,18 +1,36 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { BriefcaseIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
-import { Button, Card, CardBody, CardHeader, Typography } from "@material-tailwind/react";
+import {
+  BriefcaseIcon,
+  PencilIcon,
+  TrashIcon,
+} from "@heroicons/react/24/solid";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Typography,
+} from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 
-
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
-import { DashboardNavbar } from "./DashboardNavbar"
+import { DashboardNavbar } from "./DashboardNavbar";
 import { SubscriptionModal } from "./SubscriptionModal";
 
 import "../../index.css";
 
 // Single Subscription Card
-const SubscriptionCard = ({ name, cost, freeTrial, trialDays, reminderDate, status, category }) => {
-
+const SubscriptionCard = ({
+  id,
+  name,
+  cost,
+  freeTrial,
+  trialDays,
+  reminderDate,
+  status,
+  category,
+  onDelete,
+}) => {
   return (
     <Card shadow={false} className="rounded-lg border border-gray-300 p-4">
       <div className="mb-4 flex items-start justify-between">
@@ -21,7 +39,11 @@ const SubscriptionCard = ({ name, cost, freeTrial, trialDays, reminderDate, stat
             <BriefcaseIcon className="h-6 w-6 text-gray-900" />
           </div>
           <div>
-            <Typography variant="small" color="blue-gray" className="mb-1 font-bold">
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-1 font-bold"
+            >
               {name}
             </Typography>
             <Typography className="!text-gray-600 text-xs font-normal">
@@ -36,7 +58,13 @@ const SubscriptionCard = ({ name, cost, freeTrial, trialDays, reminderDate, stat
               Edit
             </Typography>
           </Button>
-          <Button size="sm" variant="text" color="red" className="flex items-center gap-2">
+          <Button
+            size="sm"
+            variant="text"
+            color="red"
+            className="flex items-center gap-2"
+            onClick={() => onDelete(id)}
+          >
             <TrashIcon className="h-4 w-4 text-red-500" />
             <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
               Delete
@@ -46,31 +74,40 @@ const SubscriptionCard = ({ name, cost, freeTrial, trialDays, reminderDate, stat
       </div>
 
       <div className="grid grid-cols-2 gap-2 text-xs">
-        <span className="text-gray-600 font-medium">Cost:</span> <span className="font-bold">${cost}</span>
-        <span className="text-gray-600 font-medium">Free Trial:</span> <span className="font-bold">{freeTrial ? "Yes" : "No"}</span>
+        <span className="text-gray-600 font-medium">Cost:</span>{" "}
+        <span className="font-bold">${cost}</span>
+        <span className="text-gray-600 font-medium">Free Trial:</span>{" "}
+        <span className="font-bold">{freeTrial ? "Yes" : "No"}</span>
         {freeTrial && (
           <>
-            <span className="text-gray-600 font-medium">Trial Days:</span> <span className="font-bold">{trialDays}</span>
+            <span className="text-gray-600 font-medium">Trial Days:</span>{" "}
+            <span className="font-bold">{trialDays}</span>
           </>
         )}
-        <span className="text-gray-600 font-medium">Reminder Date:</span> <span className="font-bold">{new Date(reminderDate).toLocaleDateString()}</span>
-        <span className="text-gray-600 font-medium">Status:</span> <span className="font-bold">{status}</span>
+        <span className="text-gray-600 font-medium">Reminder Date:</span>{" "}
+        <span className="font-bold">
+          {new Date(reminderDate).toLocaleDateString()}
+        </span>
+        <span className="text-gray-600 font-medium">Status:</span>{" "}
+        <span className="font-bold">{status}</span>
       </div>
     </Card>
-  )
+  );
 };
 
 // Main Subscription List
 export const SubscriptionList = () => {
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
   // SOFIE ADD
-  const fetchSubscriptions = useSubscriptionStore((state) => state.fetchSubscriptions);
+  const fetchSubscriptions = useSubscriptionStore(
+    (state) => state.fetchSubscriptions
+  );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // State for filter and sort
-  const [filterCategory, setFilterCategory] = useState('');
-  const [sortKey, setSortKey] = useState('');
+  const [filterCategory, setFilterCategory] = useState("");
+  const [sortKey, setSortKey] = useState("");
 
   useEffect(() => {
     fetchSubscriptions();
@@ -85,21 +122,52 @@ export const SubscriptionList = () => {
   const sortedSubs = [...filteredSubs].sort((a, b) => {
     if (!sortKey) return 0; // no sorting
 
-    if (sortKey === 'name') {
+    if (sortKey === "name") {
       return a.name.localeCompare(b.name);
     }
 
-    if (sortKey === 'cost') {
+    if (sortKey === "cost") {
       return a.cost - b.cost;
     }
 
-    if (sortKey === 'reminderDate') {
+    if (sortKey === "reminderDate") {
       return new Date(a.reminderDate) - new Date(b.reminderDate);
     }
 
     return 0;
   });
 
+  // Add delete handler
+  const handleDelete = async (id) => {
+    const token = localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user")).token
+      : null;
+    if (!token) {
+      alert("You must be logged in to delete a subscription.");
+      return;
+    }
+    try {
+      const response = await fetch(
+        `https://project-final-xhjy.onrender.com/subscriptions/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: token,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.message || "Failed to delete subscription");
+      }
+      // Refresh subscriptions after delete
+      fetchSubscriptions();
+    } catch (error) {
+      console.error("Error deleting subscription:", error);
+      alert(error.message);
+    }
+  };
 
   return (
     <section className="max-w-4xl mx-auto px-8 py-20 w-full">
@@ -113,13 +181,15 @@ export const SubscriptionList = () => {
             <Typography className="!font-bold" color="blue-gray">
               Subscriptions
             </Typography>
-            <Typography className="mt-1 !font-normal !text-gray-600" variant="small">
+            <Typography
+              className="mt-1 !font-normal !text-gray-600"
+              variant="small"
+            >
               View and manage your subscriptions easily.
             </Typography>
           </div>
           <div className="w-full">
             <Button
-
               size="sm"
               variant="outlined"
               color="gray"
@@ -137,16 +207,21 @@ export const SubscriptionList = () => {
           sortKey={sortKey}
           setSortKey={setSortKey}
         />
-        <CardBody className='flex flex-col gap-4 p-4'>
+        <CardBody className="flex flex-col gap-4 p-4">
           {sortedSubs.length === 0 ? (
-            <Typography color='gray' className='text-center italic'>
-              You have no subscriptions listed under{' '}
-              {filterCategory || 'this category'}.
+            <Typography color="gray" className="text-center italic">
+              You have no subscriptions listed under{" "}
+              {filterCategory || "this category"}.
             </Typography>
           ) : (
             sortedSubs.map((sub, index) => {
               return (
-                <SubscriptionCard key={sub.id || index} {...sub} id={sub._id} />
+                <SubscriptionCard
+                  key={sub.id || index}
+                  {...sub}
+                  id={sub._id}
+                  onDelete={handleDelete}
+                />
               );
             })
           )}
@@ -154,9 +229,6 @@ export const SubscriptionList = () => {
       </Card>
 
       <SubscriptionModal open={isModalOpen} setOpen={setIsModalOpen} />
-
     </section>
   );
 };
-
-
