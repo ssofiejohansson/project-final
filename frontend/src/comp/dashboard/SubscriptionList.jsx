@@ -3,7 +3,6 @@ import { BriefcaseIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid"
 import { Button, Card, CardBody, CardHeader, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 
-
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import { DashboardNavbar } from "./DashboardNavbar"
 import { SubscriptionModal } from "./SubscriptionModal";
@@ -11,7 +10,8 @@ import { SubscriptionModal } from "./SubscriptionModal";
 import "../../index.css";
 
 // Single Subscription Card
-const SubscriptionCard = ({ name, cost, freeTrial, trialDays, reminderDate, status, category }) => {
+const SubscriptionCard = (props) => {
+  const { name, cost, freeTrial, trialDays, reminderDate, status, category, onEdit } = props;
 
   return (
     <Card shadow={false} className="rounded-lg border border-gray-300 p-4">
@@ -30,7 +30,7 @@ const SubscriptionCard = ({ name, cost, freeTrial, trialDays, reminderDate, stat
           </div>
         </div>
         <div className="flex items-center justify-between">
-          <Button size="sm" variant="text" className="flex items-center gap-2">
+          <Button size="sm" variant="text" onClick={() => onEdit(props)}>
             <PencilIcon className="h-4 w-4 text-gray-600" />
             <Typography className="!font-semibold text-xs text-gray-600 md:block hidden">
               Edit
@@ -67,6 +67,7 @@ export const SubscriptionList = () => {
   const fetchSubscriptions = useSubscriptionStore((state) => state.fetchSubscriptions);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedSub, setSelectedSub] = useState(null);
 
   // State for filter and sort
   const [filterCategory, setFilterCategory] = useState('');
@@ -140,20 +141,30 @@ export const SubscriptionList = () => {
         <CardBody className='flex flex-col gap-4 p-4'>
           {sortedSubs.length === 0 ? (
             <Typography color='gray' className='text-center italic'>
-              You have no subscriptions listed under{' '}
-              {filterCategory || 'this category'}.
+              You have no subscriptions listed under {filterCategory || 'this category'}.
             </Typography>
           ) : (
-            sortedSubs.map((sub, index) => {
-              return (
-                <SubscriptionCard key={sub.id || index} {...sub} id={sub._id} />
-              );
-            })
+            sortedSubs.map((sub, index) => (
+              <SubscriptionCard
+                key={sub._id || index}
+                {...sub}
+                onEdit={(sub) => {
+                  setSelectedSub(sub);
+                  setIsModalOpen(true);
+                }}
+              />
+            ))
           )}
         </CardBody>
       </Card>
-
-      <SubscriptionModal open={isModalOpen} setOpen={setIsModalOpen} />
+      <SubscriptionModal
+        open={isModalOpen}
+        setOpen={(val) => {
+          setIsModalOpen(val);
+          if (!val) setSelectedSub(null);
+        }}
+        subscription={selectedSub}
+      />
 
     </section>
   );

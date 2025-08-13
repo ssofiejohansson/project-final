@@ -11,9 +11,14 @@ const useSubscriptionStore = create((set) => ({
     subscriptions: [subscription, ...state.subscriptions],
   })),
 
+  // SOFIE ADD: update sub
+  updateSubscription: (updatedSub) => set((state) => ({
+    subscriptions: state.subscriptions.map((sub) =>
+      sub._id === updatedSub._id ? updatedSub : sub
+    )
+  })),
+
   clearSubscriptions: () => set({ subscriptions: [] }),
-
-
 
   //SOFIE ADD
   fetchSubscriptions: async () => {

@@ -4,22 +4,37 @@ import { useState } from "react";
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
 
-export const SubscriptionForm = ({ onClose, compact = false }) => {
+export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
   const urlAPI = "https://project-final-xhjy.onrender.com/subscriptions";
 
-  const [formData, setFormData] = useState({
-    name: "",
-    cost: "",
-    freeTrial: false,
-    trialDays: "",
-    reminderDate: "",
-    status: "active",
-    category: "Other"
+  const [formData, setFormData] = useState(() => {
+    if (initialData) {
+      // Editing an existing subscription, to make sure date follows
+      return {
+        ...initialData,
+        reminderDate: initialData.reminderDate
+          ? new Date(initialData.reminderDate).toISOString().split("T")[0] // YYYY-MM-DD
+          : ""
+      };
+    }
+
+    // Adding a new subscription
+    return {
+      name: "",
+      cost: "",
+      freeTrial: false,
+      trialDays: "",
+      reminderDate: "",
+      status: "active",
+      category: "Other"
+    };
   });
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+
   const addSubscription = useSubscriptionStore((state) => state.addSubscription);
+  const updateSubscription = useSubscriptionStore((state) => state.updateSubscription);
   const user = useUserStore((state) => state.user);
 
   const handleChange = (e) => {
@@ -61,7 +76,7 @@ export const SubscriptionForm = ({ onClose, compact = false }) => {
       return;
     }
 
-    const newSubscription = {
+    const payload = {
       ...formData,
       reminderDate: new Date(formData.reminderDate).toISOString(),
       cost: parseFloat(formData.cost),
@@ -69,53 +84,94 @@ export const SubscriptionForm = ({ onClose, compact = false }) => {
     };
 
     try {
-      const response = await fetch(`${urlAPI}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": user?.token || ""
-        },
-        body: JSON.stringify(newSubscription),
-      });
+      let response;
+      if (initialData) {
+        // EDIT 
+        response = await fetch(`${urlAPI}/${initialData._id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": user?.token || ""
+          },
+          body: JSON.stringify(payload),
+        });
+      } else {
+        // ADD 
+        response = await fetch(`${urlAPI}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": user?.token || ""
+          },
+          body: JSON.stringify(payload),
+        });
+      }
 
       const data = await response.json();
-
-      // if (response.ok) {
-      //   // if backend returns the created object use it, otherwise fallback to our newSubscription
-      //   const saved = data || newSubscription;
-      //   addSubscription(saved);
-
-      //   setSuccess(true);
-      //   setError("");
-
       if (response.ok) {
-        setSuccess(true);
-        setError("");
-        addSubscription(data?.response || newSubscription);
-
-
-        // Reset form
-        setFormData({
-          name: "",
-          cost: "",
-          freeTrial: false,
-          trialDays: "",
-          reminderDate: "",
-          status: "active",
-          category: "Other"
-        });
-
-        // auto close modal (if provided) after a short delay so user sees success msg
-        if (onClose) {
-          setTimeout(() => onClose(), 500);
+        if (initialData) {
+          updateSubscription(data.response || payload);
+        } else {
+          addSubscription(data?.response || payload);
         }
+        setSuccess(true);
+        if (onClose) setTimeout(() => onClose(), 500);
       } else {
-        setError(data.message || "Failed to create subscription");
+        setError(data.message || "Failed to save subscription");
       }
     } catch (err) {
-      console.error("Subscription creation error:", err);
-      setError("Failed to create subscription. Please try again.");
+      setError("Failed to save subscription. Please try again.");
     }
+
+
+    // const newSubscription = {
+    //   ...formData,
+    //   reminderDate: new Date(formData.reminderDate).toISOString(),
+    //   cost: parseFloat(formData.cost),
+    //   trialDays: formData.freeTrial ? parseInt(formData.trialDays) || 0 : 0
+    // };
+
+    // try {
+    //   const response = await fetch(`${urlAPI}`, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       "Authorization": user?.token || ""
+    //     },
+    //     body: JSON.stringify(newSubscription),
+    //   });
+
+    //   const data = await response.json();
+
+
+    //   if (response.ok) {
+    //     setSuccess(true);
+    //     setError("");
+    //     addSubscription(data?.response || newSubscription);
+
+
+    //     // Reset form
+    //     setFormData({
+    //       name: "",
+    //       cost: "",
+    //       freeTrial: false,
+    //       trialDays: "",
+    //       reminderDate: "",
+    //       status: "active",
+    //       category: "Other"
+    //     });
+
+    //     // auto close modal (if provided) after a short delay so user sees success msg
+    //     if (onClose) {
+    //       setTimeout(() => onClose(), 500);
+    //     }
+    //   } else {
+    //     setError(data.message || "Failed to create subscription");
+    //   }
+    // } catch (err) {
+    //   console.error("Subscription creation error:", err);
+    //   setError("Failed to create subscription. Please try again.");
+    // }
   };
 
   return (
