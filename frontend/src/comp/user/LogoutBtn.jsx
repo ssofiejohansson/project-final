@@ -7,8 +7,7 @@ export const Logout = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    clearUser();                            // Clear user data in store     
-    localStorage.removeItem("accessToken"); // Remove the access token
+    clearUser();                            // Clear user data in store   
     localStorage.removeItem('user');        // Remove stored user object    
     navigate('/login');                     // Redirect to login page
   };

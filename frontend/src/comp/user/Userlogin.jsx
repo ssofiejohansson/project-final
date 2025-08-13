@@ -50,26 +50,19 @@ export const Userlogin = () => {
       console.log("Login response data:", data);
 
       if (data.success && data.id) {
-        localStorage.setItem("user", JSON.stringify(data));
-        localStorage.setItem("accessToken", data.accessToken);
+        localStorage.setItem("user", JSON.stringify(data));        
 
         // SOFIE ADD: Update with logged-in user info 
         setUser({
           name: data.name,
-          token: data.accessToken,
-          email: data.email,
-          id: data.id,
+          token: data.accessToken,        
         });
 
         e.target.reset();
         navigate("/Admin");
       } else {
         setError("Login failed. Please check your credentials.");
-      }
-
-      // localStorage.setItem("accessToken", data.accessToken);
-      // localStorage.setItem("userId", data.userID); ///KOLLA att denna verkligen är rätt!!!!
-
+      }      
 
     } catch (error) {
       console.error("Signin error:", error);
