@@ -1,16 +1,6 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
-import {
-  BriefcaseIcon,
-  PencilIcon,
-  TrashIcon,
-} from "@heroicons/react/24/solid";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Typography,
-} from "@material-tailwind/react";
+import { BriefcaseIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
+import { Button, Card, CardBody, CardHeader, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
@@ -20,8 +10,18 @@ import { SubscriptionModal } from "./SubscriptionModal";
 import "../../index.css";
 
 // Single Subscription Card
-const SubscriptionCard = (props) => {
-  const { name, cost, freeTrial, trialDays, reminderDate, status, category, onEdit, onDelete } = props;
+// const SubscriptionCard = (props) => {
+//   const { id, name, cost, freeTrial, trialDays, reminderDate, status, category, onEdit, onDelete } = props;
+
+const SubscriptionCard = ({ id, onEdit, onDelete }) => {
+  const subscription = useSubscriptionStore((state) =>
+    state.subscriptions.find((sub) => sub._id === id)
+  )
+
+  if (!subscription) return null;
+
+  const { name, cost, freeTrial, trialDays, reminderDate, status, category } = subscription;
+
 
   return (
     <Card shadow={false} className="rounded-lg border border-gray-300 p-4">
@@ -44,18 +44,26 @@ const SubscriptionCard = (props) => {
           </div>
         </div>
         <div className="flex items-center justify-between">
-          <Button size="sm" variant="text" onClick={() => onEdit(props)}>
+          {/* <Button size="sm" variant="text" onClick={() => onEdit(props)}> */}
+          <Button size="sm" variant="text" onClick={() => onEdit?.(subscription)}>
             <PencilIcon className="h-4 w-4 text-gray-600" />
             <Typography className="!font-semibold text-xs text-gray-600 md:block hidden">
               Edit
             </Typography>
           </Button>
-          <Button
+          {/* <Button
             size="sm"
             variant="text"
             color="red"
             className="flex items-center gap-2"
             onClick={() => onDelete(id)}
+          > */}
+          <Button
+            size="sm"
+            variant="text"
+            color="red"
+            className="flex items-center gap-2"
+            onClick={() => onDelete?.(subscription._id)}
           >
             <TrashIcon className="h-4 w-4 text-red-500" />
             <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
