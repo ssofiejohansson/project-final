@@ -1,18 +1,14 @@
-import dotenv from 'dotenv';
-
-dotenv.config();
 import cors from 'cors';
+import dotenv from 'dotenv';
 import express from 'express';
 import expressListEndpoints from 'express-list-endpoints';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import mongoEmailScheduler from './services/mongoEmailScheduler.js';
 
-
+import emailRoutes from './routes/emailRoutes.js';
+import subscriptionRoutes from './routes/subscriptionRoutes.js';
 // Import routes
 import userRoutes from './routes/userRoutes.js';
-import subscriptionRoutes from './routes/subscriptionRoutes.js';
-import emailRoutes from './routes/emailRoutes.js';
+import mongoEmailScheduler from './services/mongoEmailScheduler.js';
 
 dotenv.config();
 
