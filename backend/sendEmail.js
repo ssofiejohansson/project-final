@@ -53,6 +53,10 @@ async function sendEmail({ to, subject, text }) {
   } catch (error) {
     console.error(`❌ Email sending failed:`, error);
     console.error(`❌ Error details:`, error.code, error.command);
+
+    if (error.response) console.error('SMTP Response:', error.response);
+    if (error.responseCode) console.error('SMTP Code:', error.responseCode);
+
     throw error;
   }
 }

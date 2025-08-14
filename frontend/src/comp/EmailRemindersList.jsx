@@ -190,7 +190,7 @@ const EmailRemindersList = () => {
 
                 <div className='ml-4 flex gap-2'>
                   {reminder.status === 'scheduled' ||
-                  reminder.status === 'waiting' ? (
+                    reminder.status === 'waiting' ? (
                     <button
                       onClick={() => handleCancelReminder(reminder.id)}
                       className='px-3 py-1 bg-red-100 text-red-700 text-sm rounded hover:bg-red-200 transition-colors'

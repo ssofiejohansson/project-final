@@ -84,7 +84,7 @@ Byeee :)`;
         }),
       };
 
-      const res = await fetch('https://project-final-xhjy.onrender.com/email', {
+      const res = await fetch('/api/email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(emailData),
