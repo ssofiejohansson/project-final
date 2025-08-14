@@ -84,7 +84,7 @@ Byeee :)`;
         }),
       };
 
-      const res = await fetch('/api/email', {
+      const res = await fetch('https://project-final-xhjy.onrender.com/email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(emailData),
@@ -108,7 +108,8 @@ Byeee :)`;
         setScheduledTime('');
         setIsRecurring(false);
       } else {
-        alert(`Error: ${data.error}`);
+        // detta meddelande
+        alert(`Error: det här är ett test ${data.error}`);
       }
     } catch (error) {
       alert(`Error: ${error.message}`);
@@ -274,10 +275,10 @@ Byeee :)`;
           {isLoading
             ? 'Processing...'
             : sendImmediately
-            ? 'Send Reminder Email Now'
-            : isRecurring
-            ? 'Schedule Recurring Reminder'
-            : 'Schedule Reminder Email'}
+              ? 'Send Reminder Email Now'
+              : isRecurring
+                ? 'Schedule Recurring Reminder'
+                : 'Schedule Reminder Email'}
         </button>
       </form>
 
