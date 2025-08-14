@@ -33,7 +33,7 @@ mongoose
 
 mongoose.Promise = Promise;
 
-// const port = process.env.PORT || 8081;
+const port = process.env.PORT || 8081;
 const app = express();
 
 app.use(cors());
@@ -96,8 +96,8 @@ app.use('/subscriptions', subscriptionRoutes);
 app.use('/email', emailRoutes);
 
 // Start the server
-app.listen(mongoUrl, () => {
-  console.log(`🚀 Server running on http://localhost:${mongoUrl}`);
+app.listen(port, () => {
+  console.log(`🚀 Server running on http://localhost:${port}`);
   console.log('📧 MongoDB email scheduler is active');
 });
 
