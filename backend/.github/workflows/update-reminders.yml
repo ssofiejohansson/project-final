@@ -1,0 +1,16 @@
+name: Update Reminder Dates
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # every midnight UTC
+  workflow_dispatch: # allows you to run it manually from GitHub UI
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call backend to update reminder dates
+        run: |
+          curl -X POST https://your-app.onrender.com/api/update-reminders \
+            -H "Authorization: ${{ secrets.API_TOKEN }}" \
+            -H "Content-Type: application/json"

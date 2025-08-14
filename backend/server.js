@@ -8,6 +8,8 @@ import mongoose from 'mongoose';
 
 import subscriptionRoutes from './routes/subscriptionRoutes';
 import userRoutes from './routes/userRoutes';
+import updateRemindersRoute from "./routes/updateReminders.js";
+
 
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/final-project';
 
@@ -75,6 +77,7 @@ app.get('/admin', (req, res) => {
 // Route connections
 app.use('/users', userRoutes);
 app.use('/subscriptions', subscriptionRoutes);
+app.use("/api", updateRemindersRoute);
 
 // Start the server
 app.listen(port, () => {
