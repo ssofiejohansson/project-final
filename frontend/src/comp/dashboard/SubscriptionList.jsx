@@ -1,112 +1,27 @@
-import { PlusIcon } from "@heroicons/react/24/outline";
-import { BriefcaseIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
-import { Button, Card, CardBody, CardHeader, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
-
+import {
+  Button,
+  Typography,
+  Card,
+  CardHeader,
+  CardBody,
+  IconButton,
+} from "@material-tailwind/react";
+import {
+  TvIcon, CakeIcon, HeartIcon, BookOpenIcon, QuestionMarkCircleIcon, PencilIcon, TrashIcon, PlusIcon
+} from "@heroicons/react/24/outline";
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
-import { DashboardNavbar } from "./DashboardNavbar";
 import { SubscriptionModal } from "./SubscriptionModal";
-
-import "../../index.css";
-
-// Single Subscription Card
-// const SubscriptionCard = (props) => {
-//   const { id, name, cost, freeTrial, trialDays, reminderDate, status, category, onEdit, onDelete } = props;
-
-const SubscriptionCard = ({ id, onEdit, onDelete }) => {
-  const subscription = useSubscriptionStore((state) =>
-    state.subscriptions.find((sub) => sub._id === id)
-  )
-
-  if (!subscription) return null;
-
-  const { name, cost, freeTrial, trialDays, reminderDate, status, category } = subscription;
+import { DashboardNavbar } from "./DashboardNavbar";
 
 
-  return (
-    <Card shadow={false} className="rounded-lg border border-gray-300 p-4">
-      <div className="mb-4 flex items-start justify-between">
-        <div className="flex items-center gap-3">
-          <div className="border border-gray-200 p-2.5 rounded-lg">
-            <BriefcaseIcon className="h-6 w-6 text-gray-900" />
-          </div>
-          <div>
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="mb-1 font-bold"
-            >
-              {name}
-            </Typography>
-            <Typography className="!text-gray-600 text-xs font-normal">
-              {category || "No category"}
-            </Typography>
-          </div>
-        </div>
-        <div className="flex items-center justify-between">
-          {/* <Button size="sm" variant="text" onClick={() => onEdit(props)}> */}
-          <Button size="sm" variant="text" onClick={() => onEdit?.(subscription)}>
-            <PencilIcon className="h-4 w-4 text-gray-600" />
-            <Typography className="!font-semibold text-xs text-gray-600 md:block hidden">
-              Edit
-            </Typography>
-          </Button>
-          {/* <Button
-            size="sm"
-            variant="text"
-            color="red"
-            className="flex items-center gap-2"
-            onClick={() => onDelete(id)}
-          > */}
-          <Button
-            size="sm"
-            variant="text"
-            color="red"
-            className="flex items-center gap-2"
-            onClick={() => onDelete?.(subscription._id)}
-          >
-            <TrashIcon className="h-4 w-4 text-red-500" />
-            <Typography className="!font-semibold text-xs text-red-500 md:block hidden">
-              Delete
-            </Typography>
-          </Button>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 gap-2 text-xs">
-        <span className="text-gray-600 font-medium">Cost:</span>{" "}
-        <span className="font-bold">${cost}</span>
-        <span className="text-gray-600 font-medium">Free Trial:</span>{" "}
-        <span className="font-bold">{freeTrial ? "Yes" : "No"}</span>
-        {freeTrial && (
-          <>
-            <span className="text-gray-600 font-medium">Trial Days:</span>{" "}
-            <span className="font-bold">{trialDays}</span>
-          </>
-        )}
-        <span className="text-gray-600 font-medium">Reminder Date:</span>{" "}
-        <span className="font-bold">
-          {new Date(reminderDate).toLocaleDateString()}
-        </span>
-        <span className="text-gray-600 font-medium">Status:</span>{" "}
-        <span className="font-bold">{status}</span>
-      </div>
-    </Card>
-  );
-};
-
-// Main Subscription List
 export const SubscriptionList = () => {
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
-  // SOFIE ADD
-  const fetchSubscriptions = useSubscriptionStore(
-    (state) => state.fetchSubscriptions
-  );
+  const fetchSubscriptions = useSubscriptionStore((state) => state.fetchSubscriptions);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSub, setSelectedSub] = useState(null);
 
-  // State for filter and sort
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
 
@@ -114,31 +29,26 @@ export const SubscriptionList = () => {
     fetchSubscriptions();
   }, []);
 
-  // Filter subscriptions based on category
+  // Filtering
   const filteredSubs = filterCategory
     ? subscriptions.filter((sub) => sub.category === filterCategory)
     : subscriptions;
 
-  // Sort subscriptions based on sortKey
+  // Sorting
   const sortedSubs = [...filteredSubs].sort((a, b) => {
-    if (!sortKey) return 0; // no sorting
-
-    if (sortKey === "name") {
-      return a.name.localeCompare(b.name);
-    }
-
-    if (sortKey === "cost") {
-      return a.cost - b.cost;
-    }
-
-    if (sortKey === "reminderDate") {
+    if (!sortKey) return 0;
+    if (sortKey === "name") return a.name.localeCompare(b.name);
+    if (sortKey === "cost") return a.cost - b.cost;
+    if (sortKey === "reminderDate")
       return new Date(a.reminderDate) - new Date(b.reminderDate);
+    if (sortKey === "status") {
+      if (a.status === b.status) return 0;
+      return a.status === "active" ? -1 : 1;
     }
-
     return 0;
   });
 
-  // Add delete handler
+  // Delete handler
   const handleDelete = async (id) => {
     const token = localStorage.getItem("user")
       ? JSON.parse(localStorage.getItem("user")).token
@@ -162,7 +72,6 @@ export const SubscriptionList = () => {
         const data = await response.json();
         throw new Error(data.message || "Failed to delete subscription");
       }
-      // Refresh subscriptions after delete
       fetchSubscriptions();
     } catch (error) {
       console.error("Error deleting subscription:", error);
@@ -170,65 +79,189 @@ export const SubscriptionList = () => {
     }
   };
 
+  const TABLE_HEAD = [
+    { head: "Category", customeStyle: "!text-left" },
+    { head: "Name", customeStyle: "!text-left" },
+    { head: "Cost", customeStyle: "text-right" },
+    { head: "Status", customeStyle: "text-right" },
+    { head: "Free Trial", customeStyle: "text-right" },
+    { head: "Reminder Date", customeStyle: "text-right" },
+    { head: "Actions", customeStyle: "text-right" },
+  ];
+
+  const categoryIcons = {
+    Entertainment: <TvIcon className="h-8 w-8 text-purple-500" />,
+    Food: <CakeIcon className="h-8 w-8 text-red-500" />,
+    Health: <HeartIcon className="h-8 w-8 text-green-500" />,
+    Learning: <BookOpenIcon className="h-8 w-8 text-blue-500" />,
+    Other: <QuestionMarkCircleIcon className="h-8 w-8 text-gray-500" />,
+  };
+
+
   return (
-    <section className="max-w-4xl mx-auto px-8 py-20 w-full">
-      <Card shadow={false}>
+    <section className="max-w-6xl mx-auto px-4 py-10 w-full">
+      <Card className="h-full w-full">
         <CardHeader
           floated={false}
           shadow={false}
-          className="rounded-none flex gap-2 flex-col md:flex-row items-start justify-between"
+          className="rounded-none flex flex-wrap gap-4 justify-between mb-4"
         >
-          <div className="w-full mb-2">
-            <Typography className="!font-bold" color="blue-gray">
+          <div>
+            <Typography variant="h6" color="blue-gray">
               Subscriptions
             </Typography>
             <Typography
-              className="mt-1 !font-normal !text-gray-600"
               variant="small"
+              className="text-gray-600 font-normal mt-1"
             >
               View and manage your subscriptions easily.
             </Typography>
           </div>
-          <div className="w-full">
+          <div className="flex items-center w-full shrink-0 gap-4 md:w-max">
+            <DashboardNavbar
+              filterCategory={filterCategory}
+              setFilterCategory={setFilterCategory}
+              sortKey={sortKey}
+              setSortKey={setSortKey}
+            />
             <Button
-              size="sm"
               variant="outlined"
-              color="gray"
-              className="flex justify-center gap-3 md:max-w-fit w-full ml-auto"
-              onClick={() => setIsModalOpen(true)} // <- Open modal
+              className="flex items-center gap-2"
+              onClick={() => setIsModalOpen(true)}
             >
               <PlusIcon strokeWidth={3} className="h-4 w-4" />
-              Add new subscription
+              Add
             </Button>
           </div>
         </CardHeader>
-        <DashboardNavbar
-          filterCategory={filterCategory}
-          setFilterCategory={setFilterCategory}
-          sortKey={sortKey}
-          setSortKey={setSortKey}
-        />
-        <CardBody className="flex flex-col gap-4 p-4">
-          {sortedSubs.length === 0 ? (
-            <Typography color='gray' className='text-center italic'>
-              You have no subscriptions listed under {filterCategory || 'this category'}.
-            </Typography>
-          ) : (
-            sortedSubs.map((sub, index) => (
-              <SubscriptionCard
-                key={sub._id || index}
-                {...sub}
-                onEdit={(sub) => {
-                  setSelectedSub(sub);
-                  setIsModalOpen(true);
-                }}
-                id={sub._id}
-                onDelete={handleDelete}
-              />
-            ))
-          )}
+        <CardBody className="overflow-scroll !px-0 py-2">
+          <table className="w-full min-w-max table-auto">
+            <thead>
+              <tr>
+                {TABLE_HEAD.map(({ head, customeStyle }) => (
+                  <th
+                    key={head}
+                    className={`border-b border-gray-300 !p-4 pb-8 ${customeStyle}`}
+                  >
+                    <Typography
+                      color="blue-gray"
+                      variant="small"
+                      className="!font-bold"
+                    >
+                      {head}
+                    </Typography>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {sortedSubs.length === 0 ? (
+                <tr>
+                  <td colSpan={TABLE_HEAD.length} className="text-center py-6 italic text-gray-500">
+                    You have no subscriptions listed under {filterCategory || "this category"}.
+                  </td>
+                </tr>
+              ) : (
+                sortedSubs.map((sub, index) => {
+                  const isLast = index === sortedSubs.length - 1;
+                  const classes = isLast
+                    ? "!p-4"
+                    : "!p-4 border-b border-gray-300";
+
+                  return (
+                    <tr key={sub._id || index}>
+                      {/* Category Icon */}
+                      <td className={classes}>
+                        <div className="flex items-center justify-center">
+                          {categoryIcons[sub.category] || <QuestionMarkCircleIcon className="h-8 w-8 text-gray-500" />}
+                        </div>
+                      </td>
+                      {/* Name */}
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="!font-semibold"
+                        >
+                          {sub.name}
+                        </Typography>
+                        <Typography
+                          variant="small"
+                          className="!font-normal text-gray-600"
+                        >
+                          {sub.category || "No category"}
+                        </Typography>
+                      </td>
+                      {/* Cost */}
+                      <td className={`${classes} text-right`}>
+                        <Typography
+                          variant="small"
+                          className="!font-normal text-gray-600"
+                        >
+                          ${sub.cost}
+                        </Typography>
+                      </td>
+                      {/* Status */}
+                      <td className={`${classes} text-right`}>
+                        <Typography
+                          variant="small"
+                          className="!font-bold"
+                        >
+                          {sub.status}
+                        </Typography>
+                      </td>
+                      {/* Free Trial */}
+                      <td className={`${classes} text-right`}>
+                        <Typography
+                          variant="small"
+                          className="!font-normal text-gray-600"
+                        >
+                          {sub.freeTrial
+                            ? `Yes (${sub.trialDays} days)`
+                            : "No"}
+                        </Typography>
+                      </td>
+                      {/* Reminder Date */}
+                      <td className={`${classes} text-right`}>
+                        <Typography
+                          variant="small"
+                          className="!font-normal text-gray-600"
+                        >
+                          {new Date(sub.reminderDate).toLocaleDateString()}
+                        </Typography>
+                      </td>
+                      {/* Actions */}
+                      <td className={`${classes} text-right`}>
+                        <div className="flex justify-end gap-2">
+                          <IconButton
+                            variant="text"
+                            size="sm"
+                            onClick={() => {
+                              setSelectedSub(sub);
+                              setIsModalOpen(true);
+                            }}
+                          >
+                            <PencilIcon className="h-5 w-5 text-gray-900" />
+                          </IconButton>
+                          <IconButton
+                            variant="text"
+                            size="sm"
+                            onClick={() => handleDelete(sub._id)}
+                          >
+                            <TrashIcon className="h-5 w-5 text-red-500" />
+                          </IconButton>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })
+              )}
+            </tbody>
+          </table>
         </CardBody>
       </Card>
+
+      {/* Modal */}
       <SubscriptionModal
         open={isModalOpen}
         setOpen={(val) => {
@@ -237,7 +270,6 @@ export const SubscriptionList = () => {
         }}
         subscription={selectedSub}
       />
-
     </section>
   );
 };

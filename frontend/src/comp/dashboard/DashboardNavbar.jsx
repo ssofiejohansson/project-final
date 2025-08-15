@@ -7,7 +7,7 @@ export const DashboardNavbar = ({ filterCategory, setFilterCategory, sortKey, se
         onChange={(e) => setFilterCategory(e.target.value)}
         className="border rounded px-2 py-1"
       >
-        <option value="">Filter by category</option>
+        <option value="">All categories</option>
         <option value="Entertainment">Entertainment</option>
         <option value="Food">Food</option>
         <option value="Health">Health</option>
@@ -25,6 +25,8 @@ export const DashboardNavbar = ({ filterCategory, setFilterCategory, sortKey, se
         <option value="name">Name (A-Z)</option>
         <option value="cost">Cost (Low to High)</option>
         <option value="reminderDate">Reminder Date (Earliest First)</option>
+        <option value="status">Status (Active First)</option>
+
       </select>
     </div>
   )
