@@ -135,4 +135,35 @@ router.delete("/:id", authenticateUser, async (req, res) => {
   }
 });
 
+//To update reminderDate in DB
+//
+//Test in bash
+// curl -X POST https://project-final-xhjy.onrender.com/subscriptions/update-reminders || http://localhost:8080/subscriptions/update-reminders  
+// -H "Authorization: {secret from .env}  
+// -H "Content-Type: application/json"
+//
+
+router.post("/update-reminders", async (req, res) => {
+  // const authHeader = req.headers.authorization;
+
+  // if (authHeader !== `${process.env.MONGO_URL}`) {
+  //   return res.status(403).json({ error: "Unauthorized" });
+  // }
+
+  try {
+    const today = new Date();
+    const subs = await Subscription.find({ reminderDate: { $lt: today } });
+
+    for (const sub of subs) {
+      sub.reminderDate.setMonth(sub.reminderDate.getMonth() + 1);
+      await sub.save();
+    }
+
+    res.json({ message: `Updated ${subs.length} subscriptions. Subscriptions updated: ${subs}` });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to update reminders" });
+  }
+})
+
 export default router; 

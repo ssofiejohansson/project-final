@@ -1,3 +1,4 @@
+//Remove
 import express from "express";
 
 import { Subscription } from "../models/Subscription"
@@ -25,7 +26,7 @@ router.post("/update-reminders", async (req, res) => {
       await sub.save();
     }
 
-    res.json({ message: `Updated ${subs.length} subscriptions. Subscriptions updated ${subs.id}` });
+    res.json({ message: `Updated ${subs.length} subscriptions. Subscriptions updated: ${subs._id}` });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to update reminders" });
