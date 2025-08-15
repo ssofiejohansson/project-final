@@ -4,7 +4,7 @@ import { Subscription } from "../models/Subscription"
 
 //Test in bash
 //$ curl -X POST https://project-final-xhjy.onrender.com/api/update-reminders  
-// -H "Authorization: mongodb+srv://sofialennbom:CMTOzDsb1rbWJNsh@cluster0.ci6xryw.mongodb.net/subscribee?retryWrites=true&w=majority&appName=Cluster0"   
+// -H "Authorization: {secret from .env}  
 // -H "Content-Type: application/json"
 
 const router = express.Router();
