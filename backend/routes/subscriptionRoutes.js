@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 
 import { authenticateUser } from "../authMiddleware.js"
 import { Subscription } from '../models/Subscription.js';
@@ -154,8 +155,7 @@ router.post("/update-reminders", async (req, res) => {
     const today = new Date();
     const subs = await Subscription.find({ reminderDate: { $lt: today } });
 
-    console.log("Today:", today);
-    
+    console.log("Today:", today);    
 
     console.log('Connected to:', mongoose.connection.host, mongoose.connection.name);
 
