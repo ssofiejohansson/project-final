@@ -12,5 +12,5 @@ jobs:
       - name: Call backend to update reminder dates
         run: |
           curl -X POST https://your-app.onrender.com/api/update-reminders \
-            -H "Authorization: ${{ secrets.API_TOKEN }}" \
+            -H "Authorization: ${secrets.MONGO_URL}" \
             -H "Content-Type: application/json"
