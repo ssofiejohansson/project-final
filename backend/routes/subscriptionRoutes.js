@@ -154,14 +154,23 @@ router.post("/update-reminders", async (req, res) => {
     const today = new Date();
     const subs = await Subscription.find({ reminderDate: { $lt: today } });
 
+    console.log("Today:", today);
+    
+
+    console.log('Connected to:', mongoose.connection.host, mongoose.connection.name);
+
     for (const sub of subs) {
       sub.reminderDate.setMonth(sub.reminderDate.getMonth() + 1);
       await sub.save();
+      console.log("Found subs:", subs.map(s => ({ id: s._id, reminderDate: s.reminderDate })));
     }
 
-    res.json({ message: `Updated ${subs.length} subscriptions. Subscriptions updated: ${subs}` });
-    console.log("Today:", today);
-    console.log("Found subs:", subs.map(s => ({ id: s._id, reminderDate: s.reminderDate })));
+    res.json({ message: `Updated ${subs.length} subscriptions. Subscriptions updated:${s.map(s => s.reminderDate)}` });
+   
+
+    const check = await Subscription.find({ _id: { $in: subs.map(s => s._id) } });
+    console.log('Freshly fetched from DB:', check.map(c => c.reminderDate));
+
 
   } catch (err) {
     console.error(err);
