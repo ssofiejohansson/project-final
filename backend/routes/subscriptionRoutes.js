@@ -165,7 +165,7 @@ router.post("/update-reminders", async (req, res) => {
       //console.log("Found subs:", subs.map(s => ({ id: s._id, reminderDate: s.reminderDate })));
     }
 
-    res.json({ message: `Updated ${subs.length} subscriptions. Subscriptions updated:${subs.map(s => s.reminderDate)}` });
+    res.json({ message: `Updated ${subs.length} subscriptions. Subscriptions updated:${subs.map(s => s.reminderDate && s._id)}` });
    
 
     // const check = await Subscription.find({ _id: { $in: subs.map(s => s._id) } });
