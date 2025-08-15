@@ -162,14 +162,14 @@ router.post("/update-reminders", async (req, res) => {
     for (const sub of subs) {
       sub.reminderDate.setMonth(sub.reminderDate.getMonth() + 1);
       await sub.save();
-      console.log("Found subs:", subs.map(s => ({ id: s._id, reminderDate: s.reminderDate })));
+      //console.log("Found subs:", subs.map(s => ({ id: s._id, reminderDate: s.reminderDate })));
     }
 
-    res.json({ message: `Updated ${subs.length} subscriptions. Subscriptions updated:${s.map(s => s.reminderDate)}` });
+    res.json({ message: `Updated ${subs.length} subscriptions. Subscriptions updated:${subs.map(s => s.reminderDate)}` });
    
 
-    const check = await Subscription.find({ _id: { $in: subs.map(s => s._id) } });
-    console.log('Freshly fetched from DB:', check.map(c => c.reminderDate));
+    // const check = await Subscription.find({ _id: { $in: subs.map(s => s._id) } });
+    // console.log('Freshly fetched from DB:', check.map(c => c.reminderDate));
 
 
   } catch (err) {
