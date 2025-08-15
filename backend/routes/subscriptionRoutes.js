@@ -160,6 +160,9 @@ router.post("/update-reminders", async (req, res) => {
     }
 
     res.json({ message: `Updated ${subs.length} subscriptions. Subscriptions updated: ${subs}` });
+    console.log("Today:", today);
+    console.log("Found subs:", subs.map(s => ({ id: s._id, reminderDate: s.reminderDate })));
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to update reminders" });
