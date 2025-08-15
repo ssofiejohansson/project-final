@@ -34,7 +34,10 @@ const useSubscriptionStore = create((set) => ({
     useLoadingStore.getState().setLoading(true);
 
     try {
-      const response = await fetch("https://project-final-xhjy.onrender.com/subscriptions", {
+      const response = await fetch(
+        "https://project-final-xhjy.onrender.com/subscriptions"
+        //"http://localhost:8081/subscriptions"
+        , {
         headers: {
           Authorization: token,
           "Content-Type": "application/json",
