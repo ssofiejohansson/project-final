@@ -144,11 +144,11 @@ router.delete("/:id", authenticateUser, async (req, res) => {
 //
 
 router.post("/update-reminders", async (req, res) => {
-  // const authHeader = req.headers.authorization;
+  const authHeader = req.headers.authorization;
 
-  // if (authHeader !== `${process.env.MONGO_URL}`) {
-  //   return res.status(403).json({ error: "Unauthorized" });
-  // }
+  if (authHeader !== `${process.env.MONGO_URL}`) {
+    return res.status(403).json({ error: "Unauthorized" });
+  }
 
   try {
     const today = new Date();
