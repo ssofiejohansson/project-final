@@ -92,7 +92,7 @@ app.get('/admin', (req, res) => {
 });
 
 // Route connections
-app.use("/update-reminders", updateRemindersRoutes);
+app.use("/date", updateRemindersRoutes);
 app.use('/users', userRoutes);
 app.use('/subscriptions', subscriptionRoutes);
 app.use('/email', emailRoutes);
