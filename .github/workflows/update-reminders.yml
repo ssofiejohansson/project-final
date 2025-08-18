@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Call backend to update reminder dates
         run: |
-          curl -v --http1.1 -X PATCh "https://project-final-xhjy.onrender.com/date/update-reminders" \
+          curl -v --http1.1 -X PATCH "https://project-final-xhjy.onrender.com/date/update-reminders" \
             -H "Authorization: ${{ secrets.API_SECRET }}" \
             -H "Content-Type: application/json"
 
