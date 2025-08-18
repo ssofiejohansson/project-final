@@ -43,11 +43,8 @@ export const SubscriptionSave = () => {
             onClick={closeSaveDialog}
             className="mr-1"
           >
-            <span>Cancel</span>
-          </Button>
-          <Button variant="gradient" color="green" onClick={closeSaveDialog}>
-            <span>Confirm</span>
-          </Button>
+            <span>Close</span>
+          </Button>         
         </DialogFooter>
       </Dialog>
     </>

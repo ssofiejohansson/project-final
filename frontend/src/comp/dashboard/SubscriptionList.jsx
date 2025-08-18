@@ -25,9 +25,6 @@ export const SubscriptionList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSub, setSelectedSub] = useState(null);
 
-  const [isSaveOpen, setIsSaveOpen] = useState(false);
-  const [selectedSubDel, setSelectedSubDel] = useState(null);
-
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
 
@@ -247,8 +244,8 @@ export const SubscriptionList = () => {
                             size="sm"
                             onClick={() => {
                               setSelectedSub(sub);
-                              setIsModalOpen(true);
-                            }}
+                              setIsModalOpen(true);                              
+                            }}                            
                           >
                             <PencilIcon className="h-5 w-5 text-gray-900" />
                           </IconButton>

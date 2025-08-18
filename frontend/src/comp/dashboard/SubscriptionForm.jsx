@@ -36,6 +36,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
   const addSubscription = useSubscriptionStore((state) => state.addSubscription);
   const updateSubscription = useSubscriptionStore((state) => state.updateSubscription);
   const user = useUserStore((state) => state.user);
+  const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -203,11 +204,12 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
           value={formData.status} 
           onChange={
             handleSelectChange("status")
-            
+
             } 
-          required>
+          required>            
           <Option value="active">Active</Option>
           <Option value="inactive">Inactive</Option>
+          {openSaveDialog(sub) && sub.status ? inactive : active}
         </Select>
 
         <Select label="Category" name="category" value={formData.category} onChange={handleSelectChange("category")} required>
@@ -230,6 +232,8 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         {error && <Typography color="red" variant="small">{error}</Typography>}
         {success && <Typography color="green" variant="small">Subscription added successfully!</Typography>}
       </form>
+      {/* save money - contribute */}
+        <SubscriptionSave/>
     </section>
   );
 };
