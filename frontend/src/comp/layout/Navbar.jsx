@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Btn } from "../Btn";
 import { Logout } from "../../comp/user/LogoutBtn";
 import useUserStore from "../../stores/useUserStore";
+import Logo from "../../assets/SubscriBee-logo.png";
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -62,8 +63,9 @@ export const Navbar = () => {
             as={Link}
             to="/"
             color="blue-gray"
-            className="cursor-pointer text-lg font-bold"
+            className="cursor-pointer text-lg font-bold flex items-center gap-2"
           >
+            <img src={Logo} alt="SubscriBee Logo" className="h-8 w-8 object-contain" />
             SubscriBee
           </Typography>
 

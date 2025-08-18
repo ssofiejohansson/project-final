@@ -2,6 +2,7 @@ import { Typography } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { Btn } from "../Btn";
 import { useNavigate } from "react-router-dom";
+import Logo from "../../assets/SubscriBee-logo.png";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -82,14 +83,16 @@ export const Footer = () => {
           </Btn>
 
         </div>
-
+        <img src={Logo} alt="SubscriBee Logo" className="h-20 w-20 object-contain" />
         <Typography
           color="blue-gray"
           className="mt-4 !text-sm !font-normal text-gray-500"
         >
           &copy; {currentYear} Subscribee. All rights reserved.
         </Typography>
+
       </div>
+
     </footer>
   );
 };
