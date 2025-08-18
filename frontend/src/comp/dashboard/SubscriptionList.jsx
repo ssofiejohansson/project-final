@@ -13,7 +13,9 @@ import {
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import { SubscriptionModal } from "./SubscriptionModal";
 import { DashboardNavbar } from "./DashboardNavbar";
-//import { SubscriptionSave } from "./SubscriptionSave";
+import { SubscriptionSave } from "./SubscriptionSave";
+
+
 
 
 export const SubscriptionList = () => {
@@ -23,8 +25,14 @@ export const SubscriptionList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSub, setSelectedSub] = useState(null);
 
+  const [isSaveOpen, setIsSaveOpen] = useState(false);
+  const [selectedSubDel, setSelectedSubDel] = useState(null);
+
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
+
+  const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
+
 
   useEffect(() => {
     fetchSubscriptions();
@@ -247,7 +255,10 @@ export const SubscriptionList = () => {
                           <IconButton
                             variant="text"
                             size="sm"
-                            onClick={() => handleDelete(sub._id)}
+                            onClick={() => {
+                              handleDelete(sub._id);
+                              openSaveDialog(sub);
+                            }}
                           >
                             <TrashIcon className="h-5 w-5 text-red-500" />
                           </IconButton>
@@ -271,6 +282,12 @@ export const SubscriptionList = () => {
         }}
         subscription={selectedSub}
       />
+
+      {/* save money - contribute */}
+      <SubscriptionSave/>
+
+
+
     </section>
   );
 };

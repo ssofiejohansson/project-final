@@ -7,6 +7,16 @@ const useSubscriptionStore = create((set) => ({
 
   setSubscriptions: (subscriptions) => set({ subscriptions }),
 
+  //SubscriptionSave
+  //state
+  isSaveOpen: false,
+  selectedSubSave: null,
+
+  //actions
+  openSaveDialog: (subscriptionSave) => set({ isSaveOpen: true, selectedSubSave: subscriptionSave }),
+  closeSaveDialog: () => set({ isSaveOpen: false, selectedSubSave: null }),
+  //SubscriptionSave
+  
   addSubscription: (subscription) => set((state) => ({
     subscriptions: [subscription, ...state.subscriptions],
   })),

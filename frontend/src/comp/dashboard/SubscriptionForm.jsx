@@ -197,7 +197,15 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         )}
         <Input label="Reminder Date" name="reminderDate" type="date" value={formData.reminderDate} onChange={handleChange} required />
 
-        <Select label="Status" name="status" value={formData.status} onChange={handleSelectChange("status")} required>
+        <Select 
+          label="Status" 
+          name="status" 
+          value={formData.status} 
+          onChange={
+            handleSelectChange("status")
+            
+            } 
+          required>
           <Option value="active">Active</Option>
           <Option value="inactive">Inactive</Option>
         </Select>
