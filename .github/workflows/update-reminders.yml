@@ -12,5 +12,5 @@ jobs:
       - name: Call backend to update reminder dates
         run: |
           curl -X POST https://project-final-xhjy.onrender.com/subscriptions/update-reminders \
-            -H "Authorization: ${secrets.API_SECRET}" \
+            -H "Authorization: $API_SECRET" \
             -H "Content-Type: application/json"
