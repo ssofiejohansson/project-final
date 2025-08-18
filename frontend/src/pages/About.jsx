@@ -1,10 +1,12 @@
 import { Footer } from "../comp/layout/Footer";
+import { FAQ } from "../comp/Faq";
+import { Header } from "../comp/layout/Header";
+
 export const About = () => {
   return (
     <>
-      <div className="p-6 text-center">
-        <h1 className="text-3xl font-bold">About Page</h1>
-      </div>
+      <Header />
+      <FAQ />
       <Footer />
     </>
   );

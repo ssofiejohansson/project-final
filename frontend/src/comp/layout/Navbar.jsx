@@ -99,10 +99,10 @@ export const Navbar = () => {
               </>
             ) : (
               <>
-                <Btn onClick={() => navigate("/login")} size="md" variant="filled">
+                <Btn onClick={() => navigate("/login")} size="sm" variant="filled">
                   Log in
                 </Btn>
-                <Btn onClick={() => navigate("/signup")} size="md" variant="filled">
+                <Btn onClick={() => navigate("/signup")} size="sm" variant="filled">
                   Sign Up
                 </Btn>
               </>
