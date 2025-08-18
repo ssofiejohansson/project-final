@@ -12,7 +12,10 @@ router.patch('/update-reminders', async (req, res) => {
 
   // Secure auth check
   if (authHeader !== process.env.API_SECRET) {
-    return res.status(403).json({ error: 'Unauthorized' });
+    return res.status(403).json({ 
+      error: 'Unauthorized', 
+      success: false, 
+      message: "Failed to delete subscription", error });
   }
 
   try {
