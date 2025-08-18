@@ -62,7 +62,11 @@ router.patch('/update-reminders', async (req, res) => {
 
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Failed to update reminders' });
+    res.status(500).json({ 
+      error: 'Failed to update reminders',
+      success: false, 
+      message: err.message 
+    });
   }
 });
 
