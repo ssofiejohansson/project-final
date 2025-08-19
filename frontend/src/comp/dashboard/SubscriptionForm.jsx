@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
+import { SubscriptionSave } from "./SubscriptionSave";
 
 export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
   const urlAPI = "https://project-final-xhjy.onrender.com/subscriptions";
@@ -51,6 +52,8 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
       ...formData,
       [name]: value,
     });
+
+    
   };
 
   const handleSubmit = async (e) => {
@@ -75,6 +78,10 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
     if (!formData.reminderDate) {
       setError("Please select a reminder date!");
       return;
+    }
+
+    if (formData.status === "inactive") {
+    openSaveDialog(formData);
     }
 
     const payload = {
@@ -125,54 +132,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
     }
 
 
-    // const newSubscription = {
-    //   ...formData,
-    //   reminderDate: new Date(formData.reminderDate).toISOString(),
-    //   cost: parseFloat(formData.cost),
-    //   trialDays: formData.freeTrial ? parseInt(formData.trialDays) || 0 : 0
-    // };
-
-    // try {
-    //   const response = await fetch(`${urlAPI}`, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "Authorization": user?.token || ""
-    //     },
-    //     body: JSON.stringify(newSubscription),
-    //   });
-
-    //   const data = await response.json();
-
-
-    //   if (response.ok) {
-    //     setSuccess(true);
-    //     setError("");
-    //     addSubscription(data?.response || newSubscription);
-
-
-    //     // Reset form
-    //     setFormData({
-    //       name: "",
-    //       cost: "",
-    //       freeTrial: false,
-    //       trialDays: "",
-    //       reminderDate: "",
-    //       status: "active",
-    //       category: "Other"
-    //     });
-
-    //     // auto close modal (if provided) after a short delay so user sees success msg
-    //     if (onClose) {
-    //       setTimeout(() => onClose(), 500);
-    //     }
-    //   } else {
-    //     setError(data.message || "Failed to create subscription");
-    //   }
-    // } catch (err) {
-    //   console.error("Subscription creation error:", err);
-    //   setError("Failed to create subscription. Please try again.");
-    // }
+    
   };
 
   return (
@@ -202,14 +162,10 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
           label="Status" 
           name="status" 
           value={formData.status} 
-          onChange={
-            handleSelectChange("status")
-
-            } 
-          required>            
+          onChange={handleSelectChange("status")}          
+          required>
           <Option value="active">Active</Option>
-          <Option value="inactive">Inactive</Option>
-          {openSaveDialog(sub) && sub.status ? inactive : active}
+          <Option value="inactive">Inactive</Option>          
         </Select>
 
         <Select label="Category" name="category" value={formData.category} onChange={handleSelectChange("category")} required>
@@ -232,8 +188,10 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         {error && <Typography color="red" variant="small">{error}</Typography>}
         {success && <Typography color="green" variant="small">Subscription added successfully!</Typography>}
       </form>
+
       {/* save money - contribute */}
         <SubscriptionSave/>
+    
     </section>
   );
 };
