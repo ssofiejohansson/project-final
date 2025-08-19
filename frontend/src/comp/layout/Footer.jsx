@@ -11,7 +11,6 @@ export const Footer = () => {
   return (
     <footer className="px-8 py-12 bg-gray-50 border-t border-gray-200">
       <div className="container mx-auto flex flex-col items-center">
-
         <div className="flex flex-wrap items-center justify-center gap-6 pb-4">
           <ul>
             <li>
@@ -62,27 +61,25 @@ export const Footer = () => {
               </Typography>
             </li>
           </ul>
-
         </div>
-
 
         <div className="flex gap-6 pb-6">
           <Btn
             onClick={() => navigate("/login")}
-            size="md"
+            size="sm"
             variant="filled"
           >
             Log in
           </Btn>
           <Btn
             onClick={() => navigate("/signup")}
-            size="md"
+            size="sm"
             variant="filled"
           >
             Sign Up
           </Btn>
-
         </div>
+
         <img src={Logo} alt="SubscriBee Logo" className="h-20 w-20 object-contain" />
         <Typography
           color="blue-gray"
