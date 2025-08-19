@@ -2,12 +2,11 @@ import { Button, Dialog, DialogBody, DialogFooter, DialogHeader } from "@materia
 import React from "react";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
+import { CalculateCost } from "../CalculateCost";
 
 export const SubscriptionSave = () => { 
 
   const { isSaveOpen, selectedSubSave, closeSaveDialog } = useSubscriptionStore();
- 
-
  
   return (
     <>  
@@ -20,8 +19,8 @@ export const SubscriptionSave = () => {
         }}
       >
         <DialogHeader>Contribute</DialogHeader>
-        <DialogBody>
-         You just saved $100, buy a friend coffee 💕
+        <DialogBody>         
+         <CalculateCost/>
           <br />
           {selectedSubSave && (
             <span className="text-sm text-gray-500">

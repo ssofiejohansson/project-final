@@ -7,7 +7,7 @@ const useSubscriptionStore = create((set) => ({
 
   setSubscriptions: (subscriptions) => set({ subscriptions }),
 
-  //SubscriptionSave
+  //SubscriptionSave//
   //state
   isSaveOpen: false,
   selectedSubSave: null,
@@ -15,7 +15,7 @@ const useSubscriptionStore = create((set) => ({
   //actions
   openSaveDialog: (subscriptionSave) => set({ isSaveOpen: true, selectedSubSave: subscriptionSave }),
   closeSaveDialog: () => set({ isSaveOpen: false, selectedSubSave: null }),
-  //SubscriptionSave
+  //SubscriptionSave//
   
   addSubscription: (subscription) => set((state) => ({
     subscriptions: [subscription, ...state.subscriptions],
