@@ -12,21 +12,15 @@ export const SubscriptionSave = () => {
   return (
     <> 
       <div className="fixed inset-0 flex items-center justify-center z-50">
-        {/* Backdrop */}
         <div
           className="absolute inset-0 bg-black/30"
           onClick={closeSaveDialog}
         />
-
-        {/* Popup bubble 1 */}
-        <div className="">
-           {/* Popup bubble 2 */}
+        <div className="">          
         <div className="relative bg-white rounded-2xl shadow-2xl p-6 max-w-sm w-full z-10 border-2 border-black">
           
             <div className="text-lg font-semibold mb-3">Contribute</div>
-
             <CalculateCost />
-
             <div className="flex justify-end mt-4">
               <Button
                 variant="text"
