@@ -17,7 +17,7 @@ import { SubscriptionSave } from "./SubscriptionSave";
 
 
 export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
-  const urlAPI = "http://localhost:8081/subscriptions";
+  const urlAPI = "https://project-final-xhjy.onrender.com/subscriptions";
 
   const [formData, setFormData] = useState(() => {
     if (initialData) {
@@ -146,7 +146,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         if (!initialData) {
           // After successfully adding the subscription
           console.log("Scheduling email with to:", user.email, user);
-          await fetch("http://localhost:8081/emails", {
+          await fetch("https://project-final-xhjy.onrender.com/emails", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
