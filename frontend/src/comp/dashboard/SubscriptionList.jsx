@@ -1,6 +1,11 @@
 import { BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, PlusIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
 import { Button, Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
+import { TvIcon, CakeIcon, HeartIcon, BookOpenIcon, QuestionMarkCircleIcon, PencilIcon, TrashIcon, PlusIcon } from "@heroicons/react/24/outline";
+import useSubscriptionStore from "../../stores/useSubscriptionStore";
+import { SubscriptionModal } from "./SubscriptionModal";
+import { DashboardNavbar } from "./DashboardNavbar";
+import { SubscriptionSave } from "./SubscriptionSave";
 
 import useUserStore from "../../stores/useUserStore";
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
@@ -19,6 +24,9 @@ export const SubscriptionList = () => {
 
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
+
+  const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
+
 
   useEffect(() => {
     fetchSubscriptions();
@@ -219,15 +227,18 @@ export const SubscriptionList = () => {
                             size="sm"
                             onClick={() => {
                               setSelectedSub(sub);
-                              setIsModalOpen(true);
-                            }}
+                              setIsModalOpen(true);                              
+                            }}                            
                           >
                             <PencilIcon className="h-5 w-5 text-gray-900" />
                           </IconButton>
                           <IconButton
                             variant="text"
                             size="sm"
-                            onClick={() => handleDelete(sub._id)}
+                            onClick={() => {
+                              handleDelete(sub._id);
+                              openSaveDialog(sub);
+                            }}
                           >
                             <TrashIcon className="h-5 w-5 text-red-500" />
                           </IconButton>
@@ -252,6 +263,10 @@ export const SubscriptionList = () => {
         subscription={selectedSub}
         onSubscriptionAdded={handleSubscriptionAdded} // <-- Pass callback here
       />
+
+      {/* save money - contribute */}
+      <SubscriptionSave/>
+      
     </section>
   );
 };

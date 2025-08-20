@@ -1,0 +1,24 @@
+[
+  {
+    "message": "Buy a friend coffee ☕💕",
+    "spanStart":  0,
+    "spanEnd": 50   
+  },
+  {
+    "message": "Contribute to someone in need ⛑️💙",
+    "spanStart":  51,
+    "spanEnd": 100   
+  },{
+    "message": "Donate and save bee´s 💛🐝",
+    "spanStart":  101,
+    "spanEnd": 500   
+  },{
+    "message": "Take your family to a restaurant 🍽️❤️",
+    "spanStart":  501,
+    "spanEnd": 1000   
+  }, {
+    "message": "You deserve a trip, bring a friend ✈️💚",
+    "spanStart":  1001,
+    "spanEnd": 99999999   
+  }
+]

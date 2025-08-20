@@ -10,7 +10,11 @@ import { useState } from "react";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
+
 import { Input } from "../user/Input";
+
+import { SubscriptionSave } from "./SubscriptionSave";
+
 
 export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
   const urlAPI = "http://localhost:8081/subscriptions";
@@ -48,6 +52,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
     (state) => state.updateSubscription
   );
   const user = useUserStore((state) => state.user);
+  const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -62,6 +67,8 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
       ...formData,
       [name]: value,
     });
+
+    
   };
 
   const handleSubmit = async (e) => {
@@ -86,6 +93,10 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
     if (!formData.reminderDate) {
       setError("Please select a reminder date!");
       return;
+    }
+
+    if (formData.status === "inactive") {
+    openSaveDialog(formData);
     }
 
     const payload = {
@@ -160,6 +171,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
     } catch (err) {
       setError("Failed to save subscription. Please try again.");
     }
+
   };
 
   return (
@@ -294,6 +306,10 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
           </Typography>
         )}
       </form>
+
+      {/* save money - contribute */}
+        <SubscriptionSave/>
+    
     </section>
   );
 };

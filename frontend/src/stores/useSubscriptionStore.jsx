@@ -7,10 +7,19 @@ const useSubscriptionStore = create((set) => ({
 
   setSubscriptions: (subscriptions) => set({ subscriptions }),
 
-  addSubscription: (subscription) =>
-    set((state) => ({
-      subscriptions: [subscription, ...state.subscriptions],
-    })),
+  //SubscriptionSave//
+  //state
+  isSaveOpen: false,
+  selectedSubSave: null,
+
+  //actions
+  openSaveDialog: (subscriptionSave) => set({ isSaveOpen: true, selectedSubSave: subscriptionSave }),
+  closeSaveDialog: () => set({ isSaveOpen: false, selectedSubSave: null }),
+  //SubscriptionSave//
+  
+  addSubscription: (subscription) => set((state) => ({
+    subscriptions: [subscription, ...state.subscriptions],
+  })),
 
   // SOFIE ADD: update sub
   updateSubscription: (updatedSub) =>
@@ -36,7 +45,10 @@ const useSubscriptionStore = create((set) => ({
     useLoadingStore.getState().setLoading(true);
 
     try {
-      const response = await fetch("https://project-final-xhjy.onrender.com/subscriptions", {
+      const response = await fetch(
+        "https://project-final-xhjy.onrender.com/subscriptions"
+        //"http://localhost:8081/subscriptions"
+        , {
         headers: {
           Authorization: token,
           "Content-Type": "application/json",
