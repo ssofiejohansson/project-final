@@ -18,6 +18,7 @@ export const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const handleOpen = () => setOpen((cur) => !cur);
+  const closeMenu = () => setOpen(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,8 +33,8 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  const NavItem = ({ to, label }) => (
-    <Link to={to}>
+  const NavItem = ({ to, label, onClick }) => (
+    <Link to={to} onClick={onClick}>
       <Typography
         as="li"
         color="blue-gray"
@@ -44,11 +45,11 @@ export const Navbar = () => {
     </Link>
   );
 
-  const NavList = () => (
+  const NavList = ({ onClick }) => (
     <ul className="mb-4 mt-2 flex flex-col gap-3 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-8">
-      {!isHome && <NavItem to="/" label="Home" />}
-      <NavItem to="/about" label="About" />
-      <NavItem to="#" label="Contact" />
+      {!isHome && <NavItem to="/" label="Home" onClick={onClick} />}
+      <NavItem to="/about" label="About" onClick={onClick} />
+      <NavItem to="#" label="Contact" onClick={onClick} />
     </ul>
   );
 
@@ -128,6 +129,7 @@ export const Navbar = () => {
             )}
           </IconButton>
         </div>
+
         {/* Mobile menu */}
         <Collapse open={open}>
           <div className="mt-2 rounded-xl bg-white py-4 px-4 text-blue-gray-900 flex flex-col h-full min-h-[40vh]">
@@ -136,30 +138,30 @@ export const Navbar = () => {
               <>
                 <div className="flex flex-row gap-2 py-2">
                   <Typography className="text-sm">Hi {user.name}!</Typography>
-                  <Link to="/admin" className="hover:text-blue-600">Dashboard</Link>
-                  <Link to="/admin" className="hover:text-blue-600">Stats</Link>
-                  <Link to="#" className="hover:text-blue-600">Help</Link>
+                  <Link to="/admin" onClick={closeMenu} className="hover:text-blue-600">Dashboard</Link>
+                  <Link to="/admin" onClick={closeMenu} className="hover:text-blue-600">Stats</Link>
+                  <Link to="#" onClick={closeMenu} className="hover:text-blue-600">Help</Link>
                 </div>
                 <div className="flex flex-col gap-2 border-t border-gray-200">
-                  <NavList />
+                  <NavList onClick={closeMenu} />
                 </div>
               </>
             ) : (
               <div className="flex flex-col gap-2 ">
-                <NavList />
+                <NavList onClick={closeMenu} />
               </div>
             )}
 
             {/* BOTTOM section */}
             <div className="mt-auto flex flex-col gap-2 pt-4 border-t border-gray-200">
               {user ? (
-                <Logout />
+                <Logout onClick={closeMenu} />
               ) : (
                 <>
-                  <Btn onClick={() => navigate("/login")} size="md" variant="filled">
+                  <Btn onClick={() => { navigate("/login"); closeMenu(); }} size="md" variant="filled">
                     Log in
                   </Btn>
-                  <Btn onClick={() => navigate("/signup")} size="md" variant="filled">
+                  <Btn onClick={() => { navigate("/signup"); closeMenu(); }} size="md" variant="filled">
                     Sign Up
                   </Btn>
                 </>

@@ -88,7 +88,7 @@ export const Footer = () => {
           color="blue-gray"
           className="mt-4 !text-sm !font-normal text-gray-500"
         >
-          &copy; {currentYear} Subscribee. All rights reserved.
+          &copy; {currentYear} SubscriBee. All rights reserved.
         </Typography>
 
       </div>
