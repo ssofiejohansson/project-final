@@ -5,6 +5,7 @@ import useLoadingStore from "../../stores/useLoadingStore";
 import useUserStore from "../../stores/useUserStore";
 import { Input } from "./Input";
 import { Btn } from "../Btn";
+import { BaseURL } from "../BaseAPI";
 
 export const Usersignup = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ export const Usersignup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const urlAPI = "https://project-final-xhjy.onrender.com/users";
+    const urlAPI = `${BaseURL}/users`;
 
     setLoading(true);
 

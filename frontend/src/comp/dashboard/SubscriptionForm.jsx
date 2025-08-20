@@ -15,9 +15,11 @@ import { Input } from "../user/Input";
 
 import { SubscriptionSave } from "./SubscriptionSave";
 
+import { BaseURL } from "../BaseAPI";
+
 
 export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
-  const urlAPI = "https://project-final-xhjy.onrender.com/subscriptions";
+  const urlAPI = `${BaseURL}/subscriptions`;
 
   const [formData, setFormData] = useState(() => {
     if (initialData) {

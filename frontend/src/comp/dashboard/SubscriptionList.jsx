@@ -6,6 +6,7 @@ import { SubscriptionModal } from "./SubscriptionModal";
 import { DashboardNavbar } from "./DashboardNavbar";
 import { SubscriptionSave } from "./SubscriptionSave";
 import useUserStore from "../../stores/useUserStore";
+import { BaseURL } from "../BaseAPI";
 
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
@@ -21,6 +22,8 @@ export const SubscriptionList = () => {
   const [sortKey, setSortKey] = useState("");
 
   const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
+
+  const urlAPI = `${BaseURL}/subscriptions`; 
 
 
   useEffect(() => {
@@ -49,7 +52,7 @@ export const SubscriptionList = () => {
   // Delete handler
   const handleDelete = async (id) => {
     try {
-      await fetch(`https://project-final-xhjy.onrender.com/subscriptions/${id}`, {
+      await fetch(`${urlAPI}/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `${user?.token}`,
