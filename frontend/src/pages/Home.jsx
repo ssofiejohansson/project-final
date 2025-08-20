@@ -1,7 +1,6 @@
-import { Button, Input, Typography } from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
 
 import { Btn } from "../comp/Btn";
-import { Footer } from "../comp/layout/Footer";
 import { Header } from "../comp/layout/Header";
 
 export const Home = () => {
@@ -45,7 +44,6 @@ export const Home = () => {
           />
         </div>
       </div>
-      <Footer />
     </>
   );
 }

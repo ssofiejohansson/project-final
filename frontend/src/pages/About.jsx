@@ -1,11 +1,9 @@
-import { FAQ } from "../comp/Faq";
-import { Footer } from "../comp/layout/Footer";
+import { FAQ } from "../comp/blocks/Faq";
 
 export const About = () => {
   return (
     <>
       <FAQ />
-      <Footer />
     </>
   );
 }

@@ -26,7 +26,7 @@ export const Dashboard = () => {
 
   return (
     // View when logged in
-    <div className="grid mt-16 min-h-[82vh] w-full lg:h-[54rem] md:h-[34rem] place-items-stretch bg-[url('/image/bg-hero-17.svg')] bg-center bg-contain bg-no-repeat p-8">
+    <div className="grid mt-16 min-h-[82vh] w-full place-items-stretch p-8">
       <div className="container mx-auto px-4 text-center">
         <Typography
           variant="h1"
