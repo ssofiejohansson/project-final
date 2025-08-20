@@ -23,8 +23,6 @@ export const App = () => {
         <Navbar />
 
         {loading && <Loader />}
-
-        {/* Main content should grow to push footer down */}
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />

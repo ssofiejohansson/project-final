@@ -1,13 +1,12 @@
+import { Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
-import { Button, Input, Typography } from "@material-tailwind/react";
-
 import { Link } from "react-router-dom";
-import EmailForm from "../EmailForm";
-import Linegraph from "./Linegraph";
+
+import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
 import { SubscriptionList } from "../dashboard/SubscriptionList";
-import { Logout } from "../user/LogoutBtn";
-import useSubscriptionStore from "../../stores/useSubscriptionStore";
+import Linegraph from "./Linegraph";
+
 import "../../../src/index.css";
 
 export const Dashboard = () => {
@@ -57,9 +56,9 @@ export const Dashboard = () => {
         >
           View and manage your subscriptions easily.
         </Typography>
-            <SubscriptionList subscriptions={subscriptions} />
-      <Linegraph subscriptions={subscriptions} />
-            </div>
+        <SubscriptionList subscriptions={subscriptions} />
+        <Linegraph subscriptions={subscriptions} />
+      </div>
     </div>
   );
 };

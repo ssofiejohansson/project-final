@@ -1,12 +1,15 @@
 import { Typography } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
-import { Btn } from "../Btn";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import Logo from "../../assets/SubscriBee-logo.png";
+import useUserStore from "../../stores/useUserStore";
+import { Btn } from "../Btn";
+import { Logout } from "../user/LogoutBtn";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   const navigate = useNavigate();
+  const user = useUserStore((state) => state.user);
 
   return (
     <footer className="px-8 py-12 bg-gray-50 border-t border-gray-200">
@@ -64,20 +67,20 @@ export const Footer = () => {
         </div>
 
         <div className="flex gap-6 pb-6">
-          <Btn
-            onClick={() => navigate("/login")}
-            size="sm"
-            variant="filled"
-          >
-            Log in
-          </Btn>
-          <Btn
-            onClick={() => navigate("/signup")}
-            size="sm"
-            variant="filled"
-          >
-            Sign Up
-          </Btn>
+          {user ? (
+
+            <Logout />
+
+          ) : (
+            <>
+              <Btn onClick={() => navigate("/login")} size="sm" variant="filled">
+                Log in
+              </Btn>
+              <Btn onClick={() => navigate("/signup")} size="sm" variant="filled">
+                Sign Up
+              </Btn>
+            </>
+          )}
         </div>
 
         <img src={Logo} alt="SubscriBee Logo" className="h-20 w-20 object-contain" />
