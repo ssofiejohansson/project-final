@@ -1,13 +1,7 @@
+import { Button, Card, CardBody, CardFooter, Typography } from "@material-tailwind/react";
+import merge from "deepmerge";
 import React from "react";
 import Chart from "react-apexcharts";
-import {
-  Card,
-  CardBody,
-  Typography,
-  Button,
-  CardFooter,
-} from "@material-tailwind/react";
-import merge from "deepmerge";
 
 // AreaChart component
 function AreaChart({ height = 350, series, colors, options }) {
@@ -100,7 +94,7 @@ function getCumulativeMonthlyTotals(subscriptions, year) {
   return months;
 }
 
-export function Linegraph({ subscriptions = [] }) {
+export const Linegraph = ({ subscriptions = [] }) => {
   const safeSubscriptions = Array.isArray(subscriptions) ? subscriptions : [];
 
   // Get unique years from subscriptions
@@ -203,5 +197,3 @@ export function Linegraph({ subscriptions = [] }) {
     </section>
   );
 }
-
-export default Linegraph;

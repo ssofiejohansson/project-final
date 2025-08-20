@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
 import { SubscriptionList } from "../dashboard/SubscriptionList";
-import Linegraph from "./Linegraph";
+import { Linegraph } from "./Linegraph";
 
 import "../../../src/index.css";
 

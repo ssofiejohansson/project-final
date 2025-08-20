@@ -21,9 +21,8 @@ export const App = () => {
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar />
-
-        {loading && <Loader />}
         <main className="flex-grow">
+          {loading && <Loader />}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
