@@ -46,7 +46,7 @@ export const SubscriptionList = () => {
   // Delete handler
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:8081/subscriptions/${id}`, {
+      await fetch(`https://project-final-xhjy.onrender.com/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `${user?.token}`,
