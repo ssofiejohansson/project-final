@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useLoadingStore from "../../stores/useLoadingStore";
 import useUserStore from "../../stores/useUserStore";
 import { Input } from "./Input";
-import { Btn } from "../Btn"
+import { Btn } from "../Btn";
 
 export const Usersignup = () => {
   const [formData, setFormData] = useState({
@@ -78,11 +78,14 @@ export const Usersignup = () => {
     }
   };
   return (
-
     <div className="flex items-center justify-center min-h-screen px-4">
       <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Sign up</h2>
-        <p className="text-center text-gray-500 mb-8">Join SubscriBee and get started today</p>
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+          Sign up
+        </h2>
+        <p className="text-center text-gray-500 mb-8">
+          Join SubscriBee and get started today
+        </p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <Input
@@ -103,7 +106,6 @@ export const Usersignup = () => {
             required
           />
 
-
           <Input
             label="Password"
             type="password"
@@ -113,22 +115,17 @@ export const Usersignup = () => {
             required
           />
 
-        {error && <p className="text-red-500 text-sm">{error}</p>}
-        {success && (
-          <p className="text-green-600 text-sm">User created successfully!</p>
-        )}
-
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200"
-        >
-          Sign up here
-        </button>
-      </form>
-          />
+          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {success && (
+            <p className="text-green-600 text-sm">User created successfully!</p>
+          )}
 
           {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-          {success && <p className="text-green-600 text-sm text-center">User created successfully!</p>}
+          {success && (
+            <p className="text-green-600 text-sm text-center">
+              User created successfully!
+            </p>
+          )}
 
           <Btn
             type="submit"
@@ -143,7 +140,10 @@ export const Usersignup = () => {
 
         <p className="mt-6 text-sm text-center text-gray-600">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-600 hover:underline font-medium">
+          <a
+            href="/login"
+            className="text-blue-600 hover:underline font-medium"
+          >
             Log in
           </a>
         </p>
