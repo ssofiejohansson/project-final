@@ -1,7 +1,6 @@
 import {
   Button,
   Checkbox,
-  Input,
   Option,
   Select,
   Typography,
@@ -161,14 +160,12 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
     } catch (err) {
       setError("Failed to save subscription. Please try again.");
     }
-
   };
 
   return (
     <section className={compact ? "p-4" : "px-8 py-20 container mx-auto"}>
       {!compact && (
         <>
-
           <Typography variant="h5" color="blue-gray">
             Add a subscription
           </Typography>
@@ -176,48 +173,94 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
             variant="small"
             className="text-gray-600 font-normal mt-1"
           >
-
             Fill in the information below
           </Typography>
         </>
       )}
 
-
-      <form className="flex flex-col mt-6 space-y-3 max-w-xl mx-auto" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col mt-6 space-y-3 max-w-xl mx-auto"
+        onSubmit={handleSubmit}
+      >
         {/* Top row: Name + Cost */}
         <div className="flex gap-4">
           <div className="flex-1">
-            <Input label="Name" name="name" value={formData.name} onChange={handleChange} required />
+            <Input
+              label="Name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className="flex-3">
-            <Input label="Cost" name="cost" type="number" min={0} step="0.01" value={formData.cost} onChange={handleChange} required />
+            <Input
+              label="Cost"
+              name="cost"
+              type="number"
+              min={0}
+              step="0.01"
+              value={formData.cost}
+              onChange={handleChange}
+              required
+            />
           </div>
         </div>
 
         {/* Free trial + Trial Days */}
         <div className="flex items-center gap-4">
-          <Checkbox name="freeTrial" checked={formData.freeTrial} onChange={handleChange} />
+          <Checkbox
+            name="freeTrial"
+            checked={formData.freeTrial}
+            onChange={handleChange}
+          />
           <span>Free Trial?</span>
           {formData.freeTrial && (
             <div className="flex-2">
-              <Input label="Trial Days" name="trialDays" type="number" min={0} value={formData.trialDays} onChange={handleChange} />
+              <Input
+                label="Trial Days"
+                name="trialDays"
+                type="number"
+                min={0}
+                value={formData.trialDays}
+                onChange={handleChange}
+              />
             </div>
           )}
         </div>
 
         {/* Reminder Date */}
-        <Input label="Reminder Date" name="reminderDate" type="date" value={formData.reminderDate} onChange={handleChange} required />
+        <Input
+          label="Reminder Date"
+          name="reminderDate"
+          type="date"
+          value={formData.reminderDate}
+          onChange={handleChange}
+          required
+        />
 
         {/* Status + Category in one row */}
         <div className="flex gap-4">
           <div className="flex-1">
-            <Select label="Status" name="status" value={formData.status} onChange={handleSelectChange("status")} required>
+            <Select
+              label="Status"
+              name="status"
+              value={formData.status}
+              onChange={handleSelectChange("status")}
+              required
+            >
               <Option value="active">Active</Option>
               <Option value="inactive">Inactive</Option>
             </Select>
           </div>
           <div className="flex-1">
-            <Select label="Category" name="category" value={formData.category} onChange={handleSelectChange("category")} required>
+            <Select
+              label="Category"
+              name="category"
+              value={formData.category}
+              onChange={handleSelectChange("category")}
+              required
+            >
               <Option value="Entertainment">Entertainment</Option>
               <Option value="Food">Food</Option>
               <Option value="Health">Health</Option>
@@ -226,7 +269,6 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
             </Select>
           </div>
         </div>
-
 
         {/* Buttons */}
         <div className="flex gap-2">
@@ -240,13 +282,18 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
           )}
         </div>
 
-
         {/* Feedback messages */}
-        {error && <Typography color="red" variant="small">{error}</Typography>}
-        {success && <Typography color="green" variant="small">Subscription added successfully!</Typography>}
+        {error && (
+          <Typography color="red" variant="small">
+            {error}
+          </Typography>
+        )}
+        {success && (
+          <Typography color="green" variant="small">
+            Subscription added successfully!
+          </Typography>
+        )}
       </form>
     </section>
   );
-
 };
-
