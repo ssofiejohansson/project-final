@@ -1,26 +1,11 @@
+import { BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, PlusIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
+import { Button, Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
-import {
-  Button,
-  Typography,
-  Card,
-  CardHeader,
-  CardBody,
-  IconButton,
-} from "@material-tailwind/react";
-import {
-  TvIcon,
-  CakeIcon,
-  HeartIcon,
-  BookOpenIcon,
-  QuestionMarkCircleIcon,
-  PencilIcon,
-  TrashIcon,
-  PlusIcon,
-} from "@heroicons/react/24/outline";
-import useSubscriptionStore from "../../stores/useSubscriptionStore";
+
 import useUserStore from "../../stores/useUserStore";
-import { SubscriptionModal } from "./SubscriptionModal";
+import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import { DashboardNavbar } from "./DashboardNavbar";
+import { SubscriptionModal } from "./SubscriptionModal";
 
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
@@ -107,15 +92,10 @@ export const SubscriptionList = () => {
           className="rounded-none flex flex-wrap gap-4 justify-between mb-4"
         >
           <div>
-            <Typography variant="h6" color="blue-gray">
-              Subscriptions
+            <Typography variant="h6" className="text-gray-600 font-normal mt-1">
+              All subscriptions
             </Typography>
-            <Typography
-              variant="small"
-              className="text-gray-600 font-normal mt-1"
-            >
-              View and manage your subscriptions easily.
-            </Typography>
+
           </div>
           <div className="flex items-center w-full shrink-0 gap-4 md:w-max">
             <DashboardNavbar

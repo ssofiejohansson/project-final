@@ -6,10 +6,12 @@ import {
   Select,
   Typography,
 } from "@material-tailwind/react";
+
 import { useState } from "react";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
+import { Input } from "../user/Input";
 
 export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
   const urlAPI = "http://localhost:8081/subscriptions";
@@ -159,12 +161,14 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
     } catch (err) {
       setError("Failed to save subscription. Please try again.");
     }
+
   };
 
   return (
     <section className={compact ? "p-4" : "px-8 py-20 container mx-auto"}>
       {!compact && (
         <>
+
           <Typography variant="h5" color="blue-gray">
             Add a subscription
           </Typography>
@@ -172,84 +176,59 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
             variant="small"
             className="text-gray-600 font-normal mt-1"
           >
+
             Fill in the information below
           </Typography>
         </>
       )}
 
-      <form
-        className="flex flex-col mt-6 space-y-4 max-w-md mx-auto"
-        onSubmit={handleSubmit}
-      >
-        <Input
-          label="Name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <Input
-          label="Cost"
-          name="cost"
-          type="number"
-          min={0}
-          step="0.01"
-          value={formData.cost}
-          onChange={handleChange}
-          required
-        />
-        <div className="flex items-center">
-          <Checkbox
-            name="freeTrial"
-            checked={formData.freeTrial}
-            onChange={handleChange}
-          />
-          <span className="ml-2">Free Trial?</span>
+
+      <form className="flex flex-col mt-6 space-y-3 max-w-xl mx-auto" onSubmit={handleSubmit}>
+        {/* Top row: Name + Cost */}
+        <div className="flex gap-4">
+          <div className="flex-1">
+            <Input label="Name" name="name" value={formData.name} onChange={handleChange} required />
+          </div>
+          <div className="flex-3">
+            <Input label="Cost" name="cost" type="number" min={0} step="0.01" value={formData.cost} onChange={handleChange} required />
+          </div>
         </div>
-        {formData.freeTrial && (
-          <Input
-            label="Trial Days"
-            name="trialDays"
-            type="number"
-            min={0}
-            value={formData.trialDays}
-            onChange={handleChange}
-          />
-        )}
-        <Input
-          label="Reminder Date"
-          name="reminderDate"
-          type="date"
-          value={formData.reminderDate}
-          onChange={handleChange}
-          required
-        />
 
-        <Select
-          label="Status"
-          name="status"
-          value={formData.status}
-          onChange={handleSelectChange("status")}
-          required
-        >
-          <Option value="active">Active</Option>
-          <Option value="inactive">Inactive</Option>
-        </Select>
+        {/* Free trial + Trial Days */}
+        <div className="flex items-center gap-4">
+          <Checkbox name="freeTrial" checked={formData.freeTrial} onChange={handleChange} />
+          <span>Free Trial?</span>
+          {formData.freeTrial && (
+            <div className="flex-2">
+              <Input label="Trial Days" name="trialDays" type="number" min={0} value={formData.trialDays} onChange={handleChange} />
+            </div>
+          )}
+        </div>
 
-        <Select
-          label="Category"
-          name="category"
-          value={formData.category}
-          onChange={handleSelectChange("category")}
-          required
-        >
-          <Option value="Entertainment">Entertainment</Option>
-          <Option value="Food">Food</Option>
-          <Option value="Health">Health</Option>
-          <Option value="Learning">Learning</Option>
-          <Option value="Other">Other</Option>
-        </Select>
+        {/* Reminder Date */}
+        <Input label="Reminder Date" name="reminderDate" type="date" value={formData.reminderDate} onChange={handleChange} required />
 
+        {/* Status + Category in one row */}
+        <div className="flex gap-4">
+          <div className="flex-1">
+            <Select label="Status" name="status" value={formData.status} onChange={handleSelectChange("status")} required>
+              <Option value="active">Active</Option>
+              <Option value="inactive">Inactive</Option>
+            </Select>
+          </div>
+          <div className="flex-1">
+            <Select label="Category" name="category" value={formData.category} onChange={handleSelectChange("category")} required>
+              <Option value="Entertainment">Entertainment</Option>
+              <Option value="Food">Food</Option>
+              <Option value="Health">Health</Option>
+              <Option value="Learning">Learning</Option>
+              <Option value="Other">Other</Option>
+            </Select>
+          </div>
+        </div>
+
+
+        {/* Buttons */}
         <div className="flex gap-2">
           <Button type="submit" color="blue">
             Save Subscription
@@ -261,17 +240,13 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
           )}
         </div>
 
-        {error && (
-          <Typography color="red" variant="small">
-            {error}
-          </Typography>
-        )}
-        {success && (
-          <Typography color="green" variant="small">
-            Subscription added successfully!
-          </Typography>
-        )}
+
+        {/* Feedback messages */}
+        {error && <Typography color="red" variant="small">{error}</Typography>}
+        {success && <Typography color="green" variant="small">Subscription added successfully!</Typography>}
       </form>
     </section>
   );
+
 };
+

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import useLoadingStore from "../../stores/useLoadingStore";
-// SOFIE ADD: import Zustand
-import useUserStore from "../../stores/useUserStore";
+import useLoadingStore from "../../stores/useLoadingStore"
+import useUserStore from '../../stores/useUserStore';
+import { Input } from "./Input";
+import { Btn } from "../Btn";
 
 export const Userlogin = () => {
   const setLoading = useLoadingStore((state) => state.setLoading);
@@ -60,6 +61,7 @@ export const Userlogin = () => {
       } else {
         setError("Login failed. Please check your credentials.");
       }
+
     } catch (error) {
       console.error("Signin error:", error);
       setError("Can´t login, please try again!");
@@ -70,63 +72,52 @@ export const Userlogin = () => {
 
   return (
     <>
-      <div className="p-6 text-center">
-        <h1 className="text-3xl font-bold">User Login</h1>
+      <div className="flex items-center justify-center min-h-screen px-4">
+        <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
+          <h1 className="text-3xl font-bold text-center text-gray-800">User Login</h1>
+          <p className="text-center text-gray-500 mb-6">Welcome back! Please log in.</p>
 
-        <form
-          onSubmit={handleSubmit}
-          className="mt-6 max-w-sm mx-auto space-y-4"
-        >
-          {error && <div style={{ color: "red" }}>{error}</div>}
-          <div>
-            <input
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  email: e.target.value,
-                })
-              }
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {error && <div className="text-red-500 text-sm text-center">{error}</div>}
+
+            <Input
+              label="Email Address"
               type="email"
               name="email"
-              id="email"
               value={formData.email}
-              placeholder="Email"
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             />
-          </div>
 
-          <div>
-            <input
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  password: e.target.value,
-                })
-              }
+            <Input
+              label="Password"
               type="password"
               name="password"
-              id="password"
               value={formData.password}
-              placeholder="Password"
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
             />
-          </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200"
-          >
-            Login
-          </button>
-        </form>
-      </div>
-      <div>
-        <button onClick={() => navigate("/signup")}>
-          {" "}
-          Don't have an account?
-        </button>
+            <Btn
+              type="submit"
+              variant="filled"
+              color="blue"
+              size="md"
+              className="w-full"
+            >
+              Login
+            </Btn>
+          </form>
+
+          <p className="mt-6 text-sm text-center text-gray-600">
+            Don’t have an account?{" "}
+            <button
+              onClick={() => navigate('/signup')}
+              className="text-blue-600 hover:underline font-medium"
+            >
+              Sign Up
+            </button>
+          </p>
+        </div>
+
       </div>
     </>
   );
