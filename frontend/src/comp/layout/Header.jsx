@@ -1,6 +1,6 @@
 import { Button, Input, Typography } from "@material-tailwind/react";
 
-import { Btn } from "../Btn";
+import { Btn } from "./Btn";
 
 export const Header = () => {
   return (

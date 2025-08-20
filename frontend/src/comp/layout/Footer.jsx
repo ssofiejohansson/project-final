@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Logo from "../../assets/SubscriBee-logo.png";
 import useUserStore from "../../stores/useUserStore";
-import { Btn } from "../Btn";
+import { Btn } from "./Btn";
 import { Logout } from "../user/LogoutBtn";
 
 export const Footer = () => {
@@ -31,7 +31,7 @@ export const Footer = () => {
             <li>
               <Typography
                 as={Link}
-                to="/about"
+                to="/about#project"
                 color="blue-gray"
                 className="font-medium !text-gray-600 transition-colors hover:!text-blue-600"
               >
@@ -43,7 +43,7 @@ export const Footer = () => {
             <li>
               <Typography
                 as={Link}
-                to="/about"
+                to="/about#faq"
                 color="blue-gray"
                 className="font-medium !text-gray-600 transition-colors hover:!text-blue-600"
               >
@@ -56,7 +56,7 @@ export const Footer = () => {
             <li>
               <Typography
                 as={Link}
-                to="/contact"
+                to="/about#contact"
                 color="blue-gray"
                 className="font-medium !text-gray-600 transition-colors hover:!text-blue-600"
               >

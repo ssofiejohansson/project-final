@@ -1,12 +1,14 @@
 import { Typography } from "@material-tailwind/react";
 
-import { Btn } from "../comp/Btn";
+import { Btn } from "../comp/layout/Btn";
 import { Header } from "../comp/layout/Header";
 
 export const Home = () => {
   return (
     <>
       <Header />
+      {/* How it works guide */}
+      {/* Read about us text */}
 
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[82vh]">
 

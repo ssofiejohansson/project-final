@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, CardFooter, Typography } from "@material-tailwind/react";
+import { Card, CardBody, CardFooter, Typography } from "@material-tailwind/react";
 import merge from "deepmerge";
 import React from "react";
 import Chart from "react-apexcharts";

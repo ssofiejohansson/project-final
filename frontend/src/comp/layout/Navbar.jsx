@@ -6,7 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/SubscriBee-logo.png";
 import { Logout } from "../../comp/user/LogoutBtn";
 import useUserStore from "../../stores/useUserStore";
-import { Btn } from "../Btn";
+import { Btn } from "./Btn";
 
 export const Navbar = () => {
   const navigate = useNavigate();
