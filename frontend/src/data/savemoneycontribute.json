@@ -1,20 +1,24 @@
 [
   {
-    "message": "You just saved up to 50, buy a friend coffee ☕💕",
+    "message": "Buy a friend coffee ☕💕",
     "spanStart":  0,
     "spanEnd": 50   
   },
   {
-    "message": "You just saved up to 100, contribute to someone in need ⛑️💙",
+    "message": "Contribute to someone in need ⛑️💙",
     "spanStart":  51,
     "spanEnd": 100   
   },{
-    "message": "You just saved up to 500, bring your family dinner 🍽️❤️",
+    "message": "Donate and save bee´s 💛🐝",
     "spanStart":  101,
     "spanEnd": 500   
   },{
-    "message": "You just saved a lot of money, you diserve a trip, bring a friend ✈️💚",
+    "message": "Take your family to a restaurant 🍽️❤️",
     "spanStart":  501,
-    "spanEnd": null   
+    "spanEnd": 1000   
+  }, {
+    "message": "You deserve a trip, bring a friend ✈️💚",
+    "spanStart":  1001,
+    "spanEnd": 99999999   
   }
 ]
