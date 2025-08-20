@@ -2,10 +2,11 @@ import { Bars3Icon, ChevronDownIcon, UserCircleIcon, XMarkIcon } from "@heroicon
 import { Collapse, IconButton, Menu, MenuHandler, MenuItem, MenuList, Typography } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Btn } from "../Btn";
+
+import Logo from "../../assets/SubscriBee-logo.png";
 import { Logout } from "../../comp/user/LogoutBtn";
 import useUserStore from "../../stores/useUserStore";
-import Logo from "../../assets/SubscriBee-logo.png";
+import { Btn } from "../Btn";
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -91,6 +92,9 @@ export const Navbar = () => {
                       <Link to="/admin">Dashboard</Link>
                     </MenuItem>
                     <MenuItem>
+                      <Link to="/admin">Stats</Link>
+                    </MenuItem>
+                    <MenuItem>
                       <Link to="#">Help</Link>
                     </MenuItem>
                   </MenuList>
@@ -124,30 +128,46 @@ export const Navbar = () => {
             )}
           </IconButton>
         </div>
-
-        {/* Mobile Menu */}
+        {/* Mobile menu */}
         <Collapse open={open}>
-          <div className="mt-2 rounded-xl bg-white py-2 px-4 text-blue-gray-900 flex flex-col gap-2">
-            <NavList />
+          <div className="mt-2 rounded-xl bg-white py-4 px-4 text-blue-gray-900 flex flex-col h-full min-h-[40vh]">
+            {/* TOP section */}
             {user ? (
               <>
-                <Typography className="text-sm">Hi {user.name}!</Typography>
-                <Link to="/admin">Dashboard</Link>
-                <Link to="#">Help</Link>
-                <Logout />
+                <div className="flex flex-row gap-2 py-2">
+                  <Typography className="text-sm">Hi {user.name}!</Typography>
+                  <Link to="/admin" className="hover:text-blue-600">Dashboard</Link>
+                  <Link to="/admin" className="hover:text-blue-600">Stats</Link>
+                  <Link to="#" className="hover:text-blue-600">Help</Link>
+                </div>
+                <div className="flex flex-col gap-2 border-t border-gray-200">
+                  <NavList />
+                </div>
               </>
             ) : (
-              <>
-                <Btn onClick={() => navigate("/login")} size="md" variant="filled">
-                  Log in
-                </Btn>
-                <Btn onClick={() => navigate("/signup")} size="md" variant="filled">
-                  Sign Up
-                </Btn>
-              </>
+              <div className="flex flex-col gap-2 ">
+                <NavList />
+              </div>
             )}
+
+            {/* BOTTOM section */}
+            <div className="mt-auto flex flex-col gap-2 pt-4 border-t border-gray-200">
+              {user ? (
+                <Logout />
+              ) : (
+                <>
+                  <Btn onClick={() => navigate("/login")} size="md" variant="filled">
+                    Log in
+                  </Btn>
+                  <Btn onClick={() => navigate("/signup")} size="md" variant="filled">
+                    Sign Up
+                  </Btn>
+                </>
+              )}
+            </div>
           </div>
         </Collapse>
+
       </div>
     </div>
   );
