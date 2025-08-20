@@ -1,16 +1,11 @@
 import { BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, PlusIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
 import { Button, Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
-import { TvIcon, CakeIcon, HeartIcon, BookOpenIcon, QuestionMarkCircleIcon, PencilIcon, TrashIcon, PlusIcon } from "@heroicons/react/24/outline";
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import { SubscriptionModal } from "./SubscriptionModal";
 import { DashboardNavbar } from "./DashboardNavbar";
 import { SubscriptionSave } from "./SubscriptionSave";
-
 import useUserStore from "../../stores/useUserStore";
-import useSubscriptionStore from "../../stores/useSubscriptionStore";
-import { DashboardNavbar } from "./DashboardNavbar";
-import { SubscriptionModal } from "./SubscriptionModal";
 
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
@@ -266,7 +261,7 @@ export const SubscriptionList = () => {
 
       {/* save money - contribute */}
       <SubscriptionSave/>
-      
+
     </section>
   );
 };
