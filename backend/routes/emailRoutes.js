@@ -40,6 +40,7 @@ router.get('/reminders', async (req, res) => {
 
 // Schedule or send email
 router.post('/', async (req, res) => {
+  console.log('POST /emails body:', req.body); // Add this line
   try {
     const {
       to,

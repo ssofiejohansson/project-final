@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 import useLoadingStore from "./useLoadingStore";
 
@@ -7,16 +7,18 @@ const useSubscriptionStore = create((set) => ({
 
   setSubscriptions: (subscriptions) => set({ subscriptions }),
 
-  addSubscription: (subscription) => set((state) => ({
-    subscriptions: [subscription, ...state.subscriptions],
-  })),
+  addSubscription: (subscription) =>
+    set((state) => ({
+      subscriptions: [subscription, ...state.subscriptions],
+    })),
 
   // SOFIE ADD: update sub
-  updateSubscription: (updatedSub) => set((state) => ({
-    subscriptions: state.subscriptions.map((sub) =>
-      sub._id === updatedSub._id ? updatedSub : sub
-    )
-  })),
+  updateSubscription: (updatedSub) =>
+    set((state) => ({
+      subscriptions: state.subscriptions.map((sub) =>
+        sub._id === updatedSub._id ? updatedSub : sub
+      ),
+    })),
 
   clearSubscriptions: () => set({ subscriptions: [] }),
 
@@ -34,7 +36,7 @@ const useSubscriptionStore = create((set) => ({
     useLoadingStore.getState().setLoading(true);
 
     try {
-      const response = await fetch("https://project-final-xhjy.onrender.com/subscriptions", {
+      const response = await fetch("http://localhost:8081/subscriptions", {
         headers: {
           Authorization: token,
           "Content-Type": "application/json",

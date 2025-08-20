@@ -7,7 +7,11 @@ import { Input } from "./Input";
 import { Btn } from "../Btn"
 
 export const Usersignup = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
@@ -23,15 +27,15 @@ export const Usersignup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const urlAPI = "https://project-final-xhjy.onrender.com/users";
+    const urlAPI = "http://localhost:8081/users";
 
     setLoading(true);
 
     try {
       // Sign up
       const response = await fetch(`${urlAPI}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
@@ -42,9 +46,12 @@ export const Usersignup = () => {
 
         // Auto-login after successful signup
         const loginRes = await fetch(`${urlAPI}/login`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: formData.email, password: formData.password }),
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
         });
 
         const loginData = await loginRes.json();
@@ -52,24 +59,26 @@ export const Usersignup = () => {
         if (loginRes.ok) {
           setUser({
             name: loginData.name,
+            email: loginData.email,
             token: loginData.accessToken,
           });
 
-          navigate('/admin'); // When successful signup, redirect to admin page
+          navigate("/admin"); // When successful signup, redirect to admin page
         } else {
-          setError('Signup succeeded, but login failed');
+          setError("Signup succeeded, but login failed");
         }
       } else {
-        setError(data.message || 'Signup failed');
+        setError(data.message || "Signup failed");
       }
     } catch (err) {
-      setError('Server error');
+      setError("Server error");
       console.error(err);
     } finally {
       setLoading(false);
     }
   };
   return (
+
     <div className="flex items-center justify-center min-h-screen px-4">
       <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Sign up</h2>
@@ -82,6 +91,7 @@ export const Usersignup = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            required
           />
 
           <Input
@@ -90,7 +100,9 @@ export const Usersignup = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            required
           />
+
 
           <Input
             label="Password"
@@ -98,6 +110,21 @@ export const Usersignup = () => {
             name="password"
             value={formData.password}
             onChange={handleChange}
+            required
+          />
+
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+        {success && (
+          <p className="text-green-600 text-sm">User created successfully!</p>
+        )}
+
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200"
+        >
+          Sign up here
+        </button>
+      </form>
           />
 
           {error && <p className="text-red-500 text-sm text-center">{error}</p>}

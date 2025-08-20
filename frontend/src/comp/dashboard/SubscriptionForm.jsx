@@ -1,4 +1,12 @@
-import { Button, Checkbox, Option, Select, Typography } from "@material-tailwind/react";
+import {
+  Button,
+  Checkbox,
+  Input,
+  Option,
+  Select,
+  Typography,
+} from "@material-tailwind/react";
+
 import { useState } from "react";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
@@ -6,7 +14,7 @@ import useUserStore from "../../stores/useUserStore";
 import { Input } from "../user/Input";
 
 export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
-  const urlAPI = "https://project-final-xhjy.onrender.com/subscriptions";
+  const urlAPI = "http://localhost:8081/subscriptions";
 
   const [formData, setFormData] = useState(() => {
     if (initialData) {
@@ -15,7 +23,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         ...initialData,
         reminderDate: initialData.reminderDate
           ? new Date(initialData.reminderDate).toISOString().split("T")[0] // YYYY-MM-DD
-          : ""
+          : "",
       };
     }
 
@@ -27,22 +35,26 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
       trialDays: "",
       reminderDate: "",
       status: "active",
-      category: "Other"
+      category: "Other",
     };
   });
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
-  const addSubscription = useSubscriptionStore((state) => state.addSubscription);
-  const updateSubscription = useSubscriptionStore((state) => state.updateSubscription);
+  const addSubscription = useSubscriptionStore(
+    (state) => state.addSubscription
+  );
+  const updateSubscription = useSubscriptionStore(
+    (state) => state.updateSubscription
+  );
   const user = useUserStore((state) => state.user);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
@@ -81,28 +93,28 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
       ...formData,
       reminderDate: new Date(formData.reminderDate).toISOString(),
       cost: parseFloat(formData.cost),
-      trialDays: formData.freeTrial ? parseInt(formData.trialDays) || 0 : 0
+      trialDays: formData.freeTrial ? parseInt(formData.trialDays) || 0 : 0,
     };
 
     try {
       let response;
       if (initialData) {
-        // EDIT 
+        // EDIT
         response = await fetch(`${urlAPI}/${initialData._id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": user?.token || ""
+            Authorization: user?.token || "",
           },
           body: JSON.stringify(payload),
         });
       } else {
-        // ADD 
+        // ADD
         response = await fetch(`${urlAPI}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": user?.token || ""
+            Authorization: user?.token || "",
           },
           body: JSON.stringify(payload),
         });
@@ -117,6 +129,32 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         }
         setSuccess(true);
         if (onClose) setTimeout(() => onClose(), 500);
+
+        // Dispatch the custom event to refresh reminders on /email
+        window.dispatchEvent(new Event("refresh-reminders"));
+
+        if (!initialData) {
+          // After successfully adding the subscription
+          console.log("Scheduling email with to:", user.email, user);
+          await fetch("http://localhost:8081/emails", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: user?.token || "",
+            },
+            body: JSON.stringify({
+              to: user.email, // ✅ correct if user is the logged-in user object
+              subject: `Reminder: ${formData.name} subscription`,
+              text: `This is a reminder for your ${formData.name} subscription.`,
+              sendImmediately: false,
+              scheduledDateTime: new Date(formData.reminderDate).toISOString(),
+              isRecurring: false,
+            }),
+          });
+
+          // Trigger the reminders list to refresh
+          window.dispatchEvent(new Event("refresh-reminders"));
+        }
       } else {
         setError(data.message || "Failed to save subscription");
       }
@@ -130,12 +168,20 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
     <section className={compact ? "p-4" : "px-8 py-20 container mx-auto"}>
       {!compact && (
         <>
-          <Typography variant="h5" color="blue-gray">Add subscription</Typography>
-          <Typography variant="small" className="text-gray-600 font-normal mt-1">
+
+          <Typography variant="h5" color="blue-gray">
+            Add a subscription
+          </Typography>
+          <Typography
+            variant="small"
+            className="text-gray-600 font-normal mt-1"
+          >
+
             Fill in the information below
           </Typography>
         </>
       )}
+
 
       <form className="flex flex-col mt-6 space-y-3 max-w-xl mx-auto" onSubmit={handleSubmit}>
         {/* Top row: Name + Cost */}
@@ -181,15 +227,19 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
           </div>
         </div>
 
+
         {/* Buttons */}
         <div className="flex gap-2">
-          <Button type="submit" color="blue">Save Subscription</Button>
+          <Button type="submit" color="blue">
+            Save Subscription
+          </Button>
           {onClose && (
             <Button variant="text" color="red" onClick={() => onClose()}>
               Cancel
             </Button>
           )}
         </div>
+
 
         {/* Feedback messages */}
         {error && <Typography color="red" variant="small">{error}</Typography>}
@@ -199,3 +249,4 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
   );
 
 };
+

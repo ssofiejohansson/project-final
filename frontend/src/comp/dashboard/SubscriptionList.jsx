@@ -2,13 +2,17 @@ import { BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, PlusIcon, QuestionMarkCi
 import { Button, Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 
+import useUserStore from "../../stores/useUserStore";
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import { DashboardNavbar } from "./DashboardNavbar";
 import { SubscriptionModal } from "./SubscriptionModal";
 
 export const SubscriptionList = () => {
+  const user = useUserStore((state) => state.user);
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
-  const fetchSubscriptions = useSubscriptionStore((state) => state.fetchSubscriptions);
+  const fetchSubscriptions = useSubscriptionStore(
+    (state) => state.fetchSubscriptions
+  );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSub, setSelectedSub] = useState(null);
@@ -41,33 +45,24 @@ export const SubscriptionList = () => {
 
   // Delete handler
   const handleDelete = async (id) => {
-    const token = localStorage.getItem("user")
-      ? JSON.parse(localStorage.getItem("user")).token
-      : null;
-    if (!token) {
-      alert("You must be logged in to delete a subscription.");
-      return;
-    }
     try {
-      const response = await fetch(
-        `https://project-final-xhjy.onrender.com/subscriptions/${id}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: token,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.message || "Failed to delete subscription");
-      }
-      fetchSubscriptions();
-    } catch (error) {
-      console.error("Error deleting subscription:", error);
-      alert(error.message);
+      await fetch(`http://localhost:8081/subscriptions/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `${user?.token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      fetchSubscriptions(user.token); // Refresh the list after deletion
+    } catch (err) {
+      console.error("Failed to delete subscription:", err);
     }
+  };
+
+  // Add this function inside SubscriptionList
+  const handleSubscriptionAdded = async (subscription) => {
+    // Remove or comment out the email sending code here
+    // await fetch("https://project-final-xhjy.onrender.com/emails/send", { ... });
   };
 
   const TABLE_HEAD = [
@@ -87,7 +82,6 @@ export const SubscriptionList = () => {
     Learning: <BookOpenIcon className="h-8 w-8 text-blue-500" />,
     Other: <QuestionMarkCircleIcon className="h-8 w-8 text-gray-500" />,
   };
-
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-10 w-full">
@@ -143,8 +137,12 @@ export const SubscriptionList = () => {
             <tbody>
               {sortedSubs.length === 0 ? (
                 <tr>
-                  <td colSpan={TABLE_HEAD.length} className="text-center py-6 italic text-gray-500">
-                    You have no subscriptions listed under {filterCategory || "this category"}.
+                  <td
+                    colSpan={TABLE_HEAD.length}
+                    className="text-center py-6 italic text-gray-500"
+                  >
+                    You have no subscriptions listed under{" "}
+                    {filterCategory || "this category"}.
                   </td>
                 </tr>
               ) : (
@@ -159,7 +157,9 @@ export const SubscriptionList = () => {
                       {/* Category Icon */}
                       <td className={classes}>
                         <div className="flex items-center justify-center">
-                          {categoryIcons[sub.category] || <QuestionMarkCircleIcon className="h-8 w-8 text-gray-500" />}
+                          {categoryIcons[sub.category] || (
+                            <QuestionMarkCircleIcon className="h-8 w-8 text-gray-500" />
+                          )}
                         </div>
                       </td>
                       {/* Name */}
@@ -189,10 +189,7 @@ export const SubscriptionList = () => {
                       </td>
                       {/* Status */}
                       <td className={`${classes} text-right`}>
-                        <Typography
-                          variant="small"
-                          className="!font-bold"
-                        >
+                        <Typography variant="small" className="!font-bold">
                           {sub.status}
                         </Typography>
                       </td>
@@ -202,9 +199,7 @@ export const SubscriptionList = () => {
                           variant="small"
                           className="!font-normal text-gray-600"
                         >
-                          {sub.freeTrial
-                            ? `Yes (${sub.trialDays} days)`
-                            : "No"}
+                          {sub.freeTrial ? `Yes (${sub.trialDays} days)` : "No"}
                         </Typography>
                       </td>
                       {/* Reminder Date */}
@@ -255,6 +250,7 @@ export const SubscriptionList = () => {
           if (!val) setSelectedSub(null);
         }}
         subscription={selectedSub}
+        onSubscriptionAdded={handleSubscriptionAdded} // <-- Pass callback here
       />
     </section>
   );

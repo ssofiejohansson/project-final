@@ -6,7 +6,7 @@ import mongoose from 'mongoose';
 
 import emailRoutes from './routes/emailRoutes.js';
 import subscriptionRoutes from './routes/subscriptionRoutes.js';
-import updateRemindersRoutes from "./routes/updateRemindersRoutes.js"
+import updateRemindersRoutes from './routes/updateRemindersRoutes.js';
 // Import routes
 import userRoutes from './routes/userRoutes.js';
 import mongoEmailScheduler from './services/mongoEmailScheduler.js';
@@ -92,11 +92,10 @@ app.get('/admin', (req, res) => {
 });
 
 // Route connections
-app.use("/date", updateRemindersRoutes);
+app.use('/date', updateRemindersRoutes);
 app.use('/users', userRoutes);
 app.use('/subscriptions', subscriptionRoutes);
-app.use('/email', emailRoutes);
-
+app.use('/emails', emailRoutes);
 
 // Start the server
 app.listen(port, () => {
