@@ -2,7 +2,7 @@ import { Typography } from "@material-tailwind/react";
 
 export const DashboardHeader = ({ user }) => {
   return (
-    <div className="text-center">
+    <header className="text-center">
       <Typography
         variant="h1"
         color="blue-gray"
@@ -18,6 +18,6 @@ export const DashboardHeader = ({ user }) => {
       >
         View and manage your subscriptions easily.
       </Typography>
-    </div>
+    </header>
   );
 };

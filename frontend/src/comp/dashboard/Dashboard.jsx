@@ -1,15 +1,19 @@
-import { Typography } from "@material-tailwind/react";
+import { Card, CardBody, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
+import { Btn } from "../layout/Btn"
 import { SubscriptionList } from "../dashboard/SubscriptionList";
+import { DashboardHeader } from "./DashboardHeader";
 import { Linegraph } from "./Linegraph";
+import { Stats } from "./Stats";
 
 import "../../../src/index.css";
 
 export const Dashboard = () => {
+  const navigate = useNavigate();
   const user = useUserStore((state) => state.user);
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
   const fetchSubscriptions = useSubscriptionStore(
@@ -25,12 +29,23 @@ export const Dashboard = () => {
 
   if (!user || !user.token) {
     return (
-      <div className="p-6 text-center">
-        <h1 className="text-3xl font-bold">Please log in here</h1>
-        <Link to="/login" className="text-blue-600 underline">
-          Go to Login
-        </Link>
-      </div>
+      <section className="flex items-center justify-center min-h-[80vh] px-4">
+        <Card className="w-full max-w-md shadow-lg rounded-2xl">
+          <CardBody className="flex flex-col items-center text-center space-y-6">
+            <Typography variant="h4" color="blue-gray">
+              Please log in
+            </Typography>
+
+            <Typography color="gray" className="text-base">
+              You need to be logged in to access your dashboard.
+            </Typography>
+
+            <Btn onClick={() => navigate("/login")}>
+              Log in
+            </Btn>
+          </CardBody>
+        </Card>
+      </section>
     );
   }
 
@@ -39,26 +54,13 @@ export const Dashboard = () => {
   }
 
   return (
-
-    // View when logged in
-    <div className="grid mt-16 min-h-[82vh] w-full place-items-stretch p-8">
+    <section className="grid mt-16 min-h-[82vh] w-full place-items-stretch p-8">
       <div className="container mx-auto px-4 text-center">
-        <Typography
-          variant="h1"
-          color="blue-gray"
-          className="mx-auto my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
-        > Welcome {user.name}! Here are your {" "}
-          <span className="text-green-500 leading-snug ">subscriptions</span>.
-        </Typography>
-        <Typography
-          variant="lead"
-          className="mx-auto w-full !text-gray-500 lg:text-lg text-base mb-8"
-        >
-          View and manage your subscriptions easily.
-        </Typography>
+        <DashboardHeader user={user} />
+        <Stats subscriptions={subscriptions} />
         <SubscriptionList subscriptions={subscriptions} />
         <Linegraph subscriptions={subscriptions} />
       </div>
-    </div>
+    </section>
   );
 };

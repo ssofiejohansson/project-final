@@ -1,6 +1,5 @@
-import { Button } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
-import { Btn } from "../Btn";
+import { Btn } from "../layout/Btn";
 
 import useUserStore from "../../stores/useUserStore";
 
