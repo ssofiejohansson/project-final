@@ -12,7 +12,7 @@ import { SubscriptionSave } from "./SubscriptionSave";
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
-   const message = useSubscriptionStore((state) => state.message);
+  const message = useSubscriptionStore((state) => state.message);
   const fetchSubscriptions = useSubscriptionStore(
     (state) => state.fetchSubscriptions
   );
@@ -92,8 +92,8 @@ export const SubscriptionList = () => {
   };
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-10 w-full">
-      <Card className="h-full w-full">
+    <section className="max-w-8xl mx-auto px-4 py-10 w-full">
+      <Card className="h-full w-full p-2">
         <CardHeader
           floated={false}
           shadow={false}
@@ -145,17 +145,18 @@ export const SubscriptionList = () => {
                     </th>
                   ))}
 
+                  {/* 
                   <td
                     colSpan={TABLE_HEAD.length}
                     className="text-center py-6 italic text-gray-500"
                   >
                     {subscriptions.length === 0
-                    ? "You have not added any subscriptions, please click add."
-                    :  `You have no subscriptions listed under ${filterCategory || "this category"}.`
+                      ? "You have not added any subscriptions, please click add."
+                      : `You have no subscriptions listed under ${filterCategory || "this category"}.`
                     }
                     {/* You have no subscriptions listed under{" "}
                     {filterCategory || "this category"}. */}
-                  </td>
+                  {/* </td> */}
 
                 </tr>
               </thead>
@@ -285,6 +286,6 @@ export const SubscriptionList = () => {
       {/* save money - contribute */}
       <SubscriptionSave />
 
-    </section>
+    </section >
   );
 };
