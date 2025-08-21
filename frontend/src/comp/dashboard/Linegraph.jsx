@@ -136,10 +136,10 @@ export const Linegraph = ({ subscriptions = [] }) => {
   });
 
   return (
-    <section className="m-10">
+    <section className="m-4">
       <Card>
         <CardBody className="!p-2">
-          <div className="flex gap-2 flex-wrap justify-between px-4 !mt-4 ">
+          <div className="flex gap-2 flex-wrap justify-between px-2 !mt-4 ">
             <Typography variant="h3" color="blue-gray">
               ${isNaN(totalCost) ? "0.00" : totalCost.toFixed(2)}
             </Typography>
@@ -192,7 +192,8 @@ export const Linegraph = ({ subscriptions = [] }) => {
             <Typography>No data to display</Typography>
           )}
         </CardBody>
-        <CardFooter className="flex gap-6 flex-wrap items-center justify-between"></CardFooter>
+        {/* What does this CardFooter do? */}
+        {/* <CardFooter className="flex gap-6 flex-wrap items-center justify-between"></CardFooter> */}
       </Card>
     </section>
   );

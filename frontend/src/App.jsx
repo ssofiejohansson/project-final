@@ -3,8 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import EmailForm from './comp/EmailForm';
 import { Footer } from './comp/layout/Footer';
 import { Loader } from "./comp/layout/Loader";
-// This is the correct one with scheduling
-
+import { TopArrow } from "./comp/layout/TopArrow";
 import { Navbar } from './comp/layout/Navbar';
 import { About } from './pages/About';
 import { Admin } from './pages/Admin';
@@ -16,12 +15,11 @@ import useLoadingStore from "./stores/useLoadingStore";
 export const App = () => {
   const loading = useLoadingStore((state) => state.loading);
 
-
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow">
+        <main className="my-20 flex-grow">
           {loading && <Loader />}
           <Routes>
             <Route path="/" element={<Home />} />
@@ -34,6 +32,7 @@ export const App = () => {
         </main>
 
         <Footer />
+        <TopArrow />
       </div>
     </Router>
   );

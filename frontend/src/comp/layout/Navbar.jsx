@@ -132,12 +132,13 @@ export const Navbar = () => {
 
         {/* Mobile menu */}
         <Collapse open={open}>
-          <div className="mt-2 rounded-xl bg-white py-4 px-4 text-blue-gray-900 flex flex-col h-full min-h-[40vh]">
+          <div className="mt-2 rounded-xl bg-white pb-4 px-4 text-blue-gray-900 flex flex-col h-full min-h-[40vh]">
             {/* TOP section */}
             {user ? (
               <>
-                <div className="flex flex-row gap-2 py-2">
-                  <Typography className="text-sm">Hi {user.name}!</Typography>
+                <Typography className="text-lg  py-1">Hi {user.name}!</Typography>
+                <div className="flex flex-col gap-2 py-2 text-blue-600 border-t border-gray-200">
+
                   <Link to="/admin" onClick={closeMenu} className="hover:text-blue-600">Dashboard</Link>
                   <Link to="/admin" onClick={closeMenu} className="hover:text-blue-600">Stats</Link>
                   <Link to="#" onClick={closeMenu} className="hover:text-blue-600">Help</Link>
