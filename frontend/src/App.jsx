@@ -2,10 +2,10 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import EmailForm from './comp/EmailForm';
 import { Footer } from './comp/layout/Footer';
+import { Loader } from "./comp/layout/Loader";
 // This is the correct one with scheduling
 
 import { Navbar } from './comp/layout/Navbar';
-import { Loader } from "./comp/Loader";
 import { About } from './pages/About';
 import { Admin } from './pages/Admin';
 import { Home } from './pages/Home';
