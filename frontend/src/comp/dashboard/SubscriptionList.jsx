@@ -1,5 +1,21 @@
-import { BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, PlusIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
-import { Button, Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
+import {
+  BookOpenIcon,
+  CakeIcon,
+  HeartIcon,
+  PencilIcon,
+  PlusIcon,
+  QuestionMarkCircleIcon,
+  TrashIcon,
+  TvIcon,
+} from "@heroicons/react/24/outline";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  IconButton,
+  Typography,
+} from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
@@ -8,6 +24,7 @@ import { BaseURL } from "../BaseAPI";
 import { DashboardNavbar } from "./DashboardNavbar";
 import { SubscriptionModal } from "./SubscriptionModal";
 import { SubscriptionSave } from "./SubscriptionSave";
+import { getLogoPath } from "../utils/getLogoPath";
 
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
@@ -26,7 +43,6 @@ export const SubscriptionList = () => {
   const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
 
   const urlAPI = `${BaseURL}/subscriptions`;
-
 
   useEffect(() => {
     fetchSubscriptions();
@@ -103,7 +119,6 @@ export const SubscriptionList = () => {
             <Typography variant="h6" className="text-gray-600 font-normal mt-1">
               All subscriptions
             </Typography>
-
           </div>
           <div className="flex items-center w-full shrink-0 gap-4 md:w-max">
             <DashboardNavbar
@@ -129,7 +144,6 @@ export const SubscriptionList = () => {
             <table className="w-full table-auto">
               <thead>
                 <tr>
-
                   {TABLE_HEAD.map(({ head, customeStyle }) => (
                     <th
                       key={head}
@@ -157,7 +171,6 @@ export const SubscriptionList = () => {
                     {/* You have no subscriptions listed under{" "}
                     {filterCategory || "this category"}. */}
                   {/* </td> */}
-
                 </tr>
               </thead>
               <tbody>
@@ -190,19 +203,31 @@ export const SubscriptionList = () => {
                         </td>
                         {/* Name */}
                         <td className={classes}>
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="!font-semibold"
-                          >
-                            {sub.name}
-                          </Typography>
-                          <Typography
-                            variant="small"
-                            className="!font-normal text-gray-600"
-                          >
-                            {sub.category || "No category"}
-                          </Typography>
+                          <div className="flex items-center gap-2">
+                            <img
+                              src={getLogoPath(sub.name)}
+                              alt={sub.name}
+                              className="w-12 h-12 object-contain"
+                              onError={(e) => {
+                                e.target.src = "/src/assets/logos/default.png";
+                              }}
+                            />
+                            <div>
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="!font-semibold"
+                              >
+                                {sub.name}
+                              </Typography>
+                              <Typography
+                                variant="small"
+                                className="!font-normal text-gray-600"
+                              >
+                                {sub.category || "No category"}
+                              </Typography>
+                            </div>
+                          </div>
                         </td>
                         {/* Cost */}
                         <td className={`${classes} text-right`}>
@@ -225,7 +250,9 @@ export const SubscriptionList = () => {
                             variant="small"
                             className="!font-normal text-gray-600"
                           >
-                            {sub.freeTrial ? `Yes (${sub.trialDays} days)` : "No"}
+                            {sub.freeTrial
+                              ? `Yes (${sub.trialDays} days)`
+                              : "No"}
                           </Typography>
                         </td>
                         {/* Reminder Date */}
@@ -285,7 +312,6 @@ export const SubscriptionList = () => {
 
       {/* save money - contribute */}
       <SubscriptionSave />
-
-    </section >
+    </section>
   );
 };
