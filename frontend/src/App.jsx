@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import EmailForm from './comp/EmailForm';
 import { Footer } from './comp/layout/Footer';
 import { Loader } from "./comp/layout/Loader";
+import { TopArrow } from "./comp/layout/TopArrow";
 // This is the correct one with scheduling
 
 import { Navbar } from './comp/layout/Navbar';
@@ -15,6 +16,7 @@ import useLoadingStore from "./stores/useLoadingStore";
 
 export const App = () => {
   const loading = useLoadingStore((state) => state.loading);
+
 
 
   return (
@@ -34,6 +36,7 @@ export const App = () => {
         </main>
 
         <Footer />
+        <TopArrow />
       </div>
     </Router>
   );
