@@ -27,12 +27,12 @@ export const Stats = ({ subscriptions = [] }) => {
     },
     {
       title: "Total Monthly Cost",
-      value: `$${monthCost.toFixed(2)}`,
+      value: `${monthCost}`,
       icon: <CurrencyDollarIcon className="h-6 w-6 text-purple-500" />,
     },
     {
       title: "Total Yearly Cost",
-      value: `$${yearCost.toFixed(2)}`,
+      value: `${yearCost}`,
       icon: <CurrencyDollarIcon className="h-6 w-6 text-pink-500" />,
     },
   ];

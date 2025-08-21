@@ -1,12 +1,13 @@
 import { BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, PlusIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
 import { Button, Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
+
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
-import { SubscriptionModal } from "./SubscriptionModal";
-import { DashboardNavbar } from "./DashboardNavbar";
-import { SubscriptionSave } from "./SubscriptionSave";
 import useUserStore from "../../stores/useUserStore";
 import { BaseURL } from "../BaseAPI";
+import { DashboardNavbar } from "./DashboardNavbar";
+import { SubscriptionModal } from "./SubscriptionModal";
+import { SubscriptionSave } from "./SubscriptionSave";
 
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
@@ -23,7 +24,7 @@ export const SubscriptionList = () => {
 
   const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
 
-  const urlAPI = `${BaseURL}/subscriptions`; 
+  const urlAPI = `${BaseURL}/subscriptions`;
 
 
   useEffect(() => {
@@ -190,7 +191,7 @@ export const SubscriptionList = () => {
                           variant="small"
                           className="!font-normal text-gray-600"
                         >
-                          ${sub.cost}
+                          {sub.cost}
                         </Typography>
                       </td>
                       {/* Status */}
@@ -225,8 +226,8 @@ export const SubscriptionList = () => {
                             size="sm"
                             onClick={() => {
                               setSelectedSub(sub);
-                              setIsModalOpen(true);                              
-                            }}                            
+                              setIsModalOpen(true);
+                            }}
                           >
                             <PencilIcon className="h-5 w-5 text-gray-900" />
                           </IconButton>
@@ -263,7 +264,7 @@ export const SubscriptionList = () => {
       />
 
       {/* save money - contribute */}
-      <SubscriptionSave/>
+      <SubscriptionSave />
 
     </section>
   );
