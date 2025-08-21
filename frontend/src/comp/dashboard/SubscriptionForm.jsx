@@ -1,22 +1,11 @@
-import {
-  Button,
-  Checkbox,
-  Option,
-  Select,
-  Typography,
-} from "@material-tailwind/react";
-
+import { Button, Checkbox, Option, Select, Typography } from "@material-tailwind/react";
 import { useState } from "react";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
-
-import { Input } from "../user/Input";
-
-import { SubscriptionSave } from "./SubscriptionSave";
-
 import { BaseURL } from "../BaseAPI";
-
+import { Input } from "../user/Input";
+import { SubscriptionSave } from "./SubscriptionSave";
 
 export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
   const urlAPI = `${BaseURL}/subscriptions`;
@@ -148,7 +137,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         if (!initialData) {
           // After successfully adding the subscription
           console.log("Scheduling email with to:", user.email, user);
-          await fetch("https://project-final-xhjy.onrender.com/emails", {
+          await fetch(`${urlAPI}/emails`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

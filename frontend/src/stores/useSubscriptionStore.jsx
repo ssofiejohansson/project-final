@@ -1,5 +1,6 @@
 import { create } from "zustand";
 
+import { BaseURL } from "../comp/BaseAPI";
 import useLoadingStore from "./useLoadingStore";
 
 const useSubscriptionStore = create((set) => ({
@@ -33,6 +34,8 @@ const useSubscriptionStore = create((set) => ({
 
   //SOFIE ADD
   fetchSubscriptions: async () => {
+    const urlAPI = `${BaseURL}/subscriptions`
+
     const token = localStorage.getItem("user")
       ? JSON.parse(localStorage.getItem("user")).token
       : null;
@@ -45,10 +48,7 @@ const useSubscriptionStore = create((set) => ({
     useLoadingStore.getState().setLoading(true);
 
     try {
-      const response = await fetch(
-        "https://project-final-xhjy.onrender.com/subscriptions"
-        //"http://localhost:8081/subscriptions"
-        , {
+      const response = await fetch(`${urlAPI}`, {
         headers: {
           Authorization: token,
           "Content-Type": "application/json",
