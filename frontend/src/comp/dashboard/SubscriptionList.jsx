@@ -149,8 +149,12 @@ export const SubscriptionList = () => {
                     colSpan={TABLE_HEAD.length}
                     className="text-center py-6 italic text-gray-500"
                   >
-                    You have no subscriptions listed under{" "}
-                    {filterCategory || "this category"}.
+                    {subscriptions.length === 0
+                    ? "You have not added any subscriptions, please click add."
+                    :  `You have no subscriptions listed under ${filterCategory || "this category"}.`
+                    }
+                    {/* You have no subscriptions listed under{" "}
+                    {filterCategory || "this category"}. */}
                   </td>
                 </tr>
               ) : (
