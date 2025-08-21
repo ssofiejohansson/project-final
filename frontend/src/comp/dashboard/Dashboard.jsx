@@ -58,8 +58,8 @@ export const Dashboard = () => {
       <div className="container mx-auto px-4 text-center">
         <DashboardHeader user={user} />
         <Stats subscriptions={subscriptions} />
-        <SubscriptionList subscriptions={subscriptions} />
-        <Linegraph subscriptions={subscriptions} />
+        {/* <SubscriptionList subscriptions={subscriptions} /> */}
+        {/* <Linegraph subscriptions={subscriptions} /> */}
       </div>
     </section>
   );

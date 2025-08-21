@@ -19,7 +19,6 @@ export const TopArrow = () => {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  // Scroll to top smoothly
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };

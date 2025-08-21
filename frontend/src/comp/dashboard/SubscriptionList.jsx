@@ -121,134 +121,137 @@ export const SubscriptionList = () => {
             </Button>
           </div>
         </CardHeader>
-        <CardBody className="overflow-scroll !px-0 py-2">
-          <table className="w-full min-w-max table-auto">
-            <thead>
-              <tr>
-                {TABLE_HEAD.map(({ head, customeStyle }) => (
-                  <th
-                    key={head}
-                    className={`border-b border-gray-300 !p-4 pb-8 ${customeStyle}`}
-                  >
-                    <Typography
-                      color="blue-gray"
-                      variant="small"
-                      className="!font-bold"
-                    >
-                      {head}
-                    </Typography>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {sortedSubs.length === 0 ? (
+        <CardBody className="!px-0 py-2">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-max table-auto">
+              <thead>
                 <tr>
-                  <td
-                    colSpan={TABLE_HEAD.length}
-                    className="text-center py-6 italic text-gray-500"
-                  >
-                    You have no subscriptions listed under{" "}
-                    {filterCategory || "this category"}.
-                  </td>
+                  {TABLE_HEAD.map(({ head, customeStyle }) => (
+                    <th
+                      key={head}
+                      className={`border-b border-gray-300 !p-4 pb-8 ${customeStyle}`}
+                    >
+                      <Typography
+                        color="blue-gray"
+                        variant="small"
+                        className="!font-bold"
+                      >
+                        {head}
+                      </Typography>
+                    </th>
+                  ))}
                 </tr>
-              ) : (
-                sortedSubs.map((sub, index) => {
-                  const isLast = index === sortedSubs.length - 1;
-                  const classes = isLast
-                    ? "!p-4"
-                    : "!p-4 border-b border-gray-300";
+              </thead>
+              <tbody>
+                {sortedSubs.length === 0 ? (
+                  <tr>
+                    <td
+                      colSpan={TABLE_HEAD.length}
+                      className="text-center py-6 italic text-gray-500"
+                    >
+                      You have no subscriptions listed under{" "}
+                      {filterCategory || "this category"}.
+                    </td>
+                  </tr>
+                ) : (
+                  sortedSubs.map((sub, index) => {
+                    const isLast = index === sortedSubs.length - 1;
+                    const classes = isLast
+                      ? "!p-4"
+                      : "!p-4 border-b border-gray-300";
 
-                  return (
-                    <tr key={sub._id || index}>
-                      {/* Category Icon */}
-                      <td className={classes}>
-                        <div className="flex items-center justify-center">
-                          {categoryIcons[sub.category] || (
-                            <QuestionMarkCircleIcon className="h-8 w-8 text-gray-500" />
-                          )}
-                        </div>
-                      </td>
-                      {/* Name */}
-                      <td className={classes}>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="!font-semibold"
-                        >
-                          {sub.name}
-                        </Typography>
-                        <Typography
-                          variant="small"
-                          className="!font-normal text-gray-600"
-                        >
-                          {sub.category || "No category"}
-                        </Typography>
-                      </td>
-                      {/* Cost */}
-                      <td className={`${classes} text-right`}>
-                        <Typography
-                          variant="small"
-                          className="!font-normal text-gray-600"
-                        >
-                          {sub.cost}
-                        </Typography>
-                      </td>
-                      {/* Status */}
-                      <td className={`${classes} text-right`}>
-                        <Typography variant="small" className="!font-bold">
-                          {sub.status}
-                        </Typography>
-                      </td>
-                      {/* Free Trial */}
-                      <td className={`${classes} text-right`}>
-                        <Typography
-                          variant="small"
-                          className="!font-normal text-gray-600"
-                        >
-                          {sub.freeTrial ? `Yes (${sub.trialDays} days)` : "No"}
-                        </Typography>
-                      </td>
-                      {/* Reminder Date */}
-                      <td className={`${classes} text-right`}>
-                        <Typography
-                          variant="small"
-                          className="!font-normal text-gray-600"
-                        >
-                          {new Date(sub.reminderDate).toLocaleDateString()}
-                        </Typography>
-                      </td>
-                      {/* Actions */}
-                      <td className={`${classes} text-right`}>
-                        <div className="flex justify-end gap-2">
-                          <IconButton
-                            variant="text"
-                            size="sm"
-                            onClick={() => {
-                              setSelectedSub(sub);
-                              setIsModalOpen(true);
-                            }}
+                    return (
+                      <tr key={sub._id || index}>
+                        {/* Category Icon */}
+                        <td className={classes}>
+                          <div className="flex items-center justify-center">
+                            {categoryIcons[sub.category] || (
+                              <QuestionMarkCircleIcon className="h-8 w-8 text-gray-500" />
+                            )}
+                          </div>
+                        </td>
+                        {/* Name */}
+                        <td className={classes}>
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="!font-semibold"
                           >
-                            <PencilIcon className="h-5 w-5 text-gray-900" />
-                          </IconButton>
-                          <IconButton
-                            variant="text"
-                            size="sm"
-                            onClick={() => {
-                              handleDelete(sub._id);
-                              openSaveDialog(sub);
-                            }}
+                            {sub.name}
+                          </Typography>
+                          <Typography
+                            variant="small"
+                            className="!font-normal text-gray-600"
                           >
-                            <TrashIcon className="h-5 w-5 text-red-500" />
-                          </IconButton>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })
-              )}
-            </tbody>
-          </table>
+                            {sub.category || "No category"}
+                          </Typography>
+                        </td>
+                        {/* Cost */}
+                        <td className={`${classes} text-right`}>
+                          <Typography
+                            variant="small"
+                            className="!font-normal text-gray-600"
+                          >
+                            {sub.cost}
+                          </Typography>
+                        </td>
+                        {/* Status */}
+                        <td className={`${classes} text-right`}>
+                          <Typography variant="small" className="!font-bold">
+                            {sub.status}
+                          </Typography>
+                        </td>
+                        {/* Free Trial */}
+                        <td className={`${classes} text-right`}>
+                          <Typography
+                            variant="small"
+                            className="!font-normal text-gray-600"
+                          >
+                            {sub.freeTrial ? `Yes (${sub.trialDays} days)` : "No"}
+                          </Typography>
+                        </td>
+                        {/* Reminder Date */}
+                        <td className={`${classes} text-right`}>
+                          <Typography
+                            variant="small"
+                            className="!font-normal text-gray-600"
+                          >
+                            {new Date(sub.reminderDate).toLocaleDateString()}
+                          </Typography>
+                        </td>
+                        {/* Actions */}
+                        <td className={`${classes} text-right`}>
+                          <div className="flex justify-end gap-2">
+                            <IconButton
+                              variant="text"
+                              size="sm"
+                              onClick={() => {
+                                setSelectedSub(sub);
+                                setIsModalOpen(true);
+                              }}
+                            >
+                              <PencilIcon className="h-5 w-5 text-gray-900" />
+                            </IconButton>
+                            <IconButton
+                              variant="text"
+                              size="sm"
+                              onClick={() => {
+                                handleDelete(sub._id);
+                                openSaveDialog(sub);
+                              }}
+                            >
+                              <TrashIcon className="h-5 w-5 text-red-500" />
+                            </IconButton>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                )}
+              </tbody>
+            </table>
+          </div>
+
         </CardBody>
       </Card>
 

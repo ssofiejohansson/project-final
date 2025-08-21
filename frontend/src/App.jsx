@@ -4,8 +4,6 @@ import EmailForm from './comp/EmailForm';
 import { Footer } from './comp/layout/Footer';
 import { Loader } from "./comp/layout/Loader";
 import { TopArrow } from "./comp/layout/TopArrow";
-// This is the correct one with scheduling
-
 import { Navbar } from './comp/layout/Navbar';
 import { About } from './pages/About';
 import { Admin } from './pages/Admin';
@@ -16,8 +14,6 @@ import useLoadingStore from "./stores/useLoadingStore";
 
 export const App = () => {
   const loading = useLoadingStore((state) => state.loading);
-
-
 
   return (
     <Router>
