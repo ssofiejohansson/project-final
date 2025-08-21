@@ -12,6 +12,7 @@ import { SubscriptionSave } from "./SubscriptionSave";
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
+   const message = useSubscriptionStore((state) => state.message);
   const fetchSubscriptions = useSubscriptionStore(
     (state) => state.fetchSubscriptions
   );

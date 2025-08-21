@@ -60,6 +60,7 @@ const useSubscriptionStore = create((set) => ({
       const data = await response.json();
 
       set({ subscriptions: data.response || [] });
+      
     } catch (error) {
       console.error("Error fetching subscriptions:", error);
       set({ subscriptions: [] });

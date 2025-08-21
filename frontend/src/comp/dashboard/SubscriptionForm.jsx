@@ -8,7 +8,7 @@ import { Input } from "../user/Input";
 import { SubscriptionSave } from "./SubscriptionSave";
 
 export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
-  const urlAPI = `${BaseURL}/subscriptions`;
+  const urlAPI = `${BaseURL}`;
 
   const [formData, setFormData] = useState(() => {
     if (initialData) {
@@ -101,7 +101,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
       let response;
       if (initialData) {
         // EDIT
-        response = await fetch(`${urlAPI}/${initialData._id}`, {
+        response = await fetch(`${urlAPI}/subscriptions/${initialData._id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -111,7 +111,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         });
       } else {
         // ADD
-        response = await fetch(`${urlAPI}`, {
+        response = await fetch(`${urlAPI}/subscriptions`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
