@@ -54,12 +54,13 @@ export const Dashboard = () => {
   }
 
   return (
-    <section className="grid mt-16 min-h-[82vh] w-full place-items-stretch p-8">
-      <div className="container mx-auto px-4 text-center">
+    // tog bort p-8 nedan för att få bort sid scroll!
+    <section className=" min-h-[82vh] w-full place-items-stretch">
+      <div className="container mx-auto px-2 text-center">
         <DashboardHeader user={user} />
         <Stats subscriptions={subscriptions} />
-        {/* <SubscriptionList subscriptions={subscriptions} /> */}
-        {/* <Linegraph subscriptions={subscriptions} /> */}
+        <SubscriptionList subscriptions={subscriptions} />
+        <Linegraph subscriptions={subscriptions} />
       </div>
     </section>
   );

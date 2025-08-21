@@ -121,9 +121,11 @@ export const SubscriptionList = () => {
             </Button>
           </div>
         </CardHeader>
+
         <CardBody className="!px-0 py-2">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-max table-auto">
+            {/* removed min-w-max from table below to remove horizontal scroll */}
+            <table className="w-full table-auto">
               <thead>
                 <tr>
                   {TABLE_HEAD.map(({ head, customeStyle }) => (
@@ -251,7 +253,6 @@ export const SubscriptionList = () => {
               </tbody>
             </table>
           </div>
-
         </CardBody>
       </Card>
 

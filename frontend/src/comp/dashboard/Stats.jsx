@@ -31,11 +31,11 @@ export const Stats = ({ subscriptions = [] }) => {
   const donutColors = donutLabels.map((label) => categoryColors[label] || "#6b7280");
 
   const stats = [
-    {
-      title: "Total Subscriptions",
-      value: totalSubs,
-      icon: <UserGroupIcon className="h-8 w-8 text-blue-500" />,
-    },
+    // {
+    //   title: "Total Subscriptions",
+    //   value: totalSubs,
+    //   icon: <UserGroupIcon className="h-8 w-8 text-blue-500" />,
+    // },
     {
       title: "Active Subscriptions",
       value: activeSubs,
@@ -54,7 +54,7 @@ export const Stats = ({ subscriptions = [] }) => {
   ];
 
   return (
-    <section className="my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-4">
+    <section className="m-4 my-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
       {stats.map((stat) => (
         <Card
           key={stat.title}
