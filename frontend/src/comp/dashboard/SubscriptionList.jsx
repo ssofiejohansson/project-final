@@ -12,6 +12,7 @@ import { SubscriptionSave } from "./SubscriptionSave";
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
+   const message = useSubscriptionStore((state) => state.message);
   const fetchSubscriptions = useSubscriptionStore(
     (state) => state.fetchSubscriptions
   );
@@ -128,6 +129,7 @@ export const SubscriptionList = () => {
             <table className="w-full table-auto">
               <thead>
                 <tr>
+
                   {TABLE_HEAD.map(({ head, customeStyle }) => (
                     <th
                       key={head}
@@ -142,6 +144,19 @@ export const SubscriptionList = () => {
                       </Typography>
                     </th>
                   ))}
+
+                  <td
+                    colSpan={TABLE_HEAD.length}
+                    className="text-center py-6 italic text-gray-500"
+                  >
+                    {subscriptions.length === 0
+                    ? "You have not added any subscriptions, please click add."
+                    :  `You have no subscriptions listed under ${filterCategory || "this category"}.`
+                    }
+                    {/* You have no subscriptions listed under{" "}
+                    {filterCategory || "this category"}. */}
+                  </td>
+
                 </tr>
               </thead>
               <tbody>

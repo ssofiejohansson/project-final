@@ -1,5 +1,4 @@
 import express from 'express';
-import mongoose from 'mongoose';
 
 import { authenticateUser } from '../authMiddleware.js';
 import { Subscription } from '../models/Subscription.js';
@@ -12,8 +11,8 @@ router.get('/', authenticateUser, async (req, res) => {
     const subscriptions = await Subscription.find({ user: req.user._id }); // SOFIE ADD
 
     if (!subscriptions || subscriptions.length === 0) {
-      return res.status(404).json({
-        success: false,
+      return res.status(200).json({
+        success: true,
         response: null,
         message: 'No subscription was found',
       });
