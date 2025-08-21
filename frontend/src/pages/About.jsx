@@ -1,11 +1,16 @@
+import { AboutProject } from "../comp/blocks/AboutProject";
+import { AboutSub } from "../comp/blocks/AboutSub";
 import { FAQ } from "../comp/blocks/Faq";
+import { Contact } from "../comp/blocks/Contact";
 
 export const About = () => {
   return (
     <>
       {/* Header */}
-      {/* About project/about Subscribee */}
-      {/* Contact info */}
+      <AboutSub />
+
+      <Contact />
+      <AboutProject />
       <FAQ />
     </>
   );

@@ -1,4 +1,4 @@
-import { Button, Input, Typography } from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
 
 import { Btn } from "./Btn";
 

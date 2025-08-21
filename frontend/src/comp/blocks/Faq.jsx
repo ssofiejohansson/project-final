@@ -28,7 +28,7 @@ export const FAQ = () => {
   };
 
   return (
-    <section className="px-8 py-20">
+    <section id="faq" className="px-8 py-20">
       <div className="container mx-auto">
         {/* Section Header */}
         <div className="mb-14 text-center">
