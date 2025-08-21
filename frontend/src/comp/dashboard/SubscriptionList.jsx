@@ -209,7 +209,7 @@ export const SubscriptionList = () => {
                               alt={sub.name}
                               className="w-12 h-12 object-contain"
                               onError={(e) => {
-                                e.target.src = "/src/assets/logos/default.png";
+                                e.target.src = "/src/assets/logos/Dollar.png";
                               }}
                             />
                             <div>
