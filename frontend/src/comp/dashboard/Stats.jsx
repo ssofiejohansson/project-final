@@ -3,12 +3,15 @@ import { Card, Typography } from "@material-tailwind/react";
 
 export const Stats = ({ subscriptions = [] }) => {
 
+  // Monthly cost & yearly cost
+  const monthCost = subscriptions.reduce(
+    (sum, sub) => sum + Number(sub.cost || 0),
+    0
+  );
+  const yearCost = monthCost * 12;
+
   const totalSubs = subscriptions.length;
   const activeSubs = subscriptions.filter((sub) => sub.status === "active").length;
-  // const inactiveSubs = totalSubs - activeSubs;
-  const monthCost = subscriptions.reduce((sum, sub) => sum + Number(sub.cost || 0), 0);
-  // const yearCost = subscriptions.reduce((sum, sub) => sum + Number(sub.cost || 0), 0);
-
 
   // Stats list for rendering
   const stats = [
@@ -22,11 +25,6 @@ export const Stats = ({ subscriptions = [] }) => {
       value: activeSubs,
       icon: <CheckCircleIcon className="h-6 w-6 text-green-500" />,
     },
-    // {
-    //   title: "Inactive Subscriptions",
-    //   value: inactiveSubs,
-    //   icon: <XCircleIcon className="h-6 w-6 text-red-500" />,
-    // },
     {
       title: "Total Monthly Cost",
       value: `$${monthCost.toFixed(2)}`,
@@ -34,7 +32,7 @@ export const Stats = ({ subscriptions = [] }) => {
     },
     {
       title: "Total Yearly Cost",
-      value: `$${monthCost.toFixed(2)}`,
+      value: `$${yearCost.toFixed(2)}`,
       icon: <CurrencyDollarIcon className="h-6 w-6 text-pink-500" />,
     },
   ];
