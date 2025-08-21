@@ -1,18 +1,19 @@
 import { BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, PlusIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
 import { Button, Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
-import { BaseURL } from "../BaseAPI";
+import { BaseURL } from "../BaseURL";
 import { DashboardNavbar } from "./DashboardNavbar";
 import { SubscriptionModal } from "./SubscriptionModal";
 import { SubscriptionSave } from "./SubscriptionSave";
+import { Error } from "../layout/Error";
 
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
-  const subscriptions = useSubscriptionStore((state) => state.subscriptions);
-   const message = useSubscriptionStore((state) => state.message);
+  const subscriptions = useSubscriptionStore((state) => state.subscriptions);  
   const fetchSubscriptions = useSubscriptionStore(
     (state) => state.fetchSubscriptions
   );
@@ -26,6 +27,8 @@ export const SubscriptionList = () => {
   const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
 
   const urlAPI = `${BaseURL}/subscriptions`;
+
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -61,9 +64,34 @@ export const SubscriptionList = () => {
           "Content-Type": "application/json",
         },
       });
+
+       const data = await response.json();
+
+      if (!response.ok) {
+        // Pass backend status + message to store
+        useSubscriptionStore.setState({
+          status: response.status,
+          message: data.message || "Unknown error",
+        });
+        return;
+      }
+
+      // Success
+      useSubscriptionStore.setState({
+        status: response.status,
+        message: data.message,
+      });
+
       fetchSubscriptions(user.token); // Refresh the list after deletion
+
     } catch (err) {
       console.error("Failed to delete subscription:", err);
+      
+      useSubscriptionStore.setState({
+      status: 500,
+      message: err.message,
+      });
+      navigate("/error")
     }
   };
 
@@ -270,6 +298,9 @@ export const SubscriptionList = () => {
 
       {/* save money - contribute */}
       <SubscriptionSave />
+
+      {/* If error occures 
+      <Error/>*/}
 
     </section>
   );

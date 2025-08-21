@@ -3,8 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import EmailForm from './comp/EmailForm';
 import { Footer } from './comp/layout/Footer';
 import { Loader } from "./comp/layout/Loader";
-// This is the correct one with scheduling
-
+import { Error } from './comp/layout/Error';
 import { Navbar } from './comp/layout/Navbar';
 import { About } from './pages/About';
 import { Admin } from './pages/Admin';
@@ -30,6 +29,7 @@ export const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/email" element={<EmailForm />} />
+            <Route path="/error" element={<Error />} />
           </Routes>
         </main>
 
