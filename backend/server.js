@@ -7,7 +7,6 @@ import mongoose from 'mongoose';
 import emailRoutes from './routes/emailRoutes.js';
 import subscriptionRoutes from './routes/subscriptionRoutes.js';
 import updateRemindersRoutes from './routes/updateRemindersRoutes.js';
-// Import routes
 import userRoutes from './routes/userRoutes.js';
 import mongoEmailScheduler from './services/mongoEmailScheduler.js';
 
