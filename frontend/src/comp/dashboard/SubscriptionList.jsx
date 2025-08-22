@@ -90,8 +90,8 @@ export const SubscriptionList = () => {
   };
 
   const TABLE_HEAD = [
-    { head: "Category", customeStyle: "!text-left" },
     { head: "Name", customeStyle: "!text-left" },
+    { head: "Category", customeStyle: "!text-left" },
     { head: "Cost", customeStyle: "text-right" },
     { head: "Status", customeStyle: "text-right" },
     { head: "Free Trial", customeStyle: "text-right" },
@@ -183,21 +183,14 @@ export const SubscriptionList = () => {
 
                     return (
                       <tr key={sub._id || index}>
-                        {/* Category Icon */}
-                        <td className={classes}>
-                          <div className="flex items-center justify-center">
-                            {categoryIcons[sub.category] || (
-                              <QuestionMarkCircleIcon className="h-8 w-8 text-gray-500" />
-                            )}
-                          </div>
-                        </td>
+
                         {/* Name */}
                         <td className={classes}>
                           <div className="flex items-center gap-2">
                             <img
                               src={getLogoPath(sub.name)}
                               alt={sub.name}
-                              className="w-12 h-12 object-contain"
+                              className="w-8 h-8 object-contain"
                               onError={(e) => {
                                 e.target.src = "/src/assets/logos/Dollar.png";
                               }}
@@ -210,13 +203,21 @@ export const SubscriptionList = () => {
                               >
                                 {sub.name}
                               </Typography>
-                              <Typography
+                              {/* <Typography
                                 variant="small"
                                 className="!font-normal text-gray-600"
                               >
                                 {sub.category || "No category"}
-                              </Typography>
+                              </Typography> */}
                             </div>
+                          </div>
+                        </td>
+                        {/* Category Icon */}
+                        <td className={classes}>
+                          <div className="flex items-center justify-center">
+                            {categoryIcons[sub.category] || (
+                              <QuestionMarkCircleIcon className="h-8 w-8 text-gray-500" />
+                            )}
                           </div>
                         </td>
                         {/* Cost */}
@@ -225,12 +226,15 @@ export const SubscriptionList = () => {
                             variant="small"
                             className="!font-normal text-gray-600"
                           >
-                            {sub.cost}
+                            {sub.cost}kr
                           </Typography>
                         </td>
                         {/* Status */}
                         <td className={`${classes} text-right`}>
-                          <Typography variant="small" className="!font-bold">
+                          <Typography
+                            variant="small"
+                            className={sub.status === "active" ? "!font-bold" : "!font-normal"}
+                          >
                             {sub.status}
                           </Typography>
                         </td>
