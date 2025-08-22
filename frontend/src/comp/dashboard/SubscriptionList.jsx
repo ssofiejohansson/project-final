@@ -140,7 +140,7 @@ export const SubscriptionList = () => {
 
         <CardBody className="!px-0 py-2">
           <div className="overflow-x-auto">
-            {/* removed min-w-max from table below to remove horizontal scroll */}
+            {/* removed min-w-max from table below to remove horizontal scroll */}w
             <table className="w-full table-auto">
               <thead>
                 <tr>
@@ -159,18 +159,6 @@ export const SubscriptionList = () => {
                     </th>
                   ))}
 
-                  {/* 
-                  <td
-                    colSpan={TABLE_HEAD.length}
-                    className="text-center py-6 italic text-gray-500"
-                  >
-                    {subscriptions.length === 0
-                      ? "You have not added any subscriptions, please click add."
-                      : `You have no subscriptions listed under ${filterCategory || "this category"}.`
-                    }
-                    {/* You have no subscriptions listed under{" "}
-                    {filterCategory || "this category"}. */}
-                  {/* </td> */}
                 </tr>
               </thead>
               <tbody>
@@ -180,8 +168,10 @@ export const SubscriptionList = () => {
                       colSpan={TABLE_HEAD.length}
                       className="text-center py-6 italic text-gray-500"
                     >
-                      You have no subscriptions listed under{" "}
-                      {filterCategory || "this category"}.
+                      {subscriptions.length === 0
+                        ? "You have not added any subscriptions, please click add."
+                        : `You have no subscriptions listed under ${filterCategory || "this category"}.`
+                      }
                     </td>
                   </tr>
                 ) : (
