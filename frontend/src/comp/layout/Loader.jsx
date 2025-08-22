@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import Logo from "../../assets/subscribee-logo.png";
+
+import Logo from "../../../public/subscribee-logo.png";
 
 export const Loader = () => {
   const trailCount = 4; // how many faded bees follow the main bee
