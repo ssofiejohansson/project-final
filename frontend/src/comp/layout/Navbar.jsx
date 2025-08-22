@@ -3,7 +3,7 @@ import { Collapse, IconButton, Menu, MenuHandler, MenuItem, MenuList, Typography
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import Logo from "../../assets/subscribee-logo.png";
+import Logo from "../../../public/subscribee-logo.png";
 import { Logout } from "../../comp/user/LogoutBtn";
 import useUserStore from "../../stores/useUserStore";
 import { Btn } from "./Btn";

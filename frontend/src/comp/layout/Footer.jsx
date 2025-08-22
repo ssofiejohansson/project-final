@@ -1,10 +1,10 @@
 import { Typography } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 
-import Logo from "../../assets/subscribee-logo-right.png";
+import Logo from "../../../public/subscribee-logo-right.png";
 import useUserStore from "../../stores/useUserStore";
-import { Btn } from "./Btn";
 import { Logout } from "../user/LogoutBtn";
+import { Btn } from "./Btn";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();

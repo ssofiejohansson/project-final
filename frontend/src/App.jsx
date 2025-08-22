@@ -30,7 +30,7 @@ export const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/email" element={<EmailForm />} />
             <Route path="/error" element={<Error />} />
-            <Route path="/*" element={<Error />}/>
+            <Route path="/*" element={<Error />} />
           </Routes>
         </main>
 
