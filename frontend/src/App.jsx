@@ -3,10 +3,8 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import EmailForm from './comp/EmailForm';
 import { Footer } from './comp/layout/Footer';
 import { Loader } from "./comp/layout/Loader";
-
-import { TopArrow } from "./comp/layout/TopArrow";
-
 import { Navbar } from './comp/layout/Navbar';
+import { TopArrow } from "./comp/layout/TopArrow";
 import { About } from './pages/About';
 import { Admin } from './pages/Admin';
 import { Error } from "./pages/Error";
