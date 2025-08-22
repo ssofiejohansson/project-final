@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 import { BaseURL } from "../comp/BaseURL";
+import { SubscriptionModal } from "../comp/dashboard/SubscriptionModal";
 import useLoadingStore from "./useLoadingStore";
 
 const useSubscriptionStore = create((set) => ({
@@ -14,11 +15,19 @@ const useSubscriptionStore = create((set) => ({
   //state
   isSaveOpen: false,
   selectedSubSave: null,
-
   //actions
-  openSaveDialog: (subscriptionSave) => set({ isSaveOpen: true, selectedSubSave: subscriptionSave }),
+  openSaveDialog: (subscription) => set({ isSaveOpen: true, selectedSubSave: subscription }),
   closeSaveDialog: () => set({ isSaveOpen: false, selectedSubSave: null }),
-  //SubscriptionSave//
+  ////
+
+  //SubscriptionModal
+  //state
+  isModalOpen: false,
+  selectedSub: null,
+  //actions
+  openModalDialog: (subscription) => set({ isModalOpen: true, selectedSub: subscription || null}),
+  closeModalDialog: () => set({ isModalOpen: false, selectedSub: null }),
+  ////
   
   addSubscription: (subscription) => set((state) => ({
     subscriptions: [subscription, ...state.subscriptions],

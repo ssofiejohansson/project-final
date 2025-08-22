@@ -11,7 +11,7 @@ export const SubscriptionSave = () => {
  
   return (
     <> 
-      <div className="fixed inset-0 flex items-center justify-center z-50">
+      {/* <div className="fixed inset-0 flex items-center justify-center z-50">
         <div
           className="absolute inset-0 bg-black/30"
           onClick={closeSaveDialog}
@@ -34,10 +34,10 @@ export const SubscriptionSave = () => {
             <div className="absolute -bottom-4 right-10 w-0 h-0">🐝</div>
             </div>          
           </div>
-    </div>
+    </div> */}
 
 
-      {/* <Dialog
+      <Dialog
         open={isSaveOpen}
         handler={closeSaveDialog}
         animate={{
@@ -59,7 +59,7 @@ export const SubscriptionSave = () => {
             <span>Close</span>
           </Button>         
         </DialogFooter>
-      </Dialog> */}
+      </Dialog> 
     </>
   );
 }
