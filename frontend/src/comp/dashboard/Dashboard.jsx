@@ -51,7 +51,7 @@ export const Dashboard = () => {
   }
 
   if (loading) {
-    return <div className="p-6 text-center"> <Loader /> </div>;
+    return <Loader />;
   }
 
   return (
