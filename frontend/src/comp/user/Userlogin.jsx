@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import useLoadingStore from "../../stores/useLoadingStore"
 import useUserStore from '../../stores/useUserStore';
-import { Input } from "./Input";
-import { Btn } from "../layout/Btn";
 import { BaseURL } from "../BaseURL";
-import { Error } from "../layout/Error";
+import { Btn } from "../layout/Btn";
+import { Input } from "./Input";
 
 export const Userlogin = () => {
   const setLoading = useLoadingStore((state) => state.setLoading);
@@ -66,9 +65,7 @@ export const Userlogin = () => {
 
     } catch (error) {
       console.error("Signin error:", error);
-      setError("Can´t login, please try again!");
-      // return(<Error/>)
-      navigate("/error")
+      setError("Can´t login, please try again!");      
     } finally {
       setLoading(false);
     }

@@ -9,7 +9,6 @@ import { BaseURL } from "../BaseURL";
 import { DashboardNavbar } from "./DashboardNavbar";
 import { SubscriptionModal } from "./SubscriptionModal";
 import { SubscriptionSave } from "./SubscriptionSave";
-import { Error } from "../layout/Error";
 
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
@@ -57,6 +56,7 @@ export const SubscriptionList = () => {
   // Delete handler
   const handleDelete = async (id) => {
     try {
+      
       await fetch(`${urlAPI}/${id}`, {
         method: "DELETE",
         headers: {
@@ -65,33 +65,10 @@ export const SubscriptionList = () => {
         },
       });
 
-       const data = await response.json();
-
-      if (!response.ok) {
-        // Pass backend status + message to store
-        useSubscriptionStore.setState({
-          status: response.status,
-          message: data.message || "Unknown error",
-        });
-        return;
-      }
-
-      // Success
-      useSubscriptionStore.setState({
-        status: response.status,
-        message: data.message,
-      });
-
-      fetchSubscriptions(user.token); // Refresh the list after deletion
-
+      await fetchSubscriptions(user.token); // Refresh the list after deletion
+    
     } catch (err) {
       console.error("Failed to delete subscription:", err);
-      
-      useSubscriptionStore.setState({
-      status: 500,
-      message: err.message,
-      });
-      navigate("/error")
     }
   };
 
