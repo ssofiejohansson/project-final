@@ -1,4 +1,5 @@
 import { Input, Textarea, Typography } from "@material-tailwind/react";
+
 import { Btn } from "../layout/Btn";
 
 export const Contact = () => {
@@ -16,7 +17,7 @@ export const Contact = () => {
           variant="paragraph"
           className="mb-2 text-center"
         >
-          For questions please email subscribee.reminder@gmail.com or contact using our contact form below.
+          For questions please email or contact using our contact form below.
         </Typography>
         <form className="flex flex-col gap-4">
           <div>
