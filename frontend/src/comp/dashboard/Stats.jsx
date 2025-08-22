@@ -62,7 +62,7 @@ export const Stats = ({ subscriptions = [] }) => {
         >
           {stat.icon}
           <div className="text-center break-words">
-            <Typography variant="medium" color="gray" className="font-normal">
+            <Typography variant="small" color="gray" className="font-normal">
               {stat.title}
             </Typography>
             <Typography color="blue-gray" className="text-2xl sm:text-3xl font-extrabold">

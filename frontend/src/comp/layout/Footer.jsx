@@ -1,7 +1,7 @@
 import { Typography } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 
-import Logo from "../../assets/SubscriBee-logo.png";
+import Logo from "../../assets/subscribee-logo-right.png";
 import useUserStore from "../../stores/useUserStore";
 import { Btn } from "./Btn";
 import { Logout } from "../user/LogoutBtn";
@@ -12,8 +12,8 @@ export const Footer = () => {
   const user = useUserStore((state) => state.user);
 
   return (
-    <footer className="px-8 py-12 bg-gray-50 border-t border-gray-200">
-      <div className="container mx-auto flex flex-col items-center">
+    <footer className="pt-12 bg-gray-50 border-t border-gray-200">
+      <div className="px-8 container mx-auto flex flex-col items-center">
         <div className="flex flex-wrap items-center justify-center gap-6 pb-4">
           <ul>
             <li>
@@ -83,7 +83,7 @@ export const Footer = () => {
           )}
         </div>
 
-        <img src={Logo} alt="SubscriBee Logo" className="h-20 w-20 object-contain" />
+
         <Typography
           color="blue-gray"
           className="mt-4 !text-sm !font-normal text-gray-500"
@@ -92,7 +92,7 @@ export const Footer = () => {
         </Typography>
 
       </div>
-
+      <img src={Logo} alt="SubscriBee Logo" className="h-40 w-40 object-contain " />
     </footer>
   );
 };

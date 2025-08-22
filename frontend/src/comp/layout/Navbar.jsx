@@ -3,7 +3,7 @@ import { Collapse, IconButton, Menu, MenuHandler, MenuItem, MenuList, Typography
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import Logo from "../../assets/SubscriBee-logo.png";
+import Logo from "../../assets/subscribee-logo.png";
 import { Logout } from "../../comp/user/LogoutBtn";
 import useUserStore from "../../stores/useUserStore";
 import { Btn } from "./Btn";
@@ -67,7 +67,7 @@ export const Navbar = () => {
             color="blue-gray"
             className="cursor-pointer text-lg font-bold flex items-center gap-2"
           >
-            <img src={Logo} alt="SubscriBee Logo" className="h-8 w-8 object-contain" />
+            <img src={Logo} alt="SubscriBee Logo" className="h-9 w-9 object-contain" />
             SubscriBee
           </Typography>
 
@@ -132,6 +132,7 @@ export const Navbar = () => {
 
         {/* Mobile menu */}
         <Collapse open={open}>
+
           <div className="mt-2 rounded-xl bg-white pb-4 px-4 text-blue-gray-900 flex flex-col h-full min-h-[40vh]">
             {/* TOP section */}
             {user ? (

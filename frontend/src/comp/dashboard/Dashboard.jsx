@@ -9,6 +9,7 @@ import { SubscriptionList } from "../dashboard/SubscriptionList";
 import { DashboardHeader } from "./DashboardHeader";
 import { Linegraph } from "./Linegraph";
 import { Stats } from "./Stats";
+import { Loader } from "../layout/Loader";
 
 import "../../../src/index.css";
 
@@ -50,7 +51,7 @@ export const Dashboard = () => {
   }
 
   if (loading) {
-    return <div className="p-6 text-center">Loading subscriptions...</div>;
+    return <Loader />;
   }
 
   return (
