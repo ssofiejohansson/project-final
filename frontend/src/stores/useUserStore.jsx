@@ -3,6 +3,8 @@ import { create } from 'zustand';
 const storedUser = JSON.parse(localStorage.getItem("user") || "null");
 
 const useUserStore = create((set) => ({
+  message: [],
+  status: [],
   //user: null,
   user: storedUser && storedUser.token ? storedUser : null,
 

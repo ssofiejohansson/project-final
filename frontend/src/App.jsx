@@ -3,10 +3,13 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import EmailForm from './comp/EmailForm';
 import { Footer } from './comp/layout/Footer';
 import { Loader } from "./comp/layout/Loader";
+
 import { TopArrow } from "./comp/layout/TopArrow";
+
 import { Navbar } from './comp/layout/Navbar';
 import { About } from './pages/About';
 import { Admin } from './pages/Admin';
+import { Error } from "./pages/Error";
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
@@ -28,6 +31,8 @@ export const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/email" element={<EmailForm />} />
+            <Route path="/error" element={<Error />} />
+            <Route path="/*" element={<Error />}/>
           </Routes>
         </main>
 

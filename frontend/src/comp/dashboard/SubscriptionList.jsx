@@ -1,35 +1,20 @@
-import {
-  BookOpenIcon,
-  CakeIcon,
-  HeartIcon,
-  PencilIcon,
-  PlusIcon,
-  QuestionMarkCircleIcon,
-  TrashIcon,
-  TvIcon,
-} from "@heroicons/react/24/outline";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  IconButton,
-  Typography,
-} from "@material-tailwind/react";
+import { BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, PlusIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
+import { Button, Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
-import { BaseURL } from "../BaseAPI";
+import { BaseURL } from "../BaseURL";
+import { getLogoPath } from "../utils/getLogoPath";
 import { DashboardNavbar } from "./DashboardNavbar";
 import { SubscriptionModal } from "./SubscriptionModal";
 import { SubscriptionSave } from "./SubscriptionSave";
-import { getLogoPath } from "../utils/getLogoPath";
 
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
-  const message = useSubscriptionStore((state) => state.message);
+  
   const fetchSubscriptions = useSubscriptionStore(
     (state) => state.fetchSubscriptions
   );
@@ -43,6 +28,9 @@ export const SubscriptionList = () => {
   const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
 
   const urlAPI = `${BaseURL}/subscriptions`;
+
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     fetchSubscriptions();
@@ -70,6 +58,7 @@ export const SubscriptionList = () => {
   // Delete handler
   const handleDelete = async (id) => {
     try {
+      
       await fetch(`${urlAPI}/${id}`, {
         method: "DELETE",
         headers: {
@@ -77,7 +66,9 @@ export const SubscriptionList = () => {
           "Content-Type": "application/json",
         },
       });
-      fetchSubscriptions(user.token); // Refresh the list after deletion
+
+      await fetchSubscriptions(user.token); // Refresh the list after deletion
+    
     } catch (err) {
       console.error("Failed to delete subscription:", err);
     }

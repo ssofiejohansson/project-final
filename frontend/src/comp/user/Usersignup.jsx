@@ -5,7 +5,7 @@ import useLoadingStore from "../../stores/useLoadingStore";
 import useUserStore from "../../stores/useUserStore";
 import { Input } from "./Input";
 import { Btn } from "../layout/Btn";
-import { BaseURL } from "../BaseAPI";
+import { BaseURL } from "../BaseURL";
 
 export const Usersignup = () => {
   const [formData, setFormData] = useState({
