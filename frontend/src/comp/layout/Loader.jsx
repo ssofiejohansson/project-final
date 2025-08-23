@@ -1,6 +1,5 @@
+import Logo from "/subscribee-logo.png";
 import { motion } from "framer-motion";
-
-import Logo from "../../../public/subscribee-logo.png";
 
 export const Loader = () => {
   const trailCount = 4; // how many faded bees follow the main bee
@@ -39,7 +38,7 @@ export const Loader = () => {
         }}
         transition={{
           repeat: Infinity,
-          duration: 1.5, // slightly faster main bee
+          duration: 3, // slightly faster main bee
           ease: "easeInOut",
         }}
       />

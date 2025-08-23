@@ -2,10 +2,12 @@ import { Typography } from "@material-tailwind/react";
 
 import { Btn } from "../comp/layout/Btn";
 import { Header } from "../comp/layout/Header";
+import { Popup } from "../comp/layout/Popup";
 
 export const Home = () => {
   return (
     <>
+
       <Header />
       {/* How it works guide */}
       {/* Read about us text */}
@@ -46,6 +48,8 @@ export const Home = () => {
           />
         </div>
       </div>
+
+      <Popup />
     </>
   );
 }
