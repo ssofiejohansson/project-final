@@ -1,6 +1,7 @@
 import cron from 'node-cron';
 import { ScheduledEmail } from '../models/ScheduledEmail.js';
 import sendEmail from '../sendEmail.js'; // Import your email function
+import _ from 'lodash'; // Add this at the top (install lodash if needed)
 
 class MongoEmailScheduler {
   constructor() {
@@ -36,11 +37,72 @@ class MongoEmailScheduler {
         console.log(`📧 Found ${dueEmails.length} due emails to process`);
       }
 
-      for (const email of dueEmails) {
-        await this.processEmail(email);
+      // Group by recipient and scheduledDateTime (rounded to minute)
+      const grouped = _.groupBy(
+        dueEmails,
+        (email) =>
+          `${email.to}|${new Date(email.nextRun).toISOString().slice(0, 16)}`
+      );
+
+      for (const groupKey in grouped) {
+        const group = grouped[groupKey];
+        await this.processEmailGroup(group);
       }
     } catch (error) {
       console.error('❌ Error processing due emails:', error);
+    }
+  }
+
+  // New method to process a group of emails
+  async processEmailGroup(emailGroup) {
+    if (emailGroup.length === 0) return;
+    const recipient = emailGroup[0].to;
+
+    // Combine subjects/texts
+    const combinedSubject = `Your ${emailGroup.length} scheduled updates`;
+    const combinedText = emailGroup
+      .map(
+        (email, idx) =>
+          `#${idx + 1}\nSubject: ${email.subject}\n${email.text}\n`
+      )
+      .join('\n---\n');
+
+    try {
+      console.log(`📤 Sending combined email to ${recipient}...`);
+      await sendEmail({
+        to: recipient,
+        subject: combinedSubject,
+        text: combinedText,
+      });
+      console.log(`✅ Combined email sent to ${recipient}`);
+
+      // Update all emails in the group
+      for (const email of emailGroup) {
+        if (email.isRecurring) {
+          const nextRun = new Date(email.nextRun);
+          nextRun.setMonth(nextRun.getMonth() + 1);
+          email.nextRun = nextRun;
+          email.lastSent = new Date();
+        } else {
+          email.status = 'sent';
+        }
+        await email.save();
+      }
+    } catch (error) {
+      for (const email of emailGroup) {
+        email.attempts += 1;
+        email.errorMessage = error.message;
+        if (email.attempts < 3) {
+          email.nextRun = new Date(Date.now() + 5 * 60 * 1000);
+        } else {
+          email.status = 'failed';
+        }
+        await email.save();
+      }
+      console.error(
+        `Failed to send combined email to ${recipient}:`,
+        error.message
+      );
     }
   }
 
