@@ -1,5 +1,21 @@
-import { BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, PlusIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
-import { Button, Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
+import {
+  BookOpenIcon,
+  CakeIcon,
+  HeartIcon,
+  PencilIcon,
+  PlusIcon,
+  QuestionMarkCircleIcon,
+  TrashIcon,
+  TvIcon,
+} from "@heroicons/react/24/outline";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  IconButton,
+  Typography,
+} from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -14,7 +30,7 @@ import { SubscriptionSave } from "./SubscriptionSave";
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
-  
+
   const fetchSubscriptions = useSubscriptionStore(
     (state) => state.fetchSubscriptions
   );
@@ -30,7 +46,6 @@ export const SubscriptionList = () => {
   const urlAPI = `${BaseURL}/subscriptions`;
 
   const navigate = useNavigate();
-
 
   useEffect(() => {
     fetchSubscriptions();
@@ -58,7 +73,6 @@ export const SubscriptionList = () => {
   // Delete handler
   const handleDelete = async (id) => {
     try {
-      
       await fetch(`${urlAPI}/${id}`, {
         method: "DELETE",
         headers: {
@@ -68,7 +82,6 @@ export const SubscriptionList = () => {
       });
 
       await fetchSubscriptions(user.token); // Refresh the list after deletion
-    
     } catch (err) {
       console.error("Failed to delete subscription:", err);
     }
@@ -149,7 +162,6 @@ export const SubscriptionList = () => {
                       </Typography>
                     </th>
                   ))}
-
                 </tr>
               </thead>
               <tbody>
@@ -161,8 +173,9 @@ export const SubscriptionList = () => {
                     >
                       {subscriptions.length === 0
                         ? "You have not added any subscriptions, please click add."
-                        : `You have no subscriptions listed under ${filterCategory || "this category"}.`
-                      }
+                        : `You have no subscriptions listed under ${
+                            filterCategory || "this category"
+                          }.`}
                     </td>
                   </tr>
                 ) : (
@@ -174,7 +187,6 @@ export const SubscriptionList = () => {
 
                     return (
                       <tr key={sub._id || index}>
-
                         {/* Name */}
                         <td className={classes}>
                           <div className="flex items-center gap-2">
@@ -183,7 +195,8 @@ export const SubscriptionList = () => {
                               alt={sub.name}
                               className="w-8 h-8 object-contain"
                               onError={(e) => {
-                                e.target.src = "/src/assets/logos/Dollar.png";
+                                e.target.onerror = null; // Prevent infinite loop
+                                e.target.src = "/logos/placeholder.png";
                               }}
                             />
                             <div>
@@ -224,7 +237,11 @@ export const SubscriptionList = () => {
                         <td className={`${classes} text-right`}>
                           <Typography
                             variant="small"
-                            className={sub.status === "active" ? "!font-bold" : "!font-normal"}
+                            className={
+                              sub.status === "active"
+                                ? "!font-bold"
+                                : "!font-normal"
+                            }
                           >
                             {sub.status}
                           </Typography>
