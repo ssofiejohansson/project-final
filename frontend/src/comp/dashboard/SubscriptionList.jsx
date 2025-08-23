@@ -196,7 +196,7 @@ export const SubscriptionList = () => {
                               className="w-8 h-8 object-contain"
                               onError={(e) => {
                                 e.target.onerror = null; // Prevent infinite loop
-                                e.target.src = "/logos/placeholder.png";
+                                e.target.src = "/logos/placeholder.webp";
                               }}
                             />
                             <div>
