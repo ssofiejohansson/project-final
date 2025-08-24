@@ -28,20 +28,13 @@ const subscriptionSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: [
-      "active",
-      "inactive"],
-    default: "active",
+    enum: ['active', 'inactive'],
+    default: 'active',
     required: true,
   },
   category: {
     type: String,
-    enum: [
-      "Entertainment",
-      "Food",
-      "Health",
-      "Learning",
-      "Other"],
+    enum: ['Entertainment', 'Food', 'Health', 'Learning', 'Other'],
     required: true,
   },
   createdAt: {
@@ -50,8 +43,12 @@ const subscriptionSchema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true
+    ref: 'User',
+    required: true,
+  },
+  sendEmail: {
+    type: Boolean,
+    default: true,
   },
 });
 

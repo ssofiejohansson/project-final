@@ -40,6 +40,8 @@ export const SubscriptionList = () => {
 
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
+  const [sendEmail, setSendEmail] = useState(true); // <-- Add this line
+  const [emailPrefs, setEmailPrefs] = useState({}); // { [subId]: true/false }
 
   const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
 
@@ -100,6 +102,7 @@ export const SubscriptionList = () => {
     { head: "Status", customeStyle: "text-right" },
     { head: "Free Trial", customeStyle: "text-right" },
     { head: "Reminder Date", customeStyle: "text-right" },
+    { head: "Email", customeStyle: "text-right" },
     { head: "Actions", customeStyle: "text-right" },
   ];
 
@@ -230,7 +233,7 @@ export const SubscriptionList = () => {
                             variant="small"
                             className="!font-normal text-gray-600"
                           >
-                            {sub.cost}kr
+                            {sub.cost} kr
                           </Typography>
                         </td>
                         {/* Status */}
@@ -265,6 +268,26 @@ export const SubscriptionList = () => {
                           >
                             {new Date(sub.reminderDate).toLocaleDateString()}
                           </Typography>
+                        </td>
+                        <td className={`${classes} text-right`}>
+                          <input
+                            type="checkbox"
+                            checked={sub.sendEmail ?? true}
+                            onChange={async () => {
+                              // Optimistically update UI (optional)
+                              // await API call to update backend
+                              await fetch(`${urlAPI}/${sub._id}`, {
+                                method: "PUT",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                  sendEmail: !sub.sendEmail,
+                                }),
+                              });
+                              // Refetch or update local state as needed
+                              fetchSubscriptions();
+                            }}
+                            className="mr-2"
+                          />
                         </td>
                         {/* Actions */}
                         <td className={`${classes} text-right`}>
