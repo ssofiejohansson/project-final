@@ -1,30 +1,15 @@
-import {
-  BookOpenIcon,
-  CakeIcon,
-  HeartIcon,
-  PencilIcon,
-  PlusIcon,
-  QuestionMarkCircleIcon,
-  TrashIcon,
-  TvIcon,
-} from "@heroicons/react/24/outline";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  IconButton,
-  Typography,
-} from "@material-tailwind/react";
+import { BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, PlusIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
+import { Button, Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 
+import { Popup } from "../../comp/layout/Popup"
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
 import { BaseURL } from "../BaseAPI";
+import { getLogoPath } from "../utils/getLogoPath";
 import { DashboardNavbar } from "./DashboardNavbar";
 import { SubscriptionModal } from "./SubscriptionModal";
 import { SubscriptionSave } from "./SubscriptionSave";
-import { getLogoPath } from "../utils/getLogoPath";
 
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
@@ -33,6 +18,7 @@ export const SubscriptionList = () => {
   const fetchSubscriptions = useSubscriptionStore(
     (state) => state.fetchSubscriptions
   );
+  const { isSaveOpen } = useSubscriptionStore();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSub, setSelectedSub] = useState(null);
@@ -305,7 +291,11 @@ export const SubscriptionList = () => {
       />
 
       {/* save money - contribute */}
-      <SubscriptionSave />
+      {isSaveOpen && (
+        <Popup>
+          <SubscriptionSave />
+        </Popup>
+      )}
     </section>
   );
 };

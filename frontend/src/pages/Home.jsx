@@ -49,7 +49,12 @@ export const Home = () => {
         </div>
       </div>
 
-      <Popup />
+      <Popup delay={1000}>
+        <p className="font-semibold">Hi there! I'm Beeatrice.</p>
+        <p className="text-gray-600 text-sm mt-1">
+          Welcome to Subscribee 👋 Manage your subscriptions with ease!
+        </p>
+      </Popup>
     </>
   );
 }
