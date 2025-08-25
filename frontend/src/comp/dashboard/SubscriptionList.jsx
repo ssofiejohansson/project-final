@@ -290,8 +290,8 @@ export const SubscriptionList = () => {
         // onSubscriptionAdded={handleSubscriptionAdded} // <-- Pass callback here
       />
 
-      {/* save money - contribute */}
-      <SubscriptionSave />
+      {/* save money - contribute 
+      <SubscriptionSave />*/}
     </section>
   );
 };

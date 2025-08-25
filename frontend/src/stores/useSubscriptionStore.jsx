@@ -1,7 +1,6 @@
 import { create } from "zustand";
 
 import { BaseURL } from "../comp/BaseURL";
-import { SubscriptionModal } from "../comp/dashboard/SubscriptionModal";
 import useLoadingStore from "./useLoadingStore";
 
 const useSubscriptionStore = create((set) => ({

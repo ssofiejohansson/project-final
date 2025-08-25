@@ -5,7 +5,7 @@ import { SubscriptionForm } from "./SubscriptionForm";
 
 // Modal component to display the subscription form in a popup
 //export const SubscriptionModal = ({ open, setOpen, subscription }) => {
-export const SubscriptionModal = ({ subscription }) => {
+export const SubscriptionModal = () => {
 
 const isOpen = useSubscriptionStore((s) => s.isModalOpen);
 const selectedSub = useSubscriptionStore((s) => s.selectedSub);
