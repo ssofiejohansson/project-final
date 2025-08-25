@@ -8,7 +8,7 @@ const router = express.Router();
 router.patch("/update-freetrial", async (req, res) => {
   const authHeader = req.headers.authorization;
 
-  if(authHeader !== process.env.API_Secret) {
+  if(authHeader !== process.env.API_SECRET) {
     return res.status(403).json({
       error: "Unauthorized",
       success: false
