@@ -1,5 +1,5 @@
-import { BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, PlusIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
-import { Button, Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
+import { BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
+import { Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -120,16 +120,8 @@ export const SubscriptionList = () => {
               setFilterCategory={setFilterCategory}
               sortKey={sortKey}
               setSortKey={setSortKey}
+              onAdd={() => openModalDialog(null)}
             />
-            <Button
-              variant="outlined"
-              className="flex items-center gap-2"
-              // 
-              onClick={() => openModalDialog(null)}
-            >
-              <PlusIcon strokeWidth={3} className="h-4 w-4" />
-              Add
-            </Button>
           </div>
         </CardHeader>
 
@@ -164,9 +156,8 @@ export const SubscriptionList = () => {
                     >
                       {subscriptions.length === 0
                         ? "You have not added any subscriptions, please click add."
-                        : `You have no subscriptions listed under ${
-                            filterCategory || "this category"
-                          }.`}
+                        : `You have no subscriptions listed under ${filterCategory || "this category"
+                        }.`}
                     </td>
                   </tr>
                 ) : (
@@ -283,7 +274,7 @@ export const SubscriptionList = () => {
                             <IconButton
                               variant="text"
                               size="sm"
-                              onClick={() => openModalDialog(sub)}                              
+                              onClick={() => openModalDialog(sub)}
                             >
                               <PencilIcon className="h-5 w-5 text-gray-900" />
                             </IconButton>
@@ -311,13 +302,13 @@ export const SubscriptionList = () => {
 
       {/* Modal */}
       <SubscriptionModal
-        // open={isModalOpen}
-        // setOpen={(val) => {
-        //   setIsModalOpen(val);
-        //   if (!val) setSelectedSub(null);
-        // }}
-        // subscription={selectedSub}
-        // onSubscriptionAdded={handleSubscriptionAdded} // <-- Pass callback here
+      // open={isModalOpen}
+      // setOpen={(val) => {
+      //   setIsModalOpen(val);
+      //   if (!val) setSelectedSub(null);
+      // }}
+      // subscription={selectedSub}
+      // onSubscriptionAdded={handleSubscriptionAdded} // <-- Pass callback here
       />
 
 

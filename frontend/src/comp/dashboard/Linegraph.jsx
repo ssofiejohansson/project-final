@@ -141,7 +141,7 @@ export const Linegraph = ({ subscriptions = [] }) => {
         <CardBody className="!p-2">
           <div className="flex gap-2 flex-wrap justify-between px-2 !mt-4 ">
             <Typography variant="h3" color="blue-gray">
-              ${isNaN(totalCost) ? "0.00" : totalCost.toFixed(2)}
+              {isNaN(totalCost) ? "0.00" : totalCost.toFixed(2)} SEK
             </Typography>
             <div className="flex items-center gap-6">
               {years.map((year, idx) => (
