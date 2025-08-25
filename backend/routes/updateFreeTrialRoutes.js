@@ -23,9 +23,22 @@ router.patch("/update-freetrial", async (req, res) => {
       return res.json({ message: 'No subscriptions needed updating.' });
     }
 
-   const result = await Subscription.updateMany(
-    { trialDays: { $gt: 0 } },  // only decrement where > 0
-    { $inc: { trialDays: -1 } } // ✅ decrement
+  //  const result = await Subscription.updateMany(
+  //   { trialDays: { $gt: 0 } },  // only decrement where > 0
+  //   { $inc: { trialDays: -1 } } // ✅ decrement
+
+  const result = await Subscription.updateMany(
+  { trialDays: { $gte: 0 } }, // include those at 0 so we can flip freeTrial
+  [
+    {
+      $set: {
+        // decrement trialDays but never below 0
+        trialDays: { $max: [{ $subtract: ["$trialDays", 1] }, 0] },
+        // freeTrial is true if trialDays (before decrement) > 1
+        freeTrial: { $gt: ["$trialDays", 1] }
+      }
+    }
+  ]
 );
 
     const updatedSubs = await Subscription.find({ _id: { $in: subsToUpdate.map(s => s._id) }})
