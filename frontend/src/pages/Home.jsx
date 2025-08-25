@@ -2,10 +2,12 @@ import { Typography } from "@material-tailwind/react";
 
 import { Btn } from "../comp/layout/Btn";
 import { Header } from "../comp/layout/Header";
+import { Popup } from "../comp/layout/Popup";
 
 export const Home = () => {
   return (
     <>
+
       <Header />
       {/* How it works guide */}
       {/* Read about us text */}
@@ -46,6 +48,13 @@ export const Home = () => {
           />
         </div>
       </div>
+
+      <Popup delay={1000}>
+        <p className="font-semibold">Hi there! I'm Beeatrice.</p>
+        <p className="text-gray-600 text-sm mt-1">
+          Welcome to Subscribee 👋 Manage your subscriptions with ease!
+        </p>
+      </Popup>
     </>
   );
 }
