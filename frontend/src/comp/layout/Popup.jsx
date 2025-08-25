@@ -1,5 +1,5 @@
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
-import { IconButton } from "@material-tailwind/react";
+import { IconButton, Typography } from "@material-tailwind/react";
 import Logo from "/subscribee-logo.png";
 import { useEffect, useState } from "react";
 
@@ -24,46 +24,47 @@ export const Popup = ({ children, delay }) => {
         animate-[slideUpFade_0.6s_ease-out]
       "
     >
-      {/* Content in bubble */}
+      {/* Bubble content */}
       {!collapsed && (
-        <div className="relative text-blue-900 px-4 py-3 rounded-2xl shadow-lg mb-3 max-w-xs bg-white">
-          {/* Collapse button */}
+        <div className="relative bg-white shadow-lg rounded-2xl p-8 max-w-xs mb-3 border-l-4 border-green-500">
+          {/* Collapse button as down arrow */}
           <IconButton
             variant="text"
-            className="!absolute top-1 right-1 text-gray-500"
+            className="!absolute top-1 right-1 text-gray-400 hover:text-gray-600 transition"
             onClick={() => setCollapsed(true)}
           >
-            <ChevronDownIcon className="h-4 w-4" />
+            <ChevronDownIcon className="h-6 w-6" />
           </IconButton>
 
-          {/* Different messages depending on content */}
-          {children}
-
+          {/* Content */}
+          <Typography variant="small" className="text-gray-700 leading-relaxed">
+            {children}
+          </Typography>
         </div>
       )}
 
-      {/* Logo (click to toggle back open) */}
+      {/* Logo toggle */}
       <div
         onClick={() => setCollapsed(false)}
-        className="cursor-pointer"
+        className="transition-transform mt-1"
       >
         <img
           src={Logo}
-          alt="Subscribee Logo"
+          alt="SubscriBee Logo"
           width={60}
           height={60}
-          className=""
+          className="rounded-full"
         />
       </div>
 
-      {/* Show expand arrow if collapsed */}
+      {/* Expand arrow if collapsed */}
       {collapsed && (
         <IconButton
           variant="text"
-          className="mt-2 text-gray-500"
+          className="mt-2 text-gray-400 hover:text-gray-600 transition"
           onClick={() => setCollapsed(false)}
         >
-          <ChevronUpIcon className="h-4 w-4" />
+          <ChevronUpIcon className="h-6 w-6" />
         </IconButton>
       )}
     </div>

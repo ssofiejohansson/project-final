@@ -21,8 +21,8 @@ export const SubscriptionList = () => {
   );
   const { isSaveOpen } = useSubscriptionStore();
 
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [selectedSub, setSelectedSub] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedSub, setSelectedSub] = useState(null);
 
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
@@ -302,15 +302,14 @@ export const SubscriptionList = () => {
 
       {/* Modal */}
       <SubscriptionModal
-      // open={isModalOpen}
-      // setOpen={(val) => {
-      //   setIsModalOpen(val);
-      //   if (!val) setSelectedSub(null);
-      // }}
-      // subscription={selectedSub}
-      // onSubscriptionAdded={handleSubscriptionAdded} // <-- Pass callback here
+        open={isModalOpen}
+        setOpen={(val) => {
+          setIsModalOpen(val);
+          if (!val) setSelectedSub(null);
+        }}
+        subscription={selectedSub}
+        onSubscriptionAdded={handleSubscriptionAdded}
       />
-
 
       {/* save money - contribute */}
       {isSaveOpen && (
