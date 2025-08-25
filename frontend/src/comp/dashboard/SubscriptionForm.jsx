@@ -270,7 +270,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         {/* Buttons */}
         <div className="flex gap-4">
           <Button type="submit" color="blue">
-            Save Subscription
+            Save
           </Button>
           {onClose && (
             <Button variant="text" color="red" onClick={() => onClose()}>

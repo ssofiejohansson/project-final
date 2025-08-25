@@ -17,11 +17,11 @@ export const SubscriptionModal = ({ setOpen, onSubscriptionAdded, sendEmail, set
         {selectedSub ? "Edit subscription" : "Add subscription"}
       </DialogHeader>
 
-      <DialogBody className="overflow-visible">
+      <DialogBody className="max-h-[70vh] overflow-y-auto">
         <SubscriptionForm
           compact
           initialData={selectedSub || undefined}
-          onClose={closeModalDialog}   // close after successful submit
+          onClose={closeModalDialog}
           onSubscriptionAdded={onSubscriptionAdded}
           sendEmail={sendEmail}
           setSendEmail={setSendEmail}
@@ -38,11 +38,11 @@ export const SubscriptionModal = ({ setOpen, onSubscriptionAdded, sendEmail, set
         </div>
       </DialogBody>
 
-      <DialogFooter>
+      {/* <DialogFooter>
         <Button variant="text" color="red" onClick={closeModalDialog}>
           Close
         </Button>
-      </DialogFooter>
+      </DialogFooter> */}
     </Dialog>
   );
 };
