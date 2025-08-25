@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 
-import { Subscription } from "../models/Subscription";
+import  {Subscription}  from "../models/Subscription.js";
 
 const router = express.Router();
 
