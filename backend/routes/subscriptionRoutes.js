@@ -63,7 +63,7 @@ router.get('/:id', authenticateUser, async (req, res) => {
 });
 
 //To create/save a subscription to the db (endpoint is /subscriptions)
-router.post('/', async (req, res) => {
+router.post('/', authenticateUser, async (req, res) => {
   const {
     name,
     category,
