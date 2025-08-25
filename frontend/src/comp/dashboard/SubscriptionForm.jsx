@@ -5,7 +5,8 @@ import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
 import { BaseURL } from "../BaseAPI";
 import { Input } from "../user/Input";
-import { SubscriptionSave } from "./SubscriptionSave";
+
+// import { SubscriptionSave } from "./SubscriptionSave";
 
 export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
   const urlAPI = `${BaseURL}`;
@@ -59,7 +60,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
       [name]: value,
     });
 
-    
+
   };
 
   const handleSubmit = async (e) => {
@@ -87,7 +88,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
     }
 
     if (formData.status === "inactive") {
-    openSaveDialog(formData);
+      openSaveDialog(formData);
     }
 
     const payload = {
@@ -299,8 +300,8 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
       </form>
 
       {/* save money - contribute */}
-        <SubscriptionSave/>
-    
+      {/* <SubscriptionSave/> */}
+
     </section>
   );
 };
