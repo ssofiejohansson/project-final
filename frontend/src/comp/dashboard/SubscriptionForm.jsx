@@ -163,31 +163,24 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
     } catch (err) {
       setError("Failed to save subscription. Please try again.");
     }
-
   };
 
   return (
-    <section className={compact ? "p-4" : "px-8 py-20 container mx-auto"}>
-      {!compact && (
-        <>
-          <Typography variant="h5" color="blue-gray">
-            Add a subscription
-          </Typography>
-          <Typography
-            variant="small"
-            className="text-gray-600 font-normal mt-1"
-          >
-            Fill in the information below
-          </Typography>
-        </>
-      )}
+    <section className={compact ? "p-4" : "px-4 sm:px-8 py-10 sm:py-20 container mx-auto"}>
+
+      <Typography
+        variant="small"
+        className="text-gray-600 font-normal text-sm sm:text-base"
+      >
+        Please fill in the information below.
+      </Typography>
 
       <form
         className="flex flex-col mt-6 space-y-3 max-w-xl mx-auto"
         onSubmit={handleSubmit}
       >
         {/* Top row: Name + Cost */}
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-col sm:flex-row">
           <div className="flex-1">
             <Input
               label="Name"
@@ -197,9 +190,9 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
               required
             />
           </div>
-          <div className="flex-3">
+          <div className="flex-2">
             <Input
-              label="Cost"
+              label="Cost (SEK)"
               name="cost"
               type="number"
               min={0}
@@ -218,9 +211,9 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
             checked={formData.freeTrial}
             onChange={handleChange}
           />
-          <span>Free Trial?</span>
+          <span>Free trial?</span>
           {formData.freeTrial && (
-            <div className="flex-2">
+            <div className="flex-1">
               <Input
                 label="Trial Days"
                 name="trialDays"
@@ -244,7 +237,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         />
 
         {/* Status + Category in one row */}
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-col sm:flex-row">
           <div className="flex-1">
             <Select
               label="Status"
@@ -275,7 +268,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         </div>
 
         {/* Buttons */}
-        <div className="flex gap-2">
+        <div className="flex gap-4">
           <Button type="submit" color="blue">
             Save Subscription
           </Button>
@@ -294,14 +287,10 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         )}
         {success && (
           <Typography color="green" variant="small">
-            Subscription added successfully!
+            Your subscription was added!
           </Typography>
         )}
       </form>
-
-      {/* save money - contribute 
-        <SubscriptionSave/>*/}
-
     </section>
   );
 };
