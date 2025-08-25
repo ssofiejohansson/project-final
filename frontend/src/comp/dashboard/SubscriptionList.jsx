@@ -35,8 +35,8 @@ export const SubscriptionList = () => {
     (state) => state.fetchSubscriptions
   );
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedSub, setSelectedSub] = useState(null);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [selectedSub, setSelectedSub] = useState(null);
 
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
@@ -44,6 +44,7 @@ export const SubscriptionList = () => {
   const [emailPrefs, setEmailPrefs] = useState({}); // { [subId]: true/false }
 
   const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
+  const openModalDialog = useSubscriptionStore((s) => s.openModalDialog);
 
   const urlAPI = `${BaseURL}/subscriptions`;
 
@@ -137,7 +138,8 @@ export const SubscriptionList = () => {
             <Button
               variant="outlined"
               className="flex items-center gap-2"
-              onClick={() => setIsModalOpen(true)}
+              // 
+              onClick={() => openModalDialog(null)}
             >
               <PlusIcon strokeWidth={3} className="h-4 w-4" />
               Add
@@ -295,10 +297,7 @@ export const SubscriptionList = () => {
                             <IconButton
                               variant="text"
                               size="sm"
-                              onClick={() => {
-                                setSelectedSub(sub);
-                                setIsModalOpen(true);
-                              }}
+                              onClick={() => openModalDialog(sub)}                              
                             >
                               <PencilIcon className="h-5 w-5 text-gray-900" />
                             </IconButton>
@@ -326,17 +325,17 @@ export const SubscriptionList = () => {
 
       {/* Modal */}
       <SubscriptionModal
-        open={isModalOpen}
-        setOpen={(val) => {
-          setIsModalOpen(val);
-          if (!val) setSelectedSub(null);
-        }}
-        subscription={selectedSub}
-        onSubscriptionAdded={handleSubscriptionAdded} // <-- Pass callback here
+        // open={isModalOpen}
+        // setOpen={(val) => {
+        //   setIsModalOpen(val);
+        //   if (!val) setSelectedSub(null);
+        // }}
+        // subscription={selectedSub}
+        // onSubscriptionAdded={handleSubscriptionAdded} // <-- Pass callback here
       />
 
-      {/* save money - contribute */}
-      <SubscriptionSave />
+      {/* save money - contribute 
+      <SubscriptionSave />*/}
     </section>
   );
 };

@@ -2,23 +2,23 @@ import contributeMessages from "../data/savemoneycontribute.json"
 import useSubscriptionStore from "../stores/useSubscriptionStore"
 
 export const CalculateCost = () => {
-  const selectedSub = useSubscriptionStore((s) => s.selectedSubSave);
+  const selectedSubSave = useSubscriptionStore((s) => s.selectedSubSave);
 
-   if (!selectedSub) {
+   if (!selectedSubSave) {
     return <div>No subscription selected</div>;
   }
 
-  const cost = Number(selectedSub.cost ?? 0);
+  const cost = Number(selectedSubSave.cost ?? 0);
 
   const messageSelect = contributeMessages.find(
     (message) => 
-      selectedSub.cost * 12 >= message.spanStart &&
-      selectedSub.cost * 12 <= message.spanEnd
+      selectedSubSave.cost * 12 >= message.spanStart &&
+      selectedSubSave.cost * 12 <= message.spanEnd
       )
 
   return (
     <div>
-      You just inactivated or deleted your subscription {selectedSub.name} and just saved {cost * 12} 🎉
+      You just inactivated or deleted your subscription {selectedSubSave.name} and just saved {cost * 12} 🎉
       <div>
         {messageSelect ? messageSelect.message : "Buy your friends balloons 🎈🎈🎈"} 
       </div>         

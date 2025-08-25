@@ -298,8 +298,8 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         )}
       </form>
 
-      {/* save money - contribute */}
-        <SubscriptionSave/>
+      {/* save money - contribute 
+        <SubscriptionSave/>*/}
     
     </section>
   );

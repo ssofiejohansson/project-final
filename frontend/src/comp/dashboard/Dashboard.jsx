@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
-import { Btn } from "../layout/Btn"
 import { SubscriptionList } from "../dashboard/SubscriptionList";
+import { Btn } from "../layout/Btn"
+import { Loader } from "../layout/Loader";
 import { DashboardHeader } from "./DashboardHeader";
 import { Linegraph } from "./Linegraph";
 import { Stats } from "./Stats";
-import { Loader } from "../layout/Loader";
+import { SubscriptionSave } from "./SubscriptionSave";
 
 import "../../../src/index.css";
 
@@ -63,6 +64,9 @@ export const Dashboard = () => {
         <SubscriptionList subscriptions={subscriptions} />
         <Linegraph subscriptions={subscriptions} />
       </div>
+
+    <SubscriptionSave />
+
     </section>
   );
 };

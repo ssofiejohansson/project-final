@@ -1,34 +1,40 @@
-import {
-  Button,
-  Dialog,
-  DialogBody,
-  DialogFooter,
-  DialogHeader,
-} from "@material-tailwind/react";
+import { Button, Dialog, DialogBody, DialogFooter, DialogHeader } from "@material-tailwind/react";
 
+import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import { SubscriptionForm } from "./SubscriptionForm";
 
 // Modal component to display the subscription form in a popup
-export const SubscriptionModal = ({
-  open,
-  setOpen,
-  subscription,
-  onSubscriptionAdded,
-  sendEmail,
-  setSendEmail,
-}) => {
-  const handler = (value) => setOpen(value);
+export const SubscriptionModal = ({ setOpen, onSubscriptionAdded, sendEmail, setSendEmail, }) => {
+
+
+const isOpen = useSubscriptionStore((s) => s.isModalOpen);
+const selectedSub = useSubscriptionStore((s) => s.selectedSub);
+const closeModalDialog = useSubscriptionStore((s) => s.closeModalDialog); 
+
+const handler = (value) => setOpen(value);
 
   return (
-    <Dialog open={open} handler={handler} size="xl" className="max-w-3xl">
+    //OLD
+    // <Dialog open={open} handler={handler} size="xl" className="max-w-3xl">
+    //   <DialogHeader>{subscription ? "Edit subscription" : "Add subscription"}</DialogHeader>
+    //   <DialogBody className="overflow-visible">
+    //     <SubscriptionForm onClose={() => setOpen(false)} compact initialData={subscription} />
+    //   </DialogBody>
+    //   <DialogFooter>
+    //     <Button variant="text" color="red" onClick={() => setOpen(false)}>Close</Button>
+    //   </DialogFooter>
+    // </Dialog>
+    
+    <Dialog open={isOpen} handler={handler} size="xl" className="max-w-3xl">
       <DialogHeader>
-        {subscription ? "Edit subscription" : "Add subscription"}
+        {selectedSub ? "Edit subscription" : "Add subscription"}
       </DialogHeader>
+
       <DialogBody className="overflow-visible">
         <SubscriptionForm
-          onClose={() => setOpen(false)}
           compact
-          initialData={subscription}
+          initialData={selectedSub || undefined}
+          onClose={closeModalDialog}   // close after successful submit
           onSubscriptionAdded={onSubscriptionAdded}
           sendEmail={sendEmail}
           setSendEmail={setSendEmail}
@@ -44,8 +50,9 @@ export const SubscriptionModal = ({
           <label htmlFor="sendEmail">Send email when adding subscription</label>
         </div>
       </DialogBody>
+
       <DialogFooter>
-        <Button variant="text" color="red" onClick={() => setOpen(false)}>
+        <Button variant="text" color="red" onClick={closeModalDialog}>
           Close
         </Button>
       </DialogFooter>
