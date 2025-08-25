@@ -54,6 +54,29 @@ export const SubscriptionList = () => {
     fetchSubscriptions();
   }, []);
 
+  //Payments next 7 days, inc today
+  const upcommingDates = () => {
+    const today = new Date();
+    let datesCollection = [] 
+
+    for (let i = 0; i < 7; i++) {
+    const nextDate = new Date(today);
+    nextDate.setDate(today.getDate() + i);
+
+    // format YYYY-MM-DD
+    const formatted = nextDate.toISOString().split("T")[0];
+
+    datesCollection.push(formatted);
+  }
+    console.log("Today:",today)
+    console.log("Upcomming dates:", datesCollection)
+
+    return datesCollection; 
+  
+  }
+
+ 
+
   // Filtering
   const filteredSubs = filterCategory
     ? subscriptions.filter((sub) => sub.category === filterCategory)
@@ -169,7 +192,7 @@ export const SubscriptionList = () => {
                   ))}
                 </tr>
               </thead>
-              <tbody>
+              <tbody>                
                 {sortedSubs.length === 0 ? (
                   <tr>
                     <td
@@ -190,8 +213,17 @@ export const SubscriptionList = () => {
                       ? "!p-4"
                       : "!p-4 border-b border-gray-300";
 
+                     // Check if reminder date is in the next 7 days
+                    const isUpcoming = upcommingDates().includes(
+                      new Date(sub.reminderDate).toISOString().split("T")[0]
+                    );  
+
                     return (
-                      <tr key={sub._id || index}>
+                      <tr key={sub._id || index}
+                      //highlight row
+                      className={isUpcoming ? "bg-red-100" : ""}
+                      >
+                                           
                         {/* Name */}
                         <td className={classes}>
                           <div className="flex items-center gap-2">
