@@ -1,10 +1,12 @@
 import { create } from "zustand";
 
-import { BaseURL } from "../comp/BaseAPI";
+import { BaseURL } from "../comp/BaseURL";
 import useLoadingStore from "./useLoadingStore";
 
 const useSubscriptionStore = create((set) => ({
   subscriptions: [],
+  message: null,
+  status: null,
 
   setSubscriptions: (subscriptions) => set({ subscriptions }),
 
@@ -12,11 +14,19 @@ const useSubscriptionStore = create((set) => ({
   //state
   isSaveOpen: false,
   selectedSubSave: null,
-
   //actions
-  openSaveDialog: (subscriptionSave) => set({ isSaveOpen: true, selectedSubSave: subscriptionSave }),
+  openSaveDialog: (subscription) => set({ isSaveOpen: true, selectedSubSave: subscription }),
   closeSaveDialog: () => set({ isSaveOpen: false, selectedSubSave: null }),
-  //SubscriptionSave//
+  ////
+
+  //SubscriptionModal
+  //state
+  isModalOpen: false,
+  selectedSub: null,
+  //actions
+  openModalDialog: (subscription) => set({ isModalOpen: true, selectedSub: subscription || null}),
+  closeModalDialog: () => set({ isModalOpen: false, selectedSub: null }),
+  ////
   
   addSubscription: (subscription) => set((state) => ({
     subscriptions: [subscription, ...state.subscriptions],
@@ -55,11 +65,25 @@ const useSubscriptionStore = create((set) => ({
         },
       });
 
-      if (!response.ok) throw new Error("Failed to fetch subscriptions");
+      //if (!response.ok) throw new Error("Failed to fetch subscriptions");
+      if (!response.ok) {
+        // Try to parse backend message
+        let errorMessage = "Failed to fetch subscriptions";
+        try {
+          const errorData = await response.json();
+          if (errorData?.message) errorMessage = errorData.message;
+        } catch (_) {
+          // ignore JSON parse errors
+        }
+
+        set({ subscriptions: [], message: errorMessage, status: response.status });
+        return;
+      }
 
       const data = await response.json();
 
       set({ subscriptions: data.response || [] });
+      
       
     } catch (error) {
       console.error("Error fetching subscriptions:", error);

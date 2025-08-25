@@ -9,6 +9,7 @@ import subscriptionRoutes from './routes/subscriptionRoutes.js';
 import updateRemindersRoutes from './routes/updateRemindersRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import mongoEmailScheduler from './services/mongoEmailScheduler.js';
+import updateFreeTrialRoutes from "./routes/updateFreeTrialRoutes.js"
 
 dotenv.config();
 
@@ -92,6 +93,7 @@ app.get('/admin', (req, res) => {
 
 // Route connections
 app.use('/date', updateRemindersRoutes);
+app.use('/freetrial', updateFreeTrialRoutes);
 app.use('/users', userRoutes);
 app.use('/subscriptions', subscriptionRoutes);
 app.use('/emails', emailRoutes);

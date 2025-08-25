@@ -66,13 +66,13 @@ router.get('/:id', authenticateUser, async (req, res) => {
 router.post('/', authenticateUser, async (req, res) => {
   const {
     name,
+    category,
     cost,
+    status,
     freeTrial,
     trialDays,
     reminderDate,
-    status,
-    category,
-    createdAt,
+    sendEmail,
   } = req.body;
 
   if (!req.user) {
@@ -82,17 +82,19 @@ router.post('/', authenticateUser, async (req, res) => {
   }
 
   try {
-    const newSubscription = await new Subscription({
+    const subscription = new Subscription({
       name,
+      category,
       cost,
+      status,
       freeTrial,
       trialDays,
       reminderDate,
-      status,
-      category,
-      createdAt,
+      sendEmail, // <-- add this
       user: req.user._id,
-    }).save();
+    });
+
+    const newSubscription = await subscription.save();
 
     res.status(201).json({
       success: true,

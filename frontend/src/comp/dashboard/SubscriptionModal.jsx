@@ -1,20 +1,60 @@
 import { Button, Dialog, DialogBody, DialogFooter, DialogHeader } from "@material-tailwind/react";
 
+import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import { SubscriptionForm } from "./SubscriptionForm";
 
 // Modal component to display the subscription form in a popup
-export const SubscriptionModal = ({ open, setOpen, subscription }) => {
+export const SubscriptionModal = ({ setOpen, onSubscriptionAdded, sendEmail, setSendEmail, }) => {
 
-  const handler = (value) => setOpen(value);
+
+const isOpen = useSubscriptionStore((s) => s.isModalOpen);
+const selectedSub = useSubscriptionStore((s) => s.selectedSub);
+const closeModalDialog = useSubscriptionStore((s) => s.closeModalDialog); 
+
+const handler = (value) => setOpen(value);
 
   return (
-    <Dialog open={open} handler={handler} size="xl" className="max-w-3xl">
-      <DialogHeader>{subscription ? "Edit subscription" : "Add subscription"}</DialogHeader>
+    //OLD
+    // <Dialog open={open} handler={handler} size="xl" className="max-w-3xl">
+    //   <DialogHeader>{subscription ? "Edit subscription" : "Add subscription"}</DialogHeader>
+    //   <DialogBody className="overflow-visible">
+    //     <SubscriptionForm onClose={() => setOpen(false)} compact initialData={subscription} />
+    //   </DialogBody>
+    //   <DialogFooter>
+    //     <Button variant="text" color="red" onClick={() => setOpen(false)}>Close</Button>
+    //   </DialogFooter>
+    // </Dialog>
+    
+    <Dialog open={isOpen} handler={handler} size="xl" className="max-w-3xl">
+      <DialogHeader>
+        {selectedSub ? "Edit subscription" : "Add subscription"}
+      </DialogHeader>
+
       <DialogBody className="overflow-visible">
-        <SubscriptionForm onClose={() => setOpen(false)} compact initialData={subscription} />
+        <SubscriptionForm
+          compact
+          initialData={selectedSub || undefined}
+          onClose={closeModalDialog}   // close after successful submit
+          onSubscriptionAdded={onSubscriptionAdded}
+          sendEmail={sendEmail}
+          setSendEmail={setSendEmail}
+        />
+        <div className="flex items-center mt-4">
+          <input
+            type="checkbox"
+            id="sendEmail"
+            checked={sendEmail}
+            onChange={() => setSendEmail((prev) => !prev)}
+            className="mr-2 border border-black"
+          />
+          <label htmlFor="sendEmail">Send email when adding subscription</label>
+        </div>
       </DialogBody>
+
       <DialogFooter>
-        <Button variant="text" color="red" onClick={() => setOpen(false)}>Close</Button>
+        <Button variant="text" color="red" onClick={closeModalDialog}>
+          Close
+        </Button>
       </DialogFooter>
     </Dialog>
   );

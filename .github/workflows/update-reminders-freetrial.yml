@@ -1,0 +1,24 @@
+name: Update Reminder Dates - Free Trial
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # every midnight UTC
+  workflow_dispatch: # allows you to run it manually from GitHub UI
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call backend to update reminder dates
+        run: |
+          curl -v --http1.1 -X PATCH "https://project-final-xhjy.onrender.com/date/update-reminders" \
+            -H "Authorization: ${{ secrets.API_SECRET }}" \
+            -H "Content-Type: application/json"
+
+      - name: Call backend to decrement freeTrial
+        run: |
+          curl -v --http1.1 -X PATCH "https://project-final-xhjy.onrender.com/freetrial/update-freetrial" \
+            -H "Authorization: ${{ secrets.API_SECRET }}" \
+            -H "Content-Type: application/json"    
+
+

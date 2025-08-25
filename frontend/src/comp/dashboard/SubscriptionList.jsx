@@ -1,11 +1,12 @@
 import { BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, PlusIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
 import { Button, Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Popup } from "../../comp/layout/Popup"
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
-import { BaseURL } from "../BaseAPI";
+import { BaseURL } from "../BaseURL";
 import { getLogoPath } from "../utils/getLogoPath";
 import { DashboardNavbar } from "./DashboardNavbar";
 import { SubscriptionModal } from "./SubscriptionModal";
@@ -14,21 +15,26 @@ import { SubscriptionSave } from "./SubscriptionSave";
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
-  const message = useSubscriptionStore((state) => state.message);
+
   const fetchSubscriptions = useSubscriptionStore(
     (state) => state.fetchSubscriptions
   );
   const { isSaveOpen } = useSubscriptionStore();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedSub, setSelectedSub] = useState(null);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [selectedSub, setSelectedSub] = useState(null);
 
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
+  const [sendEmail, setSendEmail] = useState(true); // <-- Add this line
+  const [emailPrefs, setEmailPrefs] = useState({}); // { [subId]: true/false }
 
   const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
+  const openModalDialog = useSubscriptionStore((s) => s.openModalDialog);
 
   const urlAPI = `${BaseURL}/subscriptions`;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchSubscriptions();
@@ -63,7 +69,8 @@ export const SubscriptionList = () => {
           "Content-Type": "application/json",
         },
       });
-      fetchSubscriptions(user.token); // Refresh the list after deletion
+
+      await fetchSubscriptions(user.token); // Refresh the list after deletion
     } catch (err) {
       console.error("Failed to delete subscription:", err);
     }
@@ -82,6 +89,7 @@ export const SubscriptionList = () => {
     { head: "Status", customeStyle: "text-right" },
     { head: "Free Trial", customeStyle: "text-right" },
     { head: "Reminder Date", customeStyle: "text-right" },
+    { head: "Email", customeStyle: "text-right" },
     { head: "Actions", customeStyle: "text-right" },
   ];
 
@@ -116,7 +124,8 @@ export const SubscriptionList = () => {
             <Button
               variant="outlined"
               className="flex items-center gap-2"
-              onClick={() => setIsModalOpen(true)}
+              // 
+              onClick={() => openModalDialog(null)}
             >
               <PlusIcon strokeWidth={3} className="h-4 w-4" />
               Add
@@ -144,7 +153,6 @@ export const SubscriptionList = () => {
                       </Typography>
                     </th>
                   ))}
-
                 </tr>
               </thead>
               <tbody>
@@ -156,8 +164,9 @@ export const SubscriptionList = () => {
                     >
                       {subscriptions.length === 0
                         ? "You have not added any subscriptions, please click add."
-                        : `You have no subscriptions listed under ${filterCategory || "this category"}.`
-                      }
+                        : `You have no subscriptions listed under ${
+                            filterCategory || "this category"
+                          }.`}
                     </td>
                   </tr>
                 ) : (
@@ -169,7 +178,6 @@ export const SubscriptionList = () => {
 
                     return (
                       <tr key={sub._id || index}>
-
                         {/* Name */}
                         <td className={classes}>
                           <div className="flex items-center gap-2">
@@ -178,7 +186,8 @@ export const SubscriptionList = () => {
                               alt={sub.name}
                               className="w-8 h-8 object-contain"
                               onError={(e) => {
-                                e.target.src = "/src/assets/logos/Dollar.png";
+                                e.target.onerror = null; // Prevent infinite loop
+                                e.target.src = "/logos/placeholder.webp";
                               }}
                             />
                             <div>
@@ -212,14 +221,18 @@ export const SubscriptionList = () => {
                             variant="small"
                             className="!font-normal text-gray-600"
                           >
-                            {sub.cost}kr
+                            {sub.cost} kr
                           </Typography>
                         </td>
                         {/* Status */}
                         <td className={`${classes} text-right`}>
                           <Typography
                             variant="small"
-                            className={sub.status === "active" ? "!font-bold" : "!font-normal"}
+                            className={
+                              sub.status === "active"
+                                ? "!font-bold"
+                                : "!font-normal"
+                            }
                           >
                             {sub.status}
                           </Typography>
@@ -244,16 +257,33 @@ export const SubscriptionList = () => {
                             {new Date(sub.reminderDate).toLocaleDateString()}
                           </Typography>
                         </td>
+                        <td className={`${classes} text-right`}>
+                          <input
+                            type="checkbox"
+                            checked={sub.sendEmail ?? true}
+                            onChange={async () => {
+                              // Optimistically update UI (optional)
+                              // await API call to update backend
+                              await fetch(`${urlAPI}/${sub._id}`, {
+                                method: "PUT",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                  sendEmail: !sub.sendEmail,
+                                }),
+                              });
+                              // Refetch or update local state as needed
+                              fetchSubscriptions();
+                            }}
+                            className="mr-2"
+                          />
+                        </td>
                         {/* Actions */}
                         <td className={`${classes} text-right`}>
                           <div className="flex justify-end gap-2">
                             <IconButton
                               variant="text"
                               size="sm"
-                              onClick={() => {
-                                setSelectedSub(sub);
-                                setIsModalOpen(true);
-                              }}
+                              onClick={() => openModalDialog(sub)}                              
                             >
                               <PencilIcon className="h-5 w-5 text-gray-900" />
                             </IconButton>
@@ -281,14 +311,15 @@ export const SubscriptionList = () => {
 
       {/* Modal */}
       <SubscriptionModal
-        open={isModalOpen}
-        setOpen={(val) => {
-          setIsModalOpen(val);
-          if (!val) setSelectedSub(null);
-        }}
-        subscription={selectedSub}
-        onSubscriptionAdded={handleSubscriptionAdded} // <-- Pass callback here
+        // open={isModalOpen}
+        // setOpen={(val) => {
+        //   setIsModalOpen(val);
+        //   if (!val) setSelectedSub(null);
+        // }}
+        // subscription={selectedSub}
+        // onSubscriptionAdded={handleSubscriptionAdded} // <-- Pass callback here
       />
+
 
       {/* save money - contribute */}
       {isSaveOpen && (
@@ -296,6 +327,7 @@ export const SubscriptionList = () => {
           <SubscriptionSave />
         </Popup>
       )}
+
     </section>
   );
 };
