@@ -26,7 +26,7 @@ export const SubscriptionModal = ({ setOpen, onSubscriptionAdded, sendEmail, set
           sendEmail={sendEmail}
           setSendEmail={setSendEmail}
         />
-        <div className="flex items-center mt-4">
+        <div className="flex items-center p-4">
           <input
             type="checkbox"
             id="sendEmail"

@@ -176,7 +176,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
       </Typography>
 
       <form
-        className="flex flex-col mt-6 space-y-3 max-w-xl mx-auto"
+        className="flex flex-col mt-4 space-y-3 max-w-xl mx-auto"
         onSubmit={handleSubmit}
       >
         {/* Top row: Name + Cost */}
