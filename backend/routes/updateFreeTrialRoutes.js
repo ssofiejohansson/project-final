@@ -17,19 +17,19 @@ router.patch("/update-freetrial", async (req, res) => {
 
   try {
 
-    const subsToUpdate = await Subscription.find({ freeTrial: { $gt: 0 } }).select('_id freeTrial'); //$gt greater then
+    const subsToUpdate = await Subscription.find({ trialDays: { $gt: 0 } }).select('_id trialDays'); //$gt greater then
 
      if (subsToUpdate.length === 0) {
       return res.json({ message: 'No subscriptions needed updating.' });
     }
 
    const result = await Subscription.updateMany(
-    { freeTrial: { $gt: 0 } },  // only decrement where > 0
-    { $inc: { freeTrial: -1 } } // ✅ decrement
+    { trialDays: { $gt: 0 } },  // only decrement where > 0
+    { $inc: { trialDays: -1 } } // ✅ decrement
 );
 
     const updatedSubs = await Subscription.find({ _id: { $in: subsToUpdate.map(s => s._id) }})
-    .select("_id freeTrial")
+    .select("_id trialDays")
     .lean();
 
     res.json({
@@ -41,7 +41,7 @@ router.patch("/update-freetrial", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      error: "Failed to update freeTrial",
+      error: "Failed to update trialDays",
       success: false,
       message: err.message
     });
