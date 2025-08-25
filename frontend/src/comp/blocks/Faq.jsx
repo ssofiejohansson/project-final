@@ -1,22 +1,23 @@
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Accordion, AccordionBody, AccordionHeader, Typography } from "@material-tailwind/react";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const faqs = [
   {
-    title: "How do I order?",
-    desc: "We're not always in the position that we want to be at. We're constantly growing. We're constantly making mistakes. We're constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game of life you need to appreciate every moment. A lot of people don't appreciate the moment until it's passed.",
+    title: "What is SubscriBee?",
+    desc: "SubscriBee helps you track all your subscriptions in one place. Get reminders before renewals, avoid surprise charges, and see insights on your monthly spending.",
   },
   {
-    title: "How can I make the payment?",
-    desc: "It really matters and then like it really doesn't matter. What matters is the people who are sparked by it. And the people who are like offended by it, it doesn't matter. Because it's about motivating the doers. Because I'm here to follow my dreams and inspire other people to follow their dreams, too. We're not always in the position that we want to be at.",
+    title: "Is SubscriBee free?",
+    desc: "Yes! You can get started for free. Just sign up!",
   },
   {
-    title: "How much time does it take to receive the order?",
-    desc: "Delivery times depend on your location, but generally orders are processed within 1–2 business days and shipped within 3–5 business days.",
+    title: "Can I use it on mobile?",
+    desc: "Absolutely. SubscriBee is designed to work seamlessly on desktop, tablet, and mobile devices.",
   },
   {
-    title: "Can I resell the products?",
-    desc: "Yes, you can resell our products as long as you comply with our terms and conditions.",
+    title: "What makes SubscriBee different?",
+    desc: "Our friendly mascot Beeatrice, smart reminders, and intuitive dashboard make it easy (and even fun!) to stay on top of your subscriptions.",
   },
 ];
 
@@ -28,40 +29,43 @@ export const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="px-8 py-20">
+    <section id="faq" className="px-8 py-20 bg-white">
       <div className="container mx-auto">
-        {/* Section Header */}
         <div className="mb-14 text-center">
           <Typography
-            variant="h1"
+            variant="h2"
             color="blue-gray"
-            className="mb-4 text-4xl !leading-snug lg:text-[40px]"
+            className="mb-4 text-3xl font-bold !leading-snug lg:text-4xl"
           >
-            Frequently asked questions
+            Frequently Asked Questions
           </Typography>
-          <Typography className="mx-auto font-normal text-[18px] !text-gray-500 lg:max-w-3xl">
-            A lot of people don&apos;t appreciate the moment until it&apos;s
-            passed. I&apos;m not trying my hardest, and I&apos;m not trying to
-            do.
+          <Typography className="mx-auto font-normal text-base !text-gray-500 lg:max-w-2xl">
+            Everything you need to know about SubscriBee — from setup to staying
+            on track.
           </Typography>
         </div>
 
-        {/* Accordion FAQ List */}
         <div className="max-w-3xl mx-auto divide-y divide-gray-200 border-t border-b border-gray-200">
           {faqs.map(({ title, desc }, index) => (
             <Accordion
               key={index}
               open={open === index + 1}
-              icon={<span className="text-xl">{open === index + 1 ? "−" : "+"}</span>}
+              icon={
+                open === index + 1 ? (
+                  <MinusIcon className="h-5 w-5 text-green-500 transition" />
+                ) : (
+                  <PlusIcon className="h-5 w-5 text-gray-400 transition" />
+                )
+              }
             >
               <AccordionHeader
                 onClick={() => handleOpen(index + 1)}
-                className="text-lg font-semibold text-blue-gray-900 py-4"
+                className="text-lg font-semibold text-blue-gray-900 py-4 hover:text-green-600 transition"
               >
                 {title}
               </AccordionHeader>
               <AccordionBody className="pb-6">
-                <Typography className="font-normal !text-gray-500">
+                <Typography className="font-normal !text-gray-600 leading-relaxed">
                   {desc}
                 </Typography>
               </AccordionBody>

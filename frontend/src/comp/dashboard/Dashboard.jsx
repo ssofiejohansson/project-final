@@ -10,7 +10,8 @@ import { Loader } from "../layout/Loader";
 import { DashboardHeader } from "./DashboardHeader";
 import { Linegraph } from "./Linegraph";
 import { Stats } from "./Stats";
-import { SubscriptionSave } from "./SubscriptionSave";
+
+// import { SubscriptionSave } from "./SubscriptionSave";
 
 import "../../../src/index.css";
 
@@ -56,7 +57,6 @@ export const Dashboard = () => {
   }
 
   return (
-    // tog bort p-8 nedan för att få bort sid scroll!
     <section className=" min-h-[82vh] w-full place-items-stretch">
       <div className="container mx-auto px-2 text-center">
         <DashboardHeader user={user} />
@@ -65,7 +65,7 @@ export const Dashboard = () => {
         <Linegraph subscriptions={subscriptions} />
       </div>
 
-    <SubscriptionSave />
+      {/* <SubscriptionSave /> */}
 
     </section>
   );

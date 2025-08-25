@@ -1,42 +1,55 @@
-import { Typography } from "@material-tailwind/react"
-import { Btn } from "../layout/Btn"
+import { ArrowDownCircleIcon } from "@heroicons/react/24/solid";
+import { Typography } from "@material-tailwind/react";
 
 export const AboutSub = () => {
-
   return (
     <header className="bg-white p-8">
-
       <div className="container mx-auto px-4 text-center">
-
+        {/* Title */}
         <Typography
           variant="h1"
           color="blue-gray"
           className="mx-auto my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
         >
-          What is {" "}
-          <span className="text-green-500 leading-snug ">SubscriBee</span>?
-
+          About{" "}
+          <span className="text-green-500 leading-snug">SubscriBee</span>
         </Typography>
-        <Typography
-          variant="lead"
-          className="mx-auto w-full !text-gray-500 lg:text-lg text-base"
-        >
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem, nam. At, quas ex!
-        </Typography>
-        <div className="mt-8 grid w-full place-items-start md:justify-center">
-          <div className="mb-2 flex w-full flex-col gap-4 md:flex-row">
 
-            <Btn>
-              Log in
-            </Btn>
-            <Btn>
-              Sign up
-            </Btn>
+        {/* Intro Text */}
+        <div className="mx-auto max-w-2xl space-y-4">
+          <Typography
+            variant="lead"
+            className="!text-gray-600 lg:text-lg text-base"
+          >
+            Subscriptions are part of everyday life, but they’re easy to lose
+            track of. Small monthly charges add up quickly, and before you know
+            it, they’re taking a real bite out of your budget.
+          </Typography>
+          <Typography
+            variant="lead"
+            className="!text-gray-600 lg:text-lg text-base"
+          >
+            SubscriBee was created to help you see the full picture. With one
+            place to track all your subscriptions, you’ll stay organized, avoid
+            surprises, and feel more confident about your money.
+          </Typography>
+          <Typography
+            variant="lead"
+            className="!text-gray-600 lg:text-lg text-base"
+          >
+            Beeatrice, our helpful mascot, pops in along the way to celebrate
+            your wins and keep things light—because managing money should feel
+            empowering, not stressful.
+          </Typography>
+        </div>
 
-          </div>
+        {/* Scroll Down Button */}
+        <div className="mt-10 flex justify-center">
+          <a href="#about-project" className="group animate-bounce">
+            <ArrowDownCircleIcon className="h-12 w-12 text-green-500 group-hover:text-green-600 transition-transform duration-300" />
+          </a>
         </div>
       </div>
-
     </header>
-  )
-}
+  );
+};
