@@ -50,7 +50,7 @@ export const ContentBlock = () => {
 
         {/* CTA Button */}
         <div className="mt-10 flex justify-center">
-          <Btn variant="outlined" size="lg">
+          <Btn variant="outlined" size="md">
             Join the hive
           </Btn>
         </div>

@@ -32,7 +32,7 @@ export const Header = () => {
 
                 <Btn
                   onClick={() => navigate("/signup")}
-                  size="md"
+                  size="lg"
                   variant="filled"
                 >
                   Join the hive
