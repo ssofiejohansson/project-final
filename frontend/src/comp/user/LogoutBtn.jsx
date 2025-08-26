@@ -3,7 +3,7 @@ import { Btn } from "../layout/Btn";
 
 import useUserStore from "../../stores/useUserStore";
 
-export const Logout = () => {
+export const Logout = ({ size = "md", variant = "text", className = "", ...props }) => {
   const clearUser = useUserStore((state) => state.clearUser);
   const navigate = useNavigate();
 
@@ -16,10 +16,10 @@ export const Logout = () => {
   return (
     <Btn
       onClick={handleLogout}
-      variant="text"
-      color="red"
-      size="md"
-      className="normal-case w-auto"
+      size={size}
+      variant={variant}
+      className={`normal-case w-auto ${className}`}
+      {...props}
     >
       Log out
     </Btn>

@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import useUserStore from "../../stores/useUserStore";
 import { Logout } from "../user/LogoutBtn";
 import { Btn } from "./Btn";
+import { EnvelopeIcon } from "@heroicons/react/24/solid";
+
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -52,29 +54,31 @@ export const Footer = () => {
 
           <ul>
             <li>
-              <Typography
-                as={Link}
-                to="/about#contact"
-
-                className="font-medium  transition-colors  hover:text-main"
+              <a
+                href="mailto:subscribee.reminder@gmail.com"
+                className="flex items-center gap-2 font-medium transition-colors hover:text-main"
               >
-                Contact
-              </Typography>
+                <EnvelopeIcon className="h-5 w-5" />
+                Contact us
+              </a>
             </li>
           </ul>
         </div>
 
-        <div className="flex gap-6 pb-6">
+        <div className="flex gap-6 pb-6 items-center">
           {user ? (
-
-            <Logout />
-
+            <>
+              <Btn onClick={() => navigate("/admin")} size="sm" variant="filled">
+                Dashboard
+              </Btn>
+              <Logout size="sm" />
+            </>
           ) : (
             <>
               <Btn onClick={() => navigate("/login")} size="sm" variant="filled">
                 Log in
               </Btn>
-              <Btn onClick={() => navigate("/signup")} size="sm" variant="outlined">
+              <Btn onClick={() => navigate("/signup")} size="sm" variant="text">
                 Sign Up
               </Btn>
             </>
