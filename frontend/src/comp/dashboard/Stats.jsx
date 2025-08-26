@@ -61,14 +61,14 @@ export const Stats = ({ subscriptions = [] }) => {
       {stats.map((stat) => (
         <Card
           key={stat.title}
-          className="w-full p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 bg-blue-gray-600 text-white"
+          className="w-full p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2"
         >
           {stat.icon}
           <div className="text-center break-words">
-            <Typography variant="small" className="text-white font-normal">
+            <Typography variant="small" className="text-text font-normal">
               {stat.title}
             </Typography>
-            <Typography className="text-white text-2xl sm:text-3xl font-extrabold mt-1">
+            <Typography className="text-text text-2xl sm:text-3xl font-extrabold mt-1">
               {stat.value}
             </Typography>
           </div>
