@@ -4,7 +4,7 @@ import { Btn } from "../layout/Btn";
 
 export const AboutProject = () => {
   return (
-    <section id="project" className="py-20 bg-white">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* INTRO SECTION */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
@@ -19,7 +19,7 @@ export const AboutProject = () => {
           <div className="flex flex-col items-start justify-center text-left">
             <Typography
               variant="h1"
-
+              id="project"
               className="mb-6 w-full leading-snug !text-3xl lg:max-w-xl lg:!text-5xl"
             >
               About <span className="text-main">this project</span>.
