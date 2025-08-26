@@ -6,6 +6,7 @@ import useUserStore from "../../stores/useUserStore";
 import { Input } from "./Input";
 import { Btn } from "../layout/Btn";
 import { BaseURL } from "../BaseURL";
+import { Typography } from "@material-tailwind/react";
 
 export const Usersignup = () => {
   const [formData, setFormData] = useState({
@@ -84,9 +85,9 @@ export const Usersignup = () => {
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
           Sign up
         </h2>
-        <p className="text-center text-light mb-8">
+        <Typography variant="paragraph" className="text-center text-light mb-8">
           Join SubscriBee and get started today
-        </p>
+        </Typography>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <Input
@@ -128,7 +129,7 @@ export const Usersignup = () => {
             </p>
           )}
           <div className="flex justify-center">
-            <button
+            <Btn
               type="submit"
               variant="filled"
               color="blue"
@@ -136,16 +137,13 @@ export const Usersignup = () => {
               className="duo-btn"
             >
               Sign Up
-            </button>
+            </Btn>
           </div>
         </form>
 
         <p className="mt-6 text-sm text-center text-light">
           Already have an account?{" "}
-          <a
-            href="/login"
-            className="text-main hover:underline font-medium"
-          >
+          <a href="/login" className="text-main hover:underline font-medium">
             Log in
           </a>
         </p>

@@ -18,8 +18,8 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: "Kumbh Sans", sans-serif;
+* {
+  font-family: "Kumbh Sans", sans-serif !important;
 }
 
 .duo-btn {
@@ -46,12 +46,12 @@ body {
 }
 
 .duo-btn-small {
-  background: #efc52d;
+  background: #2d8eef;
+  font-family: "Kumbh Sans", sans-serif;
   border: none;
   color: #fff;
-  font-family: "Bungee";
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 16px;
   letter-spacing: 0.08em;
   padding: 0.4em 0.4em;
   border-radius: 18px;
@@ -59,12 +59,13 @@ body {
   outline: none;
   text-align: center;
   display: block;
-  margin: 20px;
-  box-shadow: 0 5px 0 0 #259300;
+  padding: 10px;
+  margin: 5px;
+  box-shadow: 0 3px 0 0 #2763d1; /* "raised" look */
 }
 
 .duo-btn-small:active {
-  background: #36b300;
+  background: #2d8eef;
   transform: translateY(5px); /* drop down same as shadow */
   box-shadow: none;
 }

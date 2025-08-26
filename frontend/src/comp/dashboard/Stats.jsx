@@ -1,4 +1,8 @@
-import { CheckCircleIcon, CurrencyDollarIcon, UserGroupIcon } from "@heroicons/react/24/outline";
+import {
+  CheckCircleIcon,
+  CurrencyDollarIcon,
+  UserGroupIcon,
+} from "@heroicons/react/24/outline";
 import { Card, Typography } from "@material-tailwind/react";
 import Chart from "react-apexcharts";
 
@@ -10,7 +14,9 @@ export const Stats = ({ subscriptions = [] }) => {
   const yearCost = monthCost * 12;
 
   // const totalSubs = subscriptions.length;
-  const activeSubs = subscriptions.filter((sub) => sub.status === "active").length;
+  const activeSubs = subscriptions.filter(
+    (sub) => sub.status === "active"
+  ).length;
 
   const categoryCounts = subscriptions.reduce((acc, sub) => {
     const cat = sub.category || "Other";
@@ -28,7 +34,9 @@ export const Stats = ({ subscriptions = [] }) => {
 
   const donutSeries = Object.values(categoryCounts);
   const donutLabels = Object.keys(categoryCounts);
-  const donutColors = donutLabels.map((label) => categoryColors[label] || "#6b7280");
+  const donutColors = donutLabels.map(
+    (label) => categoryColors[label] || "#6b7280"
+  );
 
   const stats = [
     {
@@ -53,14 +61,14 @@ export const Stats = ({ subscriptions = [] }) => {
       {stats.map((stat) => (
         <Card
           key={stat.title}
-          className="w-full p-4 shadow-lg rounded-2xl flex flex-col items-center justify-center text-center gap-2"
+          className="w-full p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2 bg-blue-gray-600 text-white"
         >
           {stat.icon}
           <div className="text-center break-words">
-            <Typography variant="small" className="text-text font-normal">
+            <Typography variant="small" className="text-white font-normal">
               {stat.title}
             </Typography>
-            <Typography className="text-text text-2xl sm:text-3xl font-extrabold mt-1">
+            <Typography className="text-white text-2xl sm:text-3xl font-extrabold mt-1">
               {stat.value}
             </Typography>
           </div>
@@ -83,7 +91,11 @@ export const Stats = ({ subscriptions = [] }) => {
                 colors: donutColors,
                 legend: { show: false },
                 dataLabels: { enabled: false },
-                chart: { width: "100%", height: "100%", toolbar: { show: false } },
+                chart: {
+                  width: "100%",
+                  height: "100%",
+                  toolbar: { show: false },
+                },
                 responsive: [
                   {
                     breakpoint: 640,

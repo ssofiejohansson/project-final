@@ -1,35 +1,69 @@
 // Btn.jsx
-export const Btn = ({
-  onClick,
-  children,
-  type = "button",
-  variant = "filled",
-  // color = "blue",
-  size = "md",
-  className = "",
-}) => {
-  // Base button classes
-  const baseClasses = "rounded-lg font-semibold transition duration-200 shadow-md";
-
-  // Size options
-  const sizeClasses = {
-    sm: "px-3 py-2 text-sm",
-    md: "px-4 py-3 text-base",
-    lg: "px-6 py-4 text-lg",
-  };
-
-  // Variant options
-  const variantClasses = {
-    filled: `bg-main text-white hover:bg-white hover:text-main`,
-    outlined: `border border-accent text-text hover:text-text`,
-    text: `text-main hover:text-text`,
-  };
-
+export const Btn = ({ onClick, children, type = "button", className = "" }) => {
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
+      className={`
+        bg-[#2d8eef]
+        text-white
+        font-bold
+        font-[Kumbh_Sans]
+        text-[1.4rem]
+        tracking-wide
+        py-4 px-16
+        rounded-[18px]
+        cursor-pointer
+        outline-none
+        text-center
+        block
+        shadow-[0_5px_0_0_#2763d1]
+        active:translate-y-[5px]
+        active:shadow-none
+        transition
+        duration-100
+        ${className}
+      `}
+    >
+      {children}
+    </button>
+  );
+};
+
+export const BtnBig = Btn;
+
+// Btn.jsx
+export const BtnSmall = ({
+  onClick,
+  children,
+  type = "button",
+  className = "",
+}) => {
+  return (
+    <button
+      type={type}
+      onClick={onClick}
+      className={`
+        bg-[#2d8eef]
+        text-white
+        font-bold
+        font-[Kumbh_Sans]
+        text-base
+        tracking-wide
+        py-2 px-4
+        rounded-[18px]
+        cursor-pointer
+        outline-none
+        text-center
+        block
+        shadow-[0_3px_0_0_#2763d1]
+        m-1
+        active:translate-y-[5px]
+        active:shadow-none
+        transition
+        duration-100
+        ${className}
+      `}
     >
       {children}
     </button>

@@ -101,7 +101,7 @@ export const Userlogin = () => {
             />
 
             <div className="flex justify-center">
-              <button className="duo-btn">Login</button>
+              <Btn>Login</Btn>
             </div>
           </form>
 
