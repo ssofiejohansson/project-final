@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import useLoadingStore from "../../stores/useLoadingStore"
-import useUserStore from '../../stores/useUserStore';
+import useLoadingStore from "../../stores/useLoadingStore";
+import useUserStore from "../../stores/useUserStore";
 import { BaseURL } from "../BaseURL";
 import { Btn } from "../layout/Btn";
 import { Input } from "./Input";
@@ -62,10 +62,9 @@ export const Userlogin = () => {
       } else {
         setError("Login failed. Please check your credentials.");
       }
-
     } catch (error) {
       console.error("Signin error:", error);
-      setError("Can´t login, please try again!");      
+      setError("Can´t login, please try again!");
     } finally {
       setLoading(false);
     }
@@ -75,18 +74,26 @@ export const Userlogin = () => {
     <>
       <div className="flex items-center justify-center min-h-screen px-4">
         <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
-          <h1 className="text-3xl font-bold text-center text-gray-800">User Login</h1>
-          <p className="text-center text-gray-500 mb-6">Welcome back! Please log in.</p>
+          <h1 className="text-3xl font-bold text-center text-gray-800">
+            User Login
+          </h1>
+          <p className="text-center text-gray-500 mb-6">
+            Welcome back! Please log in.
+          </p>
 
           <form onSubmit={handleSubmit} className="space-y-5">
-            {error && <div className="text-red-500 text-sm text-center">{error}</div>}
+            {error && (
+              <div className="text-red-500 text-sm text-center">{error}</div>
+            )}
 
             <Input
               label="Email Address"
               type="email"
               name="email"
               value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
             />
 
             <Input
@@ -94,31 +101,26 @@ export const Userlogin = () => {
               type="password"
               name="password"
               value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
             />
 
-            <Btn
-              type="submit"
-              variant="filled"
-              color="blue"
-              size="md"
-              className="w-full"
-            >
-              Login
-            </Btn>
+            <div className="flex justify-center">
+              <button className="duo-btn">Login</button>
+            </div>
           </form>
 
           <p className="mt-6 text-sm text-center text-gray-600">
             Don’t have an account?{" "}
             <button
-              onClick={() => navigate('/signup')}
+              onClick={() => navigate("/signup")}
               className="text-blue-600 hover:underline font-medium"
             >
               Sign Up
             </button>
           </p>
         </div>
-
       </div>
     </>
   );
