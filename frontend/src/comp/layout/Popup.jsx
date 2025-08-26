@@ -26,7 +26,7 @@ export const Popup = ({ children, delay }) => {
     >
       {/* Bubble content */}
       {!collapsed && (
-        <div className="relative bg-white shadow-lg rounded-2xl p-8 max-w-xs mb-3 border-l-4 border-green-500">
+        <div className="relative bg-white shadow-lg rounded-2xl p-8 max-w-xs mb-3 border-l-4 border-accent">
           {/* Collapse button as down arrow */}
           <IconButton
             variant="text"

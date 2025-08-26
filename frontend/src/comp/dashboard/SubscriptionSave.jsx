@@ -11,7 +11,7 @@ export const SubscriptionSave = () => {
     if (isSaveOpen) {
       const timer = setTimeout(() => {
         closeSaveDialog();
-      }, 4000); // auto-close after 4 seconds
+      }, 8000); // auto-close after 8 seconds
 
       return () => clearTimeout(timer); // cleanup on unmount
     }
@@ -20,10 +20,10 @@ export const SubscriptionSave = () => {
   if (!isSaveOpen) return null;
 
   return (
-    <div>
-      <div className="text-lg font-semibold mb-3">Yay! Nice save.</div>
+    <>
+      <div className="text-text text-lg font-semibold mb-3">Yay! Nice save.</div>
       <CalculateCost />
-    </div>
+    </>
   );
 };
 
