@@ -65,13 +65,13 @@ export const Footer = () => {
         <div className="flex gap-6 pb-6 items-center">
           {user ? (
             <>
-              <BtnSmall
+              <Btn
                 onClick={() => navigate("/admin")}
                 size="sm"
                 variant="filled"
               >
                 Dashboard
-              </BtnSmall>
+              </Btn>
               <Logout size="sm" />
             </>
           ) : (
