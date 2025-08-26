@@ -54,12 +54,12 @@ export const SubscriptionList = () => {
     fetchSubscriptions();
   }, []);
 
-  //Payments next 7 days, inc today
+  //Check if reminder date is in the next 3 days, inc today
   const upcommingDates = () => {
     const today = new Date();
     let datesCollection = [] 
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 3; i++) {
     const nextDate = new Date(today);
     nextDate.setDate(today.getDate() + i);
 
@@ -68,14 +68,16 @@ export const SubscriptionList = () => {
 
     datesCollection.push(formatted);
   }
-    console.log("Today:",today)
-    console.log("Upcomming dates:", datesCollection)
-
-    return datesCollection; 
-  
+    return datesCollection;   
   }
 
- 
+  const upcomingDates = upcommingDates();
+
+  const dueSoon = subscriptions.filter(sub =>
+    upcomingDates.includes(
+      new Date(sub.reminderDate).toISOString().split("T")[0]
+    )
+  );
 
   // Filtering
   const filteredSubs = filterCategory
@@ -150,6 +152,11 @@ export const SubscriptionList = () => {
             <Typography variant="h6" className="text-gray-600 font-normal mt-1">
               All subscriptions
             </Typography>
+            <Typography variant="small" className={dueSoon ? "bg-red-100" : "text-gray-600 mt-1"} >
+              {dueSoon.length > 0
+                ? `🩷 You have ${dueSoon.length} payment(s) due in the next 3 days.`
+                : "No payments due in the next 3 days."}
+            </Typography>
           </div>
           <div className="flex items-center w-full shrink-0 gap-4 md:w-max">
             <DashboardNavbar
@@ -213,17 +220,16 @@ export const SubscriptionList = () => {
                       ? "!p-4"
                       : "!p-4 border-b border-gray-300";
 
-                     // Check if reminder date is in the next 7 days
+                    // Check if reminder date is in the next 7 days
                     const isUpcoming = upcommingDates().includes(
                       new Date(sub.reminderDate).toISOString().split("T")[0]
-                    );  
+                    );                    
 
                     return (
                       <tr key={sub._id || index}
-                      //highlight row
-                      className={isUpcoming ? "bg-red-100" : ""}
-                      >
-                                           
+                      //highlight row if reminder date is in the next 7 days
+                      className={isUpcoming ? "bg-red-100" : ""}                      
+                      >   
                         {/* Name */}
                         <td className={classes}>
                           <div className="flex items-center gap-2">
