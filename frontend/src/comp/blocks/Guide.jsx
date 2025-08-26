@@ -8,10 +8,10 @@ export const Guide = () => {
         <Typography className="text-main mb-2 font-bold uppercase">
           How it works
         </Typography>
-        <Typography className="text-text mb-4 !text-2xl font-bold lg:!text-4xl">
+        <Typography variant="h2" className="text-text mb-4 !text-2xl font-bold lg:!text-4xl">
           Get started in three simple steps
         </Typography>
-        <Typography variant="lead" className="mx-auto max-w-lg text-light">
+        <Typography variant="paragraph" className="mx-auto max-w-lg text-text">
           SubscriBee makes it easy to take control of your subscriptions. Here’s how:
         </Typography>
       </div>
@@ -19,12 +19,12 @@ export const Guide = () => {
         <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
           <CardBody className="text-center">
             <Typography
-              variant="h4"
+              variant="h3"
               className="text-text mb-2 font-medium"
             >
               Step 1 - Create Your Account
             </Typography>
-            <Typography className="text-center mb-0 max-w-xs mx-auto text-base font-normal leading-7 text-light">
+            <Typography className="text-center mb-0 max-w-xs mx-auto  font-normal leading-7 text-light">
               Sign up in minutes and start fresh.
             </Typography>
             <img
@@ -39,12 +39,12 @@ export const Guide = () => {
         >
           <CardBody className="text-center">
             <Typography
-              variant="h4"
+              variant="h3"
               className="text-text mb-2 font-medium"
             >
               Step 2 – Add Your Subscriptions
             </Typography>
-            <Typography className="text-center mb-0 max-w-xs mx-auto text-base font-normal leading-7 text-light">
+            <Typography className="text-center mb-0 max-w-xs mx-auto  font-normal leading-7 text-light">
               Log every subscription, from Netflix to that random meditation app you forgot about.
             </Typography>
             <img
@@ -61,12 +61,12 @@ export const Guide = () => {
         >
           <CardBody className="text-center">
             <Typography
-              variant="h4"
+              variant="h3"
               className="text-text mb-2 font-medium"
             >
               Step 3 – Stay on Track
             </Typography>
-            <Typography className="text-center max-w-sm mx-auto text-base font-normal leading-7 text-light">
+            <Typography className="text-center max-w-sm mx-auto  font-normal leading-7 text-light">
               See clear insights, receive helpful reminders, and avoid surprise charges.
             </Typography>
             <img
@@ -84,7 +84,7 @@ export const Guide = () => {
             >
               About this project
             </Typography>
-            <Typography className="text-center max-w-xs mx-auto text-base font-normal leading-7 text-light">
+            <Typography className="text-center max-w-xs mx-auto  font-normal leading-7 text-light">
               SubscriBee is a student-built project designed to help people better manage their digital lives.
               Learn more about our team and process on the About page.
             </Typography>
@@ -114,19 +114,19 @@ export const Guide = () => {
             </div>
             <div className="flex justify-center mt-6 gap-4">
               <a
-                href="https://technigo.se"
+                href="#" target="_blank" rel="noopener noreferrer"
                 className="text-xs font-bold text-main hover:underline"
               >
                 Technigo
               </a>
               <a
-                href="https://github.com/your-repo"
+                href="#" target="_blank" rel="noopener noreferrer"
                 className="text-xs font-bold text-main hover:underline"
               >
                 GitHub
               </a>
               <a
-                href="#"
+                href="#" target="_blank" rel="noopener noreferrer"
                 className="text-xs font-bold text-main hover:underline"
               >
                 Other Links

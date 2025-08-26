@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import useLoadingStore from "../../stores/useLoadingStore";
 import useUserStore from "../../stores/useUserStore";
 import { BaseURL } from "../BaseURL";
 import { Btn } from "../layout/Btn";
 import { Input } from "./Input";
+import { Typography } from "@material-tailwind/react";
 
 export const Userlogin = () => {
   const setLoading = useLoadingStore((state) => state.setLoading);
@@ -25,7 +26,7 @@ export const Userlogin = () => {
   const setUser = useUserStore((state) => state.setUser);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();    
+    e.preventDefault();
 
     if (!formData.email.trim() || !formData.password.trim()) {
       setError("Please fill in both email and password!");
@@ -44,7 +45,7 @@ export const Userlogin = () => {
       });
 
       const data = await response.json();
-      
+
       if (data.success && data.id) {
         localStorage.setItem("user", JSON.stringify(data));
 
@@ -69,52 +70,66 @@ export const Userlogin = () => {
   };
 
   return (
-    <>
-      <div className="flex items-center justify-center">
-        <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
-          <h1 className="text-3xl font-bold text-center text-text">User Login</h1>
-          <p className="text-center text-light mb-6">Welcome back! Please log in.</p>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
-            {error && (
-              <div className="text-red-500 text-sm text-center">{error}</div>
-            )}
+    <section className="flex items-center justify-center">
+      <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
+        <Typography variant="h1" className="text-text text-center mb-4">
+          User login
+        </Typography>
+        <Typography
+          variant="paragraph"
 
-            <Input
-              label="Email Address"
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-            />
+          className="text-light text-center mb-8"
+        >
+          Welcome back! Please log in below.
+        </Typography>
 
-            <Input
-              label="Password"
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
-            />
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {error && (
+            <Typography className="text-red-500 text-sm text-center">{error}</Typography>
+          )}
 
-            <div className="flex justify-center">
-              <Btn>Login</Btn>
-            </div>
-          </form>
+          <Input
+            label="Email Address"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
+          />
 
-          <p className="mt-6 text-sm text-center text-light">
-            Don’t have an account?{" "}
-            <button
-              onClick={() => navigate('/signup')}
-              className="text-main hover:underline font-medium">
-              Sign Up
-            </button>
-          </p>
-        </div>
+          <Input
+            label="Password"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={(e) =>
+              setFormData({ ...formData, password: e.target.value })
+            }
+          />
+
+          <Btn
+            type="submit"
+            variant="filled"
+            size="md"
+            className="w-full"
+          >
+            Login
+          </Btn>
+        </form>
+
+        <Typography
+          variant="small"
+          className="text-text mt-6 text-center"
+        >
+          Don’t have an account?{" "}
+          <Link to="/signup" className="text-main font-medium hover:underline">
+            Sign up
+          </Link>
+        </Typography>
       </div>
-    </>
+    </section>
+
   );
 };

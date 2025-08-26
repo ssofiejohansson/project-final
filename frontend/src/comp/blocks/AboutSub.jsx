@@ -5,41 +5,29 @@ export const AboutSub = () => {
   return (
     <header className="bg-white p-8">
       <div className="container mx-auto px-4 text-center">
-        {/* Title */}
         <Typography
           variant="h1"
-
           className="text-text mx-auto my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
         >
-          About{" "}
-          <span className="text-main leading-snug">SubscriBee</span>
+          About <span className="text-main leading-snug">SubscriBee</span>
         </Typography>
 
-        {/* Intro Text */}
-        <div className="mx-auto max-w-2xl space-y-4">
+        <div className="mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 md:text-left">
           <Typography
-            variant="lead"
-            className="!text-light lg:text-lg text-base"
+            variant="paragraph"
+            className="text-light lg:text-lg"
           >
             Subscriptions are part of everyday life, but they’re easy to lose
             track of. Small monthly charges add up quickly, and before you know
             it, they’re taking a real bite out of your budget.
           </Typography>
           <Typography
-            variant="lead"
-            className="!text-light lg:text-lg text-base"
+            variant="paragraph"
+            className="text-light lg:text-lg"
           >
             SubscriBee was created to help you see the full picture. With one
             place to track all your subscriptions, you’ll stay organized, avoid
             surprises, and feel more confident about your money.
-          </Typography>
-          <Typography
-            variant="lead"
-            className="!text-light lg:text-lg text-base"
-          >
-            Beeatrice, our helpful mascot, pops in along the way to celebrate
-            your wins and keep things light—because managing money should feel
-            empowering, not stressful.
           </Typography>
         </div>
 
@@ -51,5 +39,6 @@ export const AboutSub = () => {
         </div>
       </div>
     </header>
+
   );
 };

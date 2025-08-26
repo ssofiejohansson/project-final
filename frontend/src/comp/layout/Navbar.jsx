@@ -63,7 +63,7 @@ export const Navbar = () => {
       <NavItem to="/about" label="About" onClick={onClick} />
       <li>
         <a
-          href="mailto:subscribee.reminder@gmail.com"
+          href="mailto:"
           className="text-text p-1 font-medium hover:text-main transition-colors"
         >
           Contact
@@ -73,6 +73,7 @@ export const Navbar = () => {
   );
 
   return (
+    // somthing in this class is messing up the log out btn in mobile
     <div
       className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
         showNavbar ? "translate-y-0" : "-translate-y-full"
@@ -162,7 +163,7 @@ export const Navbar = () => {
 
         {/* Mobile menu */}
         <Collapse open={open}>
-          <div className="mt-2 rounded-xl bg-white pb-4 px-4 flex flex-col h-full min-h-[40vh]">
+          <div className="mt-2 rounded-xl bg-white pb-4 px-4 flex flex-col">
             {/* TOP section */}
             {user ? (
               <>

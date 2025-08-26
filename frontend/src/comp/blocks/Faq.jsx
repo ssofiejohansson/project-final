@@ -33,12 +33,12 @@ export const FAQ = () => {
       <div className="container mx-auto">
         <div className="mb-14 text-center">
           <Typography
-            variant="h2"
+            variant="h4"
             className="text-text mb-4 text-3xl font-bold !leading-snug lg:text-4xl"
           >
             Frequently Asked Questions
           </Typography>
-          <Typography className="mx-auto font-normal text-base text-light lg:max-w-2xl">
+          <Typography className="mx-auto font-normal  text-light lg:max-w-2xl">
             Everything you need to know about SubscriBee — from setup to staying
             on track.
           </Typography>
@@ -53,18 +53,18 @@ export const FAQ = () => {
                 open === index + 1 ? (
                   <MinusIcon className="h-5 w-5 text-main transition" />
                 ) : (
-                  <PlusIcon className="h-5 w-5 text-gray-400 transition" />
+                  <PlusIcon className="h-5 w-5 text-light transition" />
                 )
               }
             >
               <AccordionHeader
                 onClick={() => handleOpen(index + 1)}
-                className="text-lg font-semibold text-text-text-900 py-4 hover:text-main transition"
+                className="text-lg font-semibold text-text py-4 hover:text-main transition"
               >
                 {title}
               </AccordionHeader>
               <AccordionBody className="pb-6">
-                <Typography className="font-normal !text-light leading-relaxed">
+                <Typography className="font-normal text-light leading-relaxed">
                   {desc}
                 </Typography>
               </AccordionBody>

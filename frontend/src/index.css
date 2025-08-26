@@ -18,8 +18,8 @@ html {
   scroll-behavior: smooth;
 }
 
-* {
-  font-family: "Kumbh Sans", sans-serif !important;
+/* body {
+  font-family: "Kumbh Sans", sans-serif;
 }
 
 .duo-btn {
@@ -36,15 +36,19 @@ html {
   outline: none;
   text-align: center;
   display: block;
-  box-shadow: 0 5px 0 0 #2763d1; /* "raised" look */
-}
+  box-shadow: 0 5px 0 0 #2763d1;
+  /* "raised" look
+} */
 
-.duo-btn:active {
+
+/* .duo-btn:active {
   background: #2d8eef;
-  transform: translateY(5px); /* drop down exactly 5px */
-  box-shadow: none; /* shadow disappears completely */
-}
-
+  transform: translateY(5px);
+  /* drop down exactly 5px */
+/* box-shadow: none; */
+/* shadow disappears completely */
+/* } */
+/* 
 .duo-btn-small {
   background: #2d8eef;
   font-family: "Kumbh Sans", sans-serif;
@@ -59,13 +63,13 @@ html {
   outline: none;
   text-align: center;
   display: block;
-  padding: 10px;
-  margin: 5px;
-  box-shadow: 0 3px 0 0 #2763d1; /* "raised" look */
-}
+  margin: 20px;
+  box-shadow: 0 5px 0 0 #259300;
+} */
 
-.duo-btn-small:active {
-  background: #2d8eef;
-  transform: translateY(5px); /* drop down same as shadow */
-  box-shadow: none;
-}
+/* .duo-btn-small:active {
+  background: #36b300;
+  transform: translateY(5px);
+  /* drop down same as shadow */
+/* box-shadow: none;
+} */
