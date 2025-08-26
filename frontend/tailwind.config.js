@@ -5,6 +5,14 @@ module.exports = withMT({
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  theme: { extend: {} },
+  theme: {
+    extend: {
+      colors: {
+        main: '#FF5C8D',    // pink
+        accent: '#FFD166',    // yellow
+        text: '#333333',    // charcoal
+      },
+    },
+  },
   plugins: [],
 });
