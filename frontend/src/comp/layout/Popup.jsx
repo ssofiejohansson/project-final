@@ -1,6 +1,6 @@
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { IconButton, Typography } from "@material-tailwind/react";
-import Logo from "/subscribee-logo.png";
+import Logo from "/subscribee-logo-left.png";
 import { useEffect, useState } from "react";
 
 export const Popup = ({ children, delay }) => {
