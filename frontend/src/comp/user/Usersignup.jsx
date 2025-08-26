@@ -127,16 +127,17 @@ export const Usersignup = () => {
               User created successfully!
             </p>
           )}
-
-          <Btn
-            type="submit"
-            variant="filled"
-            color="blue"
-            size="md"
-            className="w-full"
-          >
-            Sign up
-          </Btn>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              variant="filled"
+              color="blue"
+              size="md"
+              className="duo-btn"
+            >
+              Sign Up
+            </button>
+          </div>
         </form>
 
         <p className="mt-6 text-sm text-center text-light">
