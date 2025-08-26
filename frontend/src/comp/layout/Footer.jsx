@@ -76,7 +76,7 @@ export const Footer = () => {
             </>
           ) : (
             <>
-              <BtnSmall
+              {/* <BtnSmall
                 onClick={() => navigate("/login")}
                 size="sm"
                 variant="text"
@@ -89,7 +89,7 @@ export const Footer = () => {
                 variant="text"
               >
                 Sign Up
-              </BtnSmall>
+              </BtnSmall> */}
             </>
           )}
         </div>
