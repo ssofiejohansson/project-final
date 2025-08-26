@@ -18,7 +18,7 @@ export const Header = () => {
               className="mx-auto my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
             >
               Track your subscriptions with {" "}
-              <span className="text-green-500 leading-snug ">SubscriBee</span>.
+              <span className="text-main leading-snug ">SubscriBee</span>.
 
             </Typography>
             <Typography

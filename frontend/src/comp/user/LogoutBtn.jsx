@@ -16,7 +16,7 @@ export const Logout = () => {
   return (
     <Btn
       onClick={handleLogout}
-      variant="outlined"
+      variant="text"
       color="red"
       size="md"
       className="normal-case w-auto"
