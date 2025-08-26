@@ -1,10 +1,12 @@
 import { Typography } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
 import { Btn } from "./Btn";
 
 export const Header = () => {
+  const navigate = useNavigate();
   return (
-    // Option Hero 1
+
     <>
       <header className="bg-white p-8">
         {/* Will add a hero image here */}
@@ -13,11 +15,10 @@ export const Header = () => {
 
             <Typography
               variant="h1"
-              color="blue-gray"
-              className="mx-auto my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
+              className="text-text mx-auto my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
             >
               Track your subscriptions with {" "}
-              <span className="text-green-500 leading-snug ">SubscriBee</span>.
+              <span className="text-main leading-snug ">SubscriBee</span>.
 
             </Typography>
             <Typography
@@ -29,12 +30,14 @@ export const Header = () => {
             <div className="mt-8 grid w-full place-items-start md:justify-center">
               <div className="mb-2 flex w-full flex-col gap-4 md:flex-row">
 
-                <Btn>
+                <Btn
+                  onClick={() => navigate("/signup")}
+                  size="lg"
+                  variant="filled"
+                >
                   Join the hive
                 </Btn>
-                <Btn className="" variant="outlined">
-                  Read More
-                </Btn>
+
               </div>
             </div>
           </div>

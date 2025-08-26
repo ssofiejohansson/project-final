@@ -3,25 +3,21 @@ import { useEffect } from "react";
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import { CalculateCost } from "../CalculateCost";
 
-export const SubscriptionSave = () => { 
-
+export const SubscriptionSave = () => {
   const { isSaveOpen, closeSaveDialog } = useSubscriptionStore();
 
   useEffect(() => {
     if (isSaveOpen) {
-      const timer = setTimeout(() => {
-        closeSaveDialog();
-      }, 4000); // auto-close after 4 seconds
-
-      return () => clearTimeout(timer); // cleanup on unmount
+      const timer = setTimeout(closeSaveDialog, 8000);
+      return () => clearTimeout(timer);
     }
   }, [isSaveOpen, closeSaveDialog]);
 
   if (!isSaveOpen) return null;
 
   return (
-    <div>
-      <div className="text-lg font-semibold mb-3">Yay! Nice save.</div>
+    <div className="space-y-3">
+      <div className="text-text text-lg font-semibold">Yay! Nice save.</div>
       <CalculateCost />
     </div>
   );

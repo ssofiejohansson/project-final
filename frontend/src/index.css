@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes slideUpFade {
+/* @keyframes slideUpFade {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -12,6 +12,10 @@
     opacity: 1;
     transform: translateY(0);
   }
+} */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {

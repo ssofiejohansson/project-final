@@ -4,7 +4,7 @@ export const Btn = ({
   children,
   type = "button",
   variant = "filled",
-  color = "blue",
+  // color = "blue",
   size = "md",
   className = "",
 }) => {
@@ -20,9 +20,9 @@ export const Btn = ({
 
   // Variant options
   const variantClasses = {
-    filled: `bg-${color}-600 text-white hover:bg-${color}-700`,
-    outlined: `border border-${color}-600 text-${color}-600 hover:bg-${color}-50`,
-    text: `text-${color}-600 hover:underline`,
+    filled: `bg-main text-white hover:bg-white hover:text-main`,
+    outlined: `border border-accent text-text hover:text-text`,
+    text: `text-main hover:text-text`,
   };
 
   return (

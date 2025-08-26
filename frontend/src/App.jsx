@@ -18,9 +18,9 @@ export const App = () => {
 
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen ">
         <Navbar />
-        <main className="my-20 flex-grow">
+        <main className="flex-grow mt-20 py-10">
           {loading && <Loader />}
           <Routes>
             <Route path="/" element={<Home />} />

@@ -25,8 +25,7 @@ export const Userlogin = () => {
   const setUser = useUserStore((state) => state.setUser);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("Login form submitted");
+    e.preventDefault();    
 
     if (!formData.email.trim() || !formData.password.trim()) {
       setError("Please fill in both email and password!");
@@ -45,8 +44,7 @@ export const Userlogin = () => {
       });
 
       const data = await response.json();
-      console.log("Login response data:", data);
-
+      
       if (data.success && data.id) {
         localStorage.setItem("user", JSON.stringify(data));
 
@@ -72,7 +70,7 @@ export const Userlogin = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen px-4">
+      <div className="flex items-center justify-center">
         <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
           <h1 className="text-3xl font-bold text-center text-gray-800">
             User Login

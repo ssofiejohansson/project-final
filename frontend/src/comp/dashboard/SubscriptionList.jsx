@@ -1,4 +1,4 @@
-import { BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
+import { BellAlertIcon, BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
 import { Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -39,6 +39,31 @@ export const SubscriptionList = () => {
   useEffect(() => {
     fetchSubscriptions();
   }, []);
+
+  //Check if reminder date is in the next 3 days, inc today
+  const upcommingDates = () => {
+    const today = new Date();
+    let datesCollection = []
+
+    for (let i = 0; i < 3; i++) {
+      const nextDate = new Date(today);
+      nextDate.setDate(today.getDate() + i);
+
+      // format YYYY-MM-DD
+      const formatted = nextDate.toISOString().split("T")[0];
+
+      datesCollection.push(formatted);
+    }
+    return datesCollection;
+  }
+
+  const upcomingDates = upcommingDates();
+
+  const dueSoon = subscriptions.filter(sub =>
+    upcomingDates.includes(
+      new Date(sub.reminderDate).toISOString().split("T")[0]
+    )
+  );
 
   // Filtering
   const filteredSubs = filterCategory
@@ -96,7 +121,7 @@ export const SubscriptionList = () => {
   const categoryIcons = {
     Entertainment: <TvIcon className="h-8 w-8 text-purple-500" />,
     Food: <CakeIcon className="h-8 w-8 text-red-500" />,
-    Health: <HeartIcon className="h-8 w-8 text-green-500" />,
+    Health: <HeartIcon className="h-8 w-8 text-main" />,
     Learning: <BookOpenIcon className="h-8 w-8 text-blue-500" />,
     Other: <QuestionMarkCircleIcon className="h-8 w-8 text-gray-500" />,
   };
@@ -110,9 +135,26 @@ export const SubscriptionList = () => {
           className="rounded-none flex flex-wrap gap-4 justify-between mb-4"
         >
           <div>
-            <Typography variant="h6" className="text-gray-600 font-normal mt-1">
+            <Typography variant="h6" className="text-gray-600 font-normal text-left">
               All subscriptions
             </Typography>
+            <div className="flex items-center gap-2 mt-1">
+              {dueSoon.length > 0 ? (
+                <>
+                  <BellAlertIcon className="h-5 w-5 text-red-600 font-bold" />
+                  <Typography variant="small" className="text-text">
+                    You have <span className="text-red-600 font-semibold">{dueSoon.length} payment(s)</span>{" "}
+                    due in the next 3 days.
+                  </Typography>
+                </>
+              ) : (
+                <>  <BellAlertIcon className="h-5 w-5 text-text font-bold" />
+                  <Typography variant="small" className="text-text">
+                    No payments due in the next 3 days.
+                  </Typography>
+                </>
+              )}
+            </div>
           </div>
           <div className="flex items-center w-full shrink-0 gap-4 md:w-max">
             <DashboardNavbar
@@ -137,7 +179,7 @@ export const SubscriptionList = () => {
                       className={`border-b border-gray-300 !p-4 pb-8 ${customeStyle}`}
                     >
                       <Typography
-                        color="blue-gray"
+
                         variant="small"
                         className="!font-bold"
                       >
@@ -167,8 +209,16 @@ export const SubscriptionList = () => {
                       ? "!p-4"
                       : "!p-4 border-b border-gray-300";
 
+                    // Check if reminder date is in the next 7 days
+                    const isUpcoming = upcommingDates().includes(
+                      new Date(sub.reminderDate).toISOString().split("T")[0]
+                    );
+
                     return (
-                      <tr key={sub._id || index}>
+                      <tr key={sub._id || index}
+                      //highlight row if reminder date is in the next 3 days
+                      // className={isUpcoming ? "bg-red-100" : ""}
+                      >
                         {/* Name */}
                         <td className={classes}>
                           <div className="flex items-center gap-2">
@@ -184,7 +234,7 @@ export const SubscriptionList = () => {
                             <div>
                               <Typography
                                 variant="small"
-                                color="blue-gray"
+
                                 className="!font-semibold"
                               >
                                 {sub.name}
@@ -208,12 +258,17 @@ export const SubscriptionList = () => {
                         </td>
                         {/* Cost */}
                         <td className={`${classes} text-right`}>
-                          <Typography
-                            variant="small"
-                            className="!font-normal text-gray-600"
-                          >
-                            {sub.cost} kr
-                          </Typography>
+                          <div className="flex items-center justify-end gap-1">{isUpcoming && (
+                            <BellAlertIcon className="h-5 w-5 text-red-600 font-bold" />
+                          )}
+                            <Typography
+                              variant="small"
+                              className="!font-normal text-gray-600"
+                            >
+                              {sub.cost} kr
+                            </Typography>
+
+                          </div>
                         </td>
                         {/* Status */}
                         <td className={`${classes} text-right`}>

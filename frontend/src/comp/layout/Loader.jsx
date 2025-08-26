@@ -1,4 +1,4 @@
-import Logo from "/subscribee-logo.png";
+import Logo from "/subscribee-logo-left.png";
 import { motion } from "framer-motion";
 
 export const Loader = () => {
