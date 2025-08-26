@@ -54,7 +54,7 @@ export const AboutProject = () => {
               >
                 Our Team
               </Typography>
-              <Typography className="text-center max-w-xs mx-auto text-base font-normal leading-7 !text-gray-500">
+              <Typography className="text-center max-w-xs mx-auto text-base font-normal leading-7 text-text">
                 Meet the creators behind SubscriBee — students learning and building real-world applications.
               </Typography>
               <div className="flex items-center -space-x-4 justify-center mt-8">
@@ -120,7 +120,7 @@ export const AboutProject = () => {
               <Typography variant="h4" className="text-text mb-2 font-medium">
                 Technology
               </Typography>
-              <Typography className="text-center max-w-xs mx-auto text-base font-normal leading-7 !text-gray-500">
+              <Typography className="text-text text-center max-w-xs mx-auto text-base font-normal leading-7">
                 Built with React, Material Tailwind, and modern web best practices for responsive, user-friendly design.
               </Typography>
             </CardBody>

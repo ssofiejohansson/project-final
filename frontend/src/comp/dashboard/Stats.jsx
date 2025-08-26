@@ -57,10 +57,10 @@ export const Stats = ({ subscriptions = [] }) => {
         >
           {stat.icon}
           <div className="text-center break-words">
-            <Typography variant="small" color="gray" className="font-normal">
+            <Typography variant="small" className="text-text font-normal">
               {stat.title}
             </Typography>
-            <Typography className="text-2xl sm:text-3xl font-extrabold">
+            <Typography className="text-text text-2xl sm:text-3xl font-extrabold mt-1">
               {stat.value}
             </Typography>
           </div>
@@ -68,7 +68,7 @@ export const Stats = ({ subscriptions = [] }) => {
       ))}
 
       <Card className="w-full p-4 shadow-lg rounded-2xl flex flex-col items-center justify-center text-center gap-2">
-        <Typography variant="small" color="gray" className="font-normal mb-2">
+        <Typography variant="small" className="text-text font-normal mb-2">
           Subscriptions by Category
         </Typography>
         {donutSeries.length > 0 ? (
@@ -96,7 +96,7 @@ export const Stats = ({ subscriptions = [] }) => {
             />
           </div>
         ) : (
-          <Typography variant="small" color="gray">
+          <Typography variant="small" className="text-text ">
             No data
           </Typography>
         )}

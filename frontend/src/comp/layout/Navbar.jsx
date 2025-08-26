@@ -37,7 +37,7 @@ export const Navbar = () => {
       <Typography
         as="li"
 
-        className="text-text p-1 font-medium hover:text-blue-600 transition-colors"
+        className="text-text p-1 font-medium hover:text-main transition-colors"
       >
         {label}
       </Typography>
@@ -136,11 +136,11 @@ export const Navbar = () => {
             {user ? (
               <>
                 <Typography className="text-lg  py-1">Hi {user.name}!</Typography>
-                <div className="flex flex-col gap-2 py-2 text-blue-600 border-t border-gray-200">
+                <div className="flex flex-col gap-2 py-2 text-main border-t border-gray-200">
 
-                  <Link to="/admin" onClick={closeMenu} className="hover:text-blue-600">Dashboard</Link>
-                  <Link to="/admin" onClick={closeMenu} className="hover:text-blue-600">Stats</Link>
-                  <Link to="#" onClick={closeMenu} className="hover:text-blue-600">Help</Link>
+                  <Link to="/admin" onClick={closeMenu} className="hover:text-text">Dashboard</Link>
+                  <Link to="/admin" onClick={closeMenu} className="hover:text-text">Stats</Link>
+                  <Link to="#" onClick={closeMenu} className="hover:text-text">Help</Link>
                 </div>
                 <div className="flex flex-col gap-2 border-t border-gray-200">
                   <NavList onClick={closeMenu} />
