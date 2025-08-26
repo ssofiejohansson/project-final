@@ -65,7 +65,7 @@ export const Stats = ({ subscriptions = [] }) => {
             <Typography variant="small" color="gray" className="font-normal">
               {stat.title}
             </Typography>
-            <Typography color="blue-gray" className="text-2xl sm:text-3xl font-extrabold">
+            <Typography color="text-text" className="text-2xl sm:text-3xl font-extrabold">
               {stat.value}
             </Typography>
           </div>

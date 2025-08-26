@@ -19,7 +19,7 @@ export const Footer = () => {
               <Typography
                 as={Link}
                 to="/about"
-                color="blue-gray"
+                color="text-text"
                 className="font-medium !text-gray-600 transition-colors hover:!text-blue-600"
               >
                 About SubscriBee
@@ -31,7 +31,7 @@ export const Footer = () => {
               <Typography
                 as={Link}
                 to="/about#project"
-                color="blue-gray"
+                color="text-text"
                 className="font-medium !text-gray-600 transition-colors hover:!text-blue-600"
               >
                 About this project
@@ -43,7 +43,7 @@ export const Footer = () => {
               <Typography
                 as={Link}
                 to="/about#faq"
-                color="blue-gray"
+                color="text-text"
                 className="font-medium !text-gray-600 transition-colors hover:!text-blue-600"
               >
                 FAQ
@@ -56,7 +56,7 @@ export const Footer = () => {
               <Typography
                 as={Link}
                 to="/about#contact"
-                color="blue-gray"
+                color="text-text"
                 className="font-medium !text-gray-600 transition-colors hover:!text-blue-600"
               >
                 Contact
@@ -84,7 +84,7 @@ export const Footer = () => {
 
 
         <Typography
-          color="blue-gray"
+          color="text-text"
           className="mt-4 !text-sm !font-normal text-gray-500"
         >
           &copy; {currentYear} SubscriBee. All rights reserved.

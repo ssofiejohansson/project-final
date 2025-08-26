@@ -34,7 +34,7 @@ export const FAQ = () => {
         <div className="mb-14 text-center">
           <Typography
             variant="h2"
-            color="blue-gray"
+            color="text-text"
             className="mb-4 text-3xl font-bold !leading-snug lg:text-4xl"
           >
             Frequently Asked Questions
@@ -60,7 +60,7 @@ export const FAQ = () => {
             >
               <AccordionHeader
                 onClick={() => handleOpen(index + 1)}
-                className="text-lg font-semibold text-blue-gray-900 py-4 hover:text-green-600 transition"
+                className="text-lg font-semibold text-text-text-900 py-4 hover:text-green-600 transition"
               >
                 {title}
               </AccordionHeader>

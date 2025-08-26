@@ -18,7 +18,7 @@ export const Error = () => {
       <FlagIcon className="w-20 h-20 mx-auto" />
       <Typography
         variant="h1"
-        color="blue-gray"
+        color="text-text"
         className="mt-10 !text-3xl !leading-snug md:!text-4xl"
       >
         Error 404 <br /> It looks like something went wrong.

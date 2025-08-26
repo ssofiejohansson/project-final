@@ -137,7 +137,7 @@ export const SubscriptionList = () => {
                       className={`border-b border-gray-300 !p-4 pb-8 ${customeStyle}`}
                     >
                       <Typography
-                        color="blue-gray"
+                        color="text-text"
                         variant="small"
                         className="!font-bold"
                       >
@@ -184,7 +184,7 @@ export const SubscriptionList = () => {
                             <div>
                               <Typography
                                 variant="small"
-                                color="blue-gray"
+                                color="text-text"
                                 className="!font-semibold"
                               >
                                 {sub.name}

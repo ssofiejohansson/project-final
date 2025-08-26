@@ -8,7 +8,7 @@ export const AboutSub = () => {
         {/* Title */}
         <Typography
           variant="h1"
-          color="blue-gray"
+          color="text-text"
           className="mx-auto my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
         >
           About{" "}
