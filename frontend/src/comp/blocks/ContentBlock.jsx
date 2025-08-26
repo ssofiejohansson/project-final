@@ -11,8 +11,7 @@ export const ContentBlock = () => {
       <div className="container mx-auto px-4 text-center">
         {/* Heading */}
         <Typography
-          variant="h1"
-
+          variant="h5"
           className="text-text mx-auto my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
         >
           So why{" "}

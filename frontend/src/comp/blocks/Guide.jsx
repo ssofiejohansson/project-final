@@ -8,10 +8,10 @@ export const Guide = () => {
         <Typography className="text-main mb-2 font-bold uppercase">
           How it works
         </Typography>
-        <Typography className="text-text mb-4 !text-2xl font-bold lg:!text-4xl">
+        <Typography variant="h2" className="text-text mb-4 !text-2xl font-bold lg:!text-4xl">
           Get started in three simple steps
         </Typography>
-        <Typography variant="lead" className="mx-auto max-w-lg text-light">
+        <Typography variant="paragraph" className="mx-auto max-w-lg text-text">
           SubscriBee makes it easy to take control of your subscriptions. Here’s how:
         </Typography>
       </div>
@@ -19,7 +19,7 @@ export const Guide = () => {
         <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
           <CardBody className="text-center">
             <Typography
-              variant="h4"
+              variant="h3"
               className="text-text mb-2 font-medium"
             >
               Step 1 - Create Your Account
@@ -39,7 +39,7 @@ export const Guide = () => {
         >
           <CardBody className="text-center">
             <Typography
-              variant="h4"
+              variant="h3"
               className="text-text mb-2 font-medium"
             >
               Step 2 – Add Your Subscriptions
@@ -61,7 +61,7 @@ export const Guide = () => {
         >
           <CardBody className="text-center">
             <Typography
-              variant="h4"
+              variant="h3"
               className="text-text mb-2 font-medium"
             >
               Step 3 – Stay on Track

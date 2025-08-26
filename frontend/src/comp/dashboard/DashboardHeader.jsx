@@ -10,7 +10,6 @@ export const DashboardHeader = ({ user }) => {
     <header className="text-center px-4 sm:px-0">
       <Typography
         variant="h1"
-
         className="text-text mx-auto my-6 w-full max-w-full break-words overflow-hidden leading-snug !text-2xl sm:!text-3xl md:!text-4xl lg:max-w-3xl lg:!text-5xl"
       >
         {hasSubs ? (
@@ -29,7 +28,7 @@ export const DashboardHeader = ({ user }) => {
 
       <Typography
         variant="lead"
-        className="mx-auto w-full max-w-full text-light  sm: lg:text-lg mb-8 break-words"
+        className="mx-auto w-full max-w-full text-light lg:text-lg mb-8 break-words"
       >
         {hasSubs
           ? "View and manage your subscriptions easily."

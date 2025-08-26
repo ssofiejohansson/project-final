@@ -122,7 +122,7 @@ export const Linegraph = ({ subscriptions = [] }) => {
     return !isNaN(cost) ? sum + cost : sum;
   }, 0);
 
- safeSubscriptions.forEach((sub) => {
+  safeSubscriptions.forEach((sub) => {
     console.log(
       "createddate:",
       sub.createdAt,

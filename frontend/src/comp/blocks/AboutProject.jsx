@@ -49,7 +49,7 @@ export const AboutProject = () => {
           <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
             <CardBody className="text-center">
               <Typography
-                variant="h4"
+                variant="h3"
                 className="text-text mb-2 font-medium"
               >
                 Our Team
@@ -109,7 +109,7 @@ export const AboutProject = () => {
           {/* OPTIONAL: Additional Cards */}
           <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
             <CardBody className="text-center">
-              <Typography variant="h4" className="text-text mb-2 font-medium">
+              <Typography variant="h3" className="text-text mb-2 font-medium">
                 Project Process
               </Typography>
               <Typography className="text-center max-w-xs mx-auto  font-normal leading-7 text-text">
@@ -120,7 +120,7 @@ export const AboutProject = () => {
 
           <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
             <CardBody className="text-center">
-              <Typography variant="h4" className="text-text mb-2 font-medium">
+              <Typography variant="h3" className="text-text mb-2 font-medium">
                 Technology
               </Typography>
               <Typography className="text-text text-center max-w-xs mx-auto  font-normal leading-7">

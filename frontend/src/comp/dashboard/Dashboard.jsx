@@ -32,10 +32,10 @@ export const Dashboard = () => {
 
   if (!user || !user.token) {
     return (
-      <section className="flex items-center justify-center min-h-[80vh] px-4">
-        <Card className="w-full max-w-md shadow-lg rounded-2xl">
+      <section className="flex items-center justify-center p-4">
+        <Card className="shadow-lg rounded-2xl">
           <CardBody className="flex flex-col items-center text-center space-y-6">
-            <Typography variant="h2" className="text-text ">
+            <Typography variant="h1" className="text-text ">
               Please log in
             </Typography>
 
@@ -43,7 +43,8 @@ export const Dashboard = () => {
               You need to be logged in to access your dashboard.
             </Typography>
 
-            <Btn onClick={() => navigate("/login")}>
+            <Btn size="sm"
+              onClick={() => navigate("/login")}>
               Log in
             </Btn>
           </CardBody>
@@ -64,9 +65,6 @@ export const Dashboard = () => {
         <SubscriptionList subscriptions={subscriptions} />
         <Linegraph subscriptions={subscriptions} />
       </div>
-
-      {/* <SubscriptionSave /> */}
-
     </section>
   );
 };

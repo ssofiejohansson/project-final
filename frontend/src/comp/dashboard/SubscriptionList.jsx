@@ -134,10 +134,8 @@ export const SubscriptionList = () => {
           shadow={false}
           className="rounded-none flex flex-wrap gap-4 justify-between mb-4"
         >
-          <div>
-
-            <Typography variant="h6" className="text-text font-normal text-left mt-1">
-
+          <div className="flex flex-col gap-1">
+            <Typography variant="h2" className="text-text text-base font-normal text-left mt-1">
               All subscriptions
             </Typography>
             <div className="flex items-center gap-2 mt-1">
@@ -150,7 +148,8 @@ export const SubscriptionList = () => {
                   </Typography>
                 </>
               ) : (
-                <>  <BellAlertIcon className="h-5 w-5 text-text font-bold" />
+                <>
+                  <BellAlertIcon className="h-5 w-5 text-text font-bold" />
                   <Typography variant="small" className="text-text">
                     No payments due in the next 3 days.
                   </Typography>
@@ -211,15 +210,13 @@ export const SubscriptionList = () => {
                       ? "!p-4"
                       : "!p-4 border-b border-gray-300";
 
-                    // Check if reminder date is in the next 7 days
+                    // Check if reminder date is in the next 3 days
                     const isUpcoming = upcommingDates().includes(
                       new Date(sub.reminderDate).toISOString().split("T")[0]
                     );
 
                     return (
                       <tr key={sub._id || index}
-                      //highlight row if reminder date is in the next 3 days
-                      // className={isUpcoming ? "bg-red-100" : ""}
                       >
                         {/* Name */}
                         <td className={classes}>
@@ -241,12 +238,7 @@ export const SubscriptionList = () => {
                               >
                                 {sub.name}
                               </Typography>
-                              {/* <Typography
-                                variant="small"
-                                className="!font-normal text-light"
-                              >
-                                {sub.category || "No category"}
-                              </Typography> */}
+
                             </div>
                           </div>
                         </td>
