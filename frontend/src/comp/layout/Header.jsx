@@ -1,5 +1,6 @@
 import { Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
+
 import { Btn } from "./Btn";
 
 export const Header = () => {

@@ -11,7 +11,7 @@ export const DashboardHeader = ({ user }) => {
       <Typography
         variant="h1"
 
-        className="mx-auto my-6 w-full max-w-full break-words overflow-hidden leading-snug !text-2xl sm:!text-3xl md:!text-4xl lg:max-w-3xl lg:!text-5xl"
+        className="text-text mx-auto my-6 w-full max-w-full break-words overflow-hidden leading-snug !text-2xl sm:!text-3xl md:!text-4xl lg:max-w-3xl lg:!text-5xl"
       >
         {hasSubs ? (
           <>

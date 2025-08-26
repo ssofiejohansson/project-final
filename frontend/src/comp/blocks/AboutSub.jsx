@@ -9,7 +9,7 @@ export const AboutSub = () => {
         <Typography
           variant="h1"
 
-          className="mx-auto my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
+          className="text-text mx-auto my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
         >
           About{" "}
           <span className="text-main leading-snug">SubscriBee</span>
