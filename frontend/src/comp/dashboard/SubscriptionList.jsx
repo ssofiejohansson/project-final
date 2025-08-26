@@ -148,9 +148,11 @@ export const SubscriptionList = () => {
                   </Typography>
                 </>
               ) : (
-                <Typography variant="small" className="text-text">
-                  No payments due in the next 3 days.
-                </Typography>
+                <>  <BellAlertIcon className="h-5 w-5 text-text font-bold" />
+                  <Typography variant="small" className="text-text">
+                    No payments due in the next 3 days.
+                  </Typography>
+                </>
               )}
             </div>
           </div>
