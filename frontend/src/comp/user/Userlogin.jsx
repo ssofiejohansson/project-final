@@ -112,7 +112,7 @@ export const Userlogin = () => {
             Don’t have an account?{" "}
             <button
               onClick={() => navigate('/signup')}
-              className="text-blue-600 hover:underline font-medium"
+              className="text-main hover:underline font-medium"
             >
               Sign Up
             </button>

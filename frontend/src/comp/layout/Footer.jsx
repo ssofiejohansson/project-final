@@ -58,7 +58,7 @@ export const Footer = () => {
                 href="mailto:subscribee.reminder@gmail.com"
                 className="flex items-center gap-2 font-medium transition-colors hover:text-main"
               >
-                <EnvelopeIcon className="h-5 w-5" />
+                <EnvelopeIcon className="text-main h-5 w-5" />
                 Contact us
               </a>
             </li>
