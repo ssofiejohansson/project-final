@@ -20,7 +20,7 @@ export const AboutProject = () => {
             <Typography
               variant="h1"
               id="project"
-              className="mb-6 w-full leading-snug !text-3xl lg:max-w-xl lg:!text-5xl"
+              className="text-text mb-6 w-full leading-snug !text-3xl lg:max-w-xl lg:!text-5xl"
             >
               About <span className="text-main">this project</span>.
             </Typography>
@@ -106,7 +106,7 @@ export const AboutProject = () => {
           {/* OPTIONAL: Additional Cards */}
           <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
             <CardBody className="text-center">
-              <Typography variant="h4" className="mb-2 font-medium">
+              <Typography variant="h4" className="text-text mb-2 font-medium">
                 Project Process
               </Typography>
               <Typography className="text-center max-w-xs mx-auto text-base font-normal leading-7 !text-gray-500">
@@ -117,7 +117,7 @@ export const AboutProject = () => {
 
           <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
             <CardBody className="text-center">
-              <Typography variant="h4" className="mb-2 font-medium">
+              <Typography variant="h4" className="text-text mb-2 font-medium">
                 Technology
               </Typography>
               <Typography className="text-center max-w-xs mx-auto text-base font-normal leading-7 !text-gray-500">

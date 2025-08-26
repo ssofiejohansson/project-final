@@ -34,8 +34,7 @@ export const FAQ = () => {
         <div className="mb-14 text-center">
           <Typography
             variant="h2"
-
-            className="mb-4 text-3xl font-bold !leading-snug lg:text-4xl"
+            className="text-text mb-4 text-3xl font-bold !leading-snug lg:text-4xl"
           >
             Frequently Asked Questions
           </Typography>

@@ -110,7 +110,7 @@ export const SubscriptionList = () => {
           className="rounded-none flex flex-wrap gap-4 justify-between mb-4"
         >
           <div>
-            <Typography variant="h6" className="text-gray-600 font-normal mt-1">
+            <Typography variant="h6" className="text-text font-normal mt-1">
               All subscriptions
             </Typography>
           </div>
