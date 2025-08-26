@@ -23,7 +23,7 @@ export const Header = () => {
             </Typography>
             <Typography
               variant="lead"
-              className="mx-auto w-full !text-gray-500 lg:text-lg text-base"
+              className="mx-auto w-full text-light lg:text-lg text-base"
             >
               We makes it simple to track monthly and yearly costs, so you always know where your money’s going.
             </Typography>

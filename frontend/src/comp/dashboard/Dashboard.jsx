@@ -35,11 +35,11 @@ export const Dashboard = () => {
       <section className="flex items-center justify-center min-h-[80vh] px-4">
         <Card className="w-full max-w-md shadow-lg rounded-2xl">
           <CardBody className="flex flex-col items-center text-center space-y-6">
-            <Typography variant="h4" >
+            <Typography variant="h2" className="text-text ">
               Please log in
             </Typography>
 
-            <Typography color="gray" className="text-base">
+            <Typography className="text-text">
               You need to be logged in to access your dashboard.
             </Typography>
 

@@ -19,7 +19,7 @@ export const AboutSub = () => {
         <div className="mx-auto max-w-2xl space-y-4">
           <Typography
             variant="lead"
-            className="!text-gray-600 lg:text-lg text-base"
+            className="!text-light lg:text-lg text-base"
           >
             Subscriptions are part of everyday life, but they’re easy to lose
             track of. Small monthly charges add up quickly, and before you know
@@ -27,7 +27,7 @@ export const AboutSub = () => {
           </Typography>
           <Typography
             variant="lead"
-            className="!text-gray-600 lg:text-lg text-base"
+            className="!text-light lg:text-lg text-base"
           >
             SubscriBee was created to help you see the full picture. With one
             place to track all your subscriptions, you’ll stay organized, avoid
@@ -35,7 +35,7 @@ export const AboutSub = () => {
           </Typography>
           <Typography
             variant="lead"
-            className="!text-gray-600 lg:text-lg text-base"
+            className="!text-light lg:text-lg text-base"
           >
             Beeatrice, our helpful mascot, pops in along the way to celebrate
             your wins and keep things light—because managing money should feel

@@ -136,7 +136,7 @@ export const Linegraph = ({ subscriptions = [] }) => {
       <Card>
         <CardBody className="!p-2">
           <div className="flex gap-2 flex-wrap justify-between px-2 !mt-4 ">
-            <Typography variant="h3" >
+            <Typography variant="h3" className="text-text ">
               {isNaN(totalCost) ? "0.00" : totalCost.toFixed(2)} SEK
             </Typography>
             <div className="flex items-center gap-6">
@@ -152,7 +152,7 @@ export const Linegraph = ({ subscriptions = [] }) => {
                   ></span>
                   <Typography
                     variant="small"
-                    className="font-normal text-gray-600"
+                    className="font-normal text-light"
                   >
                     {year}
                   </Typography>

@@ -25,7 +25,7 @@ export const ContentBlock = () => {
             <CheckCircleIcon className="h-6 w-6 text-accent flex-shrink-0" />
             <Typography
               variant="lead"
-              className="!text-gray-600 lg:text-lg text-base"
+              className="!text-light lg:text-lg text-base"
             >
               Easy to use and easy to trust
             </Typography>
@@ -34,7 +34,7 @@ export const ContentBlock = () => {
             <CheckCircleIcon className="h-6 w-6 text-accent  flex-shrink-0" />
             <Typography
               variant="lead"
-              className="!text-gray-600 lg:text-lg text-base"
+              className="!text-light lg:text-lg text-base"
             >
               Prevents surprise charges and forgotten trials
             </Typography>
@@ -43,7 +43,7 @@ export const ContentBlock = () => {
             <CheckCircleIcon className="h-6 w-6 text-accent flex-shrink-0" />
             <Typography
               variant="lead"
-              className="!text-gray-600 lg:text-lg text-base"
+              className="!text-light lg:text-lg text-base"
             >
               Gives you insights to save more each month
             </Typography>

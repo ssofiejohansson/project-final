@@ -23,7 +23,7 @@ export const Error = () => {
       >
         Error 404 <br /> It looks like something went wrong.
       </Typography>
-      <Typography className="mt-8 mb-14 text-[18px] font-normal text-gray-500 mx-auto md:max-w-sm">
+      <Typography className="mt-8 mb-14 text-[18px] font-normal text-text mx-auto md:max-w-sm">
         Go back to home, and try again.
       </Typography>
       <Btn

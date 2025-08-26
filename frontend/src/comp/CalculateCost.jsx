@@ -5,7 +5,7 @@ export const CalculateCost = () => {
   const selectedSubSave = useSubscriptionStore((s) => s.selectedSubSave);
 
   if (!selectedSubSave) {
-    return <div className="text-gray-500">No subscription selected</div>;
+    return <div className="text-light">No subscription selected</div>;
   }
 
   const cost = Number(selectedSubSave.cost ?? 0);

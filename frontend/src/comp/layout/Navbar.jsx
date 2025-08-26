@@ -37,7 +37,7 @@ export const Navbar = () => {
       <Typography
         as="li"
 
-        className="text-text p-1 font-medium hover:text-blue-600 transition-colors"
+        className="text-text p-1 font-medium hover:text-main transition-colors"
       >
         {label}
       </Typography>
@@ -48,7 +48,14 @@ export const Navbar = () => {
     <ul className="mb-4 mt-2 flex flex-col gap-3 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-8">
       {!isHome && <NavItem to="/" label="Home" onClick={onClick} />}
       <NavItem to="/about" label="About" onClick={onClick} />
-      <NavItem to="#" label="Contact" onClick={onClick} />
+      <li>
+        <a
+          href="mailto:subscribee.reminder@gmail.com"
+          className="text-text p-1 font-medium hover:text-main transition-colors"
+        >
+          Contact
+        </a>
+      </li>
     </ul>
   );
 
@@ -106,7 +113,7 @@ export const Navbar = () => {
                 <Btn onClick={() => navigate("/login")} size="sm" variant="filled">
                   Log in
                 </Btn>
-                <Btn onClick={() => navigate("/signup")} size="sm" variant="outlined">
+                <Btn onClick={() => navigate("/signup")} size="sm" variant="text">
                   Sign Up
                 </Btn>
               </>
@@ -136,11 +143,11 @@ export const Navbar = () => {
             {user ? (
               <>
                 <Typography className="text-lg  py-1">Hi {user.name}!</Typography>
-                <div className="flex flex-col gap-2 py-2 text-blue-600 border-t border-gray-200">
+                <div className="flex flex-col gap-2 py-2 text-main border-t border-gray-200">
 
-                  <Link to="/admin" onClick={closeMenu} className="hover:text-blue-600">Dashboard</Link>
-                  <Link to="/admin" onClick={closeMenu} className="hover:text-blue-600">Stats</Link>
-                  <Link to="#" onClick={closeMenu} className="hover:text-blue-600">Help</Link>
+                  <Link to="/admin" onClick={closeMenu} className="hover:text-text">Dashboard</Link>
+                  <Link to="/admin" onClick={closeMenu} className="hover:text-text">Stats</Link>
+                  <Link to="#" onClick={closeMenu} className="hover:text-text">Help</Link>
                 </div>
                 <div className="flex flex-col gap-2 border-t border-gray-200">
                   <NavList onClick={closeMenu} />
@@ -161,7 +168,7 @@ export const Navbar = () => {
                   <Btn onClick={() => { navigate("/login"); closeMenu(); }} size="md" variant="filled">
                     Log in
                   </Btn>
-                  <Btn onClick={() => { navigate("/signup"); closeMenu(); }} size="md" variant="outlined">
+                  <Btn onClick={() => { navigate("/signup"); closeMenu(); }} size="md" variant="text">
                     Sign Up
                   </Btn>
                 </>
