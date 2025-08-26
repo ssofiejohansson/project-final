@@ -114,19 +114,19 @@ export const Guide = () => {
             </div>
             <div className="flex justify-center mt-6 gap-4">
               <a
-                href="https://technigo.se"
+                href="#" target="_blank" rel="noopener noreferrer"
                 className="text-xs font-bold text-main hover:underline"
               >
                 Technigo
               </a>
               <a
-                href="https://github.com/your-repo"
+                href="#" target="_blank" rel="noopener noreferrer"
                 className="text-xs font-bold text-main hover:underline"
               >
                 GitHub
               </a>
               <a
-                href="#"
+                href="#" target="_blank" rel="noopener noreferrer"
                 className="text-xs font-bold text-main hover:underline"
               >
                 Other Links

@@ -61,8 +61,9 @@ export const Navbar = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"
-        }`}
+      className={`top-0 left-0 right-0 z-50 transition-transform duration-300 fixed 
+    ${showNavbar ? "lg:translate-y-0" : "lg:-translate-y-full"} 
+    translate-y-0`}
     >
       <div className="mx-auto max-w-7xl px-4 lg:px-8 shadow-lg rounded-b-xl bg-white">
         <div className="flex items-center justify-between h-16">
