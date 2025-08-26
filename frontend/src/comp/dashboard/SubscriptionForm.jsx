@@ -170,7 +170,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
 
       <Typography
         variant="small"
-        className="text-gray-600 font-normal text-sm sm:text-base"
+        className="text-light font-normal text-sm sm:text-base"
       >
         Please fill in the information below.
       </Typography>

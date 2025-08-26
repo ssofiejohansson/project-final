@@ -122,7 +122,7 @@ const EmailRemindersList = () => {
       <div className='flex justify-between items-center mb-4'>
         <h2 className='text-xl font-semibold'>Email Reminders</h2>
         <div className='flex gap-2'>
-          <span className='text-sm text-gray-600'>
+          <span className='text-sm text-light'>
             {reminders.length} reminder{reminders.length !== 1 ? 's' : ''}
           </span>
           <button
@@ -136,7 +136,7 @@ const EmailRemindersList = () => {
       </div>
 
       {reminders.length === 0 ? (
-        <div className='text-center py-8 text-gray-500'>
+        <div className='text-center py-8 text-light'>
           <p>No email reminders scheduled</p>
           <p className='text-sm mt-2'>
             Use the form above to schedule your first reminder
@@ -169,7 +169,7 @@ const EmailRemindersList = () => {
 
                   <p className='text-gray-700 mb-2'>{reminder.subject}</p>
 
-                  <div className='flex flex-wrap gap-4 text-sm text-gray-600'>
+                  <div className='flex flex-wrap gap-4 text-sm text-light'>
                     <span>
                       <strong>Type:</strong>{' '}
                       {reminder.isRecurring

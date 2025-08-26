@@ -84,7 +84,7 @@ export const Footer = () => {
 
         <Typography
 
-          className="mt-4 !text-sm !font-normal text-gray-500"
+          className="mt-4 !text-sm !font-normal text-light"
         >
           &copy; {currentYear} SubscriBee. All rights reserved.
         </Typography>

@@ -156,7 +156,7 @@ export const Linegraph = ({ subscriptions = [] }) => {
                   ></span>
                   <Typography
                     variant="small"
-                    className="font-normal text-gray-600"
+                    className="font-normal text-light"
                   >
                     {year}
                   </Typography>

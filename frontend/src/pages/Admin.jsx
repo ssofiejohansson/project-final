@@ -10,7 +10,7 @@ export const Admin = () => {
       <Dashboard />
       {/* <Popup>
         <p className="font-semibold">Dashboard Tips</p>
-        <p className="text-gray-600 text-sm mt-1">
+        <p className="text-light text-sm mt-1">
           Did you know? You can filter subscriptions by category!
         </p>
       </Popup> */}

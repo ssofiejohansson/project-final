@@ -84,7 +84,7 @@ export const Usersignup = () => {
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
           Sign up
         </h2>
-        <p className="text-center text-gray-500 mb-8">
+        <p className="text-center text-light mb-8">
           Join SubscriBee and get started today
         </p>
 
@@ -139,7 +139,7 @@ export const Usersignup = () => {
           </Btn>
         </form>
 
-        <p className="mt-6 text-sm text-center text-gray-600">
+        <p className="mt-6 text-sm text-center text-light">
           Already have an account?{" "}
           <a
             href="/login"

@@ -21,7 +21,7 @@ export const Popup = ({ children, delay }) => {
         <div className="relative bg-white shadow-lg rounded-2xl py-8 px-6 max-w-xs mb-3 border-l-4 border-t-4 border-main">
           <IconButton
             variant="text"
-            className="!absolute top-0 right-0 text-gray-400 hover:text-gray-600 transition"
+            className="!absolute top-0 right-0 text-gray-400 hover:text-light transition"
             onClick={() => setCollapsed(true)}
           >
             <ChevronDownIcon className="h-5 w-5" />
@@ -50,7 +50,7 @@ export const Popup = ({ children, delay }) => {
       {collapsed && (
         <IconButton
           variant="text"
-          className="m-2 text-gray-400 hover:text-gray-600 transition"
+          className="m-2 text-gray-400 hover:text-light transition"
           onClick={() => setCollapsed(false)}
         >
           <ChevronUpIcon className="h-5 w-5" />

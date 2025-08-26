@@ -98,7 +98,7 @@ export const SubscriptionList = () => {
     Food: <CakeIcon className="h-8 w-8 text-red-500" />,
     Health: <HeartIcon className="h-8 w-8 text-main" />,
     Learning: <BookOpenIcon className="h-8 w-8 text-blue-500" />,
-    Other: <QuestionMarkCircleIcon className="h-8 w-8 text-gray-500" />,
+    Other: <QuestionMarkCircleIcon className="h-8 w-8 text-light" />,
   };
 
   return (
@@ -152,7 +152,7 @@ export const SubscriptionList = () => {
                   <tr>
                     <td
                       colSpan={TABLE_HEAD.length}
-                      className="text-center py-6 italic text-gray-500"
+                      className="text-center py-6 italic text-light"
                     >
                       {subscriptions.length === 0
                         ? "You have not added any subscriptions, please click add."
@@ -191,7 +191,7 @@ export const SubscriptionList = () => {
                               </Typography>
                               {/* <Typography
                                 variant="small"
-                                className="!font-normal text-gray-600"
+                                className="!font-normal text-light"
                               >
                                 {sub.category || "No category"}
                               </Typography> */}
@@ -202,7 +202,7 @@ export const SubscriptionList = () => {
                         <td className={classes}>
                           <div className="flex items-center justify-center">
                             {categoryIcons[sub.category] || (
-                              <QuestionMarkCircleIcon className="h-8 w-8 text-gray-500" />
+                              <QuestionMarkCircleIcon className="h-8 w-8 text-light" />
                             )}
                           </div>
                         </td>
@@ -210,7 +210,7 @@ export const SubscriptionList = () => {
                         <td className={`${classes} text-right`}>
                           <Typography
                             variant="small"
-                            className="!font-normal text-gray-600"
+                            className="!font-normal text-light"
                           >
                             {sub.cost} kr
                           </Typography>
@@ -232,7 +232,7 @@ export const SubscriptionList = () => {
                         <td className={`${classes} text-right`}>
                           <Typography
                             variant="small"
-                            className="!font-normal text-gray-600"
+                            className="!font-normal text-light"
                           >
                             {sub.freeTrial
                               ? `Yes (${sub.trialDays} days)`
@@ -243,7 +243,7 @@ export const SubscriptionList = () => {
                         <td className={`${classes} text-right`}>
                           <Typography
                             variant="small"
-                            className="!font-normal text-gray-600"
+                            className="!font-normal text-light"
                           >
                             {new Date(sub.reminderDate).toLocaleDateString()}
                           </Typography>

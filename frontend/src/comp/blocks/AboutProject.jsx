@@ -26,7 +26,7 @@ export const AboutProject = () => {
             </Typography>
             <Typography
               variant="lead"
-              className="mb-8 w-full !text-gray-500 lg:text-lg text-base"
+              className="mb-8 w-full text-light lg:text-lg text-base"
             >
               SubscriBee is a student-built project designed to help people manage their subscriptions.
             </Typography>
@@ -50,7 +50,7 @@ export const AboutProject = () => {
               <Typography
                 variant="h4"
 
-                className="mb-2 font-medium"
+                className="text-text mb-2 font-medium"
               >
                 Our Team
               </Typography>
@@ -83,19 +83,19 @@ export const AboutProject = () => {
               <div className="flex justify-center mt-6 gap-4">
                 <a
                   href="https://technigo.se"
-                  className="text-xs font-bold text-blue-500 hover:underline"
+                  className="text-xs font-bold text-main hover:underline"
                 >
                   Technigo
                 </a>
                 <a
                   href="https://github.com/your-repo"
-                  className="text-xs font-bold text-blue-500 hover:underline"
+                  className="text-xs font-bold text-main hover:underline"
                 >
                   GitHub
                 </a>
                 <a
                   href="#"
-                  className="text-xs font-bold text-blue-500 hover:underline"
+                  className="text-xs font-bold text-main hover:underline"
                 >
                   Other Links
                 </a>
@@ -109,7 +109,7 @@ export const AboutProject = () => {
               <Typography variant="h4" className="text-text mb-2 font-medium">
                 Project Process
               </Typography>
-              <Typography className="text-center max-w-xs mx-auto text-base font-normal leading-7 !text-gray-500">
+              <Typography className="text-center max-w-xs mx-auto text-base font-normal leading-7 text-text">
                 SubscriBee was built iteratively with user testing, feedback, and constant improvement to deliver a smooth subscription-tracking experience.
               </Typography>
             </CardBody>

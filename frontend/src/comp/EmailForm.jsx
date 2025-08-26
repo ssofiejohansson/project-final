@@ -1,4 +1,4 @@
- import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import EmailRemindersList from "./EmailRemindersList";
 
 function EmailForm({ setRefreshReminders }) {
@@ -126,7 +126,7 @@ This is a reminder that you have subscriptions that is due to be renewed soon.
       <h2 className="text-2xl font-bold mb-4 text-center">
         Send reminder email
       </h2>
-      <p className="text-gray-600 mb-6 text-center">
+      <p className="text-light mb-6 text-center">
         Send our pre-written reminder message to a subscriber
       </p>
 
@@ -242,7 +242,7 @@ This is a reminder that you have subscriptions that is due to be renewed soon.
                 </label>
               </div>
               {isRecurring && (
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-light mt-1">
                   This will send a reminder email every month on the same date.
                   If the date doesn't exist in certain months (e.g., January
                   31st in February), the email will be sent on the last day of
@@ -278,10 +278,10 @@ This is a reminder that you have subscriptions that is due to be renewed soon.
           {isLoading
             ? "Processing..."
             : sendImmediately
-            ? "Send Reminder Email Now"
-            : isRecurring
-            ? "Schedule Recurring Reminder"
-            : "Schedule Reminder Email"}
+              ? "Send Reminder Email Now"
+              : isRecurring
+                ? "Schedule Recurring Reminder"
+                : "Schedule Reminder Email"}
         </button>
       </form>
 

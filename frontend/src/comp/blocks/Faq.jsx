@@ -38,7 +38,7 @@ export const FAQ = () => {
           >
             Frequently Asked Questions
           </Typography>
-          <Typography className="mx-auto font-normal text-base !text-gray-500 lg:max-w-2xl">
+          <Typography className="mx-auto font-normal text-base text-light lg:max-w-2xl">
             Everything you need to know about SubscriBee — from setup to staying
             on track.
           </Typography>
@@ -64,7 +64,7 @@ export const FAQ = () => {
                 {title}
               </AccordionHeader>
               <AccordionBody className="pb-6">
-                <Typography className="font-normal !text-gray-600 leading-relaxed">
+                <Typography className="font-normal !text-light leading-relaxed">
                   {desc}
                 </Typography>
               </AccordionBody>
