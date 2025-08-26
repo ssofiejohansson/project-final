@@ -8,6 +8,7 @@ export const Btn = ({
   ariaLabel,
   disabled = false,
 }) => {
+
   const baseClasses =
     "rounded-lg font-semibold transition duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-main focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
 

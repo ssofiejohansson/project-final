@@ -3,7 +3,12 @@ import { Btn } from "../layout/Btn";
 
 import useUserStore from "../../stores/useUserStore";
 
-export const Logout = ({ size = "md", variant = "text", className = "", ...props }) => {
+export const Logout = ({
+  size = "md",
+  variant = "small",
+  className = "",
+  ...props
+}) => {
   const clearUser = useUserStore((state) => state.clearUser);
   const navigate = useNavigate();
 

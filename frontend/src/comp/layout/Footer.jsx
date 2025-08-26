@@ -6,7 +6,6 @@ import { Logout } from "../user/LogoutBtn";
 import { Btn } from "./Btn";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
 
-
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   const navigate = useNavigate();
@@ -32,7 +31,6 @@ export const Footer = () => {
               <Typography
                 as={Link}
                 to="/about"
-
                 className="font-medium transition-colors  hover:text-main"
               >
                 About this project
@@ -44,7 +42,6 @@ export const Footer = () => {
               <Typography
                 as={Link}
                 to="/about"
-
                 className="font-medium transition-colors  hover:text-main"
               >
                 FAQ
@@ -68,33 +65,44 @@ export const Footer = () => {
         <div className="flex gap-6 pb-6 items-center">
           {user ? (
             <>
-              <Btn onClick={() => navigate("/admin")} size="sm" variant="filled">
+              <Btn
+                onClick={() => navigate("/admin")}
+                size="sm"
+                variant="filled"
+              >
                 Dashboard
               </Btn>
               <Logout size="sm" />
             </>
           ) : (
             <>
-              <Btn onClick={() => navigate("/login")} size="sm" variant="filled">
+              {/* <BtnSmall
+                onClick={() => navigate("/login")}
+                size="sm"
+                variant="text"
+              >
                 Log in
-              </Btn>
-              <Btn onClick={() => navigate("/signup")} size="sm" variant="text">
+              </BtnSmall>
+              <BtnSmall
+                onClick={() => navigate("/signup")}
+                size="sm"
+                variant="text"
+              >
                 Sign Up
-              </Btn>
+              </BtnSmall> */}
             </>
           )}
         </div>
 
-
-        <Typography
-
-          className="mt-4 !text-sm !font-normal text-light"
-        >
+        <Typography className="mt-4 !text-sm !font-normal text-light">
           &copy; {currentYear} SubscriBee. All rights reserved.
         </Typography>
-
       </div>
-      <img src={Logo} alt="SubscriBee Logo" className="h-40 w-40 object-contain " />
+      <img
+        src={Logo}
+        alt="SubscriBee Logo"
+        className="h-40 w-40 object-contain "
+      />
     </footer>
   );
 };

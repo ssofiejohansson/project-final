@@ -1,6 +1,20 @@
-import { Bars3Icon, ChevronDownIcon, UserCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Collapse, IconButton, Menu, MenuHandler, MenuItem, MenuList, Typography } from "@material-tailwind/react";
+import {
+  Bars3Icon,
+  ChevronDownIcon,
+  UserCircleIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
+import {
+  Collapse,
+  IconButton,
+  Menu,
+  MenuHandler,
+  MenuItem,
+  MenuList,
+  Typography,
+} from "@material-tailwind/react";
 import Logo from "/subscribee-logo.png";
+import Bee2 from "/bee2.png";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Logout } from "../../comp/user/LogoutBtn";
@@ -36,7 +50,6 @@ export const Navbar = () => {
     <Link to={to} onClick={onClick}>
       <Typography
         as="li"
-
         className="text-text p-1 font-medium hover:text-main transition-colors"
       >
         {label}
@@ -62,9 +75,9 @@ export const Navbar = () => {
   return (
     // somthing in this class is messing up the log out btn in mobile
     <div
-      className={`top-0 left-0 right-0 z-50 transition-transform duration-300 fixed 
-    ${showNavbar ? "lg:translate-y-0" : "lg:-translate-y-full"} 
-    translate-y-0`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
+        showNavbar ? "translate-y-0" : "-translate-y-full"
+      }`}
     >
       <div className="mx-auto max-w-7xl px-4 lg:px-8 shadow-lg rounded-b-xl bg-white">
         <div className="flex items-center justify-between h-16">
@@ -72,11 +85,14 @@ export const Navbar = () => {
           <Typography
             as={Link}
             to="/"
-
             className="text-text cursor-pointer text-lg font-bold flex items-center gap-2"
           >
-            <img src={Logo} alt="SubscriBee Logo" className="h-9 w-9 object-contain" />
-            SubscriBee
+            <img
+              src={Bee2}
+              alt="SubscriBee Logo"
+              className="h-16"
+              style={{ margin: "5px" }}
+            />
           </Typography>
 
           {/* Center */}
@@ -112,10 +128,18 @@ export const Navbar = () => {
               </>
             ) : (
               <>
-                <Btn onClick={() => navigate("/login")} size="sm" variant="filled">
-                  Log in
+                <Btn
+                  onClick={() => navigate("/login")}
+                  size="sm"
+                  variant="filled"
+                >
+                  Login
                 </Btn>
-                <Btn onClick={() => navigate("/signup")} size="sm" variant="text">
+                <Btn
+                  onClick={() => navigate("/signup")}
+                  size="sm"
+                  variant="filled"
+                >
                   Sign Up
                 </Btn>
               </>
@@ -139,17 +163,31 @@ export const Navbar = () => {
 
         {/* Mobile menu */}
         <Collapse open={open}>
-
           <div className="mt-2 rounded-xl bg-white pb-4 px-4 flex flex-col">
             {/* TOP section */}
             {user ? (
               <>
-                <Typography className="text-lg  py-1">Hi {user.name}!</Typography>
+                <Typography className="text-lg  py-1">
+                  Hi {user.name}!
+                </Typography>
                 <div className="flex flex-col gap-2 py-2 text-main border-t border-gray-200">
-
-                  <Link to="/admin" onClick={closeMenu} className="hover:text-text">Dashboard</Link>
-                  <Link to="/admin" onClick={closeMenu} className="hover:text-text">Stats</Link>
-                  <Link to="#" onClick={closeMenu} className="hover:text-text">Help</Link>
+                  <Link
+                    to="/admin"
+                    onClick={closeMenu}
+                    className="hover:text-text"
+                  >
+                    Dashboard
+                  </Link>
+                  <Link
+                    to="/admin"
+                    onClick={closeMenu}
+                    className="hover:text-text"
+                  >
+                    Stats
+                  </Link>
+                  <Link to="#" onClick={closeMenu} className="hover:text-text">
+                    Help
+                  </Link>
                 </div>
                 <div className="flex flex-col gap-2 border-t border-gray-200">
                   <NavList onClick={closeMenu} />
@@ -167,10 +205,24 @@ export const Navbar = () => {
                 <Logout onClick={closeMenu} />
               ) : (
                 <>
-                  <Btn onClick={() => { navigate("/login"); closeMenu(); }} size="md" variant="filled">
-                    Log in
+                  <Btn
+                    onClick={() => {
+                      navigate("/login");
+                      closeMenu();
+                    }}
+                    size="md"
+                    variant="filled"
+                  >
+                    Login
                   </Btn>
-                  <Btn onClick={() => { navigate("/signup"); closeMenu(); }} size="md" variant="text">
+                  <Btn
+                    onClick={() => {
+                      navigate("/signup");
+                      closeMenu();
+                    }}
+                    size="md"
+                    variant="text"
+                  >
                     Sign Up
                   </Btn>
                 </>
@@ -178,7 +230,6 @@ export const Navbar = () => {
             </div>
           </div>
         </Collapse>
-
       </div>
     </div>
   );

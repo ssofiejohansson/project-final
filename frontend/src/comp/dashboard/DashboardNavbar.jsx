@@ -1,5 +1,5 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { Btn } from "../../comp/layout/Btn"
+import { Btn } from "../../comp/layout/Btn";
 
 export const DashboardNavbar = ({
   filterCategory,

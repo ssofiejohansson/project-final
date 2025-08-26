@@ -17,12 +17,17 @@ export const DashboardHeader = ({ user }) => {
             Welcome {user.name}! Here are your{" "}
             <span className="text-main leading-snug break-words">
               subscriptions
-            </span>.
+            </span>
+            .
           </>
         ) : (
-          <>Welcome {user.name}! You currently have no <span className="text-main leading-snug break-words">
-            subscriptions
-          </span>.</>
+          <>
+            Welcome {user.name}! You currently have no{" "}
+            <span className="text-main leading-snug break-words">
+              subscriptions
+            </span>
+            .
+          </>
         )}
       </Typography>
 

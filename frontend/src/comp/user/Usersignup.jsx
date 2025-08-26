@@ -7,6 +7,7 @@ import { Input } from "./Input";
 import { Btn } from "../layout/Btn";
 import { Typography } from "@material-tailwind/react";
 import { BaseURL } from "../BaseURL";
+import { Typography } from "@material-tailwind/react";
 
 export const Usersignup = () => {
   const [formData, setFormData] = useState({
@@ -82,6 +83,7 @@ export const Usersignup = () => {
   return (
     <section className="flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
+
         <Typography variant="h1" className="text-text text-center mb-4">
           Sign Up
         </Typography>
@@ -128,7 +130,6 @@ export const Usersignup = () => {
               User created successfully!
             </Typography>
           )}
-
           <Btn
             type="submit"
             variant="filled"
