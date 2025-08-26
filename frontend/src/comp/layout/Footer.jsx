@@ -31,7 +31,7 @@ export const Footer = () => {
             <li>
               <Typography
                 as={Link}
-                to="/about#project"
+                to="/about"
 
                 className="font-medium transition-colors  hover:text-main"
               >
@@ -43,7 +43,7 @@ export const Footer = () => {
             <li>
               <Typography
                 as={Link}
-                to="/about#faq"
+                to="/about"
 
                 className="font-medium transition-colors  hover:text-main"
               >

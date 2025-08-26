@@ -112,16 +112,25 @@ export const Guide = () => {
               />
 
             </div>
-            <div className="flex justify-between items-end mt-[144px]">
-
-              <Typography
-                as="a"
-                href="#"
-
-                className="text-text text-xs font-bold cursor-pointer"
+            <div className="flex justify-center mt-6 gap-4">
+              <a
+                href="https://technigo.se"
+                className="text-xs font-bold text-main hover:underline"
               >
-                Technigo Link / Github link / Other links
-              </Typography>
+                Technigo
+              </a>
+              <a
+                href="https://github.com/your-repo"
+                className="text-xs font-bold text-main hover:underline"
+              >
+                GitHub
+              </a>
+              <a
+                href="#"
+                className="text-xs font-bold text-main hover:underline"
+              >
+                Other Links
+              </a>
             </div>
           </CardBody>
         </Card>
