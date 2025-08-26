@@ -7,7 +7,6 @@ import { Input } from "./Input";
 import { Btn } from "../layout/Btn";
 import { Typography } from "@material-tailwind/react";
 import { BaseURL } from "../BaseURL";
-import { Typography } from "@material-tailwind/react";
 
 export const Usersignup = () => {
   const [formData, setFormData] = useState({
