@@ -20,7 +20,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Logout } from "../../comp/user/LogoutBtn";
 import useUserStore from "../../stores/useUserStore";
 import { Btn } from "./Btn";
-import { BtnSmall } from "./Btn";
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -128,20 +127,20 @@ export const Navbar = () => {
               </>
             ) : (
               <>
-                <BtnSmall
+                <Btn
                   onClick={() => navigate("/login")}
                   size="sm"
                   variant="filled"
                 >
                   Login
-                </BtnSmall>
-                <BtnSmall
+                </Btn>
+                <Btn
                   onClick={() => navigate("/signup")}
                   size="sm"
                   variant="filled"
                 >
                   Sign Up
-                </BtnSmall>
+                </Btn>
               </>
             )}
           </div>
@@ -205,7 +204,7 @@ export const Navbar = () => {
                 <Logout onClick={closeMenu} />
               ) : (
                 <>
-                  <BtnSmall
+                  <Btn
                     onClick={() => {
                       navigate("/login");
                       closeMenu();
@@ -214,8 +213,8 @@ export const Navbar = () => {
                     variant="filled"
                   >
                     Login
-                  </BtnSmall>
-                  <BtnSmall
+                  </Btn>
+                  <Btn
                     onClick={() => {
                       navigate("/signup");
                       closeMenu();
@@ -224,7 +223,7 @@ export const Navbar = () => {
                     variant="text"
                   >
                     Sign Up
-                  </BtnSmall>
+                  </Btn>
                 </>
               )}
             </div>

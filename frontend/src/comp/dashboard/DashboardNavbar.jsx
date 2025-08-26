@@ -1,5 +1,5 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { Btn, BtnSmall } from "../../comp/layout/Btn";
+import { Btn } from "../../comp/layout/Btn";
 
 export const DashboardNavbar = ({
   filterCategory,
@@ -36,7 +36,7 @@ export const DashboardNavbar = ({
       </select>
 
       {/* Add button */}
-      <BtnSmall
+      <Btn
         variant="text"
         size="sm"
         className="flex items-center gap-2"
@@ -44,7 +44,7 @@ export const DashboardNavbar = ({
       >
         <PlusIcon strokeWidth={3} className="h-4 w-4" />
         ADD
-      </BtnSmall>
+      </Btn>
     </div>
   );
 };

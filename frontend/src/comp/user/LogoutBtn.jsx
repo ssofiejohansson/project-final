@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { Btn, BtnSmall } from "../layout/Btn";
+import { Btn } from "../layout/Btn";
 
 import useUserStore from "../../stores/useUserStore";
 
 export const Logout = ({
   size = "md",
-  variant = "text",
+  variant = "small",
   className = "",
   ...props
 }) => {
@@ -19,7 +19,7 @@ export const Logout = ({
   };
 
   return (
-    <BtnSmall
+    <Btn
       onClick={handleLogout}
       size={size}
       variant={variant}
@@ -27,6 +27,6 @@ export const Logout = ({
       {...props}
     >
       Log out
-    </BtnSmall>
+    </Btn>
   );
 };

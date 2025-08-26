@@ -3,7 +3,7 @@ import Logo from "/subscribee-logo-right.png";
 import { Link, useNavigate } from "react-router-dom";
 import useUserStore from "../../stores/useUserStore";
 import { Logout } from "../user/LogoutBtn";
-import { Btn, BtnSmall } from "./Btn";
+import { Btn } from "./Btn";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
 
 export const Footer = () => {
