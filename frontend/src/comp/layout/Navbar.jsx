@@ -60,6 +60,7 @@ export const Navbar = () => {
   );
 
   return (
+    // somthing in this class is messing up the log out btn in mobile
     <div
       className={`top-0 left-0 right-0 z-50 transition-transform duration-300 fixed 
     ${showNavbar ? "lg:translate-y-0" : "lg:-translate-y-full"} 
@@ -139,7 +140,7 @@ export const Navbar = () => {
         {/* Mobile menu */}
         <Collapse open={open}>
 
-          <div className="mt-2 rounded-xl bg-white pb-4 px-4 flex flex-col h-full min-h-[40vh]">
+          <div className="mt-2 rounded-xl bg-white pb-4 px-4 flex flex-col">
             {/* TOP section */}
             {user ? (
               <>
