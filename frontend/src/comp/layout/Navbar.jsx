@@ -36,8 +36,8 @@ export const Navbar = () => {
     <Link to={to} onClick={onClick}>
       <Typography
         as="li"
-        color="text-text"
-        className="p-1 font-medium hover:text-blue-600 transition-colors"
+
+        className="text-text p-1 font-medium hover:text-blue-600 transition-colors"
       >
         {label}
       </Typography>
@@ -63,8 +63,8 @@ export const Navbar = () => {
           <Typography
             as={Link}
             to="/"
-            color="text-text"
-            className="cursor-pointer text-lg font-bold flex items-center gap-2"
+
+            className="text-text cursor-pointer text-lg font-bold flex items-center gap-2"
           >
             <img src={Logo} alt="SubscriBee Logo" className="h-9 w-9 object-contain" />
             SubscriBee
@@ -106,7 +106,7 @@ export const Navbar = () => {
                 <Btn onClick={() => navigate("/login")} size="sm" variant="filled">
                   Log in
                 </Btn>
-                <Btn onClick={() => navigate("/signup")} size="sm" variant="filled">
+                <Btn onClick={() => navigate("/signup")} size="sm" variant="outlined">
                   Sign Up
                 </Btn>
               </>
@@ -161,7 +161,7 @@ export const Navbar = () => {
                   <Btn onClick={() => { navigate("/login"); closeMenu(); }} size="md" variant="filled">
                     Log in
                   </Btn>
-                  <Btn onClick={() => { navigate("/signup"); closeMenu(); }} size="md" variant="filled">
+                  <Btn onClick={() => { navigate("/signup"); closeMenu(); }} size="md" variant="outlined">
                     Sign Up
                   </Btn>
                 </>

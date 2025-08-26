@@ -35,7 +35,7 @@ export const Dashboard = () => {
       <section className="flex items-center justify-center min-h-[80vh] px-4">
         <Card className="w-full max-w-md shadow-lg rounded-2xl">
           <CardBody className="flex flex-col items-center text-center space-y-6">
-            <Typography variant="h4" color="text-text">
+            <Typography variant="h4" >
               Please log in
             </Typography>
 

@@ -39,7 +39,7 @@ export const Stats = ({ subscriptions = [] }) => {
     {
       title: "Active Subscriptions",
       value: activeSubs,
-      icon: <CheckCircleIcon className="h-8 w-8 text-green-500" />,
+      icon: <CheckCircleIcon className="h-8 w-8 text-main" />,
     },
     {
       title: "Total Monthly Cost",
@@ -65,7 +65,7 @@ export const Stats = ({ subscriptions = [] }) => {
             <Typography variant="small" color="gray" className="font-normal">
               {stat.title}
             </Typography>
-            <Typography color="text-text" className="text-2xl sm:text-3xl font-extrabold">
+            <Typography className="text-2xl sm:text-3xl font-extrabold">
               {stat.value}
             </Typography>
           </div>

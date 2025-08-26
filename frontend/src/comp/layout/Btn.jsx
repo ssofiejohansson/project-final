@@ -21,7 +21,7 @@ export const Btn = ({
   // Variant options
   const variantClasses = {
     filled: `bg-main text-white hover:bg-white hover:text-main`,
-    outlined: `border border-main text-main hover:text-text`,
+    outlined: `border border-accent text-text hover:text-text`,
     text: `text-main hover:text-text`,
   };
 

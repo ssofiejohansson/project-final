@@ -118,12 +118,12 @@ export const Usersignup = () => {
 
           {error && <p className="text-red-500 text-sm">{error}</p>}
           {success && (
-            <p className="text-green-600 text-sm">User created successfully!</p>
+            <p className="text-main text-sm">User created successfully!</p>
           )}
 
           {error && <p className="text-red-500 text-sm text-center">{error}</p>}
           {success && (
-            <p className="text-green-600 text-sm text-center">
+            <p className="text-main text-sm text-center">
               User created successfully!
             </p>
           )}

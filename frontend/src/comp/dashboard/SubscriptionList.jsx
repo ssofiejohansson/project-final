@@ -96,7 +96,7 @@ export const SubscriptionList = () => {
   const categoryIcons = {
     Entertainment: <TvIcon className="h-8 w-8 text-purple-500" />,
     Food: <CakeIcon className="h-8 w-8 text-red-500" />,
-    Health: <HeartIcon className="h-8 w-8 text-green-500" />,
+    Health: <HeartIcon className="h-8 w-8 text-main" />,
     Learning: <BookOpenIcon className="h-8 w-8 text-blue-500" />,
     Other: <QuestionMarkCircleIcon className="h-8 w-8 text-gray-500" />,
   };
@@ -137,7 +137,7 @@ export const SubscriptionList = () => {
                       className={`border-b border-gray-300 !p-4 pb-8 ${customeStyle}`}
                     >
                       <Typography
-                        color="text-text"
+
                         variant="small"
                         className="!font-bold"
                       >
@@ -184,7 +184,7 @@ export const SubscriptionList = () => {
                             <div>
                               <Typography
                                 variant="small"
-                                color="text-text"
+
                                 className="!font-semibold"
                               >
                                 {sub.name}

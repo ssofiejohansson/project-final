@@ -8,11 +8,11 @@ export const AboutSub = () => {
         {/* Title */}
         <Typography
           variant="h1"
-          color="text-text"
+
           className="mx-auto my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
         >
           About{" "}
-          <span className="text-green-500 leading-snug">SubscriBee</span>
+          <span className="text-main leading-snug">SubscriBee</span>
         </Typography>
 
         {/* Intro Text */}
@@ -45,8 +45,8 @@ export const AboutSub = () => {
 
         {/* Scroll Down Button */}
         <div className="mt-10 flex justify-center">
-          <a href="#about-project" className="group animate-bounce">
-            <ArrowDownCircleIcon className="h-12 w-12 text-green-500 group-hover:text-green-600 transition-transform duration-300" />
+          <a href="#project" className="group animate-bounce">
+            <ArrowDownCircleIcon className="h-12 w-12 text-accent group-hover:text-main transition-transform duration-300" />
           </a>
         </div>
       </div>
