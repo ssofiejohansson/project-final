@@ -29,7 +29,7 @@ export const DashboardHeader = ({ user }) => {
 
       <Typography
         variant="lead"
-        className="mx-auto w-full max-w-full text-light text-base sm:text-base lg:text-lg mb-8 break-words"
+        className="mx-auto w-full max-w-full text-light  sm: lg:text-lg mb-8 break-words"
       >
         {hasSubs
           ? "View and manage your subscriptions easily."

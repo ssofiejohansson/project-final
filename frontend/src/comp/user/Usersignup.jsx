@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import useLoadingStore from "../../stores/useLoadingStore";
 import useUserStore from "../../stores/useUserStore";
 import { Input } from "./Input";
 import { Btn } from "../layout/Btn";
+import { Typography } from "@material-tailwind/react";
 import { BaseURL } from "../BaseURL";
 
 export const Usersignup = () => {
@@ -79,14 +80,17 @@ export const Usersignup = () => {
     }
   };
   return (
-    <div className="flex items-center justify-center">
+    <section className="flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
-          Sign up
-        </h2>
-        <p className="text-center text-light mb-8">
+        <Typography variant="h1" className="text-text text-center mb-4">
+          Sign Up
+        </Typography>
+        <Typography
+          variant="paragraph"
+          className="text-text text-center mb-8"
+        >
           Join SubscriBee and get started today
-        </p>
+        </Typography>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <Input
@@ -116,40 +120,35 @@ export const Usersignup = () => {
             required
           />
 
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {error && <Typography variant="small" color="red" className="text-center">
+            {error}
+          </Typography>}
           {success && (
-            <p className="text-main text-sm">User created successfully!</p>
+            <Typography variant="small" color="green" className="text-center">
+              User created successfully!
+            </Typography>
           )}
 
-          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-          {success && (
-            <p className="text-main text-sm text-center">
-              User created successfully!
-            </p>
-          )}
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              variant="filled"
-              color="blue"
-              size="md"
-              className="duo-btn"
-            >
-              Sign Up
-            </button>
-          </div>
+          <Btn
+            type="submit"
+            variant="filled"
+            size="md"
+            className="w-full"
+          >
+            Sign up
+          </Btn>
         </form>
 
-        <p className="mt-6 text-sm text-center text-light">
+        <Typography
+          variant="small"
+          className="text-light mt-6 text-center"
+        >
           Already have an account?{" "}
-          <a
-            href="/login"
-            className="text-main hover:underline font-medium"
-          >
-            Log in
-          </a>
-        </p>
+          <Link to="/login" className="text-main font-medium hover:underline">
+            Login
+          </Link>
+        </Typography>
       </div>
-    </div>
+    </section>
   );
 };

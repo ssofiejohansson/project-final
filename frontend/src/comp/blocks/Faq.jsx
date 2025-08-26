@@ -38,7 +38,7 @@ export const FAQ = () => {
           >
             Frequently Asked Questions
           </Typography>
-          <Typography className="mx-auto font-normal text-base text-light lg:max-w-2xl">
+          <Typography className="mx-auto font-normal  text-light lg:max-w-2xl">
             Everything you need to know about SubscriBee — from setup to staying
             on track.
           </Typography>

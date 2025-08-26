@@ -24,7 +24,7 @@ export const Guide = () => {
             >
               Step 1 - Create Your Account
             </Typography>
-            <Typography className="text-center mb-0 max-w-xs mx-auto text-base font-normal leading-7 text-light">
+            <Typography className="text-center mb-0 max-w-xs mx-auto  font-normal leading-7 text-light">
               Sign up in minutes and start fresh.
             </Typography>
             <img
@@ -44,7 +44,7 @@ export const Guide = () => {
             >
               Step 2 – Add Your Subscriptions
             </Typography>
-            <Typography className="text-center mb-0 max-w-xs mx-auto text-base font-normal leading-7 text-light">
+            <Typography className="text-center mb-0 max-w-xs mx-auto  font-normal leading-7 text-light">
               Log every subscription, from Netflix to that random meditation app you forgot about.
             </Typography>
             <img
@@ -66,7 +66,7 @@ export const Guide = () => {
             >
               Step 3 – Stay on Track
             </Typography>
-            <Typography className="text-center max-w-sm mx-auto text-base font-normal leading-7 text-light">
+            <Typography className="text-center max-w-sm mx-auto  font-normal leading-7 text-light">
               See clear insights, receive helpful reminders, and avoid surprise charges.
             </Typography>
             <img
@@ -84,7 +84,7 @@ export const Guide = () => {
             >
               About this project
             </Typography>
-            <Typography className="text-center max-w-xs mx-auto text-base font-normal leading-7 text-light">
+            <Typography className="text-center max-w-xs mx-auto  font-normal leading-7 text-light">
               SubscriBee is a student-built project designed to help people better manage their digital lives.
               Learn more about our team and process on the About page.
             </Typography>

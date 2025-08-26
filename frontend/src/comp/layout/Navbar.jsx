@@ -50,7 +50,7 @@ export const Navbar = () => {
       <NavItem to="/about" label="About" onClick={onClick} />
       <li>
         <a
-          href="mailto:subscribee.reminder@gmail.com"
+          href="mailto:"
           className="text-text p-1 font-medium hover:text-main transition-colors"
         >
           Contact
