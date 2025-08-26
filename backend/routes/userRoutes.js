@@ -40,8 +40,6 @@ router.get("/", async (req, res) => {
 router.post('/', async (req, res) => {
   try {
 
-    console.log('Incoming signup data:', req.body); // Testing user data
-
     const { name, email, password } = req.body
     const salt = bcrypt.genSaltSync()
 
