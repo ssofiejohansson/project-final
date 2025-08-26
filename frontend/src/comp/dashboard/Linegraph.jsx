@@ -132,11 +132,11 @@ export const Linegraph = ({ subscriptions = [] }) => {
   });
 
   return (
-    <section className="m-4">
+    <section id="graph" className="m-4">
       <Card>
         <CardBody className="!p-2">
           <div className="flex gap-2 flex-wrap justify-between px-2 !mt-4 ">
-            <Typography variant="h3" color="blue-gray">
+            <Typography variant="h3" >
               {isNaN(totalCost) ? "0.00" : totalCost.toFixed(2)} SEK
             </Typography>
             <div className="flex items-center gap-6">
@@ -145,7 +145,7 @@ export const Linegraph = ({ subscriptions = [] }) => {
                   <span
                     className={`h-2 w-2 rounded-full`}
                     style={{
-                      backgroundColor: ["#4CAF50", "#2196F3", "#FF9800"][
+                      backgroundColor: ["#ff5c8d", "#2196F3", "#FF9800"][
                         idx % 3
                       ],
                     }}
@@ -163,7 +163,7 @@ export const Linegraph = ({ subscriptions = [] }) => {
           {/* chart */}
           {series.length > 0 ? (
             <AreaChart
-              colors={["#4CAF50", "#2196F3", "#FF9800"]}
+              colors={["#ff5c8d", "#2196F3", "#FF9800"]}
               options={{
                 xaxis: {
                   categories: [
@@ -188,8 +188,6 @@ export const Linegraph = ({ subscriptions = [] }) => {
             <Typography>No data to display</Typography>
           )}
         </CardBody>
-        {/* What does this CardFooter do? */}
-        {/* <CardFooter className="flex gap-6 flex-wrap items-center justify-between"></CardFooter> */}
       </Card>
     </section>
   );

@@ -12,8 +12,8 @@ export const Home = () => {
       <ContentBlock />
 
       <Popup delay={1000}>
-        <p className="font-semibold">Welcome busy bee! I'm Beeatrice.</p>
-        <p className="text-gray-600 text-sm mt-1">
+        <p className="font-bold">Welcome busy bee! I'm Beeatrice.</p>
+        <p>
           Ready to save some honey today?
         </p>
       </Popup>

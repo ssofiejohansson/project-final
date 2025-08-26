@@ -1,5 +1,5 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { Button } from "@material-tailwind/react";
+import { Btn } from "../../comp/layout/Btn"
 
 export const DashboardNavbar = ({
   filterCategory,
@@ -36,14 +36,15 @@ export const DashboardNavbar = ({
       </select>
 
       {/* Add button */}
-      <Button
-        variant="outlined"
+      <Btn
+        variant="text"
+        size="sm"
         className="flex items-center gap-2"
         onClick={onAdd} // trigger parent handler
       >
         <PlusIcon strokeWidth={3} className="h-4 w-4" />
-        Add
-      </Button>
+        ADD
+      </Btn>
     </div>
   );
 };

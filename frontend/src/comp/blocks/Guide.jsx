@@ -5,10 +5,10 @@ export const Guide = () => {
   return (
     <section id="guide" className="lg:py-28 py-10 px-8">
       <div className="container mx-auto mb-10 text-center lg:mb-20">
-        <Typography color="blue-gray" className="mb-2 font-bold uppercase">
+        <Typography className="text-main mb-2 font-bold uppercase">
           How it works
         </Typography>
-        <Typography color="blue-gray" className="mb-4 !text-2xl font-bold lg:!text-4xl">
+        <Typography className="text-text mb-4 !text-2xl font-bold lg:!text-4xl">
           Get started in three simple steps
         </Typography>
         <Typography variant="lead" className="mx-auto max-w-lg !text-gray-500">
@@ -20,8 +20,7 @@ export const Guide = () => {
           <CardBody className="text-center">
             <Typography
               variant="h4"
-              color="blue-gray"
-              className="mb-2 font-medium"
+              className="text-text mb-2 font-medium"
             >
               Step 1 - Create Your Account
             </Typography>
@@ -41,8 +40,7 @@ export const Guide = () => {
           <CardBody className="text-center">
             <Typography
               variant="h4"
-              color="blue-gray"
-              className="mb-2 font-medium"
+              className="text-text mb-2 font-medium"
             >
               Step 2 – Add Your Subscriptions
             </Typography>
@@ -64,8 +62,7 @@ export const Guide = () => {
           <CardBody className="text-center">
             <Typography
               variant="h4"
-              color="blue-gray"
-              className="mb-2 font-medium"
+              className="text-text mb-2 font-medium"
             >
               Step 3 – Stay on Track
             </Typography>
@@ -83,8 +80,7 @@ export const Guide = () => {
           <CardBody className="text-center">
             <Typography
               variant="h4"
-              color="blue-gray"
-              className="mb-2 font-medium"
+              className="text-text mb-2 font-medium"
             >
               About this project
             </Typography>
@@ -121,8 +117,8 @@ export const Guide = () => {
               <Typography
                 as="a"
                 href="#"
-                color="blue-gray"
-                className="text-xs font-bold cursor-pointer"
+
+                className="text-text text-xs font-bold cursor-pointer"
               >
                 Technigo Link / Github link / Other links
               </Typography>

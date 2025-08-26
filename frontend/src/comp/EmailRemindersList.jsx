@@ -1,4 +1,4 @@
- import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const EmailRemindersList = () => {
   const [reminders, setReminders] = useState([]);
@@ -64,7 +64,7 @@ const EmailRemindersList = () => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'completed':
-        return 'text-green-600 bg-green-100';
+        return 'text-main bg-green-100';
       case 'failed':
         return 'text-red-600 bg-red-100';
       case 'active':

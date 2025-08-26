@@ -13,14 +13,13 @@ export const Footer = () => {
   return (
     <footer className="pt-12 bg-gray-50 border-t border-gray-200">
       <div className="px-8 container mx-auto flex flex-col items-center">
-        <div className="flex flex-wrap items-center justify-center gap-6 pb-4">
+        <div className="text-text flex flex-wrap items-center justify-center gap-6 pb-4 ">
           <ul>
             <li>
               <Typography
                 as={Link}
                 to="/about"
-                color="blue-gray"
-                className="font-medium !text-gray-600 transition-colors hover:!text-blue-600"
+                className="font-medium transition-colors  hover:text-main "
               >
                 About SubscriBee
               </Typography>
@@ -31,8 +30,8 @@ export const Footer = () => {
               <Typography
                 as={Link}
                 to="/about#project"
-                color="blue-gray"
-                className="font-medium !text-gray-600 transition-colors hover:!text-blue-600"
+
+                className="font-medium transition-colors  hover:text-main"
               >
                 About this project
               </Typography>
@@ -43,8 +42,8 @@ export const Footer = () => {
               <Typography
                 as={Link}
                 to="/about#faq"
-                color="blue-gray"
-                className="font-medium !text-gray-600 transition-colors hover:!text-blue-600"
+
+                className="font-medium transition-colors  hover:text-main"
               >
                 FAQ
               </Typography>
@@ -56,8 +55,8 @@ export const Footer = () => {
               <Typography
                 as={Link}
                 to="/about#contact"
-                color="blue-gray"
-                className="font-medium !text-gray-600 transition-colors hover:!text-blue-600"
+
+                className="font-medium  transition-colors  hover:text-main"
               >
                 Contact
               </Typography>
@@ -75,7 +74,7 @@ export const Footer = () => {
               <Btn onClick={() => navigate("/login")} size="sm" variant="filled">
                 Log in
               </Btn>
-              <Btn onClick={() => navigate("/signup")} size="sm" variant="filled">
+              <Btn onClick={() => navigate("/signup")} size="sm" variant="outlined">
                 Sign Up
               </Btn>
             </>
@@ -84,7 +83,7 @@ export const Footer = () => {
 
 
         <Typography
-          color="blue-gray"
+
           className="mt-4 !text-sm !font-normal text-gray-500"
         >
           &copy; {currentYear} SubscriBee. All rights reserved.

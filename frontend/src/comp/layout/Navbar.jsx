@@ -36,8 +36,8 @@ export const Navbar = () => {
     <Link to={to} onClick={onClick}>
       <Typography
         as="li"
-        color="blue-gray"
-        className="p-1 font-medium hover:text-blue-600 transition-colors"
+
+        className="text-text p-1 font-medium hover:text-blue-600 transition-colors"
       >
         {label}
       </Typography>
@@ -63,8 +63,8 @@ export const Navbar = () => {
           <Typography
             as={Link}
             to="/"
-            color="blue-gray"
-            className="cursor-pointer text-lg font-bold flex items-center gap-2"
+
+            className="text-text cursor-pointer text-lg font-bold flex items-center gap-2"
           >
             <img src={Logo} alt="SubscriBee Logo" className="h-9 w-9 object-contain" />
             SubscriBee
@@ -83,8 +83,8 @@ export const Navbar = () => {
                 <Menu placement="bottom-end">
                   <MenuHandler>
                     <button className="flex items-center gap-1 cursor-pointer">
-                      <UserCircleIcon className="h-8 w-8 text-blue-gray-700" />
-                      <ChevronDownIcon className="h-4 w-4 text-blue-gray-600" />
+                      <UserCircleIcon className="h-8 w-8 text-text-text-700" />
+                      <ChevronDownIcon className="h-4 w-4 text-text-text-600" />
                     </button>
                   </MenuHandler>
                   <MenuList>
@@ -106,7 +106,7 @@ export const Navbar = () => {
                 <Btn onClick={() => navigate("/login")} size="sm" variant="filled">
                   Log in
                 </Btn>
-                <Btn onClick={() => navigate("/signup")} size="sm" variant="filled">
+                <Btn onClick={() => navigate("/signup")} size="sm" variant="outlined">
                   Sign Up
                 </Btn>
               </>
@@ -117,9 +117,8 @@ export const Navbar = () => {
           <IconButton
             size="sm"
             variant="text"
-            color="blue-gray"
             onClick={handleOpen}
-            className="ml-auto inline-block text-blue-gray-900 lg:hidden"
+            className="text-text ml-auto inline-block lg:hidden"
           >
             {open ? (
               <XMarkIcon className="h-6 w-6" strokeWidth={2} />
@@ -132,7 +131,7 @@ export const Navbar = () => {
         {/* Mobile menu */}
         <Collapse open={open}>
 
-          <div className="mt-2 rounded-xl bg-white pb-4 px-4 text-blue-gray-900 flex flex-col h-full min-h-[40vh]">
+          <div className="mt-2 rounded-xl bg-white pb-4 px-4 flex flex-col h-full min-h-[40vh]">
             {/* TOP section */}
             {user ? (
               <>
@@ -162,7 +161,7 @@ export const Navbar = () => {
                   <Btn onClick={() => { navigate("/login"); closeMenu(); }} size="md" variant="filled">
                     Log in
                   </Btn>
-                  <Btn onClick={() => { navigate("/signup"); closeMenu(); }} size="md" variant="filled">
+                  <Btn onClick={() => { navigate("/signup"); closeMenu(); }} size="md" variant="outlined">
                     Sign Up
                   </Btn>
                 </>

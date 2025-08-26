@@ -9,7 +9,7 @@ export const Stats = ({ subscriptions = [] }) => {
   );
   const yearCost = monthCost * 12;
 
-  const totalSubs = subscriptions.length;
+  // const totalSubs = subscriptions.length;
   const activeSubs = subscriptions.filter((sub) => sub.status === "active").length;
 
   const categoryCounts = subscriptions.reduce((acc, sub) => {
@@ -31,11 +31,6 @@ export const Stats = ({ subscriptions = [] }) => {
   const donutColors = donutLabels.map((label) => categoryColors[label] || "#6b7280");
 
   const stats = [
-    // {
-    //   title: "Total Subscriptions",
-    //   value: totalSubs,
-    //   icon: <UserGroupIcon className="h-8 w-8 text-blue-500" />,
-    // },
     {
       title: "Active Subscriptions",
       value: activeSubs,
@@ -49,7 +44,7 @@ export const Stats = ({ subscriptions = [] }) => {
     {
       title: "Total Yearly Cost",
       value: `${yearCost} SEK`,
-      icon: <CurrencyDollarIcon className="h-8 w-8 text-pink-500" />,
+      icon: <CurrencyDollarIcon className="h-8 w-8 text-red-500" />,
     },
   ];
 
@@ -65,7 +60,7 @@ export const Stats = ({ subscriptions = [] }) => {
             <Typography variant="small" color="gray" className="font-normal">
               {stat.title}
             </Typography>
-            <Typography color="blue-gray" className="text-2xl sm:text-3xl font-extrabold">
+            <Typography className="text-2xl sm:text-3xl font-extrabold">
               {stat.value}
             </Typography>
           </div>

@@ -4,7 +4,7 @@ import { Btn } from "../layout/Btn";
 
 export const AboutProject = () => {
   return (
-    <section id="project" className="py-20 bg-white">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* INTRO SECTION */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
@@ -19,10 +19,10 @@ export const AboutProject = () => {
           <div className="flex flex-col items-start justify-center text-left">
             <Typography
               variant="h1"
-              color="blue-gray"
+              id="project"
               className="mb-6 w-full leading-snug !text-3xl lg:max-w-xl lg:!text-5xl"
             >
-              About <span className="text-green-500">this project</span>.
+              About <span className="text-main">this project</span>.
             </Typography>
             <Typography
               variant="lead"
@@ -49,7 +49,7 @@ export const AboutProject = () => {
             <CardBody className="text-center">
               <Typography
                 variant="h4"
-                color="blue-gray"
+
                 className="mb-2 font-medium"
               >
                 Our Team
@@ -106,7 +106,7 @@ export const AboutProject = () => {
           {/* OPTIONAL: Additional Cards */}
           <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
             <CardBody className="text-center">
-              <Typography variant="h4" color="blue-gray" className="mb-2 font-medium">
+              <Typography variant="h4" className="mb-2 font-medium">
                 Project Process
               </Typography>
               <Typography className="text-center max-w-xs mx-auto text-base font-normal leading-7 !text-gray-500">
@@ -117,7 +117,7 @@ export const AboutProject = () => {
 
           <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
             <CardBody className="text-center">
-              <Typography variant="h4" color="blue-gray" className="mb-2 font-medium">
+              <Typography variant="h4" className="mb-2 font-medium">
                 Technology
               </Typography>
               <Typography className="text-center max-w-xs mx-auto text-base font-normal leading-7 !text-gray-500">
@@ -127,6 +127,6 @@ export const AboutProject = () => {
           </Card>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
