@@ -113,18 +113,22 @@ router.post('/', authenticateUser, async (req, res) => {
 //To edit a subscription (endpoint is /subscriptions/:id)
 router.patch('/:id', authenticateUser, async (req, res) => {
   const { id } = req.params;
-  const { name, cost, freeTrial, trialDays, reminderDate, status, category } =
+  const { name, cost, freeTrial, trialDays, reminderDate, status, category, sendEmail } =
     req.body;
+
+    console.log("Hej")
 
   try {
     const editSubscription = await Subscription.findOneAndUpdate(
       { _id: id, user: req.user._id },
-      { name, cost, freeTrial, trialDays, reminderDate, status, category },
+      { name, cost, freeTrial, trialDays, reminderDate, status, category, sendEmail },
       {
         new: true,
         runValidators: true,
       }
+      
     );
+    console.log("hejhej")
     if (!editSubscription) {
       return res.status(404).json({ error: 'Subscription not found' });
     }

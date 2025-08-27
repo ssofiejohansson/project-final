@@ -17,22 +17,14 @@ router.patch('/update-reminders', async (req, res) => {
   }
 
   try {
-    const today = new Date();
-
-    console.log("Today:", today);
-    console.log("Connected to:", mongoose.connection.host, mongoose.connection.name);
+    const today = new Date();   
 
     // Find IDs first so we know what we're updating
     const subsToUpdate = await Subscription.find({ reminderDate: { $lt: today } }).select("_id reminderDate");
 
     if (subsToUpdate.length === 0) {
       return res.json({ message: "No subscriptions needed updating." });
-    }
-
-    console.log("Found to update:", subsToUpdate.map(s => ({
-      id: s._id,
-      oldDate: s.reminderDate
-    })));
+    }   
 
     // Bulk update: add 1 month
     const result = await Subscription.updateMany(
@@ -44,9 +36,7 @@ router.patch('/update-reminders', async (req, res) => {
           }
         }
       }]
-    );
-
-    console.log(`Matched ${result.matchedCount}, Modified ${result.modifiedCount}`);
+    );   
 
     // Fetch updated docs for verification
     const updatedSubs = await Subscription.find({ _id: { $in: subsToUpdate.map(s => s._id) } })

@@ -308,8 +308,8 @@ export const SubscriptionList = () => {
                               // Optimistically update UI (optional)
                               // await API call to update backend
                               await fetch(`${urlAPI}/${sub._id}`, {
-                                method: "PUT",
-                                headers: { "Content-Type": "application/json" },
+                                method: "PATCH",
+                                headers: { "Content-Type": "application/json" , "Authorization": user?.token || "", },
                                 body: JSON.stringify({
                                   sendEmail: !sub.sendEmail,
                                 }),

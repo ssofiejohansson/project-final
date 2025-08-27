@@ -1,6 +1,7 @@
 import { User } from "./models/User.js"
 
 export const authenticateUser = async (req, res, next) => {
+  console.log("auth user")
   try {
     const user = await User.findOne({
       accessToken: req.header("Authorization"),

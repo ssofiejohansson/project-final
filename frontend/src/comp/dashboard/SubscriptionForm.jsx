@@ -136,8 +136,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         window.dispatchEvent(new Event("refresh-reminders"));
 
         if (!initialData) {
-          // After successfully adding the subscription
-          console.log("Scheduling email with to:", user.email, user);
+          // After successfully adding the subscription          
           await fetch(`${urlAPI}/emails`, {
             method: "POST",
             headers: {
