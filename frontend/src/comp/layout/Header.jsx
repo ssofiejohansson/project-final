@@ -1,6 +1,7 @@
 import { Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 
+
 import { Btn } from "./Btn";
 
 export const Header = () => {
@@ -10,7 +11,7 @@ export const Header = () => {
     <>
       <header className="bg-white p-8">
         {/* Will add a hero image here */}
-        <div className="grid pt-8 min-h-[82vh] w-full lg:h-[54rem] md:h-[34rem] place-items-stretch bg-[url('/image/bg-hero-17.svg')] bg-center bg-contain bg-no-repeat">
+        <div className="grid pt-8 min-h-[82vh] w-full lg:h-[54rem] md:h-[34rem] place-items-stretch bg-[url('../../assets/home-img/hero-img-black.png')] bg-center bg-contain bg-no-repeat">
           <div className="container mx-auto px-4 text-center">
 
             <Typography

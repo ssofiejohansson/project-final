@@ -14,7 +14,7 @@ const teamMembers = [
   {
     name: "Sofie",
     linkedin: "https://www.linkedin.com/in/ssofiejohansson",
-    src: "../../public/sofie.jpg",
+    src: "../../public/sofie.webp",
   },
 ];
 

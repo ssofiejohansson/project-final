@@ -10,7 +10,6 @@ export const Home = () => {
       <Header />
       <Guide />
       <ContentBlock />
-
       <Popup delay={1000}>
         <p className="font-bold">Welcome busy bee! I'm Beeatrice.</p>
         <p>

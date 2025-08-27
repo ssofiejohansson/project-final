@@ -1,6 +1,6 @@
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { IconButton, Typography } from "@material-tailwind/react";
-import Logo from "/subscribee-logo-left.png";
+import Logo from "/subscribee-logo-left.webp";
 import { useEffect, useState } from "react";
 export const Popup = ({ children, delay }) => {
   const [visible, setVisible] = useState(!delay);
@@ -27,7 +27,7 @@ export const Popup = ({ children, delay }) => {
             <ChevronDownIcon className="h-6 w-6" />
           </IconButton>
 
-          <Typography variant="medium" className="text-text leading-relaxed text-center">
+          <Typography variant="medium" className="p-2 text-text leading-relaxed text-center">
             {children}
           </Typography>
         </div>

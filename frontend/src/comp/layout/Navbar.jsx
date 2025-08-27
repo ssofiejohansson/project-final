@@ -13,7 +13,7 @@ import {
   MenuList,
   Typography,
 } from "@material-tailwind/react";
-import Logo from "/subscribee-logo.png";
+import Logo from "/subscribee-logo.webp";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
