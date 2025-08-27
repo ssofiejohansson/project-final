@@ -113,7 +113,8 @@ export const AboutProject = () => {
                 Project Process
               </Typography>
               <Typography className="text-center max-w-xs mx-auto  font-normal leading-7 text-text">
-                SubscriBee was built iteratively with user testing, feedback, and constant improvement to deliver a smooth subscription-tracking experience.
+                SubscriBee was built using agile methodology with user testing, feedback, and constant improvement to deliver a smooth subscription-tracking experience.
+                We have the user in mind when it comes to a clear overview and easy to handle functionality. 
               </Typography>
             </CardBody>
           </Card>
@@ -121,7 +122,7 @@ export const AboutProject = () => {
           <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
             <CardBody className="text-center">
               <Typography variant="h3" className="text-text mb-2 font-medium">
-                Technology
+                Tech Stack
               </Typography>
               <Typography className="text-text text-center max-w-xs mx-auto  font-normal leading-7">
                 Built with React, Material Tailwind, and modern web best practices for responsive, user-friendly design.
