@@ -10,12 +10,12 @@ export const Header = () => {
     <>
       <header className="bg-white p-8">
         {/* Will add a hero image here */}
-        <div className="grid mt-16 min-h-[82vh] w-full lg:h-[54rem] md:h-[34rem] place-items-stretch bg-[url('/image/bg-hero-17.svg')] bg-center bg-contain bg-no-repeat">
+        <div className="grid pt-8 min-h-[82vh] w-full lg:h-[54rem] md:h-[34rem] place-items-stretch bg-[url('/image/bg-hero-17.svg')] bg-center bg-contain bg-no-repeat">
           <div className="container mx-auto px-4 text-center">
 
             <Typography
               variant="h1"
-              className="text-text mx-auto my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
+              className="text-text mx-auto py-2 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
             >
               Track your subscriptions with {" "}
               <span className="text-main leading-snug ">SubscriBee</span>.
