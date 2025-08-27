@@ -22,7 +22,7 @@ export const Userlogin = () => {
 
   let [error, setError] = useState([]);
 
-  //  SOFIE ADD: get setUser from Zustand store
+  //  Get setUser from Zustand store
   const setUser = useUserStore((state) => state.setUser);
 
   const handleSubmit = async (e) => {
@@ -49,7 +49,7 @@ export const Userlogin = () => {
       if (data.success && data.id) {
         localStorage.setItem("user", JSON.stringify(data));
 
-        // SOFIE ADD: Update with logged-in user info
+        // Update with logged-in user info
         setUser({
           name: data.name,
           email: data.email,

@@ -39,7 +39,7 @@ router.get('/:id', authenticateUser, async (req, res) => {
     const subscription = await Subscription.findOne({
       _id: id,
       user: req.user._id,
-    }); // SOFIE ADD
+    });
 
     if (!subscription) {
       return res.status(404).json({

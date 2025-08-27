@@ -36,13 +36,7 @@ export const SubscriptionModal = ({ setOpen, onSubscriptionAdded, sendEmail, set
           />
           <label htmlFor="sendEmail">Send email when adding subscription</label>
         </div>
-      </DialogBody>
-
-      {/* <DialogFooter>
-        <Button variant="text" color="red" onClick={closeModalDialog}>
-          Close
-        </Button>
-      </DialogFooter> */}
+      </DialogBody>      
     </Dialog>
   );
 };

@@ -14,9 +14,9 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import Logo from "/subscribee-logo.png";
-import Bee2 from "/bee2.png";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import { Logout } from "../../comp/user/LogoutBtn";
 import useUserStore from "../../stores/useUserStore";
 import { Btn } from "./Btn";
@@ -148,6 +148,8 @@ export const Navbar = () => {
 
           {/* Mobile Toggle */}
           <IconButton
+            alt="Hamburger menu"
+            aria-label="Hamburger menu"
             size="sm"
             variant="text"
             onClick={handleOpen}

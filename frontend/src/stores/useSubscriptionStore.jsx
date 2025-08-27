@@ -32,7 +32,7 @@ const useSubscriptionStore = create((set) => ({
     subscriptions: [subscription, ...state.subscriptions],
   })),
 
-  // SOFIE ADD: update sub
+  // Update sub
   updateSubscription: (updatedSub) =>
     set((state) => ({
       subscriptions: state.subscriptions.map((sub) =>
@@ -42,7 +42,6 @@ const useSubscriptionStore = create((set) => ({
 
   clearSubscriptions: () => set({ subscriptions: [] }),
 
-  //SOFIE ADD
   fetchSubscriptions: async () => {
     const urlAPI = `${BaseURL}/subscriptions`
 

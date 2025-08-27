@@ -228,6 +228,7 @@ export const SubscriptionList = () => {
                               onError={(e) => {
                                 e.target.onerror = null; // Prevent infinite loop
                                 e.target.src = "/logos/placeholder.webp";
+                                e.target.alt = "Bee Icon"
                               }}
                             />
                             <div>

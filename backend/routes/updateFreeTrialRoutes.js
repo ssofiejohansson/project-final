@@ -23,10 +23,6 @@ router.patch("/update-freetrial", async (req, res) => {
       return res.json({ message: 'No subscriptions needed updating.' });
     }
 
-  //  const result = await Subscription.updateMany(
-  //   { trialDays: { $gt: 0 } },  // only decrement where > 0
-  //   { $inc: { trialDays: -1 } } // ✅ decrement
-
   const result = await Subscription.updateMany(
   { trialDays: { $gte: 0 } }, // include those at 0 so we can flip freeTrial
   [
