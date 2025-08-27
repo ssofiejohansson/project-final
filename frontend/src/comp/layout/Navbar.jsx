@@ -73,8 +73,7 @@ export const Navbar = () => {
     </ul>
   );
 
-  return (
-    // somthing in this class is messing up the log out btn in mobile
+  return (    
     <div
       className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
         showNavbar ? "translate-y-0" : "-translate-y-full"

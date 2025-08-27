@@ -1,7 +1,7 @@
 import cron from 'node-cron';
 import { ScheduledEmail } from '../models/ScheduledEmail.js';
-import sendEmail from '../sendEmail.js'; // Import your email function
-import _ from 'lodash'; // Add this at the top (install lodash if needed)
+import sendEmail from '../sendEmail.js'; 
+import _ from 'lodash'; 
 
 class MongoEmailScheduler {
   constructor() {
@@ -105,7 +105,7 @@ class MongoEmailScheduler {
 
   async processEmail(email) {
     try {
-      // Actually send the email using your sendEmail function
+      // Send the email using sendEmail function
       await sendEmail({
         to: email.to,
         subject: email.subject,

@@ -8,7 +8,7 @@ const router = express.Router();
 //To get all subscriptions
 router.get('/', authenticateUser, async (req, res) => {
   try {
-    const subscriptions = await Subscription.find({ user: req.user._id }); // SOFIE ADD
+    const subscriptions = await Subscription.find({ user: req.user._id });
 
     if (!subscriptions || subscriptions.length === 0) {
       return res.status(200).json({
@@ -90,7 +90,7 @@ router.post('/', authenticateUser, async (req, res) => {
       freeTrial,
       trialDays,
       reminderDate,
-      sendEmail, // <-- add this
+      sendEmail, 
       user: req.user._id,
     });
 
@@ -140,7 +140,7 @@ router.patch('/:id', authenticateUser, async (req, res) => {
   }
 });
 
-// SOFIE ADD: To delete a subscription
+// To delete a subscription
 router.delete('/:id', authenticateUser, async (req, res) => {
   try {
     const deleted = await Subscription.findOneAndDelete({

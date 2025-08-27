@@ -12,8 +12,7 @@ export const Stats = ({ subscriptions = [] }) => {
     0
   );
   const yearCost = monthCost * 12;
-
-  // const totalSubs = subscriptions.length;
+ 
   const activeSubs = subscriptions.filter(
     (sub) => sub.status === "active"
   ).length;

@@ -4,20 +4,17 @@ const storedUser = JSON.parse(localStorage.getItem("user") || "null");
 
 const useUserStore = create((set) => ({
   message: [],
-  status: [],
-  //user: null,
+  status: [],  
   user: storedUser && storedUser.token ? storedUser : null,
-
-  //setUser: (userData) => set({ user: userData }),
+  
   setUser: (userData) => {
     localStorage.setItem("user", JSON.stringify(userData));
     set({ user: userData });
   },
-
-  //clearUser: () => set({ user: null }),
+  
   clearUser: () => {
     localStorage.removeItem("user");
-    localStorage.removeItem("accessToken"); // if stored separately
+    localStorage.removeItem("accessToken"); 
     set({ user: null });
   },
 }));

@@ -6,14 +6,12 @@ import useUserStore from "../../stores/useUserStore";
 import { BaseURL } from "../BaseURL";
 import { Input } from "../user/Input";
 
-// import { SubscriptionSave } from "./SubscriptionSave";
-
 export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
   const urlAPI = `${BaseURL}`;
 
   const [formData, setFormData] = useState(() => {
     if (initialData) {
-      // Editing an existing subscription, to make sure date follows
+      
       return {
         ...initialData,
         reminderDate: initialData.reminderDate

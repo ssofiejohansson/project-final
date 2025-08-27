@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogBody, DialogFooter, DialogHeader } from "@material-tailwind/react";
+import { Dialog, DialogBody, DialogHeader } from "@material-tailwind/react";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import { SubscriptionForm } from "./SubscriptionForm";

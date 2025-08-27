@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
     } = req.body;
 
     if (sendImmediately) {
-      // Actually send the email using your sendEmail function
+      // Send the email using sendEmail function
       try {
         await sendEmail({
           to,

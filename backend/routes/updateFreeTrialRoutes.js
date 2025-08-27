@@ -24,7 +24,7 @@ router.patch("/update-freetrial", async (req, res) => {
     }
 
   const result = await Subscription.updateMany(
-  { trialDays: { $gte: 0 } }, // include those at 0 so we can flip freeTrial
+  { trialDays: { $gte: 0 } }, 
   [
     {
       $set: {

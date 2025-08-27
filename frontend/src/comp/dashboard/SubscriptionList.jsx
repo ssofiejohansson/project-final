@@ -26,8 +26,8 @@ export const SubscriptionList = () => {
 
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
-  const [sendEmail, setSendEmail] = useState(true); // <-- Add this line
-  const [emailPrefs, setEmailPrefs] = useState({}); // { [subId]: true/false }
+  const [sendEmail, setSendEmail] = useState(true); 
+  const [emailPrefs, setEmailPrefs] = useState({}); 
 
   const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
   const openModalDialog = useSubscriptionStore((s) => s.openModalDialog);

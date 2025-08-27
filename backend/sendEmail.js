@@ -3,7 +3,6 @@ import nodemailer from 'nodemailer';
 
 dotenv.config();
 
-// Fix: Change createTransporter to createTransport
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -12,7 +11,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Add transporter verification
 async function verifyTransporter() {
   try {
     await transporter.verify();    

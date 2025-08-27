@@ -10,14 +10,13 @@ const useSubscriptionStore = create((set) => ({
 
   setSubscriptions: (subscriptions) => set({ subscriptions }),
 
-  //SubscriptionSave//
+  //SubscriptionSave
   //state
   isSaveOpen: false,
   selectedSubSave: null,
   //actions
   openSaveDialog: (subscription) => set({ isSaveOpen: true, selectedSubSave: subscription }),
   closeSaveDialog: () => set({ isSaveOpen: false, selectedSubSave: null }),
-  ////
 
   //SubscriptionModal
   //state
@@ -26,7 +25,6 @@ const useSubscriptionStore = create((set) => ({
   //actions
   openModalDialog: (subscription) => set({ isModalOpen: true, selectedSub: subscription || null}),
   closeModalDialog: () => set({ isModalOpen: false, selectedSub: null }),
-  ////
   
   addSubscription: (subscription) => set((state) => ({
     subscriptions: [subscription, ...state.subscriptions],
@@ -64,7 +62,6 @@ const useSubscriptionStore = create((set) => ({
         },
       });
 
-      //if (!response.ok) throw new Error("Failed to fetch subscriptions");
       if (!response.ok) {
         // Try to parse backend message
         let errorMessage = "Failed to fetch subscriptions";
