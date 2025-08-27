@@ -116,8 +116,6 @@ router.patch('/:id', authenticateUser, async (req, res) => {
   const { name, cost, freeTrial, trialDays, reminderDate, status, category, sendEmail } =
     req.body;
 
-    console.log("Hej")
-
   try {
     const editSubscription = await Subscription.findOneAndUpdate(
       { _id: id, user: req.user._id },
@@ -128,7 +126,7 @@ router.patch('/:id', authenticateUser, async (req, res) => {
       }
       
     );
-    console.log("hejhej")
+    
     if (!editSubscription) {
       return res.status(404).json({ error: 'Subscription not found' });
     }
