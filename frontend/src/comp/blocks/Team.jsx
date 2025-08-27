@@ -9,12 +9,12 @@ const teamMembers = [
   {
     name: "Sofia",
     linkedin: "https://www.linkedin.com/in/sofia-lennbom-91252195/",
-    src: "../../public/sofia.webp",
+    src: "/sofia.webp",
   },
   {
     name: "Sofie",
     linkedin: "https://www.linkedin.com/in/ssofiejohansson",
-    src: "../../public/sofie.webp",
+    src: "/sofie.webp",
   },
 ];
 
