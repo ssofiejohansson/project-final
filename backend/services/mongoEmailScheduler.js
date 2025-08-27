@@ -1,7 +1,7 @@
 import cron from 'node-cron';
 import { ScheduledEmail } from '../models/ScheduledEmail.js';
-import sendEmail from '../sendEmail.js'; // Import your email function
-import _ from 'lodash'; // Add this at the top (install lodash if needed)
+import sendEmail from '../sendEmail.js'; 
+import _ from 'lodash'; 
 
 class MongoEmailScheduler {
   constructor() {
@@ -21,8 +21,7 @@ class MongoEmailScheduler {
       await this.processDueEmails();
     });
 
-    this.isRunning = true;
-    console.log('📅 MongoDB email scheduler started - checking every minute');
+    this.isRunning = true;    
   }
 
   async processDueEmails() {
@@ -67,14 +66,12 @@ class MongoEmailScheduler {
       )
       .join('\n---\n');
 
-    try {
-      console.log(`📤 Sending combined email to ${recipient}...`);
+    try {      
       await sendEmail({
         to: recipient,
         subject: combinedSubject,
         text: combinedText,
-      });
-      console.log(`✅ Combined email sent to ${recipient}`);
+      });      
 
       // Update all emails in the group
       for (const email of emailGroup) {
@@ -108,16 +105,12 @@ class MongoEmailScheduler {
 
   async processEmail(email) {
     try {
-      console.log(`📤 Sending email to ${email.to}...`);
-
-      // Actually send the email using your sendEmail function
+      // Send the email using sendEmail function
       await sendEmail({
         to: email.to,
         subject: email.subject,
         text: email.text,
-      });
-
-      console.log(`✅ Email sent successfully to ${email.to}`);
+      });      
 
       // Update status
       if (email.isRecurring) {
@@ -127,12 +120,9 @@ class MongoEmailScheduler {
 
         email.nextRun = nextRun;
         email.lastSent = new Date();
-        console.log(
-          `🔄 Next recurring email scheduled for: ${nextRun.toLocaleString()}`
-        );
+      
       } else {
-        email.status = 'sent';
-        console.log(`✅ One-time email marked as sent`);
+        email.status = 'sent';        
       }
 
       await email.save();
@@ -142,13 +132,9 @@ class MongoEmailScheduler {
 
       // Retry logic
       if (email.attempts < 3) {
-        email.nextRun = new Date(Date.now() + 5 * 60 * 1000); // Retry in 5 minutes
-        console.log(
-          `🔄 Email failed, retrying in 5 minutes (attempt ${email.attempts}/3)`
-        );
+        email.nextRun = new Date(Date.now() + 5 * 60 * 1000); // Retry in 5 minutes      
       } else {
-        email.status = 'failed';
-        console.log(`❌ Email failed permanently after 3 attempts`);
+        email.status = 'failed';        
       }
 
       await email.save();
@@ -170,10 +156,7 @@ class MongoEmailScheduler {
         status: 'scheduled',
       });
 
-      const savedEmail = await scheduledEmail.save();
-      console.log(
-        `📅 Email scheduled successfully for ${scheduledDateTime.toLocaleString()}`
-      );
+      const savedEmail = await scheduledEmail.save();    
 
       return savedEmail;
     } catch (error) {
@@ -196,8 +179,7 @@ class MongoEmailScheduler {
   stop() {
     if (this.cronJob) {
       this.cronJob.stop();
-      this.isRunning = false;
-      console.log('🛑 MongoDB email scheduler stopped');
+      this.isRunning = false;      
     }
   }
 }

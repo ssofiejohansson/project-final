@@ -11,7 +11,7 @@ module.exports = withMT({
         main: "#f57508",   // orange
         accent: "#ffd166", // yellow
         text: "#333333",   // charcoal
-        light: "#757575", // light-grey
+        light: "#555555", // light-grey
       },
       keyframes: {
         slideUpFade: {

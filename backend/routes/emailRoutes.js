@@ -39,8 +39,7 @@ router.get('/reminders', async (req, res) => {
 });
 
 // Schedule or send email
-router.post('/', async (req, res) => {
-  console.log('POST /emails body:', req.body); // Add this line
+router.post('/', async (req, res) => {  
   try {
     const {
       to,
@@ -52,17 +51,14 @@ router.post('/', async (req, res) => {
     } = req.body;
 
     if (sendImmediately) {
-      // Actually send the email using your sendEmail function
-      console.log(`📤 Sending immediate email to ${to}`);
-
+      // Send the email using sendEmail function
       try {
         await sendEmail({
           to,
           subject,
           text,
         });
-
-        console.log(`✅ Email sent successfully to ${to}`);
+       
         res.status(200).json({
           message: 'Email sent successfully!',
           recipient: to,
@@ -124,9 +120,7 @@ router.post('/test-config', async (req, res) => {
 
     if (!to) {
       return res.status(400).json({ error: 'Email address required for test' });
-    }
-
-    console.log('Testing email configuration...');
+    }   
 
     const result = await sendEmail({
       to,

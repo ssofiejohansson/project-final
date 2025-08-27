@@ -108,10 +108,9 @@ This is a reminder that you have subscriptions that is due to be renewed soon.
         setScheduledDate("");
         setScheduledTime("");
         setIsRecurring(false);
-        // Replace your local setRefreshReminders with the prop:
+        
         if (setRefreshReminders) setRefreshReminders((prev) => !prev);
-      } else {
-        // detta meddelande
+      } else {        
         alert(`Error: det här är ett test ${data.error}`);
       }
     } catch (error) {

@@ -22,9 +22,6 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log('📦 Connected to MongoDB');
-    console.log(`📊 Database: ${mongoose.connection.name}`);
-
     // Start the email scheduler
     mongoEmailScheduler.startScheduler();
   })

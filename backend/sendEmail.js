@@ -3,13 +3,6 @@ import nodemailer from 'nodemailer';
 
 dotenv.config();
 
-console.log('Email configuration check:', {
-  user: process.env.EMAIL_USER ? '✅ Set' : '❌ Missing',
-  pass: process.env.EMAIL_PASS ? '✅ Set' : '❌ Missing',
-  userValue: process.env.EMAIL_USER, // Remove this after testing
-});
-
-// Fix: Change createTransporter to createTransport
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -18,11 +11,9 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Add transporter verification
 async function verifyTransporter() {
   try {
-    await transporter.verify();
-    console.log('✅ Email transporter verified successfully');
+    await transporter.verify();    
     return true;
   } catch (error) {
     console.error('❌ Email transporter verification failed:', error);
@@ -31,9 +22,7 @@ async function verifyTransporter() {
 }
 
 async function sendEmail({ to, subject, text }) {
-  try {
-    console.log(`🔄 Attempting to send email to: ${to}`);
-
+  try {   
     // Verify transporter before sending
     const isVerified = await verifyTransporter();
     if (!isVerified) {
@@ -47,8 +36,6 @@ async function sendEmail({ to, subject, text }) {
       text,
     });
 
-    console.log(`✅ Email sent successfully! Message ID: ${result.messageId}`);
-    console.log(`📧 Full response:`, result);
     return result;
   } catch (error) {
     console.error(`❌ Email sending failed:`, error);

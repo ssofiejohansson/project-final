@@ -6,14 +6,12 @@ import useUserStore from "../../stores/useUserStore";
 import { BaseURL } from "../BaseURL";
 import { Input } from "../user/Input";
 
-// import { SubscriptionSave } from "./SubscriptionSave";
-
 export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
   const urlAPI = `${BaseURL}`;
 
   const [formData, setFormData] = useState(() => {
     if (initialData) {
-      // Editing an existing subscription, to make sure date follows
+      
       return {
         ...initialData,
         reminderDate: initialData.reminderDate
@@ -136,8 +134,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
         window.dispatchEvent(new Event("refresh-reminders"));
 
         if (!initialData) {
-          // After successfully adding the subscription
-          console.log("Scheduling email with to:", user.email, user);
+          // After successfully adding the subscription          
           await fetch(`${urlAPI}/emails`, {
             method: "POST",
             headers: {

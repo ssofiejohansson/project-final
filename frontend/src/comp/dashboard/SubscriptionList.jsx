@@ -26,8 +26,8 @@ export const SubscriptionList = () => {
 
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
-  const [sendEmail, setSendEmail] = useState(true); // <-- Add this line
-  const [emailPrefs, setEmailPrefs] = useState({}); // { [subId]: true/false }
+  const [sendEmail, setSendEmail] = useState(true); 
+  const [emailPrefs, setEmailPrefs] = useState({}); 
 
   const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
   const openModalDialog = useSubscriptionStore((s) => s.openModalDialog);
@@ -308,8 +308,8 @@ export const SubscriptionList = () => {
                               // Optimistically update UI (optional)
                               // await API call to update backend
                               await fetch(`${urlAPI}/${sub._id}`, {
-                                method: "PUT",
-                                headers: { "Content-Type": "application/json" },
+                                method: "PATCH",
+                                headers: { "Content-Type": "application/json" , "Authorization": user?.token || "", },
                                 body: JSON.stringify({
                                   sendEmail: !sub.sendEmail,
                                 }),
