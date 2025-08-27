@@ -18,16 +18,16 @@ export const Popup = ({ children, delay }) => {
   return (
     <div className="fixed bottom-6 right-6 z-50 hidden md:flex flex-col items-center animate-slideUpFade">
       {!collapsed && (
-        <div className="relative bg-white shadow-lg rounded-2xl py-8 px-6 max-w-xs mb-3 border-l-4 border-t-4 border-main">
+        <div className="relative bg-white shadow-lg rounded-2xl py-6 px-4 max-w-xs mb-3 border-l-4 border-t-4 border-accent">
           <IconButton
             variant="text"
-            className="!absolute top-0 right-0 text-gray-400 hover:text-light transition"
+            className="!absolute top-0 right-0 text-accent hover:text-main hover:bg-transparent transition"
             onClick={() => setCollapsed(true)}
           >
-            <ChevronDownIcon className="h-5 w-5" />
+            <ChevronDownIcon className="h-6 w-6" />
           </IconButton>
 
-          <Typography variant="medium" className="text-text leading-relaxed">
+          <Typography variant="medium" className="text-text leading-relaxed text-center">
             {children}
           </Typography>
         </div>
@@ -43,17 +43,17 @@ export const Popup = ({ children, delay }) => {
           alt="SubscriBee Logo"
           width={50}
           height={50}
-
+          className="animate-buzzCircle transition-transform"
         />
       </div>
 
       {collapsed && (
         <IconButton
           variant="text"
-          className="m-2 text-gray-400 hover:text-light transition"
+          className="m-2 text-main hover:text-accent hover:bg-transparent transition"
           onClick={() => setCollapsed(false)}
         >
-          <ChevronUpIcon className="h-5 w-5" />
+          <ChevronUpIcon className="h-6 w-6" />
         </IconButton>
       )}
     </div>

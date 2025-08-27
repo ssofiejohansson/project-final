@@ -18,9 +18,17 @@ module.exports = withMT({
           "0%": { opacity: 0, transform: "translateY(20px)" },
           "100%": { opacity: 1, transform: "translateY(0)" },
         },
+        buzzCircle: {
+          "0%": { transform: "translate(0, 0) rotate(0deg)" },
+          "25%": { transform: "translate(2px, -2px) rotate(5deg)" },
+          "50%": { transform: "translate(0, -4px) rotate(0deg)" },
+          "75%": { transform: "translate(-2px, -2px) rotate(-5deg)" },
+          "100%": { transform: "translate(0, 0) rotate(0deg)" },
+        },
       },
       animation: {
         slideUpFade: "slideUpFade 0.6s ease-out",
+        buzzCircle: "buzzCircle 0.4s linear infinite",
       },
     },
   },
