@@ -29,10 +29,9 @@ export const Header = () => {
             </Typography>
             <div className="mt-8 grid w-full place-items-start md:justify-center">
               <div className="mb-2 flex w-full flex-col gap-4 md:flex-row">
-
                 <Btn
                   onClick={() => navigate("/signup")}
-                  size="lg"
+                  className="text-base lg:text-lg px-4 lg:px-6 py-2 lg:py-3"
                   variant="filled"
                 >
                   Join the hive
