@@ -11,6 +11,8 @@ import { DashboardHeader } from "./DashboardHeader";
 import { Linegraph } from "./Linegraph";
 import { Stats } from "./Stats";
 
+import { Popup } from "../layout/Popup"
+
 
 
 import "../../../src/index.css";
@@ -58,7 +60,7 @@ export const Dashboard = () => {
   }
 
   return (
-    <section id="dashboard" className="min-h-[82vh] w-full place-items-stretch">
+    <section className="min-h-[82vh] w-full place-items-stretch">
       <div className="container mx-auto px-2 text-center">
         <DashboardHeader user={user} />
 
@@ -71,6 +73,12 @@ export const Dashboard = () => {
         <SubscriptionList subscriptions={subscriptions} />
         <Linegraph subscriptions={subscriptions} />
       </div>
+      <Popup delay={800}>
+        <p className="font-bold">TITLE</p>
+        <p>
+          ADD MESSAGE
+        </p>
+      </Popup>
     </section>
   );
 };

@@ -36,7 +36,7 @@ export const DashboardHeader = ({ user }) => {
         className="mx-auto w-full max-w-full text-light lg:text-lg mb-8 break-words"
       >
         {hasSubs
-          ? "View and manage your subscriptions easily."
+          ? "View and manage your subscriptions in the dashboard below."
           : "Let's start by adding your first subscription in the dashboard below."}
       </Typography>
       <div className="mt-10 flex justify-center">

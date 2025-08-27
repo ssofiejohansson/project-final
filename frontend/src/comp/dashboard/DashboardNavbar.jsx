@@ -9,7 +9,7 @@ export const DashboardNavbar = ({
   onAdd,
 }) => {
   return (
-    <div className="flex gap-4 flex-wrap items-center py-4">
+    <div id="dashboard" className="flex gap-4 flex-wrap items-center py-4">
       <select
         value={filterCategory}
         onChange={(e) => setFilterCategory(e.target.value)}
