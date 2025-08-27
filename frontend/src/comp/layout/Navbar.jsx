@@ -14,6 +14,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import Logo from "/subscribee-logo.png";
+import Bee2 from "/bee2.png";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
