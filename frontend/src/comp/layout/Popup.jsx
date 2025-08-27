@@ -41,9 +41,9 @@ export const Popup = ({ children, delay }) => {
         <img
           src={Logo}
           alt="SubscriBee Logo"
-          width={60}
-          height={60}
-          className="rounded-full"
+          width={50}
+          height={50}
+
         />
       </div>
 
