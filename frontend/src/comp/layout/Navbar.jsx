@@ -13,7 +13,7 @@ import {
   MenuList,
   Typography,
 } from "@material-tailwind/react";
-import Logo from "/subscribee-logo.png";
+import Logo from "/subscribee-logo.webp";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -108,8 +108,8 @@ export const Navbar = () => {
                 <Menu placement="bottom-end">
                   <MenuHandler>
                     <button className="flex items-center gap-1 cursor-pointer">
-                      <UserCircleIcon className="h-8 w-8 text-text-text-700" />
-                      <ChevronDownIcon className="h-4 w-4 text-text-text-600" />
+                      <UserCircleIcon className="h-8 w-8 text-accent" />
+                      <ChevronDownIcon className="h-4 w-4 text-text" />
                     </button>
                   </MenuHandler>
                   <MenuList>

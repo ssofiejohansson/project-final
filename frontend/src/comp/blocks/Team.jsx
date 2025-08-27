@@ -14,21 +14,21 @@ const teamMembers = [
   {
     name: "Sofie",
     linkedin: "https://www.linkedin.com/in/ssofiejohansson",
-    src: "../../public/sofie.jpg",
+    src: "../../public/sofie.webp",
   },
 ];
 
 const links = [
   {
-    label: "Technigo JS Bootcamp",
+    label: "Technigo",
     href: "https://www.technigo.io/courses/javascript-development-bootcamp",
   },
   {
-    label: "Project on GitHub",
+    label: "GitHub",
     href: "https://github.com/ssofiejohansson/project-final",
   },
   {
-    label: "Other Links",
+    label: "Link",
     href: "#",
   },
 ];

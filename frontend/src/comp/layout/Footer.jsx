@@ -1,5 +1,5 @@
 import { Typography } from "@material-tailwind/react";
-import Logo from "/subscribee-logo-right.png";
+import Logo from "/subscribee-logo-right.webp";
 import { Link, useNavigate } from "react-router-dom";
 import useUserStore from "../../stores/useUserStore";
 import { Logout } from "../user/LogoutBtn";

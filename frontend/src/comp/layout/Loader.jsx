@@ -1,4 +1,4 @@
-import Logo from "/subscribee-logo-left.png";
+import Logo from "/subscribee-logo-left.webp";
 import { motion } from "framer-motion";
 
 export const Loader = () => {
@@ -20,7 +20,7 @@ export const Loader = () => {
           }}
           transition={{
             repeat: Infinity,
-            duration: 4, // adjust speed of trail
+            duration: 4, // speed of trail
             ease: "easeInOut",
             delay: i * 0.2, // stagger trail
           }}
@@ -42,7 +42,7 @@ export const Loader = () => {
           ease: "easeInOut",
         }}
       />
-      <p className="mt-40 text-center text-text font-bold text-lg">
+      <p className="p-4 mt-40 text-center text-text font-bold text-md">
         Hold on! Beeatrice is buzzing as fast as she can...
       </p>
     </div>

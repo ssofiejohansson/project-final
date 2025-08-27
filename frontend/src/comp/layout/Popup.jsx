@@ -1,6 +1,6 @@
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { IconButton, Typography } from "@material-tailwind/react";
-import Logo from "/subscribee-logo-left.png";
+import Logo from "/subscribee-logo-left.webp";
 import { useEffect, useState } from "react";
 export const Popup = ({ children, delay }) => {
   const [visible, setVisible] = useState(!delay);
@@ -18,16 +18,16 @@ export const Popup = ({ children, delay }) => {
   return (
     <div className="fixed bottom-6 right-6 z-50 hidden md:flex flex-col items-center animate-slideUpFade">
       {!collapsed && (
-        <div className="relative bg-white shadow-lg rounded-2xl py-6 px-4 max-w-xs mb-3 border-l-4 border-t-4 border-accent">
+        <div className="relative bg-white shadow-lg rounded-2xl py-4 px-4 max-w-xs mb-3 border-l-4 border-accent">
           <IconButton
             variant="text"
-            className="!absolute top-0 right-0 text-accent hover:text-main hover:bg-transparent transition"
+            className="!absolute top-0 right-0 text-accent hover:text-main hover:bg-transparent active:bg-transparent transition"
             onClick={() => setCollapsed(true)}
           >
             <ChevronDownIcon className="h-6 w-6" />
           </IconButton>
 
-          <Typography variant="medium" className="text-text leading-relaxed text-center">
+          <Typography variant="medium" className="p-2 text-text leading-relaxed text-center">
             {children}
           </Typography>
         </div>

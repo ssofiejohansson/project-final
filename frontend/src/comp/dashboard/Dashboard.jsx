@@ -58,10 +58,16 @@ export const Dashboard = () => {
   }
 
   return (
-    <section className=" min-h-[82vh] w-full place-items-stretch">
+    <section className="min-h-[82vh] w-full place-items-stretch">
       <div className="container mx-auto px-2 text-center">
         <DashboardHeader user={user} />
-        <Stats subscriptions={subscriptions} />
+
+        {subscriptions && subscriptions.length > 0 && (
+          <>
+            <Stats subscriptions={subscriptions} />
+          </>
+        )}
+
         <SubscriptionList subscriptions={subscriptions} />
         <Linegraph subscriptions={subscriptions} />
       </div>
