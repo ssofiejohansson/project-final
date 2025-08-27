@@ -1,5 +1,5 @@
-import { Avatar, Card, CardBody, Typography } from "@material-tailwind/react";
-
+import { Card, CardBody, Typography } from "@material-tailwind/react";
+import { Team } from "./Team";
 import { useNavigate } from "react-router-dom";
 import { Btn } from "../layout/Btn";
 
@@ -62,58 +62,7 @@ export const AboutProject = () => {
               <Typography className="text-center max-w-xs mx-auto font-normal leading-7 text-text">
                 Meet the creators behind SubscriBee — students learning and building real-world applications.
               </Typography>
-              <div className="flex items-center -space-x-4 justify-center mt-8">
-                <a href="https://www.linkedin.com/" target="_blank">
-                  <Avatar
-                    size="xl"
-                    variant="circular"
-                    alt="Oskar image"
-                    className="border-2 border-white hover:z-10 focus:z-10"
-                    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1480&q=80"
-                  />
-                </a>
-                <a href="https://www.linkedin.com/in/sofia-lennbom-91252195/" target="_blank">
-                  <Avatar
-                    size="xl"
-                    variant="circular"
-                    alt="Sofia image"
-                    className="border-2 border-white hover:z-10 focus:z-10"
-                    src="../../public/sofia.webp"
-                  />
-                </a>
-                <a href="https://www.linkedin.com/" target="_blank">
-                  <Avatar
-                    size="xl"
-                    variant="circular"
-                    alt="Sofie image"
-                    className="border-2 border-white hover:z-10 focus:z-10"
-                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1288&q=80"
-                  />
-                </a>
-              </div>
-              <div className="flex justify-center mt-6 gap-4">
-                <a
-                  href="#"
-                  target="_blank" rel="noopener noreferrer"
-                  className="text-xs font-bold text-main hover:underline"
-                >
-                  Technigo
-                </a>
-                <a
-                  href="#"
-                  target="_blank" rel="noopener noreferrer"
-                  className="text-xs font-bold text-main hover:underline"
-                >
-                  GitHub
-                </a>
-                <a
-                  href="#"
-                  target="_blank" rel="noopener noreferrer"
-                  className="text-xs font-bold text-main hover:underline"
-                >
-                  Other Links
-                </a>
-              </div>
+              <Team />
             </CardBody>
           </Card>
 

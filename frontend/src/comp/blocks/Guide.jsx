@@ -1,5 +1,6 @@
-import { Avatar, Card, CardBody, Typography } from "@material-tailwind/react";
-
+import { Card, CardBody, Typography } from "@material-tailwind/react";
+import { Link } from "react-router-dom"
+import { Team } from "./Team";
 import SignupImage from "../../assets/home-img/signup-img.png"
 import AddSubImage from "../../assets/home-img/addsub-img.png"
 import SubListImage from "../../assets/home-img/sublist-img.png"
@@ -26,7 +27,9 @@ export const Guide = () => {
               Step 1 - Create Your Account
             </Typography>
             <Typography className="text-center mb-0 max-w-xs mx-auto font-normal leading-7 text-light">
-              Sign up in minutes and start fresh.
+              <Link to="/signup" className="text-main hover:underline">
+                Sign up
+              </Link>{" "} in minutes and start fresh.
             </Typography>
           </CardBody>
 
@@ -82,52 +85,13 @@ export const Guide = () => {
             </Typography>
             <Typography className="text-center max-w-xs mx-auto  font-normal leading-7 text-light">
               SubscriBee is a student-built project designed to help people better manage their digital lives.
-              Learn more about our team and process on the About page.
+              Learn more about our team and process on the{" "}
+              <Link to="/about" className="text-main hover:underline">
+                About
+              </Link>{" "}
+              page.
             </Typography>
-            <div className="flex items-center -space-x-4 justify-center mt-24">
-              <Avatar
-                size="xl"
-                variant="circular"
-                alt="Oskar image"
-                className="border-2 border-white hover:z-10 focus:z-10"
-                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-              />
-              <Avatar
-                size="xl"
-                variant="circular"
-                alt="Sofia image"
-                className="border-2 border-white hover:z-10 focus:z-10"
-                src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1061&q=80"
-              />
-              <Avatar
-                size="xl"
-                variant="circular"
-                alt="Sofie image"
-                className="border-2 border-white hover:z-10 focus:z-10"
-                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1288&q=80"
-              />
-
-            </div>
-            <div className="flex justify-center mt-6 gap-4">
-              <a
-                href="#" target="_blank" rel="noopener noreferrer"
-                className="text-xs font-bold text-main hover:underline"
-              >
-                Technigo
-              </a>
-              <a
-                href="#" target="_blank" rel="noopener noreferrer"
-                className="text-xs font-bold text-main hover:underline"
-              >
-                GitHub
-              </a>
-              <a
-                href="#" target="_blank" rel="noopener noreferrer"
-                className="text-xs font-bold text-main hover:underline"
-              >
-                Other Links
-              </a>
-            </div>
+            <Team />
           </CardBody>
         </Card>
       </div>

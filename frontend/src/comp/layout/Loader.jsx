@@ -2,7 +2,7 @@ import Logo from "/subscribee-logo-left.png";
 import { motion } from "framer-motion";
 
 export const Loader = () => {
-  const trailCount = 3;
+  const trailCount = 5;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-white z-50 overflow-hidden">
@@ -20,7 +20,7 @@ export const Loader = () => {
           }}
           transition={{
             repeat: Infinity,
-            duration: 3, // adjust speed of trail
+            duration: 4, // adjust speed of trail
             ease: "easeInOut",
             delay: i * 0.2, // stagger trail
           }}
@@ -38,7 +38,7 @@ export const Loader = () => {
         }}
         transition={{
           repeat: Infinity,
-          duration: 4, // slightly faster main bee
+          duration: 3, // slightly faster main bee
           ease: "easeInOut",
         }}
       />

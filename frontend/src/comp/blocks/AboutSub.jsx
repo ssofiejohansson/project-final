@@ -4,7 +4,7 @@ import { Typography } from "@material-tailwind/react";
 export const AboutSub = () => {
   return (
     <header className="bg-white p-8">
-      <div className="container mx-auto px-4 text-center">
+      <div className="container mx-auto px-2 sm:px-4 lg:px-20  text-center">
         <Typography
           variant="h1"
           className="text-text mx-auto my-6 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
