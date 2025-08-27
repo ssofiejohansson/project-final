@@ -42,6 +42,9 @@ export const Loader = () => {
           ease: "easeInOut",
         }}
       />
+      <p className="mt-40 text-center text-text font-bold text-lg">
+        Hold on! Beeatrice is buzzing as fast as she can...
+      </p>
     </div>
   );
 };
