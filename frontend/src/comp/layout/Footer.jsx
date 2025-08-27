@@ -68,7 +68,7 @@ export const Footer = () => {
               <Btn
                 onClick={() => navigate("/admin")}
                 size="md"
-                variant="filled"
+                variant="outlined"
               >
                 Dashboard
               </Btn>
@@ -76,20 +76,7 @@ export const Footer = () => {
             </>
           ) : (
             <>
-              {/* <BtnSmall
-                onClick={() => navigate("/login")}
-                size="sm"
-                variant="text"
-              >
-                Log in
-              </BtnSmall>
-              <BtnSmall
-                onClick={() => navigate("/signup")}
-                size="sm"
-                variant="text"
-              >
-                Sign Up
-              </BtnSmall> */}
+              {/* Add login btn */}
             </>
           )}
         </div>
