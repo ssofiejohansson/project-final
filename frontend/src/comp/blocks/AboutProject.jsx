@@ -29,7 +29,12 @@ export const AboutProject = () => {
               variant="paragraph"
               className="mb-8 w-full lg:text-lg text-text"
             >
-              SubscriBee is a student-built project designed to help people manage their subscriptions.
+              SubscriBee is a student-built project designed to help people manage their subscriptions. 
+              Statistics show that 74% forget the fee of recurring subscriptions and 42% still paying 
+              for a subscription they no longer use, mainly because they forget to cancel. We found this
+              intriguing, and we wanted to make our own take of this problem. In a fun and playful way 
+              with the help of Beatrice the bee we display and guide the user to a more subscription 
+              friendly everyday life.   
             </Typography>
             <div className="flex flex-col sm:flex-row gap-4">
               <Btn
