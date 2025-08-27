@@ -58,7 +58,7 @@ export const Dashboard = () => {
   }
 
   return (
-    <section className="min-h-[82vh] w-full place-items-stretch">
+    <section id="dashboard" className="min-h-[82vh] w-full place-items-stretch">
       <div className="container mx-auto px-2 text-center">
         <DashboardHeader user={user} />
 

@@ -13,7 +13,7 @@ export const About = () => {
       <Popup delay={1000}>
         <p className="font-bold">Did you know?</p>
         <p>
-          74% forget about their subscriptions and 42% still pay for a subscription they no longer use!
+          74% of people forget about their subscriptions and 42% still pay for ones they no longer use!
         </p>
       </Popup>
     </>

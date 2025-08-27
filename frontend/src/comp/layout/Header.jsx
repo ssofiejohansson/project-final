@@ -8,12 +8,12 @@ export const Header = () => {
 
   return (
 
-    <header className="bg-white px-8">
-      <div className="grid pt-8 w-full place-items-stretch">
+    <header className="bg-white pt-4 lg:pt-10 ">
+      <div className="grid w-full px-6 place-items-stretch">
         <div className="container mx-auto px-4 text-center">
           <Typography
             variant="h1"
-            className="text-text mx-auto py-4 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
+            className="text-text pb-2 mx-auto w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
           >
             Bee in control of your subscriptions with{" "}
             <span className=" font-extrabold bg-gradient-to-r from-main to-accent bg-clip-text text-transparent drop-shadow-sm leading-snug">SubscriBee</span>
@@ -29,7 +29,7 @@ export const Header = () => {
             <div className="mb-2 flex w-full flex-col gap-4 md:flex-row">
               <Btn
                 onClick={() => navigate("/signup")}
-                className="text-base lg:text-lg px-4 lg:px-6 py-2 lg:py-3"
+                size="md"
                 variant="filled"
               >
                 Join the hive
@@ -39,7 +39,7 @@ export const Header = () => {
         </div>
 
         <div
-          className="mt-6 w-full h-[300px] lg:h-[400px] bg-center bg-contain bg-no-repeat"
+          className="my-6 w-full h-[300px] lg:h-[400px] bg-center bg-contain bg-no-repeat"
           style={{ backgroundImage: `url(${HeroImage})` }}
         ></div>
       </div>
