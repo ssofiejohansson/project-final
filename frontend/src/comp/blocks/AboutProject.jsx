@@ -2,20 +2,21 @@ import { Card, CardBody, Typography } from "@material-tailwind/react";
 import { Team } from "./Team";
 import { useNavigate } from "react-router-dom";
 import { Btn } from "../layout/Btn";
+import BeeatriceImg from "../../assets/home-img/beeatrice.png"
 
 export const AboutProject = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-10 bg-white">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pb-20">
           {/* HERO IMAGE */}
           <div className="flex justify-center">
             <img
-              src="/"
+              src={BeeatriceImg}
               alt="Project overview"
-              className="rounded-xl object-cover w-full max-w-md lg:max-w-full shadow-lg"
+              className="rounded-xl object-cover w-full max-w-md lg:max-w-full"
             />
           </div>
           <div id="project" className="flex flex-col items-start justify-center text-left">
