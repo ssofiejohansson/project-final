@@ -1,13 +1,12 @@
+import { Typography } from "@material-tailwind/react";
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import useLoadingStore from "../../stores/useLoadingStore";
 import useUserStore from "../../stores/useUserStore";
-import { Input } from "./Input";
-import { Btn } from "../layout/Btn";
-import { Typography } from "@material-tailwind/react";
 import { BaseURL } from "../BaseURL";
-import { Typography } from "@material-tailwind/react";
+import { Btn } from "../layout/Btn";
+import { Input } from "./Input";
 
 export const Usersignup = () => {
   const [formData, setFormData] = useState({
