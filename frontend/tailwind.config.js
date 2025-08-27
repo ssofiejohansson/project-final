@@ -8,17 +8,10 @@ module.exports = withMT({
   theme: {
     extend: {
       colors: {
-        //Sofies förslag
-        // main: "#FF5C8D",   // pink
-        // accent: "#FFD166", // yellow
-        // text: "#333333",   // charcoal
-        // light: "#757575", // light-grey
-
-        //Sofias förslag
-        main: "#D72660",      // Darker pink for white text support
-        accent: "#FFD166",    // Yellow (fine as is)
-        text: "#333333",      // Charcoal
-        light: "#555555",     // Adjusted grey for contrast
+        main: "#f57508",   // orange
+        accent: "#ffd166", // yellow
+        text: "#333333",   // charcoal
+        light: "#555555", // light-grey
       },
       keyframes: {
         slideUpFade: {

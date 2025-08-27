@@ -10,19 +10,22 @@ export const Btn = ({
 }) => {
 
   const baseClasses =
-    "rounded-lg font-semibold transition duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-main focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
+    "font-bold tracking-[0.08em] rounded-[18px] transition duration-200 focus:outline-none focus:ring-2  disabled:opacity-50 disabled:cursor-not-allowed";
 
   const sizeClasses = {
-    sm: "px-3 py-2 text-sm",
-    md: "px-4 py-3 text-base",
-    lg: "px-6 py-4 text-lg",
+    sm: "px-6 py-2 text-sm",
+    md: "px-8 py-4 text-base",
+    lg: "px-12 py-4 text-lg",
   };
 
   const variantClasses = {
-    filled: "bg-main text-white hover:bg-white hover:text-main",
-    outlined: "border border-accent text-text hover:text-text",
-    text: "text-main hover:text-text",
+    filled: "bg-main text-white shadow-[0_5px_0_0_#f24e03] active:translate-y-[5px] active:shadow-none",
+
+    outlined: "border-4 border-main text-main bg-transparent shadow-md hover:scale-105 active:scale-105 active:shadow-sm",
+
+    text: "text-main bg-transparent shadow-sm hover:text-text",
   };
+
 
   return (
     <button
@@ -36,3 +39,9 @@ export const Btn = ({
     </button>
   );
 };
+
+
+// filled: "bg-main text-white hover:bg-white hover:text-main",
+// filled: "bg-[#2D8EEF] text-white font-kumbh font-bold tracking-[0.08em] text-[1.4rem] px-16 py-4 rounded-[18px] shadow-[0_5px_0_0_#2763D1] active:translate-y-[5px] active:shadow-none",
+// outlined: "border border-accent text-text hover:text-text",
+// text: "text-main hover:text-text",

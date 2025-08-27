@@ -54,7 +54,7 @@ export const ContentBlock = () => {
           <Btn
             onClick={() => navigate("/signup")}
             size="md"
-            variant="outlined"
+            variant="filled"
           >
             Join the hive
           </Btn>

@@ -14,7 +14,6 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import Logo from "/subscribee-logo.png";
-import Bee2 from "/bee2.png";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -75,9 +74,8 @@ export const Navbar = () => {
 
   return (    
     <div
-      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
-        showNavbar ? "translate-y-0" : "-translate-y-full"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"
+        }`}
     >
       <div className="mx-auto max-w-7xl px-4 lg:px-8 shadow-lg rounded-b-xl bg-white">
         <div className="flex items-center justify-between h-16">
@@ -88,10 +86,9 @@ export const Navbar = () => {
             className="text-text cursor-pointer text-lg font-bold flex items-center gap-2"
           >
             <img
-              src={Bee2}
+              src={Logo}
               alt="SubscriBee Logo"
-              className="h-16"
-              style={{ margin: "5px" }}
+              className="h-12"
             />
           </Typography>
 
@@ -124,7 +121,7 @@ export const Navbar = () => {
                     </MenuItem>
                   </MenuList>
                 </Menu>
-                <Logout />
+                <Logout size="sm" variant="text" />
               </>
             ) : (
               <>
@@ -138,7 +135,7 @@ export const Navbar = () => {
                 <Btn
                   onClick={() => navigate("/signup")}
                   size="sm"
-                  variant="filled"
+                  variant="outlined"
                 >
                   Sign Up
                 </Btn>
@@ -223,7 +220,7 @@ export const Navbar = () => {
                       closeMenu();
                     }}
                     size="md"
-                    variant="text"
+                    variant="outlined"
                   >
                     Sign Up
                   </Btn>
