@@ -4,7 +4,7 @@ const teamMembers = [
   {
     name: "Oskar",
     linkedin: "https://www.linkedin.com/",
-    src: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1480&q=80",
+    src: "/oskar.webp",
   },
   {
     name: "Sofia",
@@ -27,10 +27,7 @@ const links = [
     label: "GitHub",
     href: "https://github.com/ssofiejohansson/project-final",
   },
-  {
-    label: "Link",
-    href: "#",
-  },
+
 ];
 
 export const Team = () => {
