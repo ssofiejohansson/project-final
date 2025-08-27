@@ -1,5 +1,9 @@
 import { Avatar, Card, CardBody, Typography } from "@material-tailwind/react";
 
+import SignupImage from "../../assets/home-img/signup-img.png"
+import AddSubImage from "../../assets/home-img/addsub-img.png"
+import SubListImage from "../../assets/home-img/sublist-img.png"
+
 export const Guide = () => {
 
   return (
@@ -18,64 +22,56 @@ export const Guide = () => {
       <div className="mb-8 container mx-auto grid lg:gap-x-8 gap-y-8 grid-cols-1 lg:grid-cols-3">
         <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
           <CardBody className="text-center">
-            <Typography
-              variant="h3"
-              className="text-text mb-2 font-medium"
-            >
+            <Typography variant="h3" className="text-text mb-2 font-medium">
               Step 1 - Create Your Account
             </Typography>
-            <Typography className="text-center mb-0 max-w-xs mx-auto  font-normal leading-7 text-light">
+            <Typography className="text-center mb-0 max-w-xs mx-auto font-normal leading-7 text-light">
               Sign up in minutes and start fresh.
             </Typography>
-            <img
-              src="/image/iphone.svg"
-              alt="image of the sign up form"
-              className="w-full xl:h-[370px] lg:h-[360px] lg:translate-y-8 translate-y-7 object-cover object-center"
-            />
           </CardBody>
+
+          <img
+            src={SignupImage}
+            alt="image of the sign up form"
+            className="w-full xl:h-[370px] lg:h-[360px] h-[220px] object-cover md:object-contain object-top"
+          />
         </Card>
-        <Card
-          className="col-span-2 bg-gray-100/50 overflow-hidden hover:shadow-lg transition"
-        >
+
+        <Card className="col-span-2 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
           <CardBody className="text-center">
-            <Typography
-              variant="h3"
-              className="text-text mb-2 font-medium"
-            >
+            <Typography variant="h3" className="text-text mb-2 font-medium">
               Step 2 – Add Your Subscriptions
             </Typography>
-            <Typography className="text-center mb-0 max-w-xs mx-auto  font-normal leading-7 text-light">
+            <Typography className="text-center mb-3 max-w-xs mx-auto font-normal leading-7 text-light">
               Log every subscription, from Netflix to that random meditation app you forgot about.
             </Typography>
             <img
-              src="/image/laptop 1.svg"
+              src={AddSubImage}
               alt="image of the dashboard with a list of subscriptions"
-              className="w-full lg:h-[380px] md:h-[300px] h-[220px] lg:translate-y-16 translate-y-10 object-cover object-center"
+              className="w-full lg:h-[380px] md:h-[300px] h-[220px] object-cover md:object-contain object-top"
             />
           </CardBody>
         </Card>
+
       </div>
       <div className="container mx-auto grid lg:gap-x-8 gap-y-8 grid-cols-1 lg:grid-cols-3">
-        <Card
-          className="col-span-2 bg-gray-100/50 overflow-hidden hover:shadow-lg transition"
-        >
+        <Card className="col-span-2 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
           <CardBody className="text-center">
-            <Typography
-              variant="h3"
-              className="text-text mb-2 font-medium"
-            >
+            <Typography variant="h3" className="text-text mb-2 font-medium">
               Step 3 – Stay on Track
             </Typography>
-            <Typography className="text-center max-w-sm mx-auto  font-normal leading-7 text-light">
+            <Typography className="text-center mb-3 max-w-sm mx-auto font-normal leading-7 text-light">
               See clear insights, receive helpful reminders, and avoid surprise charges.
             </Typography>
             <img
-              src="/image/logo-collection.svg"
+              src={SubListImage}
               alt="image on the email of a reminder and a popup with a message"
-              className="w-full xl:h-[355px] lg:h-[380px] md:h-[300px] h-[180px] lg:translate-y-6 translate-y-10 object-cover object-top"
+              className="w-full xl:h-[355px] lg:h-[380px] md:h-[300px] h-[180px] object-cover md:object-contain object-top"
             />
           </CardBody>
         </Card>
+
+
         <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
           <CardBody className="text-center">
             <Typography
