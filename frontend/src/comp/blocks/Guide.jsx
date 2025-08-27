@@ -8,12 +8,12 @@ import SubListImage from "../../assets/home-img/sublist-img.png"
 export const Guide = () => {
 
   return (
-    <section id="guide" className="lg:py-28 py-10 px-8">
-      <div className="container mx-auto mb-10 text-center lg:mb-20">
+    <section className="lg:py-20 py-14 px-8">
+      <div className="container mx-auto mb-8 text-center lg:mb-10">
         <Typography className="text-main mb-2 font-bold uppercase">
           How it works
         </Typography>
-        <Typography variant="h2" className="text-text mb-4 !text-2xl font-bold lg:!text-4xl">
+        <Typography variant="h2" className="text-text mb-2 !text-2xl font-bold lg:!text-4xl">
           Get started in three simple steps
         </Typography>
         <Typography variant="paragraph" className="mx-auto max-w-lg text-text">

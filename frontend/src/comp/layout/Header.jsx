@@ -13,10 +13,10 @@ export const Header = () => {
         <div className="container mx-auto px-4 text-center">
           <Typography
             variant="h1"
-            className="text-text mx-auto py-2 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
+            className="text-text mx-auto py-4 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
           >
-            Track your subscriptions with{" "}
-            <span className="text-main leading-snug">SubscriBee</span>.
+            Bee in control of your subscriptions with{" "}
+            <span className=" font-extrabold bg-gradient-to-r from-main to-accent bg-clip-text text-transparent drop-shadow-sm leading-snug">SubscriBee</span>
           </Typography>
           <Typography
             variant="lead"
@@ -39,11 +39,11 @@ export const Header = () => {
         </div>
 
         <div
-          className="mt-4 w-full h-[300px] lg:h-[400px] bg-center bg-contain bg-no-repeat"
+          className="mt-6 w-full h-[300px] lg:h-[400px] bg-center bg-contain bg-no-repeat"
           style={{ backgroundImage: `url(${HeroImage})` }}
         ></div>
       </div>
-    </header>
+    </header >
   );
 };
 
