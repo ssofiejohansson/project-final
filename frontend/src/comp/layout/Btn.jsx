@@ -21,7 +21,7 @@ export const Btn = ({
   const variantClasses = {
     filled: "bg-main text-white shadow-[0_5px_0_0_#f24e03] active:translate-y-[5px] active:shadow-none",
 
-    outlined: "border-2 border-main text-main bg-transparent shadow-md hover:scale-105 active:scale-105 active:shadow-sm",
+    outlined: "border-4 border-main text-main bg-transparent shadow-md hover:scale-105 active:scale-105 active:shadow-sm",
 
     text: "text-main bg-transparent shadow-sm hover:text-text",
   };
