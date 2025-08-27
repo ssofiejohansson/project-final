@@ -143,7 +143,7 @@ export const SubscriptionList = () => {
                 <>
                   <BellAlertIcon className="h-5 w-5 text-red-600 font-bold" />
                   <Typography variant="small" className="text-text">
-                    You have <span className="text-red-600 font-semibold">{dueSoon.length} payment(s)</span>{" "}
+                    You have <span className="text-red-600 font-semibold">{dueSoon.length} reminder(s)</span>{" "}
                     due in the next 3 days.
                   </Typography>
                 </>
@@ -151,7 +151,7 @@ export const SubscriptionList = () => {
                 <>
                   <BellAlertIcon className="h-5 w-5 text-text font-bold" />
                   <Typography variant="small" className="text-text">
-                    No payments due in the next 3 days.
+                    No reminders due in the next 3 days.
                   </Typography>
                 </>
               )}
