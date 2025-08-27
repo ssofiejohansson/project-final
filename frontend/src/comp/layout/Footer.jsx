@@ -53,9 +53,9 @@ export const Footer = () => {
             <li>
               <a
                 href="mailto:"
-                className="flex items-center gap-2 font-medium transition-colors hover:text-main"
+                className="flex items-center gap-2 font-medium transition-colors hover:text-accent"
               >
-                <EnvelopeIcon className="text-main h-5 w-5" />
+                <EnvelopeIcon className="text-accent h-5 w-5" />
                 Contact us
               </a>
             </li>
@@ -67,16 +67,22 @@ export const Footer = () => {
             <>
               <Btn
                 onClick={() => navigate("/admin")}
-                size="md"
+                size="sm"
                 variant="outlined"
               >
                 Dashboard
               </Btn>
-              <Logout size="md" variant="text" />
+              <Logout size="sm" variant="text" />
             </>
           ) : (
             <>
-              {/* Add login btn */}
+              <Btn
+                onClick={() => navigate("/login")}
+                size="sm"
+                variant="outlined"
+              >
+                Log in
+              </Btn>
             </>
           )}
         </div>

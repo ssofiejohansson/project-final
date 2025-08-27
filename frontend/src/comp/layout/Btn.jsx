@@ -20,12 +20,9 @@ export const Btn = ({
 
   const variantClasses = {
     filled: "bg-main text-white shadow-[0_5px_0_0_#f24e03] active:translate-y-[5px] active:shadow-none",
-
-    outlined: "border-4 border-main text-main bg-transparent shadow-md hover:scale-105 active:scale-105 active:shadow-sm",
-
-    text: "text-main bg-transparent shadow-sm hover:text-text",
+    outlined: "border-4 border-main text-main bg-transparent shadow-sm hover:scale-110 active:scale-110 active:shadow-sm",
+    text: "text-main bg-transparent shadow-md hover:text-light",
   };
-
 
   return (
     <button
@@ -39,9 +36,3 @@ export const Btn = ({
     </button>
   );
 };
-
-
-// filled: "bg-main text-white hover:bg-white hover:text-main",
-// filled: "bg-[#2D8EEF] text-white font-kumbh font-bold tracking-[0.08em] text-[1.4rem] px-16 py-4 rounded-[18px] shadow-[0_5px_0_0_#2763D1] active:translate-y-[5px] active:shadow-none",
-// outlined: "border border-accent text-text hover:text-text",
-// text: "text-main hover:text-text",

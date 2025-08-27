@@ -72,7 +72,7 @@ export const Navbar = () => {
     </ul>
   );
 
-  return (    
+  return (
     <div
       className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
@@ -83,13 +83,16 @@ export const Navbar = () => {
           <Typography
             as={Link}
             to="/"
-            className="text-text cursor-pointer text-lg font-bold flex items-center gap-2"
+            className="cursor-pointer flex items-center gap-3"
           >
             <img
               src={Logo}
               alt="SubscriBee Logo"
-              className="h-12"
+              className="h-10 m-1"
             />
+            <span className="text-xl font-extrabold bg-gradient-to-r from-main to-accent bg-clip-text text-transparent drop-shadow-sm">
+              SubscriBee
+            </span>
           </Typography>
 
           {/* Center */}
