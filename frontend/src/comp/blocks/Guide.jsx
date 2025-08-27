@@ -29,7 +29,7 @@ export const Guide = () => {
             <Typography className="text-center mb-0 max-w-xs mx-auto font-normal leading-7 text-light">
               <Link to="/signup" className="text-main hover:underline">
                 Sign up
-              </Link>{" "} in minutes and start fresh.
+              </Link>{" "} and start fresh.
             </Typography>
           </CardBody>
 
@@ -46,7 +46,7 @@ export const Guide = () => {
               Step 2 – Add Your Subscriptions
             </Typography>
             <Typography className="text-center mb-3 max-w-xs mx-auto font-normal leading-7 text-light">
-              Log every subscription, from Netflix to that random meditation app you forgot about.
+              Log every subscription, from Netflix to that random meditation app you completely forgot about.
             </Typography>
             <img
               src={AddSubImage}
