@@ -1,9 +1,24 @@
-import { BellAlertIcon, BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
-import { Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
+import {
+  BellAlertIcon,
+  BookOpenIcon,
+  CakeIcon,
+  HeartIcon,
+  PencilIcon,
+  QuestionMarkCircleIcon,
+  TrashIcon,
+  TvIcon,
+} from "@heroicons/react/24/outline";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  IconButton,
+  Typography,
+} from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Popup } from "../../comp/layout/Popup"
+import { Popup } from "../../comp/layout/Popup";
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
 import { BaseURL } from "../BaseURL";
@@ -43,7 +58,7 @@ export const SubscriptionList = () => {
   //Check if reminder date is in the next 3 days, inc today
   const upcommingDates = () => {
     const today = new Date();
-    let datesCollection = []
+    let datesCollection = [];
 
     for (let i = 0; i < 3; i++) {
       const nextDate = new Date(today);
@@ -55,11 +70,11 @@ export const SubscriptionList = () => {
       datesCollection.push(formatted);
     }
     return datesCollection;
-  }
+  };
 
   const upcomingDates = upcommingDates();
 
-  const dueSoon = subscriptions.filter(sub =>
+  const dueSoon = subscriptions.filter((sub) =>
     upcomingDates.includes(
       new Date(sub.reminderDate).toISOString().split("T")[0]
     )
@@ -127,16 +142,19 @@ export const SubscriptionList = () => {
   };
 
   return (
-    <section className="bg-gray-50 max-w-8xl mx-auto px-4 py-20 w-full">
-      <div className="container mx-auto px-2 text-center">
-        <Card className="h-full w-full p-2">
+    <section className="bg-gray-50 py-20 w-full">
+      <div className="mx-auto px-4 text-center">
+        <Card className="h-full w-full">
           <CardHeader
             floated={false}
             shadow={false}
             className="rounded-none flex flex-wrap gap-4 justify-between mb-4"
           >
             <div className="flex flex-col gap-1">
-              <Typography variant="h2" className="text-text text-base font-normal text-left mt-1">
+              <Typography
+                variant="h2"
+                className="text-text text-base font-normal text-left mt-1"
+              >
                 All subscriptions
               </Typography>
               <div className="flex items-center gap-2 mt-1">
@@ -144,7 +162,10 @@ export const SubscriptionList = () => {
                   <>
                     <BellAlertIcon className="h-5 w-5 text-red-600 font-bold" />
                     <Typography variant="small" className="text-text">
-                      You have <span className="text-red-600 font-semibold">{dueSoon.length} reminder(s)</span>{" "}
+                      You have{" "}
+                      <span className="text-red-600 font-semibold">
+                        {dueSoon.length} reminder(s)
+                      </span>{" "}
                       due in the next 3 days.
                     </Typography>
                   </>
@@ -180,11 +201,7 @@ export const SubscriptionList = () => {
                         key={head}
                         className={`border-b border-gray-300 !p-4 pb-8 ${customeStyle}`}
                       >
-                        <Typography
-
-                          variant="small"
-                          className="!font-bold"
-                        >
+                        <Typography variant="small" className="!font-bold">
                           {head}
                         </Typography>
                       </th>
@@ -200,8 +217,9 @@ export const SubscriptionList = () => {
                       >
                         {subscriptions.length === 0
                           ? "You have not added any subscriptions, please click add."
-                          : `You have no subscriptions listed under ${filterCategory || "this category"
-                          }.`}
+                          : `You have no subscriptions listed under ${
+                              filterCategory || "this category"
+                            }.`}
                       </td>
                     </tr>
                   ) : (
@@ -217,8 +235,7 @@ export const SubscriptionList = () => {
                       );
 
                       return (
-                        <tr key={sub._id || index}
-                        >
+                        <tr key={sub._id || index}>
                           {/* Name */}
                           <td className={classes}>
                             <div className="flex items-center gap-2">
@@ -229,18 +246,16 @@ export const SubscriptionList = () => {
                                 onError={(e) => {
                                   e.target.onerror = null; // Prevent infinite loop
                                   e.target.src = "/logos/placeholder.webp";
-                                  e.target.alt = "Bee Icon"
+                                  e.target.alt = "Bee Icon";
                                 }}
                               />
                               <div>
                                 <Typography
                                   variant="small"
-
                                   className="!font-semibold"
                                 >
                                   {sub.name}
                                 </Typography>
-
                               </div>
                             </div>
                           </td>
@@ -254,19 +269,17 @@ export const SubscriptionList = () => {
                           </td>
                           {/* Cost */}
                           <td className={`${classes} text-right`}>
-
-                            <div className="flex items-center justify-end gap-1">{isUpcoming && (
-                              <BellAlertIcon className="h-5 w-5 text-red-600 font-bold" />
-                            )}
+                            <div className="flex items-center justify-end gap-1">
+                              {isUpcoming && (
+                                <BellAlertIcon className="h-5 w-5 text-red-600 font-bold" />
+                              )}
                               <Typography
                                 variant="small"
                                 className="!font-normal text-light"
                               >
                                 {sub.cost} kr
                               </Typography>
-
                             </div>
-
                           </td>
                           {/* Status */}
                           <td className={`${classes} text-right`}>
@@ -310,7 +323,10 @@ export const SubscriptionList = () => {
                                 // await API call to update backend
                                 await fetch(`${urlAPI}/${sub._id}`, {
                                   method: "PATCH",
-                                  headers: { "Content-Type": "application/json", "Authorization": user?.token || "", },
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                    Authorization: user?.token || "",
+                                  },
                                   body: JSON.stringify({
                                     sendEmail: !sub.sendEmail,
                                   }),
