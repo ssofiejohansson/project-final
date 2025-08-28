@@ -1,4 +1,4 @@
-import { Bars3Icon, UserCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Collapse, IconButton, Typography } from "@material-tailwind/react";
 import Logo from "/subscribee-logo.webp";
 import { useState } from "react";
