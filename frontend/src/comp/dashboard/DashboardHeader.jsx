@@ -16,12 +16,12 @@ export const DashboardHeader = ({ user }) => {
         {hasSubs ? (
           <>
             Welcome {user.name}! Here are your{" "}
-            <span className="leading-snug break-words ">subscriptions</span>.
+            <span className="text-main leading-snug break-words ">subscriptions</span>.
           </>
         ) : (
           <>
             Welcome {user.name}! You currently have no{" "}
-            <span className="leading-snug break-words">subscriptions</span>.
+            <span className="text-main leading-snug break-words">subscriptions</span>.
           </>
         )}
       </Typography>
