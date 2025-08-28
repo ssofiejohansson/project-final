@@ -66,7 +66,7 @@ export const Dashboard = () => {
       {subscriptions && subscriptions.length > 0 && (
         <>
           <Stats subscriptions={subscriptions} />
-          <Popup delay={600}>
+          <Popup delay={1000}>
             <p className="font-bold">Stay on top of your subs!</p>
             <p>
               Did you know you can filter your subscriptions by category? ☀️
