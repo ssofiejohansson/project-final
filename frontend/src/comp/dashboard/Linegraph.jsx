@@ -132,63 +132,63 @@ export const Linegraph = ({ subscriptions = [] }) => {
   });
 
   return (
-    <section id="graph" className="m-4">
-      <Card>
-        <CardBody className="!p-2">
-          <div className="flex gap-2 flex-wrap justify-between px-2 !mt-4 ">
-            <Typography variant="h3" className="text-text ">
-              {isNaN(totalCost) ? "0.00" : totalCost.toFixed(2)} SEK
-            </Typography>
-            <div className="flex items-center gap-6">
-              {years.map((year, idx) => (
-                <div className="flex items-center gap-1" key={year}>
-                  <span
-                    className={`h-2 w-2 rounded-full`}
-                    style={{
-                      backgroundColor: ["#ff5c8d", "#2196F3", "#FF9800"][
-                        idx % 3
-                      ],
-                    }}
-                  ></span>
-                  <Typography
-                    variant="small"
-                    className="font-normal text-light"
-                  >
-                    {year}
-                  </Typography>
-                </div>
-              ))}
-            </div>
+
+    <Card className=" mx-6 my-10">
+      <CardBody className="p-2">
+        <div className="flex gap-2 flex-wrap justify-between px-2 !mt-4 ">
+          <Typography variant="h3" className="text-text ">
+            {isNaN(totalCost) ? "0.00" : totalCost.toFixed(2)} SEK
+          </Typography>
+          <div className="flex items-center gap-6">
+            {years.map((year, idx) => (
+              <div className="flex items-center gap-1" key={year}>
+                <span
+                  className={`h-2 w-2 rounded-full`}
+                  style={{
+                    backgroundColor: ["#EF6E00", "#2196F3", "#FF9800"][
+                      idx % 3
+                    ],
+                  }}
+                ></span>
+                <Typography
+                  variant="small"
+                  className="font-normal text-light"
+                >
+                  {year}
+                </Typography>
+              </div>
+            ))}
           </div>
-          {/* chart */}
-          {series.length > 0 ? (
-            <AreaChart
-              colors={["#ff5c8d", "#2196F3", "#FF9800"]}
-              options={{
-                xaxis: {
-                  categories: [
-                    "Jan",
-                    "Feb",
-                    "Mar",
-                    "Apr",
-                    "May",
-                    "Jun",
-                    "Jul",
-                    "Aug",
-                    "Sep",
-                    "Oct",
-                    "Nov",
-                    "Dec",
-                  ],
-                },
-              }}
-              series={series}
-            />
-          ) : (
-            <Typography>No data to display</Typography>
-          )}
-        </CardBody>
-      </Card>
-    </section>
+        </div>
+        {/* chart */}
+        {series.length > 0 ? (
+          <AreaChart
+            colors={["#EF6E00", "#2196F3", "#FF9800"]}
+            options={{
+              xaxis: {
+                categories: [
+                  "Jan",
+                  "Feb",
+                  "Mar",
+                  "Apr",
+                  "May",
+                  "Jun",
+                  "Jul",
+                  "Aug",
+                  "Sep",
+                  "Oct",
+                  "Nov",
+                  "Dec",
+                ],
+              },
+            }}
+            series={series}
+          />
+        ) : (
+          <Typography>No data to display</Typography>
+        )}
+      </CardBody>
+    </Card>
+
   );
 }

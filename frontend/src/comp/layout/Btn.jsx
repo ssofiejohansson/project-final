@@ -10,7 +10,7 @@ export const Btn = ({
 }) => {
 
   const baseClasses =
-    "font-bold tracking-[0.08em] rounded-[18px] transition duration-200 focus:outline-none focus:ring-2  disabled:opacity-50 disabled:cursor-not-allowed";
+    "font-bold tracking-[0.08em] rounded-[18px] transition duration-200 focus:outline-none focus:ring-2 disabled:opacity-50 disabled:cursor-not-allowed";
 
   const sizeClasses = {
     sm: "px-4 py-2 text-sm",

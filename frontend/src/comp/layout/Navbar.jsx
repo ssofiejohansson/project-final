@@ -1,7 +1,7 @@
-import { Bars3Icon, ChevronDownIcon, UserCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Collapse, IconButton, Menu, MenuHandler, MenuItem, MenuList, Typography } from "@material-tailwind/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Collapse, IconButton, Typography } from "@material-tailwind/react";
 import Logo from "/subscribee-logo.webp";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { Logout } from "../../comp/user/LogoutBtn";
@@ -14,24 +14,9 @@ export const Navbar = () => {
   const isHome = location.pathname === "/";
   const user = useUserStore((state) => state.user);
 
-  const [open, setOpen] = React.useState(false);
-  const [showNavbar, setShowNavbar] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen((cur) => !cur);
   const closeMenu = () => setOpen(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        setShowNavbar(false); // scrolling down
-      } else {
-        setShowNavbar(true); // scrolling up
-      }
-      setLastScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
 
   const NavItem = ({ to, label, onClick }) => (
     <Link to={to} onClick={onClick}>
@@ -60,10 +45,7 @@ export const Navbar = () => {
   );
 
   return (
-    <div
-      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"
-        }`}
-    >
+    <div className="fixed top-0 left-0 right-0 z-50">
       <div className="mx-auto max-w-7xl px-4 lg:px-8 shadow-lg rounded-b-xl bg-white">
         <div className="flex items-center justify-between h-16">
           {/* Left */}
@@ -91,26 +73,14 @@ export const Navbar = () => {
           <div className="hidden lg:flex items-center gap-4">
             {user ? (
               <>
-                <span className="text-sm font-medium">Hi {user.name}!</span>
-                <Menu placement="bottom-end">
-                  <MenuHandler>
-                    <button className="flex items-center gap-1 cursor-pointer">
-                      <UserCircleIcon className="h-8 w-8 text-accent" />
-                      <ChevronDownIcon className="h-4 w-4 text-text" />
-                    </button>
-                  </MenuHandler>
-                  <MenuList>
-                    <MenuItem>
-                      <Link to="/admin">Dashboard</Link>
-                    </MenuItem>
-                    <MenuItem>
-                      <Link to="/admin">Stats</Link>
-                    </MenuItem>
-                    <MenuItem>
-                      <Link to="#">Help</Link>
-                    </MenuItem>
-                  </MenuList>
-                </Menu>
+                <span className="text-md font-medium">Hi {user.name}!</span>
+                <Btn
+                  onClick={() => navigate("/admin")}
+                  size="sm"
+                  variant="outlined"
+                >
+                  Dashboard
+                </Btn>
                 <Logout size="sm" variant="text" />
               </>
             ) : (
@@ -120,14 +90,14 @@ export const Navbar = () => {
                   size="sm"
                   variant="filled"
                 >
-                  Login
+                  Log in
                 </Btn>
                 <Btn
                   onClick={() => navigate("/signup")}
                   size="sm"
                   variant="outlined"
                 >
-                  Sign Up
+                  Sign up
                 </Btn>
               </>
             )}
@@ -156,32 +126,23 @@ export const Navbar = () => {
             {/* TOP section */}
             {user ? (
               <>
-                <Typography className="text-lg  py-1">
+                <Typography className="text-lg py-1">
                   Hi {user.name}!
                 </Typography>
                 <div className="flex flex-col gap-2 py-2 text-main border-t border-gray-200">
                   <Link
                     to="/admin"
                     onClick={closeMenu}
-                    className="hover:text-text"
+                    className="hover:text-text font-medium"
                   >
                     Dashboard
                   </Link>
-                  <Link
-                    to="/admin"
-                    onClick={closeMenu}
-                    className="hover:text-text"
-                  >
-                    Stats
-                  </Link>
-                  <Link to="#" onClick={closeMenu} className="hover:text-text">
-                    Help
-                  </Link>
                 </div>
-                <div className="flex flex-col gap-2 border-t border-gray-200">
+                <div className="flex flex-col gap-2 border-gray-200">
                   <NavList onClick={closeMenu} />
                 </div>
               </>
+
             ) : (
               <div className="flex flex-col gap-2 ">
                 <NavList onClick={closeMenu} />
@@ -189,9 +150,15 @@ export const Navbar = () => {
             )}
 
             {/* BOTTOM section */}
-            <div className="mt-auto flex flex-col gap-2 pt-4 border-t border-gray-200">
+            <div className="mt-auto flex flex-col gap-2 pt-4 border-gray-200">
               {user ? (
-                <Logout variant="text" onClick={closeMenu} />
+                <div
+                  onClick={() => {
+                    closeMenu();
+                  }}
+                >
+                  <Logout size="md" variant="text" />
+                </div>
               ) : (
                 <>
                   <Btn
@@ -201,8 +168,9 @@ export const Navbar = () => {
                     }}
                     size="md"
                     variant="filled"
+                    className="mb-2 w-auto self-start"
                   >
-                    Login
+                    Log in
                   </Btn>
                   <Btn
                     onClick={() => {
@@ -211,8 +179,9 @@ export const Navbar = () => {
                     }}
                     size="md"
                     variant="outlined"
+                    className=" w-auto self-start"
                   >
-                    Sign Up
+                    Sign up
                   </Btn>
                 </>
               )}
