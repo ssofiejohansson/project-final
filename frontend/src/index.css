@@ -1,16 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-body {
-  font-family: "Didact Gothic", sans-serif;
-}
-
-p {
-  font-family: "Roboto", sans-serif;
-}
 
 html {
   scroll-behavior: smooth;
