@@ -56,7 +56,7 @@ export const Stats = ({ subscriptions = [] }) => {
   ];
 
   return (
-    <section className="m-4 my-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 font-heading">
+    <section className="mx-auto max-w-7xl px-4 lg:px-8 my-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 font-heading">
       {stats.map((stat) => (
         <Card
           key={stat.title}

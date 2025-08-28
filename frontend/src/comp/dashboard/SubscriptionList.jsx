@@ -142,8 +142,8 @@ export const SubscriptionList = () => {
   };
 
   return (
-    <section className="bg-gray-50 py-20 w-full">
-      <div className="mx-auto px-4 text-center">
+    <section className="bg-gray-50 py-20">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8 text-center">
         <Card className="h-full w-full">
           <CardHeader
             floated={false}
