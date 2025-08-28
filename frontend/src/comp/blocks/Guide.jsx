@@ -9,7 +9,7 @@ export const Guide = () => {
   return (
     <section className="bg-gray-50 lg:py-20 py-14 px-8">
       <div className="container mx-auto mb-8 text-center lg:mb-10">
-        <Typography className="text-main mb-2 font-bold uppercase">
+        <Typography className="text-light mb-2 font-bold uppercase">
           How it works
         </Typography>
         <Typography
@@ -34,7 +34,7 @@ export const Guide = () => {
               Step 1 - Create Your Account
             </Typography>
             <Typography className="text-center max-w-xs mx-auto font-normal leading-7 text-light">
-              <Link to="/signup" className="text-main hover:underline">
+              <Link to="/signup" className="font-bold hover:underline">
                 Sign up
               </Link>{" "}
               for free and start fresh.
@@ -98,7 +98,7 @@ export const Guide = () => {
               SubscriBee is a student-built project designed to help people
               better manage their digital lives. Learn more about our team and
               process on the{" "}
-              <Link to="/about" className="text-main hover:underline">
+              <Link to="/about" className="font-bold hover:underline">
                 About
               </Link>{" "}
               page.

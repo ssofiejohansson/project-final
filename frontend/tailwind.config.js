@@ -5,8 +5,10 @@ module.exports = withMT({
   theme: {
     extend: {
       colors: {
-        main: "#EF6E00",   // orange
-        accent: "#ffd166", // yellow
+        // main: "#EF6E00",   // orange
+        // accent: "#ffd166", // yellow
+        main: "#000000",   // orange
+        accent: "#444444", // dark grey
         text: "#333333", // charcoal
         light: "#555555", // light-grey
       },

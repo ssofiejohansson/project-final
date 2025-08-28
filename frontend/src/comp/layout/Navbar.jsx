@@ -43,7 +43,7 @@ export const Navbar = () => {
             Contact
           </a>
         </li>
-      </ul>   
+      </ul>
     </div>
   );
 
@@ -166,7 +166,7 @@ export const Navbar = () => {
                     }}
                     size="md"
                     variant="filled"
-                    className="mb-2 w-auto self-start"
+                    className="mb-2 w-auto"
                   >
                     Log in
                   </Btn>
@@ -177,7 +177,7 @@ export const Navbar = () => {
                     }}
                     size="md"
                     variant="outlined"
-                    className=" w-auto self-start"
+                    className=" w-auto"
                   >
                     Sign up
                   </Btn>
