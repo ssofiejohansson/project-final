@@ -1,10 +1,11 @@
+import { CodeBracketIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import { Typography } from "@material-tailwind/react";
 import Logo from "/subscribee-logo-right.webp";
 import { Link, useNavigate } from "react-router-dom";
+
 import useUserStore from "../../stores/useUserStore";
 import { Logout } from "../user/LogoutBtn";
 import { Btn } from "./Btn";
-import { EnvelopeIcon } from "@heroicons/react/24/solid";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -22,11 +23,11 @@ export const Footer = () => {
                 to="/about"
                 className="font-medium transition-colors  hover:text-main "
               >
-                About SubscriBee
+                About Subscribee
               </Typography>
             </li>
           </ul>
-          <ul>
+          {/* <ul>
             <li>
               <Typography
                 as={Link}
@@ -47,7 +48,7 @@ export const Footer = () => {
                 FAQ
               </Typography>
             </li>
-          </ul>
+          </ul> */}
 
           <ul>
             <li>
@@ -57,6 +58,18 @@ export const Footer = () => {
               >
                 <EnvelopeIcon className="text-accent h-5 w-5" />
                 Contact us
+              </a>
+            </li>
+          </ul>        
+
+        <ul>
+            <li>
+              <a
+                href="https://github.com/ssofiejohansson/project-final" target="_blank"
+                className="flex items-center gap-2 font-medium transition-colors hover:text-accent"
+              >
+                <CodeBracketIcon className="text-accent h-5 w-5" />
+                GitHub
               </a>
             </li>
           </ul>
