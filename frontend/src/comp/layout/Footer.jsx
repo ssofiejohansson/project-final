@@ -13,15 +13,12 @@ export const Footer = () => {
   const user = useUserStore((state) => state.user);
 
   return (
-    <footer className="pt-12 bg-gray-50 border-t border-gray-200">
+    <footer className="pt-12 bg-gray-50 border-t border-gray-200 font-textfont">
       <div className="px-8 container mx-auto flex flex-col items-center">
         <div className="flex flex-wrap items-center justify-center gap-6 pb-4 ">
           <ul>
             <li>
-              <Link
-                to="/about"
-                className="font-textfont transition-colors hover:text-accent"
-              >
+              <Link to="/about" className="transition-colors hover:text-accent">
                 About Subscribee
               </Link>
             </li>
@@ -31,7 +28,7 @@ export const Footer = () => {
             <li>
               <a
                 href="mailto:"
-                className="flex items-center gap-2 font-textfont transition-colors hover:text-accent"
+                className="flex items-center gap-2 transition-colors hover:text-accent"
               >
                 <EnvelopeIcon className="text-accent h-5 w-5" />
                 Contact us
@@ -44,7 +41,7 @@ export const Footer = () => {
               <a
                 href="https://github.com/ssofiejohansson/project-final"
                 target="_blank"
-                className="flex items-center gap-2 font-textfont transition-colors hover:text-accent"
+                className="flex items-center gap-2 transition-colors hover:text-accent"
               >
                 <CodeBracketIcon className="text-accent h-5 w-5" />
                 GitHub
@@ -76,7 +73,7 @@ export const Footer = () => {
           )}
         </div>
 
-        <Typography className="mt-4!font-textfont">
+        <Typography className="mt-4">
           &copy; {currentYear} SubscriBee. All rights reserved.
         </Typography>
       </div>
