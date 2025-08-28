@@ -56,7 +56,7 @@ export const Footer = () => {
               <Btn
                 onClick={() => navigate("/admin")}
                 size="md"
-                variant="outlined"
+                variant="filled"
               >
                 Dashboard
               </Btn>
@@ -66,7 +66,7 @@ export const Footer = () => {
             <Btn
               onClick={() => navigate("/login")}
               size="md"
-              variant="outlined"
+              variant="filled"
             >
               Log in
             </Btn>
