@@ -1,5 +1,6 @@
-import { Typography } from "@material-tailwind/react";
 import { ArrowDownCircleIcon } from "@heroicons/react/24/solid";
+import { Typography } from "@material-tailwind/react";
+
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 
 export const DashboardHeader = ({ user }) => {
@@ -39,11 +40,7 @@ export const DashboardHeader = ({ user }) => {
           ? "View and manage your subscriptions in the dashboard below."
           : "Let's start by adding your first subscription in the dashboard below."}
       </Typography>
-      <div className="mt-10 flex justify-center">
-        <a href="#dashboard" className="group animate-bounce">
-          <ArrowDownCircleIcon className="h-12 w-12 text-accent group-hover:scale-110 transition-transform duration-300" />
-        </a>
-      </div>
+
     </header>
   );
 };
