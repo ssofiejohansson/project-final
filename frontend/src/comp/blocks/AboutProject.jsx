@@ -1,22 +1,16 @@
-import {
-  Card,
-  CardBody,
-  Typography,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-  Button,
-} from "@material-tailwind/react";
-import { Team } from "./Team";
-import { useNavigate } from "react-router-dom";
-import { Btn } from "../layout/Btn";
-import BeeatriceImg from "../../assets/home-img/beeatrice.webp";
+import { Button, Card, CardBody, Dialog, DialogBody, DialogFooter, DialogHeader, Typography } from "@material-tailwind/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import BeeatriceImg from "../../assets/home-img/beeatrice.webp";
+import useUserStore from "../../stores/useUserStore";
+import { Btn } from "../layout/Btn";
+import { Team } from "./Team";
 
 export const AboutProject = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const user = useUserStore((state) => state.user);
 
   const handleOpen = () => setOpen(!open);
 
@@ -58,13 +52,29 @@ export const AboutProject = () => {
                 life.
               </Typography>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Btn
-                  onClick={() => navigate("/signup")}
-                  size="md"
-                  variant="filled"
-                >
-                  Let's join the hive!
-                </Btn>
+                {user ? 
+                (
+                <>
+                  <Btn
+                    onClick={() => navigate("/admin")}
+                    size="md"
+                    variant="filled"
+                  >
+                    Let's buzz to the dashboard
+                  </Btn>                
+                </>
+                ) : (
+                <>
+                  <Btn
+                    onClick={() => navigate("/signup")}
+                    size="md"
+                    variant="filled"
+                  >
+                    Let's join the hive!
+                  </Btn>
+                </>
+              )}
+                
               </div>
             </div>
           </div>
