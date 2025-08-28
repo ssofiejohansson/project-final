@@ -1,4 +1,5 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 
 import EmailForm from './comp/EmailForm';
 import { Footer } from './comp/layout/Footer';
@@ -13,11 +14,21 @@ import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import useLoadingStore from "./stores/useLoadingStore";
 
+const ScrollToTop = () => {
+const location = useLocation();
+useEffect(() => {
+  window.scrollTo({ top: 0 });
+}, [location.pathname]);
+
+return null; // this component only handles scrolling
+};
+
 export const App = () => {
   const loading = useLoadingStore((state) => state.loading);
 
   return (
-    <Router>
+    <Router> 
+      <ScrollToTop/>     
       <div className="flex flex-col min-h-screen ">
         <Navbar />
         <main className="flex-grow mt-20 py-10">
