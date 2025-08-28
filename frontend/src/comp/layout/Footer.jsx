@@ -15,14 +15,17 @@ export const Footer = () => {
   return (
     <footer className="pt-12 bg-gray-50 border-t border-gray-200">
       <div className="px-8 container mx-auto flex flex-col items-center">
-        <div className="text-text flex flex-wrap items-center justify-center gap-6 pb-4 ">
+        <div className="flex flex-wrap items-center justify-center gap-6 pb-4 ">
           <ul>
             <li>
-              <Typography as={Link} to="/about" className="">
+              <Link
+                to="/about"
+                className="font-textfont transition-colors hover:text-accent"
+              >
                 About Subscribee
-              </Typography>
+              </Link>
             </li>
-          </ul>      
+          </ul>
 
           <ul>
             <li>
@@ -62,14 +65,14 @@ export const Footer = () => {
               </Btn>
               <Logout size="sm" variant="text" />
             </>
-          ) : (            
-              <Btn
-                onClick={() => navigate("/login")}
-                size="sm"
-                variant="outlined"
-              >
-                Log in
-              </Btn>            
+          ) : (
+            <Btn
+              onClick={() => navigate("/login")}
+              size="sm"
+              variant="outlined"
+            >
+              Log in
+            </Btn>
           )}
         </div>
 
