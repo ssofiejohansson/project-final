@@ -38,7 +38,7 @@ export const DashboardNavbar = ({
       {/* Add button */}
       <Btn
         variant="text"
-        size="md"
+        size="sm"
         className="mr-2 flex items-center gap-2 ml-auto"
         onClick={onAdd}
       >
