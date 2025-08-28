@@ -59,7 +59,7 @@ export const Team = () => {
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-bold text-main hover:underline"
+            className="text-xs font-bold text-text hover:underline"
           >
             {link.label}
           </a>

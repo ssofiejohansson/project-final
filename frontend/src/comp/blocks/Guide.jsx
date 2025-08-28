@@ -9,7 +9,7 @@ export const Guide = () => {
   return (
     <section className="bg-gray-50 lg:py-20 py-14 px-8">
       <div className="container mx-auto mb-8 text-center lg:mb-10">
-        <Typography className="text-main mb-2 font-bold uppercase">
+        <Typography className="text-light mb-2 font-bold uppercase">
           How it works
         </Typography>
         <Typography
