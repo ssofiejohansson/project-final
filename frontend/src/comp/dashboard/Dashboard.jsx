@@ -66,10 +66,10 @@ export const Dashboard = () => {
       {subscriptions && subscriptions.length > 0 && (
         <>
           <Stats subscriptions={subscriptions} />
-          <Popup delay={800}>
-            <p className="font-bold">Stay organized!</p>
+          <Popup delay={600}>
+            <p className="font-bold">Stay on top of your subs!</p>
             <p>
-              Did you know you can sort your subscriptions by category?
+              Did you know you can filter your subscriptions by category? ☀️
             </p>
           </Popup>
         </>
@@ -77,7 +77,6 @@ export const Dashboard = () => {
 
       <SubscriptionList subscriptions={subscriptions} />
       <Linegraph subscriptions={subscriptions} />
-
 
     </section>
   );
