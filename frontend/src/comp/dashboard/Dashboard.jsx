@@ -74,7 +74,6 @@ export const Dashboard = () => {
           </Popup>
         </>
       )}
-
       <SubscriptionList subscriptions={subscriptions} />
       <Linegraph subscriptions={subscriptions} />
 
