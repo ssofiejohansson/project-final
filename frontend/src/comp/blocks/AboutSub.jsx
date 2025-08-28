@@ -7,7 +7,7 @@ export const AboutSub = () => {
       <div className="container mx-auto px-6 lg:px-20 text-center">
         <Typography
           variant="h1"
-          className="text-text pb-2 mx-auto w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl font-heading"
+          className="text-text pb-6 mx-auto w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl font-heading"
         >
           About <span className="text-main leading-snug">SubscriBee</span>
         </Typography>

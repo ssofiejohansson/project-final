@@ -13,7 +13,7 @@ export const Home = () => {
       <Popup delay={1000}>
         <p className="font-bold">Welcome busy bee! I'm Beeatrice.</p>
         <p>
-          Ready to save some honey today?
+          Are you ready to save some honey today? 🍯
         </p>
       </Popup>
     </>
