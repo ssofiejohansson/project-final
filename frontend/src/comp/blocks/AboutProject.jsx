@@ -118,7 +118,7 @@ export const AboutProject = () => {
                   ensuring a robust and scalable application.{" "}
                   <span
                     onClick={handleOpen}
-                    className="text-main font-medium cursor-pointer hover:underline"
+                    className="font-bold cursor-pointer hover:underline"
                   >
                     Check out the full tech stack here!
                   </span>
@@ -128,7 +128,7 @@ export const AboutProject = () => {
           </div>
         </div>
       </section>
-      <Dialog open={open} handler={handleOpen} size="md">
+      <Dialog className="px-4 py-2" open={open} handler={handleOpen} size="md">
         <DialogHeader>Full Tech Stack</DialogHeader>
         <DialogBody className="text-text h-[30rem] overflow-y-auto p10">
           <Typography variant="h5" className="mb-2 font-heading">
@@ -204,14 +204,13 @@ export const AboutProject = () => {
 
         </DialogBody>
         <DialogFooter>
-          <Button
+          <Btn
             variant="text"
-            color="red"
             onClick={handleOpen}
-            className="mr-1"
+            size="sm"
           >
             <span>Close</span>
-          </Button>
+          </Btn>
         </DialogFooter>
       </Dialog>
     </>
