@@ -33,26 +33,22 @@ export const Header = () => {
           <div className="mt-8 grid w-full place-items-start md:justify-center">
             <div className="mb-2 flex w-full flex-col gap-4 md:flex-row">
               {user ? 
-              (
-              <>
+              (              
               <Btn
                 onClick={() => navigate("/admin")}
                 size="md"
                 variant="filled"
               >
                 Dashboard
-              </Btn>
-              </>
-              ) : (
-              <>
+              </Btn>              
+              ) : (              
               <Btn
                 onClick={() => navigate("/signup")}
                 size="md"
                 variant="filled"
               >
                 Join the hive
-              </Btn>
-              </>
+              </Btn>            
               )}              
             </div>
           </div>

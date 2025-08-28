@@ -53,26 +53,22 @@ export const AboutProject = () => {
               </Typography>
               <div className="flex flex-col sm:flex-row gap-4">
                 {user ? 
-                (
-                <>
+                (                
                   <Btn
                     onClick={() => navigate("/admin")}
                     size="md"
                     variant="filled"
                   >
                     Let's buzz to the dashboard
-                  </Btn>                
-                </>
-                ) : (
-                <>
+                  </Btn>
+                ) : (                
                   <Btn
                     onClick={() => navigate("/signup")}
                     size="md"
                     variant="filled"
                   >
                     Let's join the hive!
-                  </Btn>
-                </>
+                  </Btn>                
               )}
                 
               </div>
