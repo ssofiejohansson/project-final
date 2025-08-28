@@ -33,7 +33,14 @@ export const Navbar = () => {
     <ul className="mb-4 mt-2 flex flex-col gap-3 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-8 font-textfont">
       {!isHome && <NavItem to="/" label="Home" onClick={onClick} />}
       <NavItem to="/about" label="About" onClick={onClick} />
-      <NavItem to="mailto:" label="Contact" onClick={onClick} />
+      <li>
+        <a
+          href="mailto:"
+          className="text-text p-1 hover:text-main transition-colors font-textfont"
+        >
+          Contact
+        </a>
+      </li>
     </ul>
   );
 
@@ -48,7 +55,7 @@ export const Navbar = () => {
             className="cursor-pointer flex items-center gap-3"
           >
             <img src={Logo} alt="SubscriBee Logo" className="h-10 m-1" />
-            <span className="text-xl font-extrabold bg-gradient-to-r from-main to-accent bg-clip-text text-transparent drop-shadow-sm">
+            <span className="text-xl font-extrabold font-heading bg-gradient-to-r from-main to-accent bg-clip-text text-transparent drop-shadow-sm">
               SubscriBee
             </span>
           </Typography>
