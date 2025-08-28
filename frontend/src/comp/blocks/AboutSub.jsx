@@ -7,23 +7,29 @@ export const AboutSub = () => {
       <div className="container mx-auto px-6 lg:px-20 text-center">
         <Typography
           variant="h1"
-          className="text-text pb-2 mx-auto w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
+          className="text-text pb-2 mx-auto w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl font-heading"
         >
           About <span className="text-main leading-snug">SubscriBee</span>
         </Typography>
 
         <div className="mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 md:text-left">
-          <Typography
-            variant="paragraph"
-            className="text-light lg:text-lg"
-          >
-            Subscriptions are part of everyday life, but they’re easy to lose track of. According to research, many people end up spending a lot more money than they realize. It’s easy to sign up for free trials and then forget about them. Subscriptions keep running and charges continue even when they’re not being used. Those small monthly costs add up quickly, and before you know it, they’re taking a real bite out of your budget.
+          <Typography variant="paragraph" className="text-light lg:text-lg">
+            Subscriptions are part of everyday life, but they’re easy to lose
+            track of. According to research, many people end up spending a lot
+            more money than they realize. It’s easy to sign up for free trials
+            and then forget about them. Subscriptions keep running and charges
+            continue even when they’re not being used. Those small monthly costs
+            add up quickly, and before you know it, they’re taking a real bite
+            out of your budget.
           </Typography>
-          <Typography
-            variant="paragraph"
-            className="text-light lg:text-lg"
-          >
-            SubscriBee was created to help you see the full picture. With all your subscriptions in one place, you’ll stay organized, avoid surprises and feel more confident about your money. Add your subscriptions easily and get friendly email reminders from Beeatrice when a free trial is ending or a new payment is coming up. She’ll also suggest smarter ways to use your money instead of wasting it on unused subscriptions. Start saving your honey today — sign up now!
+          <Typography variant="paragraph" className="text-light lg:text-lg">
+            SubscriBee was created to help you see the full picture. With all
+            your subscriptions in one place, you’ll stay organized, avoid
+            surprises and feel more confident about your money. Add your
+            subscriptions easily and get friendly email reminders from Beeatrice
+            when a free trial is ending or a new payment is coming up. She’ll
+            also suggest smarter ways to use your money instead of wasting it on
+            unused subscriptions. Start saving your honey today — sign up now!
           </Typography>
         </div>
 
@@ -35,6 +41,5 @@ export const AboutSub = () => {
         </div>
       </div>
     </header>
-
   );
 };
