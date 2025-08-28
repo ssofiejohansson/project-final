@@ -1,9 +1,10 @@
 import { Checkbox, Option, Select, Typography } from "@material-tailwind/react";
 import { useState } from "react";
-import { Btn } from "../layout/Btn";
+
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
 import { BaseURL } from "../BaseURL";
+import { Btn } from "../layout/Btn";
 import { Input } from "../user/Input";
 
 export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEmail, setSendEmail }) => {
@@ -144,7 +145,15 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
             body: JSON.stringify({
               to: user.email, // ✅ correct if user is the logged-in user object
               subject: `Reminder: ${formData.name} subscription`,
-              text: `This is a reminder for your ${formData.name} subscription.`,
+              text: `Hello from Beeatrice,
+                    Just a friendly buzz to remind you that one of your subscriptions is coming up for renewal soon. 
+                    We want to keep you in control, so you’re never caught off guard.
+
+                    Subscription details:
+                    ${formData.name}
+                    
+                    Stay on top of your hive of subscriptions with SubscriBee 🐝
+                    `,
               sendImmediately: false,
               scheduledDateTime: new Date(formData.reminderDate).toISOString(),
               isRecurring: false,
