@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
 import EmailRemindersList from "./EmailRemindersList";
 
 function EmailForm({ setRefreshReminders }) {
@@ -12,13 +13,16 @@ function EmailForm({ setRefreshReminders }) {
 
   // Pre-written message
   const subject = "Subscription Reminder";
-  const text = `Hello!
+  const text = `Hello from Beeatrice,
 
-This is a reminder that you have subscriptions that is due to be renewed soon.
+Just a friendly buzz to remind you that one of your subscriptions is coming up for renewal soon. 
+We want to keep you in control, so you’re never caught off guard.
 
+Subscription details:
 **Insert the subscription details here.**
 
-// Subscribee`;
+Stay on top of your hive of subscriptions with SubscriBee 🐝
+`;
 
   // Get current date and time for minimum values
   const getCurrentDate = () => {
