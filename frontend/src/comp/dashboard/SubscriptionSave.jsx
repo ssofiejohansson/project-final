@@ -8,7 +8,7 @@ export const SubscriptionSave = () => {
 
   useEffect(() => {
     if (isSaveOpen) {
-      const timer = setTimeout(closeSaveDialog, 15000);
+      const timer = setTimeout(closeSaveDialog, 13000);
       return () => clearTimeout(timer);
     }
   }, [isSaveOpen, closeSaveDialog]);
