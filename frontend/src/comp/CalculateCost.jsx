@@ -21,8 +21,7 @@ export const CalculateCost = () => {
         <span className="text-main font-bold">{cost * 12} kr </span>left to spend this year 🎉
       </p>
       <p>
-        {messageSelect?.message || "Buy your friends balloons 🎈"}
-
+        {messageSelect?.message || "Donate and save the bees! 🐝"}
       </p>
     </div>
   );
