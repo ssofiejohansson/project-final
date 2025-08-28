@@ -1,16 +1,13 @@
 const withMT = require("@material-tailwind/react/utils/withMT");
 
 module.exports = withMT({
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
         main: "#EF6E00",   // orange
         accent: "#ffd166", // yellow
-        text: "#333333",   // charcoal
+        text: "#333333", // charcoal
         light: "#555555", // light-grey
       },
       keyframes: {
@@ -29,6 +26,16 @@ module.exports = withMT({
       animation: {
         slideUpFade: "slideUpFade 0.6s ease-out",
         buzzCircle: "buzzCircle 0.4s linear infinite",
+      },
+      fontFamily: {
+        didact: ["Didact Gothic", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
+      },
+      fontWeight: {
+        light: 100,
+        normal: 400,
+        medium: 500,
+        bold: 700,
       },
     },
   },

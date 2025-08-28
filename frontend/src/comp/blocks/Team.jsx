@@ -3,7 +3,7 @@ import { Avatar } from "@material-tailwind/react";
 const teamMembers = [
   {
     name: "Oskar",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "https://www.linkedin.com/in/oskarnordin/",
     src: "/oskar.webp",
   },
   {

@@ -1,92 +1,207 @@
-import { Card, CardBody, Typography } from "@material-tailwind/react";
+import {
+  Card,
+  CardBody,
+  Typography,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+  Button,
+} from "@material-tailwind/react";
 import { Team } from "./Team";
 import { useNavigate } from "react-router-dom";
 import { Btn } from "../layout/Btn";
-import BeeatriceImg from "../../assets/home-img/beeatrice.png"
+import BeeatriceImg from "../../assets/home-img/beeatrice.png";
+import { useState } from "react";
 
 export const AboutProject = () => {
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(!open);
 
   return (
-    <section className="py-10 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pb-20">
-          {/* HERO IMAGE */}
-          <div className="flex justify-center">
-            <img
-              src={BeeatriceImg}
-              alt="Project overview"
-              className="rounded-xl object-cover w-full max-w-md lg:max-w-full"
-            />
-          </div>
-          <div id="project" className="flex flex-col items-start justify-center text-left">
-            <Typography
-              variant="h2"
-              className="text-text mb-6 w-full leading-snug !text-3xl lg:max-w-xl lg:!text-5xl"
+    <>
+      <section className="py-10 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pb-20">
+            {/* HERO IMAGE */}
+            <div className="flex justify-center">
+              <img
+                src={BeeatriceImg}
+                alt="Project overview"
+                className="rounded-xl object-cover w-full max-w-md lg:max-w-full"
+              />
+            </div>
+            <div
+              id="project"
+              className="flex flex-col items-start justify-center text-left"
             >
-              About <span className="text-main">this project</span>
-            </Typography>
-            <Typography
-              variant="paragraph"
-              className="mb-8 w-full lg:text-lg text-text"
-            >
-              SubscriBee is a student-built project designed to help people manage their subscriptions. Statistics show that 74% of people forget the fees for recurring subscriptions, and 42% continue paying for subscriptions they no longer use, mostly because they just forgot to cancel. We found this fascinating and wanted to create our own solution. In a fun and playful way, with the help of Beeatrice the bee, we guide users toward a more subscription-friendly everyday life.
-            </Typography>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Btn
-                onClick={() => navigate("/signup")}
-                size="md"
-                variant="filled"
+              <Typography
+                variant="h2"
+                className="text-text mb-6 w-full leading-snug !text-3xl lg:max-w-xl lg:!text-5xl"
               >
-                Let's join the hive!
-              </Btn>
+                About <span className="text-main">this project</span>
+              </Typography>
+              <Typography
+                variant="paragraph"
+                className="mb-8 w-full lg:text-lg text-text"
+              >
+                SubscriBee is a student-built project designed to help people
+                manage their subscriptions. Statistics show that 74% forget the
+                fee of recurring subscriptions and 42% still paying for a
+                subscription they no longer use, mainly because they forget to
+                cancel. We found this intriguing, and we wanted to make our own
+                take of this problem. In a fun and playful way with the help of{" "}
+                <span className="text-main">Beeatrice</span> the bee we display
+                and guide the user to a more subscription friendly everyday
+                life.
+              </Typography>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Btn
+                  onClick={() => navigate("/signup")}
+                  size="md"
+                  variant="filled"
+                >
+                  Let's join the hive!
+                </Btn>
+              </div>
             </div>
           </div>
 
+          {/* TEAM & LINKS SECTION */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
+              <CardBody className="text-center">
+                <Typography variant="h3" className="text-text mb-2 font-medium">
+                  Our Team
+                </Typography>
+                <Typography className="text-center max-w-xs mx-auto font-normal leading-7 text-text">
+                  Meet the creators behind SubscriBee — students learning and
+                  building real-world applications.
+                </Typography>
+                <Team />
+              </CardBody>
+            </Card>
+
+            {/* OPTIONAL: Additional Cards */}
+            <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
+              <CardBody className="text-center">
+                <Typography variant="h3" className="text-text mb-2 font-medium">
+                  Project Process
+                </Typography>
+                <Typography className="text-center max-w-xs mx-auto  font-normal leading-7 text-text">
+                  SubscriBee was built using agile methodology with user
+                  testing, feedback and constant improvement to deliver a smooth
+                  subscription-tracking experience. We have the user in mind
+                  when it comes to a clear overview and easy to handle
+                  functionality.
+                </Typography>
+              </CardBody>
+            </Card>
+
+            <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
+              <CardBody className="text-center">
+                <Typography variant="h3" className="text-text mb-2 font-medium">
+                  Tech Stack
+                </Typography>
+                <Typography className="text-text text-center max-w-xs mx-auto  font-normal leading-7">
+                  We've utilized a modern tech stack for a high-quality user
+                  experience, including React, Zustand for state management, and
+                  Tailwind CSS. The backend is powered by Node.js and Express,
+                  ensuring a robust and scalable application.{" "}
+                  <span
+                    onClick={handleOpen}
+                    className="text-main font-medium cursor-pointer hover:underline"
+                  >
+                    Check out the full tech stack here!
+                  </span>
+                </Typography>
+              </CardBody>
+            </Card>
+          </div>
         </div>
+      </section>
+      <Dialog open={open} handler={handleOpen} size="md">
+        <DialogHeader>Full Tech Stack</DialogHeader>
+        <DialogBody className="text-text h-[30rem] overflow-y-auto p10">
+          <Typography variant="h5" className="mb-2">
+            Frontend
+          </Typography>
+          <ul className="list-disc list-inside mb-4">
+            <li>
+              <strong>Core:</strong> HTML5, JavaScript (ES6+), React
+            </li>
+            <li>
+              <strong>Build Tool:</strong> Vite
+            </li>
+            <li>
+              <strong>Styling:</strong> Tailwind CSS, with Material Tailwind for
+              UI components.
+            </li>
+            <li>
+              <strong>Routing:</strong> React Router
+            </li>
+            <li>
+              <strong>State Management:</strong> Zustand
+            </li>
+            <li>
+              <strong>Data Visualization:</strong> ApexCharts for graphs and
+              charts.
+            </li>
+            <li>
+              <strong>Icons:</strong> Heroicons
+            </li>
+          </ul>
 
-        {/* TEAM & LINKS SECTION */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
-            <CardBody className="text-center">
-              <Typography
-                variant="h3"
-                className="text-text mb-2 font-medium"
-              >
-                Our Team
-              </Typography>
-              <Typography className="text-center max-w-xs mx-auto font-normal leading-7 text-text">
-                Meet the creators behind SubscriBee — students learning and building real-world applications.
-              </Typography>
-              <Team />
-            </CardBody>
-          </Card>
+          <Typography variant="h5" className="mb-2">
+            Backend
+          </Typography>
+          <ul className="list-disc list-inside mb-4">
+            <li>
+              <strong>Core:</strong> Node.js, Express.js
+            </li>
+            <li>
+              <strong>Database:</strong> MongoDB with Mongoose as the ODM.
+            </li>
+            <li>
+              <strong>Email Service:</strong> Nodemailer for sending emails.
+            </li>
+            <li>
+              <strong>Task Scheduling:</strong> node-cron for recurring tasks.
+            </li>
+            <li>
+              <strong>Authentication:</strong> Custom token-based authentication
+              middleware.
+            </li>
+          </ul>
 
-          {/* OPTIONAL: Additional Cards */}
-          <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
-            <CardBody className="text-center">
-              <Typography variant="h3" className="text-text mb-2 font-medium">
-                Project Process
-              </Typography>
-              <Typography className="text-center max-w-xs mx-auto  font-normal leading-7 text-text">
-                SubscriBee was built using agile methodology with user testing, feedback and constant improvement to deliver a smooth subscription-tracking experience.
-                We have the user in mind when it comes to a clear overview and easy to handle functionality.
-              </Typography>
-            </CardBody>
-          </Card>
-
-          <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
-            <CardBody className="text-center">
-              <Typography variant="h3" className="text-text mb-2 font-medium">
-                Tech Stack
-              </Typography>
-              <Typography className="text-text text-center max-w-xs mx-auto  font-normal leading-7">
-                Built with React, Material Tailwind, and modern web best practices for responsive, user-friendly design.
-              </Typography>
-            </CardBody>
-          </Card>
-        </div>
-      </div>
-    </section >
+          <Typography variant="h5" className="mb-2">
+            Tooling & Deployment
+          </Typography>
+          <ul className="list-disc list-inside">
+            <li>
+              <strong>Version Control:</strong> Git
+            </li>
+            <li>
+              <strong>CI/CD:</strong> GitHub Actions for automated workflows.
+            </li>
+            <li>
+              <strong>Hosting:</strong> Frontend on Netlify, Backend on Render.
+            </li>
+          </ul>
+        </DialogBody>
+        <DialogFooter>
+          <Button
+            variant="text"
+            color="red"
+            onClick={handleOpen}
+            className="mr-1"
+          >
+            <span>Close</span>
+          </Button>
+        </DialogFooter>
+      </Dialog>
+    </>
   );
 };
