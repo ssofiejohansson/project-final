@@ -28,7 +28,7 @@ export const DashboardHeader = ({ user }) => {
 
       <Typography
         variant="lead"
-        className="mx-auto w-full max-w-full text-light lg:text-lg mb-8 break-words"
+        className="mx-auto w-full max-w-full text-light lg:text-lg mb-8 break-words text-textfont"
       >
         {hasSubs
           ? "View and manage your subscriptions in the dashboard below."
