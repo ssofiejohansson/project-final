@@ -38,11 +38,11 @@ export const DashboardNavbar = ({
       {/* Add button */}
       <Btn
         variant="text"
-        size="sm"
-        className="flex items-center gap-2"
-        onClick={onAdd} // trigger parent handler
+        size="md"
+        className="flex items-center gap-2 ml-auto"
+        onClick={onAdd}
       >
-        <PlusIcon strokeWidth={3} className="h-4 w-4" />
+        <PlusIcon strokeWidth={3} className="h-5 w-5" />
         ADD
       </Btn>
     </div>

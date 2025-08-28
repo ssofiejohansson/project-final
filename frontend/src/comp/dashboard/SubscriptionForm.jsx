@@ -1,17 +1,17 @@
-import { Button, Checkbox, Option, Select, Typography } from "@material-tailwind/react";
+import { Checkbox, Option, Select, Typography } from "@material-tailwind/react";
 import { useState } from "react";
-
+import { Btn } from "../layout/Btn";
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
 import { BaseURL } from "../BaseURL";
 import { Input } from "../user/Input";
 
-export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
+export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEmail, setSendEmail }) => {
   const urlAPI = `${BaseURL}`;
 
   const [formData, setFormData] = useState(() => {
     if (initialData) {
-      
+
       return {
         ...initialData,
         reminderDate: initialData.reminderDate
@@ -164,7 +164,6 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
 
   return (
     <section className={compact ? "p-4" : "px-4 sm:px-8 py-10 sm:py-20 container mx-auto"}>
-
       <Typography
         variant="small"
         className="text-light font-normal text-sm sm:text-base"
@@ -233,7 +232,9 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
           required
         />
 
-        {/* Status + Category in one row */}
+
+
+        {/* Status + Category */}
         <div className="flex gap-4 flex-col sm:flex-row">
           <div className="flex-1">
             <Select
@@ -264,15 +265,29 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
           </div>
         </div>
 
+        {/* ✅ Send email checkbox  */}
+        <div className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            id="sendEmail"
+            checked={sendEmail}
+            onChange={() => setSendEmail((prev) => !prev)}
+            className="border border-black"
+          />
+          <label htmlFor="sendEmail" className="text-sm">
+            Send email when adding subscription
+          </label>
+        </div>
+
         {/* Buttons */}
-        <div className="flex gap-4">
-          <Button type="submit" color="blue">
+        <div className="mt-2 flex gap-4">
+          <Btn variant="outlined" size="sm" type="submit" disabled={success}>
             Save
-          </Button>
+          </Btn>
           {onClose && (
-            <Button variant="text" color="red" onClick={() => onClose()}>
+            <Btn variant="text" size="sm" onClick={() => onClose()}>
               Cancel
-            </Button>
+            </Btn>
           )}
         </div>
 
@@ -287,6 +302,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData }) => {
             Your subscription was added!
           </Typography>
         )}
+
       </form>
     </section>
   );
