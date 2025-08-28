@@ -134,65 +134,74 @@ export const AboutProject = () => {
           <Typography variant="h5" className="mb-2 font-heading">
             Frontend
           </Typography>
-          <ul className="list-disc list-inside mb-4">
-            <li>
-              <strong>Core:</strong> HTML5, JavaScript (ES6+), React
-            </li>
-            <li>
-              <strong>Build Tool:</strong> Vite
-            </li>
-            <li>
-              <strong>Styling:</strong> Tailwind CSS, with Material Tailwind for
-              UI components.
-            </li>
-            <li>
-              <strong>Routing:</strong> React Router
-            </li>
-            <li>
-              <strong>State Management:</strong> Zustand
-            </li>
-            <li>
-              <strong>Data Visualization:</strong> ApexCharts for graphs and
-              charts.
-            </li>
-            <li>
-              <strong>Icons:</strong> Heroicons
-            </li>
-          </ul>
+          <div className="list-disc list-inside mb-4">
+            <ul>
+              <li>
+                <strong>Core:</strong> HTML5, JavaScript (ES6+), React
+              </li>
+              <li>
+                <strong>Build Tool:</strong> Vite
+              </li>
+              <li>
+                <strong>Styling:</strong> Tailwind CSS, with Material Tailwind for
+                UI components.
+              </li>
+              <li>
+                <strong>Routing:</strong> React Router
+              </li>
+              <li>
+                <strong>State Management:</strong> Zustand
+              </li>
+              <li>
+                <strong>Data Visualization:</strong> ApexCharts for graphs and
+                charts.
+              </li>
+              <li>
+                <strong>Icons:</strong> Heroicons
+              </li>
+            </ul>
+          </div>
+          
 
           <Typography variant="h5" className="mb-2 font-heading">
             Backend
           </Typography>
-          <ul className="list-disc list-inside mb-4">
-            <li>
-              <strong>Core:</strong> Node.js, Express.js
-            </li>
-            <li>
-              <strong>Database:</strong> MongoDB with Mongoose as the ODM.
-            </li>
-            <li>
-              <strong>Email Service:</strong> Nodemailer for sending emails.
-            </li>
-            <li>
-              <strong>Task Scheduling:</strong> node-cron for recurring tasks.
-            </li>
-            <li>
-              <strong>Authentication:</strong> Custom token-based authentication
-              middleware.
-            </li>
-          </ul>
+          <div className="list-disc list-inside mb-4">
+            <ul>
+              <li>
+                <strong>Core:</strong> Node.js, Express.js
+              </li>
+              <li>
+                <strong>Database:</strong> MongoDB with Mongoose as the ODM.
+              </li>
+              <li>
+                <strong>Email Service:</strong> Nodemailer for sending emails.
+              </li>
+              <li>
+                <strong>Task Scheduling:</strong> node-cron for recurring tasks.
+              </li>
+              <li>
+                <strong>Authentication:</strong> Custom token-based authentication
+                middleware.
+              </li>
+            </ul>
+          </div>
+          
 
           <Typography variant="h5" className="mb-2 font-heading">
             Tooling & Deployment
           </Typography>
-          <ul className="list-disc list-inside">
-            <li>
-              <strong>Version Control:</strong> Git
-            </li>
-            <li>
-              <strong>Hosting:</strong> Frontend on Netlify, Backend on Render.
-            </li>
-          </ul>
+          <div className="list-disc list-inside">
+            <ul>
+              <li>
+                <strong>Version Control:</strong> Git
+              </li>
+              <li>
+                <strong>Hosting:</strong> Frontend on Netlify, Backend on Render.
+              </li>
+            </ul>
+          </div>
+          
         </DialogBody>
         <DialogFooter>
           <Button

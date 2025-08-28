@@ -26,29 +26,7 @@ export const Footer = () => {
                 About Subscribee
               </Typography>
             </li>
-          </ul>
-          {/* <ul>
-            <li>
-              <Typography
-                as={Link}
-                to="/about"
-                className="font-medium transition-colors  hover:text-main"
-              >
-                About this project
-              </Typography>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <Typography
-                as={Link}
-                to="/about"
-                className="font-medium transition-colors  hover:text-main"
-              >
-                FAQ
-              </Typography>
-            </li>
-          </ul> */}
+          </ul>      
 
           <ul>
             <li>
