@@ -1,4 +1,9 @@
-import { Card, CardBody, CardFooter, Typography } from "@material-tailwind/react";
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  Typography,
+} from "@material-tailwind/react";
 import merge from "deepmerge";
 import React from "react";
 import Chart from "react-apexcharts";
@@ -37,7 +42,7 @@ function AreaChart({ height = 350, series, colors, options }) {
             labels: {
               style: {
                 colors: "#757575",
-                fontSize: "12px",
+                fontSize: "16px",
                 fontFamily: "inherit",
                 fontWeight: 300,
               },
@@ -49,7 +54,7 @@ function AreaChart({ height = 350, series, colors, options }) {
             labels: {
               style: {
                 colors: "#757575",
-                fontSize: "12px",
+                fontSize: "16px",
                 fontFamily: "inherit",
                 fontWeight: 300,
               },
@@ -132,11 +137,10 @@ export const Linegraph = ({ subscriptions = [] }) => {
   });
 
   return (
-
     <Card className=" mx-6 my-10">
       <CardBody className="p-2">
-        <div className="flex gap-2 flex-wrap justify-between px-2 !mt-4 ">
-          <Typography variant="h3" className="text-text ">
+        <div className="flex gap-2 flex-wrap justify-between px-2 !mt-4  ">
+          <Typography variant="h3" className="text-text font-heading">
             {isNaN(totalCost) ? "0.00" : totalCost.toFixed(2)} SEK
           </Typography>
           <div className="flex items-center gap-6">
@@ -145,15 +149,10 @@ export const Linegraph = ({ subscriptions = [] }) => {
                 <span
                   className={`h-2 w-2 rounded-full`}
                   style={{
-                    backgroundColor: ["#EF6E00", "#2196F3", "#FF9800"][
-                      idx % 3
-                    ],
+                    backgroundColor: ["#EF6E00", "#2196F3", "#FF9800"][idx % 3],
                   }}
                 ></span>
-                <Typography
-                  variant="small"
-                  className="font-normal text-light"
-                >
+                <Typography variant="small" className="font-normal text-light">
                   {year}
                 </Typography>
               </div>
@@ -189,6 +188,5 @@ export const Linegraph = ({ subscriptions = [] }) => {
         )}
       </CardBody>
     </Card>
-
   );
-}
+};

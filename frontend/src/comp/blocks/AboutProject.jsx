@@ -1,22 +1,16 @@
-import {
-  Card,
-  CardBody,
-  Typography,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-  Button,
-} from "@material-tailwind/react";
-import { Team } from "./Team";
-import { useNavigate } from "react-router-dom";
-import { Btn } from "../layout/Btn";
-import BeeatriceImg from "../../assets/home-img/beeatrice.webp";
+import { Button, Card, CardBody, Dialog, DialogBody, DialogFooter, DialogHeader, Typography } from "@material-tailwind/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import BeeatriceImg from "../../assets/home-img/beeatrice.webp";
+import useUserStore from "../../stores/useUserStore";
+import { Btn } from "../layout/Btn";
+import { Team } from "./Team";
 
 export const AboutProject = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const user = useUserStore((state) => state.user);
 
   const handleOpen = () => setOpen(!open);
 
@@ -58,13 +52,25 @@ export const AboutProject = () => {
                 life.
               </Typography>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Btn
-                  onClick={() => navigate("/signup")}
-                  size="md"
-                  variant="filled"
-                >
-                  Let's join the hive!
-                </Btn>
+                {user ? 
+                (                
+                  <Btn
+                    onClick={() => navigate("/admin")}
+                    size="md"
+                    variant="filled"
+                  >
+                    Let's buzz to the dashboard
+                  </Btn>
+                ) : (                
+                  <Btn
+                    onClick={() => navigate("/signup")}
+                    size="md"
+                    variant="filled"
+                  >
+                    Let's join the hive!
+                  </Btn>                
+              )}
+                
               </div>
             </div>
           </div>
@@ -128,65 +134,74 @@ export const AboutProject = () => {
           <Typography variant="h5" className="mb-2 font-heading">
             Frontend
           </Typography>
-          <ul className="list-disc list-inside mb-4">
-            <li>
-              <strong>Core:</strong> HTML5, JavaScript (ES6+), React
-            </li>
-            <li>
-              <strong>Build Tool:</strong> Vite
-            </li>
-            <li>
-              <strong>Styling:</strong> Tailwind CSS, with Material Tailwind for
-              UI components.
-            </li>
-            <li>
-              <strong>Routing:</strong> React Router
-            </li>
-            <li>
-              <strong>State Management:</strong> Zustand
-            </li>
-            <li>
-              <strong>Data Visualization:</strong> ApexCharts for graphs and
-              charts.
-            </li>
-            <li>
-              <strong>Icons:</strong> Heroicons
-            </li>
-          </ul>
+          <div className="list-disc list-inside mb-4">
+            <ul>
+              <li>
+                <strong>Core:</strong> HTML5, JavaScript (ES6+), React
+              </li>
+              <li>
+                <strong>Build Tool:</strong> Vite
+              </li>
+              <li>
+                <strong>Styling:</strong> Tailwind CSS, with Material Tailwind for
+                UI components.
+              </li>
+              <li>
+                <strong>Routing:</strong> React Router
+              </li>
+              <li>
+                <strong>State Management:</strong> Zustand
+              </li>
+              <li>
+                <strong>Data Visualization:</strong> ApexCharts for graphs and
+                charts.
+              </li>
+              <li>
+                <strong>Icons:</strong> Heroicons
+              </li>
+            </ul>
+          </div>
+          
 
           <Typography variant="h5" className="mb-2 font-heading">
             Backend
           </Typography>
-          <ul className="list-disc list-inside mb-4">
-            <li>
-              <strong>Core:</strong> Node.js, Express.js
-            </li>
-            <li>
-              <strong>Database:</strong> MongoDB with Mongoose as the ODM.
-            </li>
-            <li>
-              <strong>Email Service:</strong> Nodemailer for sending emails.
-            </li>
-            <li>
-              <strong>Task Scheduling:</strong> node-cron for recurring tasks.
-            </li>
-            <li>
-              <strong>Authentication:</strong> Custom token-based authentication
-              middleware.
-            </li>
-          </ul>
+          <div className="list-disc list-inside mb-4">
+            <ul>
+              <li>
+                <strong>Core:</strong> Node.js, Express.js
+              </li>
+              <li>
+                <strong>Database:</strong> MongoDB with Mongoose as the ODM.
+              </li>
+              <li>
+                <strong>Email Service:</strong> Nodemailer for sending emails.
+              </li>
+              <li>
+                <strong>Task Scheduling:</strong> node-cron for recurring tasks.
+              </li>
+              <li>
+                <strong>Authentication:</strong> Custom token-based authentication
+                middleware.
+              </li>
+            </ul>
+          </div>
+          
 
           <Typography variant="h5" className="mb-2 font-heading">
             Tooling & Deployment
           </Typography>
-          <ul className="list-disc list-inside">
-            <li>
-              <strong>Version Control:</strong> Git
-            </li>
-            <li>
-              <strong>Hosting:</strong> Frontend on Netlify, Backend on Render.
-            </li>
-          </ul>
+          <div className="list-disc list-inside">
+            <ul>
+              <li>
+                <strong>Version Control:</strong> Git
+              </li>
+              <li>
+                <strong>Hosting:</strong> Frontend on Netlify, Backend on Render.
+              </li>
+            </ul>
+          </div>
+          
         </DialogBody>
         <DialogFooter>
           <Button

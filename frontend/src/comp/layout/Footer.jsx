@@ -18,55 +18,30 @@ export const Footer = () => {
         <div className="text-text flex flex-wrap items-center justify-center gap-6 pb-4 ">
           <ul>
             <li>
-              <Typography
-                as={Link}
-                to="/about"
-                className="font-medium transition-colors  hover:text-main "
-              >
+              <Typography as={Link} to="/about" className="">
                 About Subscribee
               </Typography>
             </li>
-          </ul>
-          {/* <ul>
-            <li>
-              <Typography
-                as={Link}
-                to="/about"
-                className="font-medium transition-colors  hover:text-main"
-              >
-                About this project
-              </Typography>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <Typography
-                as={Link}
-                to="/about"
-                className="font-medium transition-colors  hover:text-main"
-              >
-                FAQ
-              </Typography>
-            </li>
-          </ul> */}
+          </ul>      
 
           <ul>
             <li>
               <a
                 href="mailto:"
-                className="flex items-center gap-2 font-medium transition-colors hover:text-accent"
+                className="flex items-center gap-2 font-textfont transition-colors hover:text-accent"
               >
                 <EnvelopeIcon className="text-accent h-5 w-5" />
                 Contact us
               </a>
             </li>
-          </ul>        
+          </ul>
 
-        <ul>
+          <ul>
             <li>
               <a
-                href="https://github.com/ssofiejohansson/project-final" target="_blank"
-                className="flex items-center gap-2 font-medium transition-colors hover:text-accent"
+                href="https://github.com/ssofiejohansson/project-final"
+                target="_blank"
+                className="flex items-center gap-2 font-textfont transition-colors hover:text-accent"
               >
                 <CodeBracketIcon className="text-accent h-5 w-5" />
                 GitHub
@@ -87,20 +62,18 @@ export const Footer = () => {
               </Btn>
               <Logout size="sm" variant="text" />
             </>
-          ) : (
-            <>
+          ) : (            
               <Btn
                 onClick={() => navigate("/login")}
                 size="sm"
                 variant="outlined"
               >
                 Log in
-              </Btn>
-            </>
+              </Btn>            
           )}
         </div>
 
-        <Typography className="mt-4 !text-sm !font-normal text-light">
+        <Typography className="mt-4!font-textfont">
           &copy; {currentYear} SubscriBee. All rights reserved.
         </Typography>
       </div>

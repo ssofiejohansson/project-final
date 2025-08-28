@@ -30,13 +30,13 @@ export const Navbar = () => {
   );
 
   const NavList = ({ onClick }) => (
-    <ul className="mb-4 mt-2 flex flex-col gap-3 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-8">
+    <ul className="mb-4 mt-2 flex flex-col gap-3 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-8 font-textfont">
       {!isHome && <NavItem to="/" label="Home" onClick={onClick} />}
       <NavItem to="/about" label="About" onClick={onClick} />
       <li>
         <a
           href="mailto:"
-          className="text-text p-1 font-medium hover:text-main transition-colors"
+          className="text-text p-1 hover:text-main transition-colors font-textfont"
         >
           Contact
         </a>
@@ -54,11 +54,7 @@ export const Navbar = () => {
             to="/"
             className="cursor-pointer flex items-center gap-3"
           >
-            <img
-              src={Logo}
-              alt="SubscriBee Logo"
-              className="h-10 m-1"
-            />
+            <img src={Logo} alt="SubscriBee Logo" className="h-10 m-1" />
             <span className="text-xl font-extrabold bg-gradient-to-r from-main to-accent bg-clip-text text-transparent drop-shadow-sm">
               SubscriBee
             </span>
@@ -70,10 +66,10 @@ export const Navbar = () => {
           </div>
 
           {/* Right */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4 font-textfont">
             {user ? (
               <>
-                <span className="text-md font-medium">Hi {user.name}!</span>
+                <span className="text-md">Hi {user.name}!</span>
                 <Btn
                   onClick={() => navigate("/admin")}
                   size="sm"
@@ -142,7 +138,6 @@ export const Navbar = () => {
                   <NavList onClick={closeMenu} />
                 </div>
               </>
-
             ) : (
               <div className="flex flex-col gap-2 ">
                 <NavList onClick={closeMenu} />
