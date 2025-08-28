@@ -39,7 +39,7 @@ export const AboutProject = () => {
             >
               <Typography
                 variant="h2"
-                className="text-text mb-6 w-full leading-snug !text-3xl lg:max-w-xl lg:!text-5xl"
+                className="text-text mb-6 w-full leading-snug !text-3xl lg:max-w-xl lg:!text-5xl font-heading"
               >
                 About <span className="text-main">this project</span>
               </Typography>
@@ -73,7 +73,7 @@ export const AboutProject = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
               <CardBody className="text-center">
-                <Typography variant="h3" className="text-text mb-2 font-medium">
+                <Typography variant="h3" className="text-text mb-2 font-medium font-heading">
                   Our Team
                 </Typography>
                 <Typography className="text-center max-w-xs mx-auto font-normal leading-7 text-text">
@@ -87,7 +87,7 @@ export const AboutProject = () => {
             {/* OPTIONAL: Additional Cards */}
             <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
               <CardBody className="text-center">
-                <Typography variant="h3" className="text-text mb-2 font-medium">
+                <Typography variant="h3" className="text-text mb-2 font-medium font-heading">
                   Project Process
                 </Typography>
                 <Typography className="text-center max-w-xs mx-auto  font-normal leading-7 text-text">
@@ -102,7 +102,7 @@ export const AboutProject = () => {
 
             <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
               <CardBody className="text-center">
-                <Typography variant="h3" className="text-text mb-2 font-medium">
+                <Typography variant="h3" className="text-text mb-2 font-medium font-heading">
                   Tech Stack
                 </Typography>
                 <Typography className="text-text text-center max-w-xs mx-auto  font-normal leading-7">
@@ -125,7 +125,7 @@ export const AboutProject = () => {
       <Dialog open={open} handler={handleOpen} size="md">
         <DialogHeader>Full Tech Stack</DialogHeader>
         <DialogBody className="text-text h-[30rem] overflow-y-auto p10">
-          <Typography variant="h5" className="mb-2">
+          <Typography variant="h5" className="mb-2 font-heading">
             Frontend
           </Typography>
           <ul className="list-disc list-inside mb-4">
@@ -154,7 +154,7 @@ export const AboutProject = () => {
             </li>
           </ul>
 
-          <Typography variant="h5" className="mb-2">
+          <Typography variant="h5" className="mb-2 font-heading">
             Backend
           </Typography>
           <ul className="list-disc list-inside mb-4">
@@ -176,7 +176,7 @@ export const AboutProject = () => {
             </li>
           </ul>
 
-          <Typography variant="h5" className="mb-2">
+          <Typography variant="h5" className="mb-2 font-heading">
             Tooling & Deployment
           </Typography>
           <ul className="list-disc list-inside">

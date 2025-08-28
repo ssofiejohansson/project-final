@@ -13,7 +13,7 @@ export const Header = () => {
         <div className="container mx-auto px-4 text-center">
           <Typography
             variant="h1"
-            className="text-text pb-2 mx-auto w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl font-Didact"
+            className="text-text pb-2 mx-auto w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl font-heading"
           >
             Bee in control of your subscriptions with{" "}
             <span className=" font-extrabold bg-gradient-to-r from-main to-accent bg-clip-text text-transparent drop-shadow-sm leading-snug">

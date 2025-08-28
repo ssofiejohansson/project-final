@@ -1,5 +1,10 @@
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { Accordion, AccordionBody, AccordionHeader, Typography } from "@material-tailwind/react";
+import {
+  Accordion,
+  AccordionBody,
+  AccordionHeader,
+  Typography,
+} from "@material-tailwind/react";
 import { useState } from "react";
 
 const faqs = [
@@ -34,7 +39,7 @@ export const FAQ = () => {
         <div className="mb-14 text-center">
           <Typography
             variant="h4"
-            className="text-text mb-4 text-3xl font-bold !leading-snug lg:text-4xl"
+            className="text-text mb-4 text-3xl font-bold !leading-snug lg:text-4xl font-heading"
           >
             Frequently Asked Questions
           </Typography>
