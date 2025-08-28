@@ -12,6 +12,7 @@ export const DashboardNavbar = ({
     <div id="dashboard" className="flex gap-4 flex-wrap items-center py-4">
       <select
         value={filterCategory}
+        aria-label="Filter subscriptions by category"
         onChange={(e) => setFilterCategory(e.target.value)}
         className="border rounded px-2 py-1"
       >
@@ -25,6 +26,7 @@ export const DashboardNavbar = ({
 
       <select
         value={sortKey}
+        aria-label="Sort subscriptions"
         onChange={(e) => setSortKey(e.target.value)}
         className="border rounded px-2 py-1"
       >

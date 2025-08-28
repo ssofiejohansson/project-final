@@ -217,9 +217,8 @@ export const SubscriptionList = () => {
                       >
                         {subscriptions.length === 0
                           ? "You have not added any subscriptions, please click add."
-                          : `You have no subscriptions listed under ${
-                              filterCategory || "this category"
-                            }.`}
+                          : `You have no subscriptions listed under ${filterCategory || "this category"
+                          }.`}
                       </td>
                     </tr>
                   ) : (
@@ -316,6 +315,7 @@ export const SubscriptionList = () => {
                           </td>
                           <td className={`${classes} text-right`}>
                             <input
+                              aria-label="Send email notification"
                               type="checkbox"
                               checked={sub.sendEmail ?? true}
                               onChange={async () => {
@@ -344,12 +344,14 @@ export const SubscriptionList = () => {
                                 variant="text"
                                 size="sm"
                                 onClick={() => openModalDialog(sub)}
+                                aria-label="Edit subscription"
                               >
                                 <PencilIcon className="h-5 w-5 text-gray-900" />
                               </IconButton>
                               <IconButton
                                 variant="text"
                                 size="sm"
+                                aria-label="Delete subscription"
                                 onClick={() => {
                                   handleDelete(sub._id);
                                   openSaveDialog(sub);
