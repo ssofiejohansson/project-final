@@ -32,8 +32,12 @@ export const Navbar = () => {
   const NavList = ({ onClick }) => (
     <ul className="mb-4 mt-2 flex flex-col gap-3 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-8 font-textfont">
       {!isHome && <NavItem to="/" label="Home" onClick={onClick} />}
-      <NavItem to="/about" label="About" onClick={onClick} />
-      <NavItem to="mailto:" label="Contact" onClick={onClick} />
+      <li>
+        <NavItem to="/about" label="About" onClick={onClick} />
+      </li>
+      <li>
+        <NavItem to="mailto:" label="Contact" onClick={onClick} />
+      </li>
     </ul>
   );
 
