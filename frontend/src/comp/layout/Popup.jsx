@@ -21,6 +21,7 @@ export const Popup = ({ children, delay }) => {
         <div className="relative bg-white shadow-lg rounded-2xl py-4 px-4 max-w-xs mb-3 border-l-4 border-accent">
           <IconButton
             variant="text"
+            aria-label="Collapse popup"
             className="!absolute top-0 right-0 text-accent hover:text-main hover:bg-transparent active:bg-transparent transition"
             onClick={() => setCollapsed(true)}
           >

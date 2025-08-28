@@ -11,7 +11,7 @@ import {
 import { Team } from "./Team";
 import { useNavigate } from "react-router-dom";
 import { Btn } from "../layout/Btn";
-import BeeatriceImg from "../../assets/home-img/beeatrice.png";
+import BeeatriceImg from "../../assets/home-img/beeatrice.webp";
 import { useState } from "react";
 
 export const AboutProject = () => {

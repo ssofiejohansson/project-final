@@ -1,6 +1,6 @@
 import { Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
-import HeroImage from "../../assets/home-img/hero-img.png";
+import HeroImage from "../../assets/home-img/hero-img.webp";
 import { Btn } from "./Btn";
 
 export const Header = () => {
