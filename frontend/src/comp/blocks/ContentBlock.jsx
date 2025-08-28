@@ -1,6 +1,6 @@
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
-import { useNavigate } from "react-router-dom";
 import { Typography } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
 import { Btn } from "../layout/Btn";
 
@@ -19,8 +19,9 @@ export const ContentBlock = () => {
         </Typography>
 
         {/* Feature List */}
-        <ul className="mx-auto mt-6 max-w-lg space-y-4 text-left">
-          <li className="flex items-start gap-3">
+        <div className="mx-auto mt-6 max-w-lg space-y-4 text-left">
+          <ul>
+          <li className="flex items-center gap-3">
             <CheckCircleIcon className="h-6 w-6 text-accent flex-shrink-0" />
             <Typography
               variant="lead"
@@ -48,6 +49,8 @@ export const ContentBlock = () => {
             </Typography>
           </li>
         </ul>
+        </div>
+        
 
         {/* CTA Button */}
         <div className="mt-10 flex justify-center">
