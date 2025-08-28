@@ -163,7 +163,7 @@ export const SubscriptionList = () => {
                     <BellAlertIcon className="h-5 w-5 text-red-600 font-bold" />
                     <Typography variant="small" className="text-text">
                       You have{" "}
-                      <span className="text-red-600 font-semibold">
+                      <span className="text-light font-bold">
                         {dueSoon.length} reminder(s)
                       </span>{" "}
                       due in the next 3 days.
