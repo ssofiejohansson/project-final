@@ -12,7 +12,7 @@ export const Stats = ({ subscriptions = [] }) => {
     0
   );
   const yearCost = monthCost * 12;
- 
+
   const activeSubs = subscriptions.filter(
     (sub) => sub.status === "active"
   ).length;
@@ -56,11 +56,11 @@ export const Stats = ({ subscriptions = [] }) => {
   ];
 
   return (
-    <section className="m-4 my-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
+    <section className="m-4 py-12 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
       {stats.map((stat) => (
         <Card
           key={stat.title}
-          className="w-full p-4 rounded-2xl flex flex-col items-center justify-center text-center gap-2"
+          className="w-full p-4 rounded-2xl  bg-gray-100/50 hover:shadow-lg transition flex flex-col items-center justify-center text-center gap-2"
         >
           {stat.icon}
           <div className="text-center break-words">
@@ -74,7 +74,7 @@ export const Stats = ({ subscriptions = [] }) => {
         </Card>
       ))}
 
-      <Card className="w-full p-4 shadow-lg rounded-2xl flex flex-col items-center justify-center text-center gap-2">
+      <Card className="w-full p-4 shadow-md rounded-2xl  bg-gray-100/50 hover:shadow-lg transition flex flex-col items-center justify-center text-center gap-2">
         <Typography variant="small" className="text-text font-normal mb-2">
           Subscriptions by Category
         </Typography>

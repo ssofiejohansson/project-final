@@ -61,18 +61,18 @@ export const Dashboard = () => {
 
   return (
     <section className="min-h-[82vh] w-full place-items-stretch">
-      <div className="container mx-auto px-2 text-center">
-        <DashboardHeader user={user} />
 
-        {subscriptions && subscriptions.length > 0 && (
-          <>
-            <Stats subscriptions={subscriptions} />
-          </>
-        )}
+      <DashboardHeader user={user} />
 
-        <SubscriptionList subscriptions={subscriptions} />
-        <Linegraph subscriptions={subscriptions} />
-      </div>
+      {subscriptions && subscriptions.length > 0 && (
+        <>
+          <Stats subscriptions={subscriptions} />
+        </>
+      )}
+
+      <SubscriptionList subscriptions={subscriptions} />
+      <Linegraph subscriptions={subscriptions} />
+
       <Popup delay={800}>
         <p className="font-bold">TITLE</p>
         <p>

@@ -26,8 +26,8 @@ export const SubscriptionList = () => {
 
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
-  const [sendEmail, setSendEmail] = useState(true); 
-  const [emailPrefs, setEmailPrefs] = useState({}); 
+  const [sendEmail, setSendEmail] = useState(true);
+  const [emailPrefs, setEmailPrefs] = useState({});
 
   const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
   const openModalDialog = useSubscriptionStore((s) => s.openModalDialog);
@@ -127,249 +127,250 @@ export const SubscriptionList = () => {
   };
 
   return (
-    <section className="max-w-8xl mx-auto px-4 py-10 w-full">
-      <Card className="h-full w-full p-2">
-        <CardHeader
-          floated={false}
-          shadow={false}
-          className="rounded-none flex flex-wrap gap-4 justify-between mb-4"
-        >
-          <div className="flex flex-col gap-1">
-            <Typography variant="h2" className="text-text text-base font-normal text-left mt-1">
-              All subscriptions
-            </Typography>
-            <div className="flex items-center gap-2 mt-1">
-              {dueSoon.length > 0 ? (
-                <>
-                  <BellAlertIcon className="h-5 w-5 text-red-600 font-bold" />
-                  <Typography variant="small" className="text-text">
-                    You have <span className="text-red-600 font-semibold">{dueSoon.length} reminder(s)</span>{" "}
-                    due in the next 3 days.
-                  </Typography>
-                </>
-              ) : (
-                <>
-                  <BellAlertIcon className="h-5 w-5 text-text font-bold" />
-                  <Typography variant="small" className="text-text">
-                    No reminders due in the next 3 days.
-                  </Typography>
-                </>
-              )}
-            </div>
-          </div>
-          <div className="flex items-center w-full shrink-0 gap-4 md:w-max">
-            <DashboardNavbar
-              filterCategory={filterCategory}
-              setFilterCategory={setFilterCategory}
-              sortKey={sortKey}
-              setSortKey={setSortKey}
-              onAdd={() => openModalDialog(null)}
-            />
-          </div>
-        </CardHeader>
-
-        <CardBody className="!px-0 py-2">
-          <div className="overflow-x-auto">
-            {/* removed min-w-max from table below to remove horizontal scroll */}
-            <table className="w-full table-auto">
-              <thead>
-                <tr>
-                  {TABLE_HEAD.map(({ head, customeStyle }) => (
-                    <th
-                      key={head}
-                      className={`border-b border-gray-300 !p-4 pb-8 ${customeStyle}`}
-                    >
-                      <Typography
-
-                        variant="small"
-                        className="!font-bold"
-                      >
-                        {head}
-                      </Typography>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {sortedSubs.length === 0 ? (
-                  <tr>
-                    <td
-                      colSpan={TABLE_HEAD.length}
-                      className="text-center py-6 italic text-light"
-                    >
-                      {subscriptions.length === 0
-                        ? "You have not added any subscriptions, please click add."
-                        : `You have no subscriptions listed under ${filterCategory || "this category"
-                        }.`}
-                    </td>
-                  </tr>
+    <section className="bg-gray-50 max-w-8xl mx-auto px-4 py-20 w-full">
+      <div className="container mx-auto px-2 text-center">
+        <Card className="h-full w-full p-2">
+          <CardHeader
+            floated={false}
+            shadow={false}
+            className="rounded-none flex flex-wrap gap-4 justify-between mb-4"
+          >
+            <div className="flex flex-col gap-1">
+              <Typography variant="h2" className="text-text text-base font-normal text-left mt-1">
+                All subscriptions
+              </Typography>
+              <div className="flex items-center gap-2 mt-1">
+                {dueSoon.length > 0 ? (
+                  <>
+                    <BellAlertIcon className="h-5 w-5 text-red-600 font-bold" />
+                    <Typography variant="small" className="text-text">
+                      You have <span className="text-red-600 font-semibold">{dueSoon.length} reminder(s)</span>{" "}
+                      due in the next 3 days.
+                    </Typography>
+                  </>
                 ) : (
-                  sortedSubs.map((sub, index) => {
-                    const isLast = index === sortedSubs.length - 1;
-                    const classes = isLast
-                      ? "!p-4"
-                      : "!p-4 border-b border-gray-300";
+                  <>
+                    <BellAlertIcon className="h-5 w-5 text-text font-bold" />
+                    <Typography variant="small" className="text-text">
+                      No reminders due in the next 3 days.
+                    </Typography>
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="flex items-center w-full shrink-0 gap-4 md:w-max">
+              <DashboardNavbar
+                filterCategory={filterCategory}
+                setFilterCategory={setFilterCategory}
+                sortKey={sortKey}
+                setSortKey={setSortKey}
+                onAdd={() => openModalDialog(null)}
+              />
+            </div>
+          </CardHeader>
 
-                    // Check if reminder date is in the next 3 days
-                    const isUpcoming = upcommingDates().includes(
-                      new Date(sub.reminderDate).toISOString().split("T")[0]
-                    );
-
-                    return (
-                      <tr key={sub._id || index}
+          <CardBody className="!px-0 py-2">
+            <div className="overflow-x-auto">
+              {/* removed min-w-max from table below to remove horizontal scroll */}
+              <table className="w-full table-auto">
+                <thead>
+                  <tr>
+                    {TABLE_HEAD.map(({ head, customeStyle }) => (
+                      <th
+                        key={head}
+                        className={`border-b border-gray-300 !p-4 pb-8 ${customeStyle}`}
                       >
-                        {/* Name */}
-                        <td className={classes}>
-                          <div className="flex items-center gap-2">
-                            <img
-                              src={getLogoPath(sub.name)}
-                              alt={sub.name}
-                              className="w-8 h-8 object-contain"
-                              onError={(e) => {
-                                e.target.onerror = null; // Prevent infinite loop
-                                e.target.src = "/logos/placeholder.webp";
-                                e.target.alt = "Bee Icon"
-                              }}
-                            />
-                            <div>
+                        <Typography
+
+                          variant="small"
+                          className="!font-bold"
+                        >
+                          {head}
+                        </Typography>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {sortedSubs.length === 0 ? (
+                    <tr>
+                      <td
+                        colSpan={TABLE_HEAD.length}
+                        className="text-center py-6 italic text-light"
+                      >
+                        {subscriptions.length === 0
+                          ? "You have not added any subscriptions, please click add."
+                          : `You have no subscriptions listed under ${filterCategory || "this category"
+                          }.`}
+                      </td>
+                    </tr>
+                  ) : (
+                    sortedSubs.map((sub, index) => {
+                      const isLast = index === sortedSubs.length - 1;
+                      const classes = isLast
+                        ? "!p-4"
+                        : "!p-4 border-b border-gray-300";
+
+                      // Check if reminder date is in the next 3 days
+                      const isUpcoming = upcommingDates().includes(
+                        new Date(sub.reminderDate).toISOString().split("T")[0]
+                      );
+
+                      return (
+                        <tr key={sub._id || index}
+                        >
+                          {/* Name */}
+                          <td className={classes}>
+                            <div className="flex items-center gap-2">
+                              <img
+                                src={getLogoPath(sub.name)}
+                                alt={sub.name}
+                                className="w-8 h-8 object-contain"
+                                onError={(e) => {
+                                  e.target.onerror = null; // Prevent infinite loop
+                                  e.target.src = "/logos/placeholder.webp";
+                                  e.target.alt = "Bee Icon"
+                                }}
+                              />
+                              <div>
+                                <Typography
+                                  variant="small"
+
+                                  className="!font-semibold"
+                                >
+                                  {sub.name}
+                                </Typography>
+
+                              </div>
+                            </div>
+                          </td>
+                          {/* Category Icon */}
+                          <td className={classes}>
+                            <div className="flex items-center justify-center">
+                              {categoryIcons[sub.category] || (
+                                <QuestionMarkCircleIcon className="h-8 w-8 text-light" />
+                              )}
+                            </div>
+                          </td>
+                          {/* Cost */}
+                          <td className={`${classes} text-right`}>
+
+                            <div className="flex items-center justify-end gap-1">{isUpcoming && (
+                              <BellAlertIcon className="h-5 w-5 text-red-600 font-bold" />
+                            )}
                               <Typography
                                 variant="small"
-
-                                className="!font-semibold"
+                                className="!font-normal text-light"
                               >
-                                {sub.name}
+                                {sub.cost} kr
                               </Typography>
 
                             </div>
-                          </div>
-                        </td>
-                        {/* Category Icon */}
-                        <td className={classes}>
-                          <div className="flex items-center justify-center">
-                            {categoryIcons[sub.category] || (
-                              <QuestionMarkCircleIcon className="h-8 w-8 text-light" />
-                            )}
-                          </div>
-                        </td>
-                        {/* Cost */}
-                        <td className={`${classes} text-right`}>
 
-                          <div className="flex items-center justify-end gap-1">{isUpcoming && (
-                            <BellAlertIcon className="h-5 w-5 text-red-600 font-bold" />
-                          )}
+                          </td>
+                          {/* Status */}
+                          <td className={`${classes} text-right`}>
+                            <Typography
+                              variant="small"
+                              className={
+                                sub.status === "active"
+                                  ? "!font-bold"
+                                  : "!font-normal"
+                              }
+                            >
+                              {sub.status}
+                            </Typography>
+                          </td>
+                          {/* Free Trial */}
+                          <td className={`${classes} text-right`}>
                             <Typography
                               variant="small"
                               className="!font-normal text-light"
                             >
-                              {sub.cost} kr
+                              {sub.freeTrial
+                                ? `Yes (${sub.trialDays} days)`
+                                : "No"}
                             </Typography>
-
-                          </div>
-
-                        </td>
-                        {/* Status */}
-                        <td className={`${classes} text-right`}>
-                          <Typography
-                            variant="small"
-                            className={
-                              sub.status === "active"
-                                ? "!font-bold"
-                                : "!font-normal"
-                            }
-                          >
-                            {sub.status}
-                          </Typography>
-                        </td>
-                        {/* Free Trial */}
-                        <td className={`${classes} text-right`}>
-                          <Typography
-                            variant="small"
-                            className="!font-normal text-light"
-                          >
-                            {sub.freeTrial
-                              ? `Yes (${sub.trialDays} days)`
-                              : "No"}
-                          </Typography>
-                        </td>
-                        {/* Reminder Date */}
-                        <td className={`${classes} text-right`}>
-                          <Typography
-                            variant="small"
-                            className="!font-normal text-light"
-                          >
-                            {new Date(sub.reminderDate).toLocaleDateString()}
-                          </Typography>
-                        </td>
-                        <td className={`${classes} text-right`}>
-                          <input
-                            type="checkbox"
-                            checked={sub.sendEmail ?? true}
-                            onChange={async () => {
-                              // Optimistically update UI (optional)
-                              // await API call to update backend
-                              await fetch(`${urlAPI}/${sub._id}`, {
-                                method: "PATCH",
-                                headers: { "Content-Type": "application/json" , "Authorization": user?.token || "", },
-                                body: JSON.stringify({
-                                  sendEmail: !sub.sendEmail,
-                                }),
-                              });
-                              // Refetch or update local state as needed
-                              fetchSubscriptions();
-                            }}
-                            className="mr-2"
-                          />
-                        </td>
-                        {/* Actions */}
-                        <td className={`${classes} text-right`}>
-                          <div className="flex justify-end gap-2">
-                            <IconButton
-                              variant="text"
-                              size="sm"
-                              onClick={() => openModalDialog(sub)}
+                          </td>
+                          {/* Reminder Date */}
+                          <td className={`${classes} text-right`}>
+                            <Typography
+                              variant="small"
+                              className="!font-normal text-light"
                             >
-                              <PencilIcon className="h-5 w-5 text-gray-900" />
-                            </IconButton>
-                            <IconButton
-                              variant="text"
-                              size="sm"
-                              onClick={() => {
-                                handleDelete(sub._id);
-                                openSaveDialog(sub);
+                              {new Date(sub.reminderDate).toLocaleDateString()}
+                            </Typography>
+                          </td>
+                          <td className={`${classes} text-right`}>
+                            <input
+                              type="checkbox"
+                              checked={sub.sendEmail ?? true}
+                              onChange={async () => {
+                                // Optimistically update UI (optional)
+                                // await API call to update backend
+                                await fetch(`${urlAPI}/${sub._id}`, {
+                                  method: "PATCH",
+                                  headers: { "Content-Type": "application/json", "Authorization": user?.token || "", },
+                                  body: JSON.stringify({
+                                    sendEmail: !sub.sendEmail,
+                                  }),
+                                });
+                                // Refetch or update local state as needed
+                                fetchSubscriptions();
                               }}
-                            >
-                              <TrashIcon className="h-5 w-5 text-red-500" />
-                            </IconButton>
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })
-                )}
-              </tbody>
-            </table>
-          </div>
-        </CardBody>
-      </Card>
+                              className="mr-2"
+                            />
+                          </td>
+                          {/* Actions */}
+                          <td className={`${classes} text-right`}>
+                            <div className="flex justify-end gap-2">
+                              <IconButton
+                                variant="text"
+                                size="sm"
+                                onClick={() => openModalDialog(sub)}
+                              >
+                                <PencilIcon className="h-5 w-5 text-gray-900" />
+                              </IconButton>
+                              <IconButton
+                                variant="text"
+                                size="sm"
+                                onClick={() => {
+                                  handleDelete(sub._id);
+                                  openSaveDialog(sub);
+                                }}
+                              >
+                                <TrashIcon className="h-5 w-5 text-red-500" />
+                              </IconButton>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </CardBody>
+        </Card>
 
-      {/* Modal */}
-      <SubscriptionModal
-        open={isModalOpen}
-        setOpen={(val) => {
-          setIsModalOpen(val);
-          if (!val) setSelectedSub(null);
-        }}
-        subscription={selectedSub}
-        onSubscriptionAdded={handleSubscriptionAdded}
-      />
+        {/* Modal */}
+        <SubscriptionModal
+          open={isModalOpen}
+          setOpen={(val) => {
+            setIsModalOpen(val);
+            if (!val) setSelectedSub(null);
+          }}
+          subscription={selectedSub}
+          onSubscriptionAdded={handleSubscriptionAdded}
+        />
 
-      {/* save money - contribute */}
-      {isSaveOpen && (
-        <Popup>
-          <SubscriptionSave />
-        </Popup>
-      )}
-
+        {/* save money - contribute */}
+        {isSaveOpen && (
+          <Popup>
+            <SubscriptionSave />
+          </Popup>
+        )}
+      </div>
     </section>
   );
 };
