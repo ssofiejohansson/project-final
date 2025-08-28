@@ -15,7 +15,7 @@ export const DashboardHeader = ({ user }) => {
         {hasSubs ? (
           <>
             Welcome {user.name}! Here are your{" "}
-            <span className="text-main leading-snug break-words">
+            <span className="font-didact text-main leading-snug break-words ">
               subscriptions
             </span>
             .
@@ -23,7 +23,7 @@ export const DashboardHeader = ({ user }) => {
         ) : (
           <>
             Welcome {user.name}! You currently have no{" "}
-            <span className="text-main leading-snug break-words">
+            <span className="font-didact text-main leading-snug break-words">
               subscriptions
             </span>
             .

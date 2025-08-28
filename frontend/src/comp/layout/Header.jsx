@@ -1,22 +1,23 @@
 import { Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
-import HeroImage from "../../assets/home-img/hero-img.png"
+import HeroImage from "../../assets/home-img/hero-img.png";
 import { Btn } from "./Btn";
 
 export const Header = () => {
   const navigate = useNavigate();
 
   return (
-
     <header className="bg-white px-8">
       <div className="grid pt-8 w-full place-items-stretch">
         <div className="container mx-auto px-4 text-center">
           <Typography
             variant="h1"
-            className="text-text mx-auto py-4 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl"
+            className="text-text mx-auto py-4 w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-6xl font-Didact"
           >
             Bee in control of your subscriptions with{" "}
-            <span className=" font-extrabold bg-gradient-to-r from-main to-accent bg-clip-text text-transparent drop-shadow-sm leading-snug">SubscriBee</span>
+            <span className=" font-extrabold bg-gradient-to-r from-main to-accent bg-clip-text text-transparent drop-shadow-sm leading-snug">
+              SubscriBee
+            </span>
           </Typography>
           <Typography
             variant="lead"
@@ -43,7 +44,6 @@ export const Header = () => {
           style={{ backgroundImage: `url(${HeroImage})` }}
         ></div>
       </div>
-    </header >
+    </header>
   );
 };
-

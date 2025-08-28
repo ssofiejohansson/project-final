@@ -5,13 +5,11 @@ import { useNavigate } from "react-router-dom";
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
 import { SubscriptionList } from "../dashboard/SubscriptionList";
-import { Btn } from "../layout/Btn"
+import { Btn } from "../layout/Btn";
 import { Loader } from "../layout/Loader";
 import { DashboardHeader } from "./DashboardHeader";
 import { Linegraph } from "./Linegraph";
 import { Stats } from "./Stats";
-
-
 
 import "../../../src/index.css";
 
@@ -43,8 +41,7 @@ export const Dashboard = () => {
               You need to be logged in to access your dashboard.
             </Typography>
 
-            <Btn size="sm"
-              onClick={() => navigate("/login")}>
+            <Btn size="sm" onClick={() => navigate("/login")}>
               Log in
             </Btn>
           </CardBody>

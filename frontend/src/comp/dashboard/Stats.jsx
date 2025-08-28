@@ -12,7 +12,7 @@ export const Stats = ({ subscriptions = [] }) => {
     0
   );
   const yearCost = monthCost * 12;
- 
+
   const activeSubs = subscriptions.filter(
     (sub) => sub.status === "active"
   ).length;
@@ -56,7 +56,7 @@ export const Stats = ({ subscriptions = [] }) => {
   ];
 
   return (
-    <section className="m-4 my-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
+    <section className="m-4 my-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 font-didact">
       {stats.map((stat) => (
         <Card
           key={stat.title}
