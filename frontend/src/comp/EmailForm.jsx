@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
 import EmailRemindersList from "./EmailRemindersList";
 
 function EmailForm({ setRefreshReminders }) {
@@ -13,7 +14,6 @@ function EmailForm({ setRefreshReminders }) {
   // Pre-written message
   const subject = "Subscription Reminder";
   const text = `Hello!
-
 This is a reminder that you have subscriptions that is due to be renewed soon.
 
 **Insert the subscription details here.**
