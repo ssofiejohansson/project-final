@@ -16,8 +16,8 @@ export const SubscriptionSave = () => {
   if (!isSaveOpen) return null;
 
   return (
-    <div className="space-y-3">
-      <div className="text-text text-lg font-semibold">Yay! Nice save.</div>
+    <div className="space-y-3 ">
+      <div className="text-text text-lg font-semibold">You just saved some honey!  🍯</div>
       <CalculateCost />
     </div>
   );

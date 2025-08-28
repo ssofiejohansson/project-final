@@ -2,81 +2,71 @@
   {
     "message": "Buy your friend a coffee ☕️",
     "spanStart": 0,
-    "spanEnd": 30
+    "spanEnd": 100
   },
   {
     "message": "Contribute to someone in need ❤️‍🩹",
-    "spanStart": 31,
-    "spanEnd": 60
-  },
-  {
-    "message": "Buy flowers for yourself 🌸",
-    "spanStart": 61,
-    "spanEnd": 90
-  },
-  {
-    "message": "Donate and save bee's 🐝",
-    "spanStart": 91,
-    "spanEnd": 120
-  },
-  {
-    "message": "Take a friend out for ice cream 🍦",
-    "spanStart": 121,
+    "spanStart": 101,
     "spanEnd": 150
   },
   {
-    "message": "You deserve a trip, bring a friend ✈️",
+    "message": "Take a friend out for ice cream 🍦",
     "spanStart": 151,
     "spanEnd": 180
   },
   {
-    "message": "Get a massage and relax 💆‍♀️",
+    "message": "Donate and save the bee's 🐝",
     "spanStart": 181,
     "spanEnd": 210
   },
   {
-    "message": "Buy flowers for someone special 🌸",
+    "message": "Buy flowers for yourself 🌸",
     "spanStart": 211,
-    "spanEnd": 300
+    "spanEnd": 280
   },
   {
-    "message": "Treat yourself! 🎉",
-    "spanStart": 301,
-    "spanEnd": 400
+    "message": "Buy flowers for someone special 🌼",
+    "spanStart": 281,
+    "spanEnd": 350
   },
   {
-    "message": "",
-    "spanStart": 401,
-    "spanEnd": 500
+    "message": "Treat yourself to something nice! 🎉",
+    "spanStart": 351,
+    "spanEnd": 450
   },
   {
-    "message": "",
-    "spanStart": 501,
-    "spanEnd": 600
-  },
-  {
-    "message": "",
-    "spanStart": 601,
-    "spanEnd": 700
+    "message": "Donate and save the bee's 🐝",
+    "spanStart": 451,
+    "spanEnd": 550
   },
   {
     "message": "",
-    "spanStart": 701,
+    "spanStart": 551,
+    "spanEnd": 650
+  },
+  {
+    "message": "Get a massage and relax 💆‍♀️",
+    "spanStart": 651,
     "spanEnd": 800
   },
   {
     "message": "",
     "spanStart": 801,
-    "spanEnd": 900
+    "spanEnd": 1200
   },
   {
     "message": "",
-    "spanStart": 901,
-    "spanEnd": 1000
+    "spanStart": 1201,
+    "spanEnd": 2000
   },
   {
     "message": "",
-    "spanStart": 1001,
-    "spanEnd": 1100
+    "spanStart": 2001,
+    "spanEnd": 5000
+  },
+  {
+    "message": "You deserve a trip ✈️",
+    "spanStart": 5001,
+    "spanEnd": 9999999
   }
 ]

@@ -39,7 +39,7 @@ export const DashboardNavbar = ({
       <Btn
         variant="text"
         size="md"
-        className="flex items-center gap-2 ml-auto"
+        className="mr-2 flex items-center gap-2 ml-auto"
         onClick={onAdd}
       >
         <PlusIcon strokeWidth={3} className="h-5 w-5" />

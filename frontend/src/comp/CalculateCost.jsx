@@ -11,21 +11,17 @@ export const CalculateCost = () => {
   const cost = Number(selectedSubSave.cost ?? 0);
   const messageSelect = contributeMessages.find(
     (message) =>
-      selectedSubSave.cost * 12 >= message.spanStart &&
-      selectedSubSave.cost * 12 <= message.spanEnd
+      cost * 12 >= message.spanStart &&
+      cost * 12 <= message.spanEnd
   );
 
   return (
     <div className="text-text space-y-2">
       <p>
-        You just deleted or deactivated your subscription for{" "}
-        <span className="font-semibold">{selectedSubSave.name}</span> and saved{" "}
-        <span className="text-main font-bold">{cost * 12}kr 🎉</span>
+        <span className="text-main font-bold">{cost * 12} kr </span>left to spend this year 🎉
       </p>
       <p>
-        {messageSelect
-          ? messageSelect.message
-          : "Buy your friends balloons 🎈"}
+        {messageSelect?.message || "Donate and save the bees! 🐝"}
       </p>
     </div>
   );
