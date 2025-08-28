@@ -1,18 +1,5 @@
-import {
-  Bars3Icon,
-  ChevronDownIcon,
-  UserCircleIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import {
-  Collapse,
-  IconButton,
-  Menu,
-  MenuHandler,
-  MenuItem,
-  MenuList,
-  Typography,
-} from "@material-tailwind/react";
+import { Bars3Icon, ChevronDownIcon, UserCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Collapse, IconButton, Menu, MenuHandler, MenuItem, MenuList, Typography } from "@material-tailwind/react";
 import Logo from "/subscribee-logo.webp";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -204,7 +191,7 @@ export const Navbar = () => {
             {/* BOTTOM section */}
             <div className="mt-auto flex flex-col gap-2 pt-4 border-t border-gray-200">
               {user ? (
-                <Logout onClick={closeMenu} />
+                <Logout variant="text" onClick={closeMenu} />
               ) : (
                 <>
                   <Btn
