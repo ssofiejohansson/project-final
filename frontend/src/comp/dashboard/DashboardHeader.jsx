@@ -11,23 +11,17 @@ export const DashboardHeader = ({ user }) => {
     <header className="text-center px-6 pt-4 lg:pt-10">
       <Typography
         variant="h1"
-        className="text-text mx-auto my-4 w-full max-w-full break-words overflow-hidden leading-snug !text-2xl sm:!text-3xl md:!text-4xl lg:max-w-3xl lg:!text-5xl"
+        className="text-text font-heading mx-auto my-4 w-full max-w-full break-words overflow-hidden leading-snug !text-2xl sm:!text-3xl md:!text-4xl lg:max-w-3xl lg:!text-5xl"
       >
         {hasSubs ? (
           <>
             Welcome {user.name}! Here are your{" "}
-            <span className="font-heading text-main leading-snug break-words ">
-              subscriptions
-            </span>
-            .
+            <span className="leading-snug break-words ">subscriptions</span>.
           </>
         ) : (
           <>
             Welcome {user.name}! You currently have no{" "}
-            <span className="font-heading text-main leading-snug break-words">
-              subscriptions
-            </span>
-            .
+            <span className="leading-snug break-words">subscriptions</span>.
           </>
         )}
       </Typography>
@@ -40,7 +34,6 @@ export const DashboardHeader = ({ user }) => {
           ? "View and manage your subscriptions in the dashboard below."
           : "Let's start by adding your first subscription in the dashboard below."}
       </Typography>
-
     </header>
   );
 };

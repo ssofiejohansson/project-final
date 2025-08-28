@@ -1,9 +1,9 @@
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { Team } from "./Team";
-import SignupImage from "../../assets/home-img/signup-img.webp"
-import AddSubImage from "../../assets/home-img/addsub-img.webp"
-import SubListImage from "../../assets/home-img/sublist-img.webp"
+import SignupImage from "../../assets/home-img/signup-img.webp";
+import AddSubImage from "../../assets/home-img/addsub-img.webp";
+import SubListImage from "../../assets/home-img/sublist-img.webp";
 
 export const Guide = () => {
   return (

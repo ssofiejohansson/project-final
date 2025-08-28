@@ -70,7 +70,6 @@ export const Userlogin = () => {
   };
 
   return (
-
     <section className="flex items-center justify-center">
       <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
         <Typography variant="h1" className="text-text text-center mb-4">
@@ -78,15 +77,16 @@ export const Userlogin = () => {
         </Typography>
         <Typography
           variant="paragraph"
-
-          className="text-light text-center mb-8"
+          className="text-center mb-8 text-fonttext"
         >
           Welcome back! Please log in below.
         </Typography>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5 text-fonttext">
           {error && (
-            <Typography className="text-red-500 text-sm text-center">{error}</Typography>
+            <Typography className="text-red-500 text-sm text-center">
+              {error}
+            </Typography>
           )}
 
           <Input
@@ -97,6 +97,7 @@ export const Userlogin = () => {
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
             }
+            className="text-fonttext"
           />
 
           <Input
@@ -107,29 +108,21 @@ export const Userlogin = () => {
             onChange={(e) =>
               setFormData({ ...formData, password: e.target.value })
             }
+            className="text-fonttext"
           />
 
-          <Btn
-            type="submit"
-            variant="filled"
-            size="md"
-            className="w-full"
-          >
+          <Btn type="submit" variant="filled" size="md" className="w-full">
             Login
           </Btn>
         </form>
 
-        <Typography
-          variant="small"
-          className="text-text mt-6 text-center"
-        >
+        <Typography variant="medium" className="text-fonttext mt-6 text-center">
           Don’t have an account?{" "}
-          <Link to="/signup" className="text-main font-medium hover:underline">
+          <Link to="/signup" className="text-main font-medium underline">
             Sign up
           </Link>
         </Typography>
       </div>
     </section>
-
   );
 };
