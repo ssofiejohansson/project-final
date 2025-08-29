@@ -20,23 +20,23 @@ export const Navbar = () => {
 
   const NavItem = ({ to, label, onClick }) => (
     <Link to={to} onClick={onClick}>
-      <Typography
+      <ul>
+        <Typography
         as="li"
         className="text-text p-1 font-medium hover:text-main transition-colors"
       >
         {label}
-      </Typography>
+        </Typography>
+      </ul>
+      
     </Link>
   );
 
   const NavList = ({ onClick }) => (
     <div className="mb-4 mt-2 flex flex-col gap-3 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-8 font-textfont">
-      {!isHome && <NavItem to="/" label="Home" onClick={onClick} />}
-      <ul>
-        <li>
-          <NavItem to="/about" label="About" onClick={onClick} />
-        </li>
-      </ul>
+      {!isHome && <NavItem to="/" label="Home" onClick={onClick} />}      
+      <NavItem to="/about" label="About" onClick={onClick} />
+     
       <ul>
         <li>
           <a
