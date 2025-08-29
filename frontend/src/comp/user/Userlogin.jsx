@@ -88,29 +88,38 @@ export const Userlogin = () => {
               {error}
             </Typography>
           )}
-
-          <Input
-            label="Email Address"
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-            className="text-fonttext"
-          />
-
-          <Input
-            label="Password"
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }
-            className="text-fonttext"
-          />
-
+          <div className="flex flex-col space-y-1">
+            <label for="email" className="text-fonttext">
+              Email address
+            
+            <Input            
+              type="email"
+              name="email"
+              aria-label="email address"
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              className="text-fonttext"
+            />
+            </label>
+          </div>
+          <div className="flex flex-col space-y-1">
+            <label for="password" className="text-fonttext">
+              Password
+            
+            <Input            
+              type="password"
+              name="password"
+              aria-label="password"
+              value={formData.password}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
+              className="text-fonttext"
+            />
+            </label>
+          </div>
           <Btn type="submit" variant="filled" size="md" className="w-full">
             Login
           </Btn>

@@ -35,7 +35,7 @@ export const AboutSub = () => {
 
         {/* Scroll Down Button */}
         <div className="mt-10 flex justify-center">
-          <a href="#project" className="group animate-bounce">
+          <a href="#project" className="group animate-bounce" aria-label="Scroll down to next section">
             <ArrowDownCircleIcon className="h-12 w-12 text-accent group-hover:scale-110 transition-transform duration-300" />
           </a>
         </div>

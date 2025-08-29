@@ -190,6 +190,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
             <Input
               label="Name"
               name="name"
+              aria-lable="name"
               value={formData.name}
               onChange={handleChange}
               required
@@ -199,6 +200,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
             <Input
               label="Cost (SEK)"
               name="cost"
+              aria-lable="cost"
               type="number"
               min={0}
               step="0.01"
@@ -213,6 +215,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
         <div className="flex items-center gap-4">
           <Checkbox
             name="freeTrial"
+            aria-lable="free trial checkbox"
             checked={formData.freeTrial}
             onChange={handleChange}
           />
@@ -222,6 +225,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
               <Input
                 label="Trial Days"
                 name="trialDays"
+                aria-lable="trial days"
                 type="number"
                 min={0}
                 value={formData.trialDays}
@@ -235,6 +239,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
         <Input
           label="Reminder Date"
           name="reminderDate"
+          aria-lable="reminder date"
           type="date"
           value={formData.reminderDate}
           onChange={handleChange}
@@ -249,6 +254,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
             <Select
               label="Status"
               name="status"
+              aria-lable="status"
               value={formData.status}
               onChange={handleSelectChange("status")}
               required
@@ -261,6 +267,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
             <Select
               label="Category"
               name="category"
+              aria-lable="category"
               value={formData.category}
               onChange={handleSelectChange("category")}
               required
@@ -279,6 +286,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
           <input
             type="checkbox"
             id="sendEmail"
+            aria-lable="send email checkbox"
             checked={sendEmail}
             onChange={() => setSendEmail((prev) => !prev)}
             className="border border-black"

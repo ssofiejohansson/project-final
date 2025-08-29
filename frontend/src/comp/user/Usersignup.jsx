@@ -94,32 +94,50 @@ export const Usersignup = () => {
         </Typography>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          <Input
-            label="Name"
+          <div>
+          <label for="name" className="text-fonttext">
+            Name
+          
+          <Input            
             type="text"
             name="name"
+            aria-label="name"
             value={formData.name}
             onChange={handleChange}
             required
           />
+          </label>
+          </div>
 
-          <Input
-            label="Email Address"
+          <div className="flex flex-col space-y-1">
+          <label for="email" className="text-fonttext">
+            Email address
+          
+          <Input            
             type="email"
             name="email"
+            aria-label="email address"
             value={formData.email}
             onChange={handleChange}
             required
           />
+          </label>
+          </div>
 
-          <Input
-            label="Password"
+          <div className="flex flex-col space-y-1">
+            <label for="password" className="text-fonttext">
+              Password
+            
+          <Input            
             type="password"
             name="password"
+            aria-label="password"
             value={formData.password}
             onChange={handleChange}
             required
           />
+          </label>
+          </div>
 
           {error && <Typography variant="small" color="red" className="text-center">
             {error}

@@ -240,7 +240,7 @@ export const SubscriptionList = () => {
                             <div className="flex items-center gap-2">
                               <img
                                 src={getLogoPath(sub.name)}
-                                alt={sub.name}
+                                alt={`${sub.name} icon`}
                                 className="w-8 h-8 object-contain"
                                 onError={(e) => {
                                   e.target.onerror = null; // Prevent infinite loop
