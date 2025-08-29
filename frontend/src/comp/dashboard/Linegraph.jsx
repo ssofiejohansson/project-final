@@ -150,7 +150,7 @@ export const Linegraph = ({ subscriptions = [] }) => {
                   <span
                     className={`h-2 w-2 rounded-full`}
                     style={{
-                      backgroundColor: ["#EF6E00", "#2196F3", "#FF9800"][
+                      backgroundColor: ["#047857", "#2196F3", "#065F46"][
                         idx % 3
                       ],
                     }}
@@ -168,7 +168,7 @@ export const Linegraph = ({ subscriptions = [] }) => {
           {/* chart */}
           {series.length > 0 ? (
             <AreaChart
-              colors={["#EF6E00", "#2196F3", "#FF9800"]}
+              colors={["#047857", "#2196F3", "#065F46"]}
               options={{
                 xaxis: {
                   categories: [

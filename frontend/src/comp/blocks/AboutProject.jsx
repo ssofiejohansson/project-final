@@ -197,6 +197,9 @@ export const AboutProject = () => {
                 <strong>Version Control:</strong> Git
               </li>
               <li>
+                <strong>Automation:</strong>GitHub Actions (workflow automation via .yml pipelines for tasks such as database updates)
+              </li>               
+              <li>
                 <strong>Hosting:</strong> Frontend on Netlify, Backend on Render.
               </li>
             </ul>
