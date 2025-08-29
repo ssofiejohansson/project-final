@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
-import { BaseURL } from "../BaseURL";
+import { BaseURL } from "../utils/BaseURL";
 import { Btn } from "../layout/Btn";
 import { Input } from "../user/Input";
 

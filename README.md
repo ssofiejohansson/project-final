@@ -8,4 +8,4 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 ## View it live
 
-(https://aquamarine-macaron-3cac53.netlify.app/)
+(https://subscribee-project.netlify.app/)

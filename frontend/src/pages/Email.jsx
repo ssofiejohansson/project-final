@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import EmailForm from "../comp/EmailForm";
-import EmailRemindersList from "../comp/EmailRemindersList";
+import EmailForm from "./utils/comp/EmailForm";
+import EmailRemindersList from "../comp/utils/EmailRemindersList";
 
 const Email = () => {
   const [refreshReminders, setRefreshReminders] = useState(false);

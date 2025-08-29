@@ -21,7 +21,7 @@ import { useNavigate } from "react-router-dom";
 import { Popup } from "../../comp/layout/Popup";
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
 import useUserStore from "../../stores/useUserStore";
-import { BaseURL } from "../BaseURL";
+import { BaseURL } from "../utils/BaseURL";
 import { getLogoPath } from "../utils/getLogoPath";
 import { DashboardNavbar } from "./DashboardNavbar";
 import { SubscriptionModal } from "./SubscriptionModal";

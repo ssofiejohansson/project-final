@@ -6,7 +6,7 @@ import useUserStore from "../../stores/useUserStore";
 import { Input } from "./Input";
 import { Btn } from "../layout/Btn";
 import { Typography } from "@material-tailwind/react";
-import { BaseURL } from "../BaseURL";
+import { BaseURL } from "../utils/BaseURL";
 
 export const Usersignup = () => {
   const [formData, setFormData] = useState({

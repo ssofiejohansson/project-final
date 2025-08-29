@@ -19,7 +19,7 @@ export const Btn = ({
 
   const variantClasses = {
     filled:
-      "bg-main text-white shadow-[0_5px_0_0_#f24e03] hover:brightness-110 active:translate-y-[5px] active:shadow-none",
+      "bg-main text-white shadow-[0_5px_0_0_#065F46] hover:brightness-110 active:translate-y-[5px] active:shadow-none",
     outlined:
       "border-2 border-main text-main bg-transparent shadow-sm hover:scale-110 active:scale-110 active:shadow-sm",
     text: "text-main bg-transparent shadow-md hover:text-light",

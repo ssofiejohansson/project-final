@@ -1,5 +1,5 @@
-import contributeMessages from "../data/savemoneycontribute.json"
-import useSubscriptionStore from "../stores/useSubscriptionStore"
+import contributeMessages from "../../data/savemoneycontribute.json"
+import useSubscriptionStore from "../../stores/useSubscriptionStore"
 
 export const CalculateCost = () => {
   const selectedSubSave = useSubscriptionStore((s) => s.selectedSubSave);

@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 import useLoadingStore from "../../stores/useLoadingStore";
 import useUserStore from "../../stores/useUserStore";
-import { BaseURL } from "../BaseURL";
+import { BaseURL } from "../utils/BaseURL";
 import { Btn } from "../layout/Btn";
 import { Input } from "./Input";
 import { Typography } from "@material-tailwind/react";

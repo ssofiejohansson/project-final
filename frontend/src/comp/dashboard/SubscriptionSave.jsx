@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import useSubscriptionStore from "../../stores/useSubscriptionStore";
-import { CalculateCost } from "../CalculateCost";
+import { CalculateCost } from "../utils/CalculateCost";
 
 export const SubscriptionSave = () => {
   const { isSaveOpen, closeSaveDialog } = useSubscriptionStore();
