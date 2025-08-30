@@ -2,8 +2,8 @@ import { Card, CardBody, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import useSubscriptionStore from "../../stores/useSubscriptionStore";
-import useUserStore from "../../stores/useUserStore";
+import { useSubscriptionStore } from "../../stores/useSubscriptionStore";
+import { useUserStore } from "../../stores/useUserStore";
 import { SubscriptionList } from "../dashboard/SubscriptionList";
 import { Btn } from "../layout/Btn";
 import { Loader } from "../layout/Loader";
@@ -11,9 +11,7 @@ import { DashboardHeader } from "./DashboardHeader";
 import { Linegraph } from "./Linegraph";
 import { Stats } from "./Stats";
 
-import { Popup } from "../layout/Popup"
-
-
+import { Popup } from "../layout/Popup";
 
 import "../../../src/index.css";
 
@@ -60,7 +58,6 @@ export const Dashboard = () => {
 
   return (
     <section className="min-h-[82vh] w-full place-items-stretch">
-
       <DashboardHeader user={user} />
 
       {subscriptions && subscriptions.length > 0 && (
@@ -76,7 +73,6 @@ export const Dashboard = () => {
       )}
       <SubscriptionList subscriptions={subscriptions} />
       <Linegraph subscriptions={subscriptions} />
-
     </section>
   );
 };

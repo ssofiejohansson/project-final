@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import useSubscriptionStore from "../../stores/useSubscriptionStore";
+import { useSubscriptionStore } from "../../stores/useSubscriptionStore";
 import { CalculateCost } from "../utils/CalculateCost";
 
 export const SubscriptionSave = () => {
@@ -17,9 +17,10 @@ export const SubscriptionSave = () => {
 
   return (
     <div className="space-y-3 ">
-      <div className="text-text text-lg font-semibold">You just saved some honey!  🍯</div>
+      <div className="text-text text-lg font-semibold">
+        You just saved some honey! 🍯
+      </div>
       <CalculateCost />
     </div>
   );
 };
-

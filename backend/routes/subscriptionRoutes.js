@@ -3,7 +3,7 @@ import express from 'express';
 import { authenticateUser } from '../authMiddleware.js';
 import { Subscription } from '../models/Subscription.js';
 
-const router = express.Router();
+export const router = express.Router();
 
 //To get all subscriptions
 router.get('/', authenticateUser, async (req, res) => {
@@ -90,7 +90,7 @@ router.post('/', authenticateUser, async (req, res) => {
       freeTrial,
       trialDays,
       reminderDate,
-      sendEmail, 
+      sendEmail,
       user: req.user._id,
     });
 
@@ -113,20 +113,36 @@ router.post('/', authenticateUser, async (req, res) => {
 //To edit a subscription (endpoint is /subscriptions/:id)
 router.patch('/:id', authenticateUser, async (req, res) => {
   const { id } = req.params;
-  const { name, cost, freeTrial, trialDays, reminderDate, status, category, sendEmail } =
-    req.body;
+  const {
+    name,
+    cost,
+    freeTrial,
+    trialDays,
+    reminderDate,
+    status,
+    category,
+    sendEmail,
+  } = req.body;
 
   try {
     const editSubscription = await Subscription.findOneAndUpdate(
       { _id: id, user: req.user._id },
-      { name, cost, freeTrial, trialDays, reminderDate, status, category, sendEmail },
+      {
+        name,
+        cost,
+        freeTrial,
+        trialDays,
+        reminderDate,
+        status,
+        category,
+        sendEmail,
+      },
       {
         new: true,
         runValidators: true,
       }
-      
     );
-    
+
     if (!editSubscription) {
       return res.status(404).json({ error: 'Subscription not found' });
     }
@@ -159,5 +175,3 @@ router.delete('/:id', authenticateUser, async (req, res) => {
     });
   }
 });
-
-export default router;

@@ -2,7 +2,7 @@ import express from 'express';
 import mongoEmailScheduler from '../services/mongoEmailScheduler.js';
 import sendEmail from '../sendEmail.js'; // Import your email function
 
-const router = express.Router();
+export const router = express.Router();
 
 // Test route
 router.get('/test', (req, res) => {
@@ -39,7 +39,7 @@ router.get('/reminders', async (req, res) => {
 });
 
 // Schedule or send email
-router.post('/', async (req, res) => {  
+router.post('/', async (req, res) => {
   try {
     const {
       to,
@@ -58,7 +58,7 @@ router.post('/', async (req, res) => {
           subject,
           text,
         });
-       
+
         res.status(200).json({
           message: 'Email sent successfully!',
           recipient: to,
@@ -120,7 +120,7 @@ router.post('/test-config', async (req, res) => {
 
     if (!to) {
       return res.status(400).json({ error: 'Email address required for test' });
-    }   
+    }
 
     const result = await sendEmail({
       to,
@@ -143,5 +143,3 @@ router.post('/test-config', async (req, res) => {
     });
   }
 });
-
-export default router;

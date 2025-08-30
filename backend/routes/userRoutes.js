@@ -3,16 +3,14 @@ import express from 'express';
 
 import { User } from '../models/User.js';
 
-const router = express.Router();
+export const router = express.Router();
 
 // To get all users
-router.get("/", async (req, res) => { 
-
-  try {    
-    const users = await User.find({})
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.find({});
 
     if (!users || users.length === 0) {
-
       return res.status(404).json({
         success: false,
         response: null,
@@ -23,10 +21,8 @@ router.get("/", async (req, res) => {
     res.status(200).json({
       success: true,
 
-      response: users
-    })
-
-
+      response: users,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -39,10 +35,8 @@ router.get("/", async (req, res) => {
 // To register a new user
 router.post('/', async (req, res) => {
   try {
-
-    const { name, email, password } = req.body
-    const salt = bcrypt.genSaltSync()
-
+    const { name, email, password } = req.body;
+    const salt = bcrypt.genSaltSync();
 
     const user = new User({
       name,
@@ -100,5 +94,3 @@ router.post('/login', async (req, res) => {
     });
   }
 });
-
-export default router;

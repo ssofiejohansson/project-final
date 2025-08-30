@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { Logout } from "../../comp/user/LogoutBtn";
-import useUserStore from "../../stores/useUserStore";
+import { useUserStore } from "../../stores/useUserStore";
 import { Btn } from "./Btn";
 
 export const Navbar = () => {
@@ -28,7 +28,6 @@ export const Navbar = () => {
           {label}
         </Typography>
       </ul>
-
     </Link>
   );
 
@@ -60,8 +59,13 @@ export const Navbar = () => {
             to="/"
             className="cursor-pointer flex items-center gap-3"
           >
-            <img src={Logo} width="100"
-              height="109" alt="SubscriBee Logo" className="h-11 w-auto m-1" />
+            <img
+              src={Logo}
+              width="100"
+              height="109"
+              alt="SubscriBee Logo"
+              className="h-11 w-auto m-1"
+            />
             <span className="text-xl font-extrabold font-heading bg-gradient-to-r from-main to-accent bg-clip-text text-transparent drop-shadow-sm">
               SubscriBee
             </span>

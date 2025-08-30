@@ -2,8 +2,8 @@ import { Typography } from "@material-tailwind/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import useLoadingStore from "../../stores/useLoadingStore";
-import useUserStore from "../../stores/useUserStore";
+import { useLoadingStore } from "../../stores/useLoadingStore";
+import { useUserStore } from "../../stores/useUserStore";
 import { Btn } from "../layout/Btn";
 import { BaseURL } from "../utils/BaseURL";
 import { Input } from "./Input";
@@ -82,14 +82,10 @@ export const Usersignup = () => {
   return (
     <section className="flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
-
         <Typography variant="h1" className="text-text text-center mb-4">
           Sign Up
         </Typography>
-        <Typography
-          variant="paragraph"
-          className="text-text text-center mb-8"
-        >
+        <Typography variant="paragraph" className="text-text text-center mb-8">
           Join SubscriBee and get started today
         </Typography>
 
@@ -97,7 +93,6 @@ export const Usersignup = () => {
           <div>
             <label for="name" className="text-fonttext">
               Name
-
               <Input
                 type="text"
                 name="name"
@@ -112,7 +107,6 @@ export const Usersignup = () => {
           <div className="flex flex-col space-y-1">
             <label for="email" className="text-fonttext">
               Email address
-
               <Input
                 type="email"
                 name="email"
@@ -127,7 +121,6 @@ export const Usersignup = () => {
           <div className="flex flex-col space-y-1">
             <label for="password" className="text-fonttext">
               Password
-
               <Input
                 type="password"
                 name="password"
@@ -139,28 +132,22 @@ export const Usersignup = () => {
             </label>
           </div>
 
-          {error && <Typography variant="small" color="red" className="text-center">
-            {error}
-          </Typography>}
+          {error && (
+            <Typography variant="small" color="red" className="text-center">
+              {error}
+            </Typography>
+          )}
           {success && (
             <Typography variant="small" color="green" className="text-center">
               User created successfully!
             </Typography>
           )}
-          <Btn
-            type="submit"
-            variant="filled"
-            size="md"
-            className="w-full"
-          >
+          <Btn type="submit" variant="filled" size="md" className="w-full">
             Sign up
           </Btn>
         </form>
 
-        <Typography
-          variant="medium"
-          className="text-font mt-6 text-center"
-        >
+        <Typography variant="medium" className="text-font mt-6 text-center">
           Already have an account?{" "}
           <Link to="/login" className="text-main hover:underline">
             Login

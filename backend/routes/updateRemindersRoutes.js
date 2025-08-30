@@ -1,61 +1,68 @@
-import express from "express";
-import mongoose from "mongoose";
+import express from 'express';
+import mongoose from 'mongoose';
 
-import { Subscription } from "../models/Subscription.js";
+import { Subscription } from '../models/Subscription.js';
 
-const router = express.Router();
+export const router = express.Router();
 
 router.patch('/update-reminders', async (req, res) => {
   const authHeader = req.headers.authorization;
 
   // Secure auth check
   if (authHeader !== process.env.API_SECRET) {
-    return res.status(403).json({ 
-      error: "Unauthorized", 
-      success: false 
-     });
+    return res.status(403).json({
+      error: 'Unauthorized',
+      success: false,
+    });
   }
 
   try {
-    const today = new Date();   
+    const today = new Date();
 
     // Find IDs first so we know what we're updating
-    const subsToUpdate = await Subscription.find({ reminderDate: { $lt: today } }).select("_id reminderDate");
+    const subsToUpdate = await Subscription.find({
+      reminderDate: { $lt: today },
+    }).select('_id reminderDate');
 
     if (subsToUpdate.length === 0) {
-      return res.json({ message: "No subscriptions needed updating." });
-    }   
+      return res.json({ message: 'No subscriptions needed updating.' });
+    }
 
     // Bulk update: add 1 month
     const result = await Subscription.updateMany(
-      { _id: { $in: subsToUpdate.map(s => s._id) } },
-      [{
-        $set: {
-          reminderDate: {
-            $dateAdd: { startDate: "$reminderDate", unit: "month", amount: 1 }
-          }
-        }
-      }]
-    );   
+      { _id: { $in: subsToUpdate.map((s) => s._id) } },
+      [
+        {
+          $set: {
+            reminderDate: {
+              $dateAdd: {
+                startDate: '$reminderDate',
+                unit: 'month',
+                amount: 1,
+              },
+            },
+          },
+        },
+      ]
+    );
 
     // Fetch updated docs for verification
-    const updatedSubs = await Subscription.find({ _id: { $in: subsToUpdate.map(s => s._id) } })
-      .select("_id reminderDate")
+    const updatedSubs = await Subscription.find({
+      _id: { $in: subsToUpdate.map((s) => s._id) },
+    })
+      .select('_id reminderDate')
       .lean();
 
     res.json({
       message: `Updated ${updatedSubs.length} subscriptions.`,
-      updated: updatedSubs
+      updated: updatedSubs,
     });
-
   } catch (err) {
     console.error(err);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'Failed to update reminders',
-      success: false, 
-      message: err.message 
+      success: false,
+      message: err.message,
     });
   }
 });
-
-export default router;

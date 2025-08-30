@@ -1,11 +1,26 @@
-import { BellAlertIcon, BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
-import { Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
+import {
+  BellAlertIcon,
+  BookOpenIcon,
+  CakeIcon,
+  HeartIcon,
+  PencilIcon,
+  QuestionMarkCircleIcon,
+  TrashIcon,
+  TvIcon,
+} from "@heroicons/react/24/outline";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  IconButton,
+  Typography,
+} from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Popup } from "../../comp/layout/Popup";
-import useSubscriptionStore from "../../stores/useSubscriptionStore";
-import useUserStore from "../../stores/useUserStore";
+import { useSubscriptionStore } from "../../stores/useSubscriptionStore";
+import { useUserStore } from "../../stores/useUserStore";
 import { BaseURL } from "../utils/BaseURL";
 import { getLogoPath } from "../utils/getLogoPath";
 import { DashboardNavbar } from "./DashboardNavbar";
@@ -177,7 +192,6 @@ export const SubscriptionList = () => {
 
           <CardBody className="!px-0 py-2">
             <div className="overflow-x-auto">
-             
               <table className="w-full table-auto">
                 <thead>
                   <tr>
@@ -202,8 +216,9 @@ export const SubscriptionList = () => {
                       >
                         {subscriptions.length === 0
                           ? "You have not added any subscriptions, please click add."
-                          : `You have no subscriptions listed under ${filterCategory || "this category"
-                          }.`}
+                          : `You have no subscriptions listed under ${
+                              filterCategory || "this category"
+                            }.`}
                       </td>
                     </tr>
                   ) : (
