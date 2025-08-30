@@ -130,7 +130,7 @@ export const AboutProject = () => {
           </div>
         </div>
       </section>
-      <Dialog className="px-4 py-2 max-h-[90vh] flex flex-col" open={open} handler={handleOpen} size="md">
+      <Dialog className="px-4 py-2 max-h-[80vh] flex flex-col" open={open} handler={handleOpen} size="md">
         <DialogHeader>Full Tech Stack</DialogHeader>
         <DialogBody className="text-text h-[30rem] overflow-y-auto p10">
           <Typography variant="h5" className="mb-2 font-heading">
