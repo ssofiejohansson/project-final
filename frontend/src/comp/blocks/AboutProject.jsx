@@ -111,16 +111,16 @@ export const AboutProject = () => {
                 <Typography variant="h3" className="text-text mb-2 font-medium font-heading">
                   Tech Stack
                 </Typography>
-                <Typography className="text-text text-center max-w-xs mx-auto  font-normal leading-7">
+                <Typography className="text-text text-center max-w-xs mx-auto font-normal leading-7">
                   We've utilized a modern tech stack for a high-quality user
                   experience, including React, Zustand for state management, and
                   Tailwind CSS. The backend is powered by Node.js and Express,
-                  ensuring a robust and scalable application.{" "}
+                  ensuring a robust and scalable application. Check out our full tech stack{" "}
                   <span
                     onClick={handleOpen}
-                    className="font-bold cursor-pointer hover:underline"
+                    className="text-main font-bold cursor-pointer hover:underline"
                   >
-                    Check out the full tech stack here!
+                    here.
                   </span>
                 </Typography>
               </CardBody>
