@@ -41,7 +41,7 @@ export const Navbar = () => {
         <li>
           <a
             href="mailto:"
-            className="text-text  hover:text-accent font-medium transition-colors font-textfont"
+            className="text-text hover:text-accent font-medium transition-colors font-textfont"
           >
             Contact
           </a>
@@ -76,7 +76,7 @@ export const Navbar = () => {
           <div className="hidden lg:flex items-center gap-4 font-textfont">
             {user ? (
               <>
-                <span className="text-md">Hi {user.name}!</span>
+                <span className="text-lg">Hi {user.name}!</span>
                 <Btn
                   onClick={() => navigate("/admin")}
                   size="sm"
@@ -125,14 +125,14 @@ export const Navbar = () => {
 
         {/* Mobile menu */}
         <Collapse open={open}>
-          <div className="mt-2 rounded-xl bg-white pb-4 px-4 flex flex-col">
+          <div className="mt-2 rounded-xl bg-white pb-4 px-4 flex flex-col font-textfont">
             {/* TOP section */}
             {user ? (
               <>
-                <Typography className="text-lg py-1">
+                <Typography className="text-lg py-1 font-textfont font-medium">
                   Hi {user.name}!
                 </Typography>
-                <div className="flex flex-col gap-2 py-2 text-main border-t border-gray-200">
+                <div className="flex flex-col gap-2 py-2 text-accent border-t border-gray-200">
                   <Link
                     to="/admin"
                     onClick={closeMenu}

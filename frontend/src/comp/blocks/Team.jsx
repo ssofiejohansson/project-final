@@ -40,6 +40,7 @@ export const Team = () => {
             href={member.linkedin}
             target="_blank"
             rel="noopener noreferrer"
+            title={member.name}
           >
             <Avatar
               size="xl"
@@ -59,7 +60,7 @@ export const Team = () => {
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-bold text-text hover:underline"
+            className="text-xs font-bold text-accent hover:underline"
           >
             {link.label}
           </a>

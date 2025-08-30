@@ -85,8 +85,8 @@ export const AboutProject = () => {
                   Our Team
                 </Typography>
                 <Typography className="text-center max-w-xs mx-auto font-normal leading-7 text-text">
-                  Meet the creators behind SubscriBee — students learning and
-                  building real-world applications.
+                  Meet the creators behind SubscriBee - students learning and
+                  building real-world applications:
                 </Typography>
                 <Team />
               </CardBody>
@@ -120,10 +120,10 @@ export const AboutProject = () => {
                   ensuring a robust and scalable application. Check out our full tech stack{" "}
                   <span
                     onClick={handleOpen}
-                    className="text-main font-bold cursor-pointer hover:underline"
+                    className="text-accent font-bold cursor-pointer hover:underline"
                   >
-                    here.
-                  </span>
+                    here
+                  </span>.
                 </Typography>
               </CardBody>
             </Card>

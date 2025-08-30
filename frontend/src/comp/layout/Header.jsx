@@ -27,7 +27,7 @@ export const Header = () => {
             variant="lead"
             className="mx-auto w-full text-light lg:text-lg text-base"
           >
-            We makes it simple to track monthly and yearly costs, so you always
+            We make it simple to track monthly and yearly costs, so you always
             know where your money’s going.
           </Typography>
           <div className="mt-8 grid w-full place-items-start md:justify-center">
