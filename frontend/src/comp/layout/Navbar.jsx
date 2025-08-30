@@ -22,21 +22,21 @@ export const Navbar = () => {
     <Link to={to} onClick={onClick}>
       <ul>
         <Typography
-        as="li"
-        className="text-text p-1 font-medium hover:text-main transition-colors"
-      >
-        {label}
+          as="li"
+          className="text-text p-1 font-medium hover:text-main transition-colors"
+        >
+          {label}
         </Typography>
       </ul>
-      
+
     </Link>
   );
 
   const NavList = ({ onClick }) => (
     <div className="mb-4 mt-2 flex flex-col gap-3 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-8 font-textfont">
-      {!isHome && <NavItem to="/" label="Home" onClick={onClick} />}      
+      {!isHome && <NavItem to="/" label="Home" onClick={onClick} />}
       <NavItem to="/about" label="About" onClick={onClick} />
-     
+
       <ul>
         <li>
           <a
@@ -60,7 +60,8 @@ export const Navbar = () => {
             to="/"
             className="cursor-pointer flex items-center gap-3"
           >
-            <img src={Logo} alt="SubscriBee Logo" className="h-10 m-1" />
+            <img src={Logo} width="100"
+              height="109" alt="SubscriBee Logo" className="h-11 w-auto m-1" />
             <span className="text-xl font-extrabold font-heading bg-gradient-to-r from-main to-accent bg-clip-text text-transparent drop-shadow-sm">
               SubscriBee
             </span>

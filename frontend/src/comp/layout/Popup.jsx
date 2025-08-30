@@ -2,6 +2,7 @@ import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { IconButton, Typography } from "@material-tailwind/react";
 import Logo from "/subscribee-logo-left.webp";
 import { useEffect, useState } from "react";
+
 export const Popup = ({ children, delay }) => {
   const [visible, setVisible] = useState(!delay);
   const [collapsed, setCollapsed] = useState(false);
@@ -42,9 +43,9 @@ export const Popup = ({ children, delay }) => {
         <img
           src={Logo}
           alt="SubscriBee Logo"
-          width={50}
-          height={50}
-          className="animate-buzzCircle transition-transform"
+          width="100"
+          height="109"
+          className="h-16 w-auto animate-buzzCircle transition-transform"
         />
       </div>
 
