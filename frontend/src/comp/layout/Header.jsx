@@ -55,7 +55,7 @@ export const Header = () => {
         </div>
 
         <div
-          className="mt-6 w-full h-[300px] lg:h-[400px] bg-center bg-contain bg-no-repeat"
+          className="mt-6 w-auto h-[300px] lg:h-[400px] bg-center bg-contain bg-no-repeat"
           style={{ backgroundImage: `url(${HeroImage})` }}
         ></div>
       </div>
