@@ -1,12 +1,12 @@
+import { Typography } from "@material-tailwind/react";
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import useLoadingStore from "../../stores/useLoadingStore";
 import useUserStore from "../../stores/useUserStore";
-import { Input } from "./Input";
 import { Btn } from "../layout/Btn";
-import { Typography } from "@material-tailwind/react";
 import { BaseURL } from "../utils/BaseURL";
+import { Input } from "./Input";
 
 export const Usersignup = () => {
   const [formData, setFormData] = useState({
@@ -95,48 +95,48 @@ export const Usersignup = () => {
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-          <label for="name" className="text-fonttext">
-            Name
-          
-          <Input            
-            type="text"
-            name="name"
-            aria-label="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          </label>
+            <label for="name" className="text-fonttext">
+              Name
+
+              <Input
+                type="text"
+                name="name"
+                aria-label="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </label>
           </div>
 
           <div className="flex flex-col space-y-1">
-          <label for="email" className="text-fonttext">
-            Email address
-          
-          <Input            
-            type="email"
-            name="email"
-            aria-label="email address"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          </label>
+            <label for="email" className="text-fonttext">
+              Email address
+
+              <Input
+                type="email"
+                name="email"
+                aria-label="email address"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </label>
           </div>
 
           <div className="flex flex-col space-y-1">
             <label for="password" className="text-fonttext">
               Password
-            
-          <Input            
-            type="password"
-            name="password"
-            aria-label="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-          </label>
+
+              <Input
+                type="password"
+                name="password"
+                aria-label="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+            </label>
           </div>
 
           {error && <Typography variant="small" color="red" className="text-center">
@@ -158,11 +158,11 @@ export const Usersignup = () => {
         </form>
 
         <Typography
-          variant="small"
-          className="text-light mt-6 text-center"
+          variant="medium"
+          className="text-font mt-6 text-center"
         >
           Already have an account?{" "}
-          <Link to="/login" className="text-main font-medium hover:underline">
+          <Link to="/login" className="text-main hover:underline">
             Login
           </Link>
         </Typography>
