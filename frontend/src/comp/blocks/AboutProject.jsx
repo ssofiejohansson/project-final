@@ -98,7 +98,7 @@ export const AboutProject = () => {
                 <Typography variant="h3" className="text-text mb-2 font-medium font-heading">
                   Project Process
                 </Typography>
-                <Typography className="text-center max-w-xs mx-auto  font-normal leading-7 text-text">
+                <Typography className="text-center max-w-xs mx-auto font-normal leading-7 text-text">
                   SubscriBee was built using agile methodology with user
                   testing, feedback and constant improvement to deliver a smooth
                   subscription-tracking experience. We have the user in mind
