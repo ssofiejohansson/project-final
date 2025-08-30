@@ -7,9 +7,6 @@ module.exports = withMT({
       colors: {
         main: "#047857", // teal greeen 
         accent: "#065F46", //Amerald
-        
-        // main: "#000000",   // black
-        // accent: "#444444", // dark grey
         text: "#333333", // charcoal
         light: "#555555", // light-grey
       },
@@ -31,8 +28,8 @@ module.exports = withMT({
         buzzCircle: "buzzCircle 0.4s linear infinite",
       },
       fontFamily: {
-        heading: ["Didact Gothic", "sans-serif"],
-        textfont: ["Poppins", "sans-serif"],
+        heading: ["Didact Gothic", "Helvetica", "sans-serif"],
+        textfont: ["Poppins", "Roboto", "Arial", "sans-serif"],
       },
       fontWeight: {
         light: 100,
