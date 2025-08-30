@@ -1,7 +1,7 @@
 import { Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 
-import HeroImage from "../../assets/home-img/hero-img.webp";
+import HeroImage from "../../assets/images/hero-img.webp";
 import useUserStore from "../../stores/useUserStore";
 import { Btn } from "./Btn";
 
@@ -27,35 +27,35 @@ export const Header = () => {
             variant="lead"
             className="mx-auto w-full text-light lg:text-lg text-base"
           >
-            We makes it simple to track monthly and yearly costs, so you always
+            We make it simple to track monthly and yearly costs, so you always
             know where your money’s going.
           </Typography>
           <div className="mt-8 grid w-full place-items-start md:justify-center">
             <div className="mb-2 flex w-full flex-col gap-4 md:flex-row">
-              {user ? 
-              (              
-              <Btn
-                onClick={() => navigate("/admin")}
-                size="md"
-                variant="filled"
-              >
-                Dashboard
-              </Btn>              
-              ) : (              
-              <Btn
-                onClick={() => navigate("/signup")}
-                size="md"
-                variant="filled"
-              >
-                Join the hive
-              </Btn>            
-              )}              
+              {user ?
+                (
+                  <Btn
+                    onClick={() => navigate("/admin")}
+                    size="md"
+                    variant="filled"
+                  >
+                    Dashboard
+                  </Btn>
+                ) : (
+                  <Btn
+                    onClick={() => navigate("/signup")}
+                    size="md"
+                    variant="filled"
+                  >
+                    Join the hive
+                  </Btn>
+                )}
             </div>
           </div>
         </div>
 
         <div
-          className="mt-6 w-full h-[300px] lg:h-[400px] bg-center bg-contain bg-no-repeat"
+          className="mt-6 w-auto h-[300px] lg:h-[400px] bg-center bg-contain bg-no-repeat"
           style={{ backgroundImage: `url(${HeroImage})` }}
         ></div>
       </div>

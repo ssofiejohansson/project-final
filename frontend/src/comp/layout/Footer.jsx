@@ -13,9 +13,9 @@ export const Footer = () => {
   const user = useUserStore((state) => state.user);
 
   return (
-    <footer className="pt-12 bg-gray-50 border-t border-gray-200 font-textfont">
+    <footer className="py-12 bg-gray-50 border-t border-gray-200">
       <div className="px-8 container mx-auto flex flex-col items-center">
-        <div className="flex flex-wrap items-center justify-center gap-6 pb-4 ">
+        <div className="flex flex-wrap items-center justify-center gap-6 pb-6 font-textfont">
           <ul>
             <li>
               <Link to="/about" className="transition-colors hover:text-accent">
@@ -80,7 +80,9 @@ export const Footer = () => {
       <img
         src={Logo}
         alt="SubscriBee Logo"
-        className="h-40 w-40 object-contain "
+        width="200"
+        height="79"
+        className="h-16 w-auto lg:h-auto"
       />
     </footer>
   );

@@ -22,26 +22,26 @@ export const Navbar = () => {
     <Link to={to} onClick={onClick}>
       <ul>
         <Typography
-        as="li"
-        className="text-text p-1 font-medium hover:text-main transition-colors"
-      >
-        {label}
+          as="li"
+          className="text-text font-textfont font-medium hover:text-accent transition-colors"
+        >
+          {label}
         </Typography>
       </ul>
-      
+
     </Link>
   );
 
   const NavList = ({ onClick }) => (
-    <div className="mb-4 mt-2 flex flex-col gap-3 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-8 font-textfont">
-      {!isHome && <NavItem to="/" label="Home" onClick={onClick} />}      
+    <div className="mb-4 mt-2 flex flex-col gap-3 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+      {!isHome && <NavItem to="/" label="Home" onClick={onClick} />}
       <NavItem to="/about" label="About" onClick={onClick} />
-     
+
       <ul>
         <li>
           <a
             href="mailto:"
-            className="text-text p-1 hover:text-main transition-colors font-textfont"
+            className="text-text hover:text-accent font-medium transition-colors font-textfont"
           >
             Contact
           </a>
@@ -60,7 +60,8 @@ export const Navbar = () => {
             to="/"
             className="cursor-pointer flex items-center gap-3"
           >
-            <img src={Logo} alt="SubscriBee Logo" className="h-10 m-1" />
+            <img src={Logo} width="100"
+              height="109" alt="SubscriBee Logo" className="h-11 w-auto m-1" />
             <span className="text-xl font-extrabold font-heading bg-gradient-to-r from-main to-accent bg-clip-text text-transparent drop-shadow-sm">
               SubscriBee
             </span>
@@ -75,7 +76,7 @@ export const Navbar = () => {
           <div className="hidden lg:flex items-center gap-4 font-textfont">
             {user ? (
               <>
-                <span className="text-md">Hi {user.name}!</span>
+                <span className="text-lg">Hi {user.name}!</span>
                 <Btn
                   onClick={() => navigate("/admin")}
                   size="sm"
@@ -124,14 +125,14 @@ export const Navbar = () => {
 
         {/* Mobile menu */}
         <Collapse open={open}>
-          <div className="mt-2 rounded-xl bg-white pb-4 px-4 flex flex-col">
+          <div className="mt-2 rounded-xl bg-white pb-4 px-4 flex flex-col font-textfont">
             {/* TOP section */}
             {user ? (
               <>
-                <Typography className="text-lg py-1">
+                <Typography className="text-lg py-1 font-textfont font-medium">
                   Hi {user.name}!
                 </Typography>
-                <div className="flex flex-col gap-2 py-2 text-main border-t border-gray-200">
+                <div className="flex flex-col gap-2 py-2 text-accent border-t border-gray-200">
                   <Link
                     to="/admin"
                     onClick={closeMenu}
@@ -151,14 +152,14 @@ export const Navbar = () => {
             )}
 
             {/* BOTTOM section */}
-            <div className="mt-auto flex flex-col gap-2 pt-4 border-gray-200">
+            <div className="mt-auto flex flex-col gap-2 pt-4 m-2 border-gray-200">
               {user ? (
                 <div
                   onClick={() => {
                     closeMenu();
                   }}
                 >
-                  <Logout size="md" variant="text" />
+                  <Logout size="md" variant="text" className="w-full" />
                 </div>
               ) : (
                 <>
@@ -169,7 +170,7 @@ export const Navbar = () => {
                     }}
                     size="md"
                     variant="filled"
-                    className="mb-2 w-auto"
+                    className="w-auto mb-2"
                   >
                     Log in
                   </Btn>

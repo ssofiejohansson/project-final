@@ -1,15 +1,16 @@
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+
+import AddSubImage from "../../assets/images/addsub-img.webp";
+import SignupImage from "../../assets/images/signup-img.webp";
+import SubListImage from "../../assets/images/sublist-img.webp";
 import { Team } from "./Team";
-import SignupImage from "../../assets/home-img/signup-img.webp";
-import AddSubImage from "../../assets/home-img/addsub-img.webp";
-import SubListImage from "../../assets/home-img/sublist-img.webp";
 
 export const Guide = () => {
   return (
     <section className="bg-gray-50 lg:py-20 py-14 px-8">
       <div className="container mx-auto mb-8 text-center lg:mb-10">
-        <Typography className="text-light mb-2 font-bold uppercase">
+        <Typography className="text-accent mb-2 font-bold uppercase">
           How it works
         </Typography>
         <Typography
@@ -34,7 +35,7 @@ export const Guide = () => {
               Step 1 - Create Your Account
             </Typography>
             <Typography className="text-center max-w-xs mx-auto font-normal leading-7 text-light">
-              <Link to="/signup" className="font-bold hover:underline">
+              <Link to="/signup" className="text-accent font-bold hover:underline">
                 Sign up
               </Link>{" "}
               for free and start fresh.
@@ -43,6 +44,8 @@ export const Guide = () => {
           <img
             src={SignupImage}
             alt="image of the sign up form"
+            width="1310"
+            height="855"
             className="w-full max-w-lg mx-auto object-cover md:object-contain"
           />
         </Card>
@@ -62,7 +65,9 @@ export const Guide = () => {
           </CardBody>
           <img
             src={AddSubImage}
-            alt="image of the dashboard with a list of subscriptions"
+            alt="image of the form to add a new subscription"
+            width="1310"
+            height="855"
             className="w-full max-w-lg mx-auto object-cover md:object-contain"
           />
         </Card>
@@ -84,7 +89,9 @@ export const Guide = () => {
           </CardBody>
           <img
             src={SubListImage}
-            alt="image on the email of a reminder and a popup with a message"
+            alt="image on the dashboard showing subscription statistics and list"
+            width="1310"
+            height="855"
             className="w-full max-w-lg mx-auto object-cover md:object-contain"
           />
         </Card>
@@ -98,7 +105,7 @@ export const Guide = () => {
               SubscriBee is a student-built project designed to help people
               better manage their digital lives. Learn more about our team and
               process on the{" "}
-              <Link to="/about" className="font-bold hover:underline">
+              <Link to="/about" className="text-accent font-bold hover:underline">
                 About
               </Link>{" "}
               page.

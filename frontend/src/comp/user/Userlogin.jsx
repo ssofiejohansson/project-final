@@ -1,12 +1,12 @@
+import { Typography } from "@material-tailwind/react";
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import useLoadingStore from "../../stores/useLoadingStore";
 import useUserStore from "../../stores/useUserStore";
-import { BaseURL } from "../utils/BaseURL";
 import { Btn } from "../layout/Btn";
+import { BaseURL } from "../utils/BaseURL";
 import { Input } from "./Input";
-import { Typography } from "@material-tailwind/react";
 
 export const Userlogin = () => {
   const setLoading = useLoadingStore((state) => state.setLoading);
@@ -91,33 +91,33 @@ export const Userlogin = () => {
           <div className="flex flex-col space-y-1">
             <label for="email" className="text-fonttext">
               Email address
-            
-            <Input            
-              type="email"
-              name="email"
-              aria-label="email address"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-              className="text-fonttext"
-            />
+
+              <Input
+                type="email"
+                name="email"
+                aria-label="email address"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className="text-fonttext"
+              />
             </label>
           </div>
           <div className="flex flex-col space-y-1">
             <label for="password" className="text-fonttext">
               Password
-            
-            <Input            
-              type="password"
-              name="password"
-              aria-label="password"
-              value={formData.password}
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
-              className="text-fonttext"
-            />
+
+              <Input
+                type="password"
+                name="password"
+                aria-label="password"
+                value={formData.password}
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
+                className="text-fonttext"
+              />
             </label>
           </div>
           <Btn type="submit" variant="filled" size="md" className="w-full">
@@ -125,9 +125,9 @@ export const Userlogin = () => {
           </Btn>
         </form>
 
-        <Typography variant="medium" className="text-fonttext mt-6 text-center">
+        <Typography variant="medium" className="text-font mt-6 text-center">
           Don’t have an account?{" "}
-          <Link to="/signup" className="text-main font-medium underline">
+          <Link to="/signup" className="text-main hover:underline">
             Sign up
           </Link>
         </Typography>

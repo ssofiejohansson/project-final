@@ -1,8 +1,4 @@
-import {
-  CheckCircleIcon,
-  CurrencyDollarIcon,
-  UserGroupIcon,
-} from "@heroicons/react/24/outline";
+import { CheckCircleIcon, CurrencyDollarIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import { Card, Typography } from "@material-tailwind/react";
 import Chart from "react-apexcharts";
 
@@ -24,11 +20,11 @@ export const Stats = ({ subscriptions = [] }) => {
   }, {});
 
   const categoryColors = {
-    Entertainment: "#9333ea",
-    Food: "#ef4444",
-    Health: "#22c55e",
-    Learning: "#3b82f6",
-    Other: "#6b7280",
+    Entertainment: "#9c27b0",
+    Food: "#f44336",
+    Health: "#4caf50",
+    Learning: "#2196f3",
+    Other: "#9e9e9e",
   };
 
   const donutSeries = Object.values(categoryCounts);

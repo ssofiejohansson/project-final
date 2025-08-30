@@ -1,8 +1,8 @@
-import { Button, Card, CardBody, Dialog, DialogBody, DialogFooter, DialogHeader, Typography } from "@material-tailwind/react";
+import { Card, CardBody, Dialog, DialogBody, DialogFooter, DialogHeader, Typography } from "@material-tailwind/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import BeeatriceImg from "../../assets/home-img/beeatrice.webp";
+import BeeatriceImg from "../../assets/images/beeatrice.webp";
 import useUserStore from "../../stores/useUserStore";
 import { Btn } from "../layout/Btn";
 import { Team } from "./Team";
@@ -19,11 +19,13 @@ export const AboutProject = () => {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pb-20">
-            {/* HERO IMAGE */}
+
             <div className="flex justify-center">
               <img
                 src={BeeatriceImg}
                 alt="Project overview"
+                width="1310"
+                height="855"
                 className="rounded-xl object-cover w-full max-w-md lg:max-w-full"
               />
             </div>
@@ -83,8 +85,8 @@ export const AboutProject = () => {
                   Our Team
                 </Typography>
                 <Typography className="text-center max-w-xs mx-auto font-normal leading-7 text-text">
-                  Meet the creators behind SubscriBee — students learning and
-                  building real-world applications.
+                  Meet the creators behind SubscriBee - students learning and
+                  building real-world applications:
                 </Typography>
                 <Team />
               </CardBody>
@@ -96,7 +98,7 @@ export const AboutProject = () => {
                 <Typography variant="h3" className="text-text mb-2 font-medium font-heading">
                   Project Process
                 </Typography>
-                <Typography className="text-center max-w-xs mx-auto  font-normal leading-7 text-text">
+                <Typography className="text-center max-w-xs mx-auto font-normal leading-7 text-text">
                   SubscriBee was built using agile methodology with user
                   testing, feedback and constant improvement to deliver a smooth
                   subscription-tracking experience. We have the user in mind
@@ -111,17 +113,17 @@ export const AboutProject = () => {
                 <Typography variant="h3" className="text-text mb-2 font-medium font-heading">
                   Tech Stack
                 </Typography>
-                <Typography className="text-text text-center max-w-xs mx-auto  font-normal leading-7">
+                <Typography className="text-text text-center max-w-xs mx-auto font-normal leading-7">
                   We've utilized a modern tech stack for a high-quality user
                   experience, including React, Zustand for state management, and
                   Tailwind CSS. The backend is powered by Node.js and Express,
-                  ensuring a robust and scalable application.{" "}
+                  ensuring a robust and scalable application. Check out our full tech stack{" "}
                   <span
                     onClick={handleOpen}
-                    className="font-bold cursor-pointer hover:underline"
+                    className="text-accent font-bold cursor-pointer hover:underline"
                   >
-                    Check out the full tech stack here!
-                  </span>
+                    here
+                  </span>.
                 </Typography>
               </CardBody>
             </Card>
@@ -198,7 +200,7 @@ export const AboutProject = () => {
               </li>
               <li>
                 <strong>Automation:</strong>GitHub Actions (workflow automation via .yml pipelines for tasks such as database updates)
-              </li>               
+              </li>
               <li>
                 <strong>Hosting:</strong> Frontend on Netlify, Backend on Render.
               </li>
