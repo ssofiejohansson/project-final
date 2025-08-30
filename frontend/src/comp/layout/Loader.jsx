@@ -1,4 +1,4 @@
-import Logo from "/subscribee-logo-left.webp";
+import Logo from "/subscribee-logo-buzzing.webp";
 import { motion } from "framer-motion";
 
 export const Loader = () => {

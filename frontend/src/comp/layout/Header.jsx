@@ -1,7 +1,7 @@
 import { Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 
-import HeroImage from "../../assets/home-img/hero-img.webp";
+import HeroImage from "../../assets/images/hero-img.webp";
 import useUserStore from "../../stores/useUserStore";
 import { Btn } from "./Btn";
 
@@ -32,24 +32,24 @@ export const Header = () => {
           </Typography>
           <div className="mt-8 grid w-full place-items-start md:justify-center">
             <div className="mb-2 flex w-full flex-col gap-4 md:flex-row">
-              {user ? 
-              (              
-              <Btn
-                onClick={() => navigate("/admin")}
-                size="md"
-                variant="filled"
-              >
-                Dashboard
-              </Btn>              
-              ) : (              
-              <Btn
-                onClick={() => navigate("/signup")}
-                size="md"
-                variant="filled"
-              >
-                Join the hive
-              </Btn>            
-              )}              
+              {user ?
+                (
+                  <Btn
+                    onClick={() => navigate("/admin")}
+                    size="md"
+                    variant="filled"
+                  >
+                    Dashboard
+                  </Btn>
+                ) : (
+                  <Btn
+                    onClick={() => navigate("/signup")}
+                    size="md"
+                    variant="filled"
+                  >
+                    Join the hive
+                  </Btn>
+                )}
             </div>
           </div>
         </div>

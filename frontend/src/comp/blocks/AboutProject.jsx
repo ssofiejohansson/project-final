@@ -2,7 +2,7 @@ import { Button, Card, CardBody, Dialog, DialogBody, DialogFooter, DialogHeader,
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import BeeatriceImg from "../../assets/home-img/beeatrice.webp";
+import BeeatriceImg from "../../assets/images/beeatrice.webp";
 import useUserStore from "../../stores/useUserStore";
 import { Btn } from "../layout/Btn";
 import { Team } from "./Team";
@@ -198,7 +198,7 @@ export const AboutProject = () => {
               </li>
               <li>
                 <strong>Automation:</strong>GitHub Actions (workflow automation via .yml pipelines for tasks such as database updates)
-              </li>               
+              </li>
               <li>
                 <strong>Hosting:</strong> Frontend on Netlify, Backend on Render.
               </li>
