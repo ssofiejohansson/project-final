@@ -1,20 +1,5 @@
-import {
-  BellAlertIcon,
-  BookOpenIcon,
-  CakeIcon,
-  HeartIcon,
-  PencilIcon,
-  QuestionMarkCircleIcon,
-  TrashIcon,
-  TvIcon,
-} from "@heroicons/react/24/outline";
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  IconButton,
-  Typography,
-} from "@material-tailwind/react";
+import { BellAlertIcon, BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
+import { Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -136,9 +121,9 @@ export const SubscriptionList = () => {
   const categoryIcons = {
     Entertainment: <TvIcon className="h-8 w-8 text-purple-500" />,
     Food: <CakeIcon className="h-8 w-8 text-red-500" />,
-    Health: <HeartIcon className="h-8 w-8 text-main" />,
+    Health: <HeartIcon className="h-8 w-8 text-green-500" />,
     Learning: <BookOpenIcon className="h-8 w-8 text-blue-500" />,
-    Other: <QuestionMarkCircleIcon className="h-8 w-8 text-light" />,
+    Other: <QuestionMarkCircleIcon className="h-8 w-8 text-gray-500" />,
   };
 
   return (
