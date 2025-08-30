@@ -152,14 +152,14 @@ export const Navbar = () => {
             )}
 
             {/* BOTTOM section */}
-            <div className="mt-auto flex flex-col gap-2 pt-4 border-gray-200">
+            <div className="mt-auto flex flex-col gap-2 pt-4 m-2 border-gray-200">
               {user ? (
                 <div
                   onClick={() => {
                     closeMenu();
                   }}
                 >
-                  <Logout size="md" variant="text" />
+                  <Logout size="md" variant="text" className="w-full" />
                 </div>
               ) : (
                 <>
@@ -170,7 +170,7 @@ export const Navbar = () => {
                     }}
                     size="md"
                     variant="filled"
-                    className="mb-2 w-auto"
+                    className="w-auto mb-2"
                   >
                     Log in
                   </Btn>
