@@ -27,7 +27,7 @@ export const Footer = () => {
           <ul>
             <li>
               <a
-                href="mailto:"
+                href="mailto:subscribee.project@gmail.com"
                 className="flex items-center gap-2 transition-colors hover:text-accent"
               >
                 <EnvelopeIcon className="text-accent h-5 w-5" />
