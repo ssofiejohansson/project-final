@@ -1,13 +1,13 @@
-import sendEmail from '../sendEmail.js';
+import { sendEmail } from '../sendEmail.js';
 
-class EmailService {
+export class EmailService {
   async sendImmediateEmail(emailData) {
     try {
       await sendEmail({
         to: emailData.to,
         subject: emailData.subject,
         text: emailData.text,
-      });      
+      });
     } catch (error) {
       console.error(`❌ Failed to send email to ${emailData.to}:`, error);
       throw error;
@@ -15,4 +15,4 @@ class EmailService {
   }
 }
 
-export default new EmailService();
+export const emailService = new EmailService();

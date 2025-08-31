@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Btn } from "../layout/Btn";
 
-import useUserStore from "../../stores/useUserStore";
+import { useUserStore } from "../../stores/useUserStore";
 
 export const Logout = ({
   size = "md",

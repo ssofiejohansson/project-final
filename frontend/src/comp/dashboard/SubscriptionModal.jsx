@@ -1,11 +1,15 @@
 import { Dialog, DialogBody, DialogHeader } from "@material-tailwind/react";
 
-import useSubscriptionStore from "../../stores/useSubscriptionStore";
+import { useSubscriptionStore } from "../../stores/useSubscriptionStore";
 import { SubscriptionForm } from "./SubscriptionForm";
 
 // Modal component to display the subscription form in a popup
-export const SubscriptionModal = ({ setOpen, onSubscriptionAdded, sendEmail, setSendEmail, }) => {
-
+export const SubscriptionModal = ({
+  setOpen,
+  onSubscriptionAdded,
+  sendEmail,
+  setSendEmail,
+}) => {
   const isOpen = useSubscriptionStore((s) => s.isModalOpen);
   const selectedSub = useSubscriptionStore((s) => s.selectedSub);
   const closeModalDialog = useSubscriptionStore((s) => s.closeModalDialog);
@@ -26,16 +30,6 @@ export const SubscriptionModal = ({ setOpen, onSubscriptionAdded, sendEmail, set
           sendEmail={sendEmail}
           setSendEmail={setSendEmail}
         />
-        {/* <div className="flex items-center p-4">
-          <input
-            type="checkbox"
-            id="sendEmail"
-            checked={sendEmail ?? true}
-            onChange={() => setSendEmail((prev) => !prev)}
-            className="mr-2 border border-black"
-          />
-          <label htmlFor="sendEmail">Send email when adding subscription</label>
-        </div> */}
       </DialogBody>
     </Dialog>
   );

@@ -2,7 +2,7 @@ import { Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 
 import HeroImage from "../../assets/images/hero-img.webp";
-import useUserStore from "../../stores/useUserStore";
+import { useUserStore } from "../../stores/useUserStore";
 import { Btn } from "./Btn";
 
 export const Header = () => {
@@ -10,7 +10,6 @@ export const Header = () => {
   const user = useUserStore((state) => state.user);
 
   return (
-
     <header className="bg-white pt-4 lg:pt-10 ">
       <div className="grid w-full px-4 place-items-stretch">
         <div className="container mx-auto px-4 text-center">
@@ -32,24 +31,23 @@ export const Header = () => {
           </Typography>
           <div className="mt-8 grid w-full place-items-start md:justify-center">
             <div className="mb-2 flex w-full flex-col gap-4 md:flex-row">
-              {user ?
-                (
-                  <Btn
-                    onClick={() => navigate("/admin")}
-                    size="md"
-                    variant="filled"
-                  >
-                    Dashboard
-                  </Btn>
-                ) : (
-                  <Btn
-                    onClick={() => navigate("/signup")}
-                    size="md"
-                    variant="filled"
-                  >
-                    Join the hive
-                  </Btn>
-                )}
+              {user ? (
+                <Btn
+                  onClick={() => navigate("/admin")}
+                  size="md"
+                  variant="filled"
+                >
+                  Dashboard
+                </Btn>
+              ) : (
+                <Btn
+                  onClick={() => navigate("/signup")}
+                  size="md"
+                  variant="filled"
+                >
+                  Join the hive
+                </Btn>
+              )}
             </div>
           </div>
         </div>

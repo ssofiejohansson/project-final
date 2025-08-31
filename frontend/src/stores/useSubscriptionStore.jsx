@@ -1,9 +1,8 @@
 import { create } from "zustand";
-
 import { BaseURL } from "../comp/utils/BaseURL";
-import useLoadingStore from "./useLoadingStore";
+import { useLoadingStore } from "./useLoadingStore";
 
-const useSubscriptionStore = create((set) => ({
+export const useSubscriptionStore = create((set) => ({
   subscriptions: [],
   message: null,
   status: null,
@@ -15,7 +14,8 @@ const useSubscriptionStore = create((set) => ({
   isSaveOpen: false,
   selectedSubSave: null,
   //actions
-  openSaveDialog: (subscription) => set({ isSaveOpen: true, selectedSubSave: subscription }),
+  openSaveDialog: (subscription) =>
+    set({ isSaveOpen: true, selectedSubSave: subscription }),
   closeSaveDialog: () => set({ isSaveOpen: false, selectedSubSave: null }),
 
   //SubscriptionModal
@@ -23,12 +23,14 @@ const useSubscriptionStore = create((set) => ({
   isModalOpen: false,
   selectedSub: null,
   //actions
-  openModalDialog: (subscription) => set({ isModalOpen: true, selectedSub: subscription || null}),
+  openModalDialog: (subscription) =>
+    set({ isModalOpen: true, selectedSub: subscription || null }),
   closeModalDialog: () => set({ isModalOpen: false, selectedSub: null }),
-  
-  addSubscription: (subscription) => set((state) => ({
-    subscriptions: [subscription, ...state.subscriptions],
-  })),
+
+  addSubscription: (subscription) =>
+    set((state) => ({
+      subscriptions: [subscription, ...state.subscriptions],
+    })),
 
   // Update sub
   updateSubscription: (updatedSub) =>
@@ -41,7 +43,7 @@ const useSubscriptionStore = create((set) => ({
   clearSubscriptions: () => set({ subscriptions: [] }),
 
   fetchSubscriptions: async () => {
-    const urlAPI = `${BaseURL}/subscriptions`
+    const urlAPI = `${BaseURL}/subscriptions`;
 
     const token = localStorage.getItem("user")
       ? JSON.parse(localStorage.getItem("user")).token
@@ -72,15 +74,17 @@ const useSubscriptionStore = create((set) => ({
           // ignore JSON parse errors
         }
 
-        set({ subscriptions: [], message: errorMessage, status: response.status });
+        set({
+          subscriptions: [],
+          message: errorMessage,
+          status: response.status,
+        });
         return;
       }
 
       const data = await response.json();
 
       set({ subscriptions: data.response || [] });
-      
-      
     } catch (error) {
       console.error("Error fetching subscriptions:", error);
       set({ subscriptions: [] });
@@ -89,5 +93,3 @@ const useSubscriptionStore = create((set) => ({
     }
   },
 }));
-
-export default useSubscriptionStore;

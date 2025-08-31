@@ -1,18 +1,23 @@
 import { Checkbox, Option, Select, Typography } from "@material-tailwind/react";
 import { useState } from "react";
 
-import useSubscriptionStore from "../../stores/useSubscriptionStore";
-import useUserStore from "../../stores/useUserStore";
+import { useSubscriptionStore } from "../../stores/useSubscriptionStore";
+import { useUserStore } from "../../stores/useUserStore";
 import { BaseURL } from "../utils/BaseURL";
 import { Btn } from "../layout/Btn";
 import { Input } from "../user/Input";
 
-export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEmail, setSendEmail }) => {
+export const SubscriptionForm = ({
+  onClose,
+  compact = false,
+  initialData,
+  sendEmail,
+  setSendEmail,
+}) => {
   const urlAPI = `${BaseURL}`;
 
   const [formData, setFormData] = useState(() => {
     if (initialData) {
-
       return {
         ...initialData,
         reminderDate: initialData.reminderDate
@@ -58,8 +63,6 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
       ...formData,
       [name]: value,
     });
-
-
   };
 
   const handleSubmit = async (e) => {
@@ -95,6 +98,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
       reminderDate: new Date(formData.reminderDate).toISOString(),
       cost: parseFloat(formData.cost),
       trialDays: formData.freeTrial ? parseInt(formData.trialDays) || 0 : 0,
+      sendEmail, // Include sendEmail in the payload
     };
 
     try {
@@ -135,7 +139,7 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
         window.dispatchEvent(new Event("refresh-reminders"));
 
         if (!initialData) {
-          // After successfully adding the subscription          
+          // After successfully adding the subscription
           await fetch(`${urlAPI}/emails`, {
             method: "POST",
             headers: {
@@ -172,7 +176,11 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
   };
 
   return (
-    <section className={compact ? "p-4" : "px-4 sm:px-8 py-10 sm:py-20 container mx-auto"}>
+    <section
+      className={
+        compact ? "p-4" : "px-4 sm:px-8 py-10 sm:py-20 container mx-auto"
+      }
+    >
       <Typography
         variant="small"
         className="text-light font-normal text-sm sm:text-base"
@@ -246,8 +254,6 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
           required
         />
 
-
-
         {/* Status + Category */}
         <div className="flex gap-4 flex-col sm:flex-row">
           <div className="flex-1">
@@ -285,15 +291,11 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
         <div className="flex items-center gap-2">
           <input
             type="checkbox"
-            id="sendEmail"
-            aria-lable="send email checkbox"
             checked={sendEmail}
-            onChange={() => setSendEmail((prev) => !prev)}
-            className="border border-black"
+            onChange={() => setSendEmail(!sendEmail)}
+            id="sendEmail"
           />
-          <label htmlFor="sendEmail" className="text-sm">
-            Send email when adding subscription
-          </label>
+          <label htmlFor="sendEmail">Send email when adding subscription</label>
         </div>
 
         {/* Buttons */}
@@ -319,7 +321,6 @@ export const SubscriptionForm = ({ onClose, compact = false, initialData, sendEm
             Your subscription was added!
           </Typography>
         )}
-
       </form>
     </section>
   );

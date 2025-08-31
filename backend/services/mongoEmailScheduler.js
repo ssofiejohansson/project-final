@@ -1,7 +1,7 @@
 import cron from 'node-cron';
 import { ScheduledEmail } from '../models/ScheduledEmail.js';
-import sendEmail from '../sendEmail.js'; 
-import _ from 'lodash'; 
+import sendEmail from '../sendEmail.js';
+import _ from 'lodash';
 
 class MongoEmailScheduler {
   constructor() {
@@ -21,7 +21,7 @@ class MongoEmailScheduler {
       await this.processDueEmails();
     });
 
-    this.isRunning = true;    
+    this.isRunning = true;
   }
 
   async processDueEmails() {
@@ -66,12 +66,12 @@ class MongoEmailScheduler {
       )
       .join('\n---\n');
 
-    try {      
+    try {
       await sendEmail({
         to: recipient,
         subject: combinedSubject,
         text: combinedText,
-      });      
+      });
 
       // Update all emails in the group
       for (const email of emailGroup) {
@@ -110,7 +110,7 @@ class MongoEmailScheduler {
         to: email.to,
         subject: email.subject,
         text: email.text,
-      });      
+      });
 
       // Update status
       if (email.isRecurring) {
@@ -120,9 +120,8 @@ class MongoEmailScheduler {
 
         email.nextRun = nextRun;
         email.lastSent = new Date();
-      
       } else {
-        email.status = 'sent';        
+        email.status = 'sent';
       }
 
       await email.save();
@@ -132,9 +131,9 @@ class MongoEmailScheduler {
 
       // Retry logic
       if (email.attempts < 3) {
-        email.nextRun = new Date(Date.now() + 5 * 60 * 1000); // Retry in 5 minutes      
+        email.nextRun = new Date(Date.now() + 5 * 60 * 1000); // Retry in 5 minutes
       } else {
-        email.status = 'failed';        
+        email.status = 'failed';
       }
 
       await email.save();
@@ -156,7 +155,7 @@ class MongoEmailScheduler {
         status: 'scheduled',
       });
 
-      const savedEmail = await scheduledEmail.save();    
+      const savedEmail = await scheduledEmail.save();
 
       return savedEmail;
     } catch (error) {
@@ -179,9 +178,18 @@ class MongoEmailScheduler {
   stop() {
     if (this.cronJob) {
       this.cronJob.stop();
-      this.isRunning = false;      
+      this.isRunning = false;
     }
   }
 }
 
 export default new MongoEmailScheduler();
+
+router.delete('/:id', async (req, res) => {
+  // ...existing code to delete subscription...
+
+  // Also delete scheduled emails for this subscription
+  await ScheduledEmail.deleteMany({ subscriptionId: req.params.id });
+
+  // ...existing code...
+});

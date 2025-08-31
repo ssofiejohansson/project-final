@@ -1,7 +1,7 @@
 import { ArrowDownCircleIcon } from "@heroicons/react/24/solid";
 import { Typography } from "@material-tailwind/react";
 
-import useSubscriptionStore from "../../stores/useSubscriptionStore";
+import { useSubscriptionStore } from "../../stores/useSubscriptionStore";
 
 export const DashboardHeader = ({ user }) => {
   const subscriptions = useSubscriptionStore((s) => s.subscriptions);
@@ -16,12 +16,18 @@ export const DashboardHeader = ({ user }) => {
         {hasSubs ? (
           <>
             Welcome {user.name}! Here are your{" "}
-            <span className="text-main leading-snug break-words ">subscriptions</span>.
+            <span className="text-main leading-snug break-words ">
+              subscriptions
+            </span>
+            .
           </>
         ) : (
           <>
             Welcome {user.name}! You currently have no{" "}
-            <span className="text-main leading-snug break-words">subscriptions</span>.
+            <span className="text-main leading-snug break-words">
+              subscriptions
+            </span>
+            .
           </>
         )}
       </Typography>

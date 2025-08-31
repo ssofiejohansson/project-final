@@ -1,11 +1,26 @@
-import { BellAlertIcon, BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
-import { Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
+import {
+  BellAlertIcon,
+  BookOpenIcon,
+  CakeIcon,
+  HeartIcon,
+  PencilIcon,
+  QuestionMarkCircleIcon,
+  TrashIcon,
+  TvIcon,
+} from "@heroicons/react/24/outline";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  IconButton,
+  Typography,
+} from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Popup } from "../../comp/layout/Popup";
-import useSubscriptionStore from "../../stores/useSubscriptionStore";
-import useUserStore from "../../stores/useUserStore";
+import { useSubscriptionStore } from "../../stores/useSubscriptionStore";
+import { useUserStore } from "../../stores/useUserStore";
 import { BaseURL } from "../utils/BaseURL";
 import { getLogoPath } from "../utils/getLogoPath";
 import { DashboardNavbar } from "./DashboardNavbar";
@@ -21,15 +36,11 @@ export const SubscriptionList = () => {
   );
   const { isSaveOpen } = useSubscriptionStore();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedSub, setSelectedSub] = useState(null);
-
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
-  const [sendEmail, setSendEmail] = useState(true);
-  const [emailPrefs, setEmailPrefs] = useState({});
+  const [sendEmail, setSendEmail] = useState(true); // <-- keep this
 
-  const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
+  // Use the Zustand store's openModalDialog for both add and edit:
   const openModalDialog = useSubscriptionStore((s) => s.openModalDialog);
 
   const urlAPI = `${BaseURL}/subscriptions`;
@@ -107,6 +118,12 @@ export const SubscriptionList = () => {
     // await fetch("https://project-final-xhjy.onrender.com/emails/send", { ... });
   };
 
+  // Open modal and set sendEmail based on selected subscription
+  const handleOpenModal = (sub) => {
+    setSendEmail(sub?.sendEmail ?? true); // <-- set sendEmail from sub
+    openModalDialog(sub);
+  };
+
   const TABLE_HEAD = [
     { head: "Name", customeStyle: "!text-left" },
     { head: "Category", customeStyle: "!text-left" },
@@ -170,14 +187,16 @@ export const SubscriptionList = () => {
                 setFilterCategory={setFilterCategory}
                 sortKey={sortKey}
                 setSortKey={setSortKey}
-                onAdd={() => openModalDialog(null)}
+                onAdd={() => {
+                  setSendEmail(true); // default for new
+                  openModalDialog(null); // open modal for new subscription
+                }}
               />
             </div>
           </CardHeader>
 
           <CardBody className="!px-0 py-2">
             <div className="overflow-x-auto">
-              {/* removed min-w-max from table below to remove horizontal scroll */}
               <table className="w-full table-auto">
                 <thead>
                   <tr>
@@ -202,8 +221,9 @@ export const SubscriptionList = () => {
                       >
                         {subscriptions.length === 0
                           ? "You have not added any subscriptions, please click add."
-                          : `You have no subscriptions listed under ${filterCategory || "this category"
-                          }.`}
+                          : `You have no subscriptions listed under ${
+                              filterCategory || "this category"
+                            }.`}
                       </td>
                     </tr>
                   ) : (
@@ -328,7 +348,10 @@ export const SubscriptionList = () => {
                               <IconButton
                                 variant="text"
                                 size="sm"
-                                onClick={() => openModalDialog(sub)}
+                                onClick={() => {
+                                  setSendEmail(sub?.sendEmail ?? true);
+                                  openModalDialog(sub);
+                                }}
                                 aria-label="Edit subscription"
                               >
                                 <PencilIcon className="h-5 w-5 text-gray-900" />
@@ -358,13 +381,9 @@ export const SubscriptionList = () => {
 
         {/* Modal */}
         <SubscriptionModal
-          open={isModalOpen}
-          setOpen={(val) => {
-            setIsModalOpen(val);
-            if (!val) setSelectedSub(null);
-          }}
-          subscription={selectedSub}
           onSubscriptionAdded={handleSubscriptionAdded}
+          sendEmail={sendEmail}
+          setSendEmail={setSendEmail}
         />
 
         {/* save money - contribute */}

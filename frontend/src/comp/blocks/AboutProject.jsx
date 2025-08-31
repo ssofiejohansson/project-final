@@ -1,9 +1,17 @@
-import { Card, CardBody, Dialog, DialogBody, DialogFooter, DialogHeader, Typography } from "@material-tailwind/react";
+import {
+  Card,
+  CardBody,
+  Dialog,
+  DialogBody,
+  DialogFooter,
+  DialogHeader,
+  Typography,
+} from "@material-tailwind/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import BeeatriceImg from "../../assets/images/beeatrice.webp";
-import useUserStore from "../../stores/useUserStore";
+import { useUserStore } from "../../stores/useUserStore";
 import { Btn } from "../layout/Btn";
 import { Team } from "./Team";
 
@@ -19,7 +27,6 @@ export const AboutProject = () => {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pb-20">
-
             <div className="flex justify-center">
               <img
                 src={BeeatriceImg}
@@ -50,10 +57,10 @@ export const AboutProject = () => {
                 subscription they no longer use, mainly because they forget to
                 cancel. We found this intriguing, and we wanted to make our own
                 take of this problem. In a fun and playful way with the help of
-                Beeatrice the bee we display
-                and guide the user to a more subscription friendly everyday
-                life.
+                Beeatrice the bee we display and guide the user to a more
+                subscription friendly everyday life.
               </Typography>
+
               <div className="flex flex-col sm:flex-row gap-4 w-full">
                 {user ?
                   (
@@ -73,7 +80,6 @@ export const AboutProject = () => {
                       Let's join the hive!
                     </Btn>
                   )}
-
               </div>
             </div>
           </div>
@@ -82,7 +88,10 @@ export const AboutProject = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
               <CardBody className="text-center">
-                <Typography variant="h3" className="text-text mb-2 font-medium font-heading">
+                <Typography
+                  variant="h3"
+                  className="text-text mb-2 font-medium font-heading"
+                >
                   Our Team
                 </Typography>
                 <Typography className="text-center max-w-xs mx-auto font-normal leading-7 text-text">
@@ -95,7 +104,10 @@ export const AboutProject = () => {
 
             <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
               <CardBody className="text-center">
-                <Typography variant="h3" className="text-text mb-2 font-medium font-heading">
+                <Typography
+                  variant="h3"
+                  className="text-text mb-2 font-medium font-heading"
+                >
                   Project Process
                 </Typography>
                 <Typography className="text-center max-w-xs mx-auto font-normal leading-7 text-text">
@@ -110,29 +122,39 @@ export const AboutProject = () => {
 
             <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
               <CardBody className="text-center">
-                <Typography variant="h3" className="text-text mb-2 font-medium font-heading">
+                <Typography
+                  variant="h3"
+                  className="text-text mb-2 font-medium font-heading"
+                >
                   Tech Stack
                 </Typography>
                 <Typography className="text-text text-center max-w-xs mx-auto font-normal leading-7">
                   We've utilized a modern tech stack for a high-quality user
                   experience, including React, Zustand for state management, and
                   Tailwind CSS. The backend is powered by Node.js and Express,
-                  ensuring a robust and scalable application. Check out our full tech stack{" "}
+                  ensuring a robust and scalable application. Check out our full
+                  tech stack{" "}
                   <span
                     onClick={handleOpen}
                     className="text-accent font-bold cursor-pointer hover:underline"
                   >
                     here
-                  </span>.
+                  </span>
+                  .
                 </Typography>
               </CardBody>
             </Card>
           </div>
         </div>
       </section>
-      <Dialog className="px-4 py-2" open={open} handler={handleOpen} size="md">
+      <Dialog
+        className="px-4 py-2 max-h-[80vh] flex flex-col"
+        open={open}
+        handler={handleOpen}
+        size="md"
+      >
         <DialogHeader>Full Tech Stack</DialogHeader>
-        <DialogBody className="text-text h-[30rem] overflow-y-auto p10">
+        <DialogBody className="text-text h-[20rem] overflow-y-auto p10">
           <Typography variant="h4" className="mb-2 font-heading">
             Frontend
           </Typography>
@@ -145,8 +167,8 @@ export const AboutProject = () => {
                 <strong>Build Tool:</strong> Vite
               </li>
               <li>
-                <strong>Styling:</strong> Tailwind CSS, with Material Tailwind for
-                UI components.
+                <strong>Styling:</strong> Tailwind CSS, with Material Tailwind
+                for UI components.
               </li>
               <li>
                 <strong>Routing:</strong> React Router
@@ -182,13 +204,14 @@ export const AboutProject = () => {
                 <strong>Task Scheduling:</strong> node-cron for recurring tasks.
               </li>
               <li>
-                <strong>Authentication:</strong> Custom token-based authentication
-                middleware.
+                <strong>Authentication:</strong> Custom token-based
+                authentication middleware.
               </li>
             </ul>
           </div>
 
           <Typography variant="h4" className="mb-2 font-heading">
+
             Tooling & Deployment
           </Typography>
           <div className="list-disc list-inside">
@@ -197,14 +220,15 @@ export const AboutProject = () => {
                 <strong>Version Control:</strong> Git
               </li>
               <li>
-                <strong>Automation:</strong>GitHub Actions (workflow automation via .yml pipelines for tasks such as database updates)
+                <strong>Automation:</strong>GitHub Actions (workflow automation
+                via .yml pipelines for tasks such as database updates)
               </li>
               <li>
-                <strong>Hosting:</strong> Frontend on Netlify, Backend on Render.
+                <strong>Hosting:</strong> Frontend on Netlify, Backend on
+                Render.
               </li>
             </ul>
           </div>
-
         </DialogBody>
         <DialogFooter>
           <Btn

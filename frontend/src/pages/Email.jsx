@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import EmailForm from "./utils/comp/EmailForm";
+import { EmailForm } from "./utils/comp/EmailForm";
 import EmailRemindersList from "../comp/utils/EmailRemindersList";
 
-const Email = () => {
+export const Email = () => {
   const [refreshReminders, setRefreshReminders] = useState(false);
 
   useEffect(() => {
@@ -18,5 +18,3 @@ const Email = () => {
     </div>
   );
 };
-
-export default Email;

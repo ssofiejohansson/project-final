@@ -1,8 +1,6 @@
 import { create } from "zustand";
 
-const useLoadingStore = create((set) => ({
+export const useLoadingStore = create((set) => ({
   loading: false,
-  setLoading: (value) => set({ loading:value }),
-}))
-
-export default useLoadingStore;
+  setLoading: (value) => set({ loading: value }),
+}));

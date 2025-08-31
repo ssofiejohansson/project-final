@@ -6,7 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 
-import EmailForm from "./comp/utils/EmailForm";
+import { EmailForm } from "./comp/utils/EmailForm";
 import { Footer } from "./comp/layout/Footer";
 import { Loader } from "./comp/layout/Loader";
 import { Navbar } from "./comp/layout/Navbar";
@@ -17,7 +17,7 @@ import { Error } from "./pages/Error";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
-import useLoadingStore from "./stores/useLoadingStore";
+import { useLoadingStore } from "./stores/useLoadingStore";
 
 const ScrollToTop = () => {
   const location = useLocation();

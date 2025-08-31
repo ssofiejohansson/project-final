@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import EmailRemindersList from "./EmailRemindersList";
+import { EmailRemindersList } from "./EmailRemindersList";
 
-function EmailForm({ setRefreshReminders }) {
+export function EmailForm({ setRefreshReminders }) {
   const [to, setTo] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [scheduledDate, setScheduledDate] = useState("");
@@ -108,9 +108,9 @@ This is a reminder that you have subscriptions that is due to be renewed soon.
         setScheduledDate("");
         setScheduledTime("");
         setIsRecurring(false);
-        
+
         if (setRefreshReminders) setRefreshReminders((prev) => !prev);
-      } else {        
+      } else {
         alert(`Error: det här är ett test ${data.error}`);
       }
     } catch (error) {
@@ -277,10 +277,10 @@ This is a reminder that you have subscriptions that is due to be renewed soon.
           {isLoading
             ? "Processing..."
             : sendImmediately
-              ? "Send Reminder Email Now"
-              : isRecurring
-                ? "Schedule Recurring Reminder"
-                : "Schedule Reminder Email"}
+            ? "Send Reminder Email Now"
+            : isRecurring
+            ? "Schedule Recurring Reminder"
+            : "Schedule Reminder Email"}
         </button>
       </form>
 
@@ -291,5 +291,3 @@ This is a reminder that you have subscriptions that is due to be renewed soon.
     </div>
   );
 }
-
-export default EmailForm;

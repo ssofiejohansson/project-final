@@ -21,7 +21,7 @@ async function verifyTransporter() {
   }
 }
 
-async function sendEmail({ to, subject, text }) {
+export async function sendEmail({ to, subject, text }) {
   try {   
     // Verify transporter before sending
     const isVerified = await verifyTransporter();
@@ -47,5 +47,3 @@ async function sendEmail({ to, subject, text }) {
     throw error;
   }
 }
-
-export default sendEmail;
