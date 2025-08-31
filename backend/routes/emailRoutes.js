@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoEmailScheduler from '../services/mongoEmailScheduler.js';
-import sendEmail from '../sendEmail.js'; // Import your email function
+import { sendEmail } from '../sendEmail.js';
 
 export const router = express.Router();
 

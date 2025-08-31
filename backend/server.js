@@ -4,7 +4,7 @@ import express from 'express';
 import expressListEndpoints from 'express-list-endpoints';
 import mongoose from 'mongoose';
 
-import emailRoutes from './routes/emailRoutes.js';
+import { router as emailRoutes } from './routes/emailRoutes.js';
 import subscriptionRoutes from './routes/subscriptionRoutes.js';
 import updateRemindersRoutes from './routes/updateRemindersRoutes.js';
 import userRoutes from './routes/userRoutes.js';
