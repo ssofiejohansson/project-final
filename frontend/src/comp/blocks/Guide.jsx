@@ -44,9 +44,10 @@ export const Guide = () => {
           <img
             src={SignupImage}
             alt="image of the sign up form"
-            width="1310"
-            height="855"
+            width="800"
+            height="500"
             className="w-full max-w-lg mx-auto object-cover md:object-contain"
+            loading="lazy"
           />
         </Card>
 
@@ -66,9 +67,10 @@ export const Guide = () => {
           <img
             src={AddSubImage}
             alt="image of the form to add a new subscription"
-            width="1310"
-            height="855"
+            width="800"
+            height="500"
             className="w-full max-w-lg mx-auto object-cover md:object-contain"
+            loading="lazy"
           />
         </Card>
       </div>
@@ -90,9 +92,10 @@ export const Guide = () => {
           <img
             src={SubListImage}
             alt="image on the dashboard showing subscription statistics and list"
-            width="1310"
-            height="855"
+            width="800"
+            height="500"
             className="w-full max-w-lg mx-auto object-cover md:object-contain"
+            loading="lazy"
           />
         </Card>
 

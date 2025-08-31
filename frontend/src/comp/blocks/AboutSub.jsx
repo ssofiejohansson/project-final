@@ -4,15 +4,15 @@ import { Typography } from "@material-tailwind/react";
 export const AboutSub = () => {
   return (
     <header className="bg-white py-4 lg:py-10">
-      <div className="container mx-auto px-6 lg:px-20 text-center">
+      <div className="container mx-auto px-6 lg:px-20">
         <Typography
           variant="h1"
-          className="text-text pb-6 mx-auto w-full leading-snug !text-2xl lg:max-w-3xl lg:!text-5xl font-heading"
+          className="text-text pb-6 mx-auto w-full leading-snug text-3xl lg:max-w-3xl lg:text-5xl font-heading text-center"
         >
           About <span className="text-main leading-snug">SubscriBee</span>
         </Typography>
 
-        <div className="mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 md:text-left">
+        <div className="mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 text-left">
           <Typography variant="paragraph" className="text-light lg:text-lg">
             Subscriptions are part of everyday life, but they’re easy to lose
             track of. According to research, many people end up spending a lot

@@ -40,7 +40,7 @@ export const Navbar = () => {
         <li>
           <a
             href="mailto:subscribee.project@gmail.com"
-            className="text-text hover:text-accent font-medium transition-colors font-textfont"
+            className="text-text hover:text-accent transition-colors font-textfont"
           >
             Contact
           </a>

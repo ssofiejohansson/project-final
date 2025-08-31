@@ -25,15 +25,16 @@ export const AboutProject = () => {
   return (
     <>
       <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pb-20">
             <div className="flex justify-center">
               <img
                 src={BeeatriceImg}
-                alt="Project overview"
-                width="1310"
-                height="855"
+                alt="Mascot Beeatrice the bee popup message"
+                width="800"
+                height="500"
                 className="rounded-xl object-cover w-full max-w-md lg:max-w-full"
+                loading="lazy"
               />
             </div>
             <div
@@ -59,24 +60,26 @@ export const AboutProject = () => {
                 Beeatrice the bee we display and guide the user to a more
                 subscription friendly everyday life.
               </Typography>
-              <div className="flex flex-col sm:flex-row gap-4">
-                {user ? (
-                  <Btn
-                    onClick={() => navigate("/admin")}
-                    size="md"
-                    variant="filled"
-                  >
-                    Let's buzz to the dashboard
-                  </Btn>
-                ) : (
-                  <Btn
-                    onClick={() => navigate("/signup")}
-                    size="md"
-                    variant="filled"
-                  >
-                    Let's join the hive!
-                  </Btn>
-                )}
+
+              <div className="flex flex-col sm:flex-row gap-4 w-full">
+                {user ?
+                  (
+                    <Btn
+                      onClick={() => navigate("/admin")}
+                      size="md"
+                      variant="filled"
+                    >
+                      Let's buzz to the dashboard
+                    </Btn>
+                  ) : (
+                    <Btn
+                      onClick={() => navigate("/signup")}
+                      size="md"
+                      variant="filled"
+                    >
+                      Let's join the hive!
+                    </Btn>
+                  )}
               </div>
             </div>
           </div>
@@ -99,7 +102,6 @@ export const AboutProject = () => {
               </CardBody>
             </Card>
 
-            {/* OPTIONAL: Additional Cards */}
             <Card className="col-span-1 bg-gray-100/50 overflow-hidden hover:shadow-lg transition">
               <CardBody className="text-center">
                 <Typography
@@ -152,8 +154,8 @@ export const AboutProject = () => {
         size="md"
       >
         <DialogHeader>Full Tech Stack</DialogHeader>
-        <DialogBody className="text-text h-[30rem] overflow-y-auto p10">
-          <Typography variant="h5" className="mb-2 font-heading">
+        <DialogBody className="text-text h-[20rem] overflow-y-auto p10">
+          <Typography variant="h4" className="mb-2 font-heading">
             Frontend
           </Typography>
           <div className="list-disc list-inside mb-4">
@@ -184,7 +186,7 @@ export const AboutProject = () => {
             </ul>
           </div>
 
-          <Typography variant="h5" className="mb-2 font-heading">
+          <Typography variant="h4" className="mb-2 font-heading">
             Backend
           </Typography>
           <div className="list-disc list-inside mb-4">
@@ -208,7 +210,8 @@ export const AboutProject = () => {
             </ul>
           </div>
 
-          <Typography variant="h5" className="mb-2 font-heading">
+          <Typography variant="h4" className="mb-2 font-heading">
+
             Tooling & Deployment
           </Typography>
           <div className="list-disc list-inside">
@@ -228,7 +231,11 @@ export const AboutProject = () => {
           </div>
         </DialogBody>
         <DialogFooter>
-          <Btn variant="text" onClick={handleOpen} size="sm">
+          <Btn
+            variant="text"
+            onClick={handleOpen}
+            size="md"
+          >
             <span>Close</span>
           </Btn>
         </DialogFooter>
