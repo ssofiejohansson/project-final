@@ -23,7 +23,7 @@ export const AboutProject = () => {
             <div className="flex justify-center">
               <img
                 src={BeeatriceImg}
-                alt="Project overview"
+                alt="Mascot Beeatrice the bee popup message"
                 width="800"
                 height="500"
                 className="rounded-xl object-cover w-full max-w-md lg:max-w-full"
