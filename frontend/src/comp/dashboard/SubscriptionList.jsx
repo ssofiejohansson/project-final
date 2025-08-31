@@ -36,14 +36,11 @@ export const SubscriptionList = () => {
   );
   const { isSaveOpen } = useSubscriptionStore();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedSub, setSelectedSub] = useState(null);
-
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
   const [sendEmail, setSendEmail] = useState(true); // <-- keep this
 
-  const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
+  // Use the Zustand store's openModalDialog for both add and edit:
   const openModalDialog = useSubscriptionStore((s) => s.openModalDialog);
 
   const urlAPI = `${BaseURL}/subscriptions`;
@@ -123,9 +120,8 @@ export const SubscriptionList = () => {
 
   // Open modal and set sendEmail based on selected subscription
   const handleOpenModal = (sub) => {
-    setSelectedSub(sub);
     setSendEmail(sub?.sendEmail ?? true); // <-- set sendEmail from sub
-    setIsModalOpen(true);
+    openModalDialog(sub);
   };
 
   const TABLE_HEAD = [
@@ -191,7 +187,10 @@ export const SubscriptionList = () => {
                 setFilterCategory={setFilterCategory}
                 sortKey={sortKey}
                 setSortKey={setSortKey}
-                onAdd={() => handleOpenModal(null)} // <-- use handleOpenModal
+                onAdd={() => {
+                  setSendEmail(true); // default for new
+                  openModalDialog(null); // open modal for new subscription
+                }}
               />
             </div>
           </CardHeader>
@@ -349,7 +348,10 @@ export const SubscriptionList = () => {
                               <IconButton
                                 variant="text"
                                 size="sm"
-                                onClick={() => openModalDialog(sub)}
+                                onClick={() => {
+                                  setSendEmail(sub?.sendEmail ?? true);
+                                  openModalDialog(sub);
+                                }}
                                 aria-label="Edit subscription"
                               >
                                 <PencilIcon className="h-5 w-5 text-gray-900" />
@@ -379,12 +381,6 @@ export const SubscriptionList = () => {
 
         {/* Modal */}
         <SubscriptionModal
-          open={isModalOpen}
-          setOpen={(val) => {
-            setIsModalOpen(val);
-            if (!val) setSelectedSub(null);
-          }}
-          subscription={selectedSub}
           onSubscriptionAdded={handleSubscriptionAdded}
           sendEmail={sendEmail}
           setSendEmail={setSendEmail}
