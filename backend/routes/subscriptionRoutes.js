@@ -1,9 +1,14 @@
 import express from 'express';
+import cron from 'node-cron';
 
 import { authenticateUser } from '../authMiddleware.js';
 import { Subscription } from '../models/Subscription.js';
+const ScheduledEmail = require('../models/ScheduledEmail');
 
 export const router = express.Router();
+
+// Initialize global cron jobs object
+global.cronJobs = global.cronJobs || {};
 
 //To get all subscriptions
 router.get('/', authenticateUser, async (req, res) => {
@@ -96,6 +101,17 @@ router.post('/', authenticateUser, async (req, res) => {
 
     const newSubscription = await subscription.save();
 
+    // Schedule email if sendEmail is true
+    if (sendEmail) {
+      const job = cron.schedule(reminderDate, () => {
+        // Logic to send email
+        console.log(`Sending email for subscription: ${newSubscription._id}`);
+      });
+
+      // Save the cron job to the global object
+      global.cronJobs[newSubscription._id] = job;
+    }
+
     res.status(201).json({
       success: true,
       response: newSubscription,
@@ -146,6 +162,24 @@ router.patch('/:id', authenticateUser, async (req, res) => {
     if (!editSubscription) {
       return res.status(404).json({ error: 'Subscription not found' });
     }
+
+    // If sendEmail is updated to true, schedule the email
+    if (sendEmail && !global.cronJobs[id]) {
+      const job = cron.schedule(reminderDate, () => {
+        // Logic to send email
+        console.log(`Sending email for subscription: ${editSubscription._id}`);
+      });
+
+      // Save the cron job to the global object
+      global.cronJobs[id] = job;
+    }
+
+    // If sendEmail is updated to false, stop the cron job
+    if (!sendEmail && global.cronJobs[id]) {
+      global.cronJobs[id].stop();
+      delete global.cronJobs[id];
+    }
+
     res.status(200).json(editSubscription);
   } catch (error) {
     res.status(500).json({
@@ -159,19 +193,28 @@ router.patch('/:id', authenticateUser, async (req, res) => {
 // To delete a subscription
 router.delete('/:id', authenticateUser, async (req, res) => {
   try {
-    const deleted = await Subscription.findOneAndDelete({
-      _id: req.params.id,
-      user: req.user._id,
-    });
+    const { id } = req.params;
+
+    // Delete the subscription
+    const deleted = await Subscription.findByIdAndDelete(id);
+
     if (!deleted) {
       return res.status(404).json({ message: 'Subscription not found' });
     }
-    res.status(200).json({ success: true, message: 'Subscription deleted' });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Failed to delete subscription',
-      error,
+
+    // Delete all scheduled emails for this subscription
+    await ScheduledEmail.deleteMany({ subscriptionId: id });
+
+    // Cancel any node-cron jobs for this subscription
+    if (global.cronJobs && global.cronJobs[id]) {
+      global.cronJobs[id].stop();
+      delete global.cronJobs[id];
+    }
+
+    res.status(200).json({
+      message: 'Subscription and related scheduled emails deleted',
     });
+  } catch (error) {
+    res.status(500).json({ message: 'Error deleting subscription', error });
   }
 });
