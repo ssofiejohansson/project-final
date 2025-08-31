@@ -98,6 +98,7 @@ export const SubscriptionForm = ({
       reminderDate: new Date(formData.reminderDate).toISOString(),
       cost: parseFloat(formData.cost),
       trialDays: formData.freeTrial ? parseInt(formData.trialDays) || 0 : 0,
+      sendEmail, // Include sendEmail in the payload
     };
 
     try {
@@ -290,15 +291,11 @@ export const SubscriptionForm = ({
         <div className="flex items-center gap-2">
           <input
             type="checkbox"
-            id="sendEmail"
-            aria-lable="send email checkbox"
             checked={sendEmail}
-            onChange={() => setSendEmail((prev) => !prev)}
-            className="border border-black"
+            onChange={() => setSendEmail(!sendEmail)}
+            id="sendEmail"
           />
-          <label htmlFor="sendEmail" className="text-sm">
-            Send email when adding subscription
-          </label>
+          <label htmlFor="sendEmail">Send email when adding subscription</label>
         </div>
 
         {/* Buttons */}
