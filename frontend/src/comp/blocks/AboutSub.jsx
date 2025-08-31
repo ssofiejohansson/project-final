@@ -12,8 +12,8 @@ export const AboutSub = () => {
           About <span className="text-main leading-snug">SubscriBee</span>
         </Typography>
 
-        <div className="mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 text-left">
-          <Typography variant="paragraph" className="text-light lg:text-lg">
+        <div className="mx-auto grid grid-cols-1 gap-6 md:grid-cols-2 text-left text-text">
+          <Typography variant="paragraph" className="lg:text-lg">
             Subscriptions are part of everyday life, but they’re easy to lose
             track of. According to research, many people end up spending a lot
             more money than they realize. It’s easy to sign up for free trials
@@ -22,7 +22,7 @@ export const AboutSub = () => {
             add up quickly, and before you know it, they’re taking a real bite
             out of your budget.
           </Typography>
-          <Typography variant="paragraph" className="text-light lg:text-lg">
+          <Typography variant="paragraph" className="lg:text-lg">
             SubscriBee was created to help you see the full picture. With all
             your subscriptions in one place, you’ll stay organized, avoid
             surprises and feel more confident about your money. Add your

@@ -49,7 +49,7 @@ export const AboutProject = () => {
               </Typography>
               <Typography
                 variant="paragraph"
-                className="mb-8 w-full lg:text-lg text-text"
+                className="mb-8 w-full lg:text-lg text-text "
               >
                 SubscriBee is a student-built project designed to help people
                 manage their subscriptions. Statistics show that 74% forget the

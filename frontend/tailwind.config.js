@@ -29,7 +29,6 @@ module.exports = withMT({
       },
       fontFamily: {
         heading: ["Didact Gothic", "Helvetica", "sans-serif"],
-        textfont: ["Poppins", "Roboto", "Arial", "sans-serif"],
       },
       fontWeight: {
         light: 100,

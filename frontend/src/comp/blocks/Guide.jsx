@@ -19,7 +19,7 @@ export const Guide = () => {
         >
           Get started in three simple steps
         </Typography>
-        <Typography variant="paragraph" className="mx-auto max-w-lg text-text">
+        <Typography variant="paragraph" className="mx-auto max-w-lg">
           SubscriBee makes it easy to take control of your subscriptions. Here’s
           how:
         </Typography>
@@ -117,6 +117,6 @@ export const Guide = () => {
           </CardBody>
         </Card>
       </div>
-    </section>
+    </section >
   );
 };

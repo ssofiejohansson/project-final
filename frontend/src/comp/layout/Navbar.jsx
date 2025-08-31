@@ -23,7 +23,7 @@ export const Navbar = () => {
       <ul>
         <Typography
           as="li"
-          className="text-text font-textfont font-medium hover:text-accent transition-colors"
+          className="text-text font-medium hover:text-accent transition-colors"
         >
           {label}
         </Typography>
@@ -40,7 +40,7 @@ export const Navbar = () => {
         <li>
           <a
             href="mailto:subscribee.project@gmail.com"
-            className="text-text hover:text-accent transition-colors font-textfont"
+            className="text-text hover:text-accent transition-colors"
           >
             Contact
           </a>
@@ -77,7 +77,7 @@ export const Navbar = () => {
           </div>
 
           {/* Right */}
-          <div className="hidden lg:flex items-center gap-4 font-textfont">
+          <div className="hidden lg:flex items-center gap-4">
             {user ? (
               <>
                 <span className="text-lg">Hi {user.name}!</span>
@@ -129,11 +129,11 @@ export const Navbar = () => {
 
         {/* Mobile menu */}
         <Collapse open={open}>
-          <div className="mt-2 rounded-xl bg-white pb-4 px-4 flex flex-col font-textfont">
+          <div className="mt-2 rounded-xl bg-white pb-4 px-4 flex flex-col ">
             {/* TOP section */}
             {user ? (
               <>
-                <Typography className="text-lg py-1 font-textfont font-medium">
+                <Typography className="text-lg py-1 font-medium">
                   Hi {user.name}!
                 </Typography>
                 <div className="flex flex-col gap-2 py-2 text-accent border-t border-gray-200">

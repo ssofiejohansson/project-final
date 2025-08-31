@@ -1,6 +1,6 @@
 export const Input = ({ label, type, name, value, onChange }) => (
   <div>
-    <label className="block text-mg mb-1 text-textfont">{label}</label>
+    <label className="block text-mg mb-1">{label}</label>
     <input
       type={type}
       name={name}

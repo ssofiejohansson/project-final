@@ -15,7 +15,7 @@ export const Footer = () => {
   return (
     <footer className="py-12 bg-gray-50 border-t border-gray-200">
       <div className="px-8 container mx-auto flex flex-col items-center">
-        <div className="flex flex-wrap items-center justify-center gap-6 pb-6 font-textfont">
+        <div className="flex flex-wrap items-center justify-center gap-6 pb-6">
           <ul>
             <li>
               <Link to="/about" className="transition-colors hover:text-accent">
@@ -73,7 +73,7 @@ export const Footer = () => {
           )}
         </div>
 
-        <Typography className="mt-4">
+        <Typography variant="small" className="mt-4">
           &copy; {currentYear} SubscriBee. All rights reserved.
         </Typography>
       </div>
