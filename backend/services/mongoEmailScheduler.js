@@ -184,3 +184,12 @@ class MongoEmailScheduler {
 }
 
 export default new MongoEmailScheduler();
+
+router.delete('/:id', async (req, res) => {
+  // ...existing code to delete subscription...
+
+  // Also delete scheduled emails for this subscription
+  await ScheduledEmail.deleteMany({ subscriptionId: req.params.id });
+
+  // ...existing code...
+});
