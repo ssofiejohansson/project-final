@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 
 async function verifyTransporter() {
   try {
-    await transporter.verify();    
+    await transporter.verify();
     return true;
   } catch (error) {
     console.error('❌ Email transporter verification failed:', error);
@@ -22,7 +22,7 @@ async function verifyTransporter() {
 }
 
 export async function sendEmail({ to, subject, text }) {
-  try {   
+  try {
     // Verify transporter before sending
     const isVerified = await verifyTransporter();
     if (!isVerified) {

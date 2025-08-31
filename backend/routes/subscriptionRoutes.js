@@ -3,9 +3,10 @@ import cron from 'node-cron';
 
 import { authenticateUser } from '../authMiddleware.js';
 import { Subscription } from '../models/Subscription.js';
-const ScheduledEmail = require('../models/ScheduledEmail');
+import { ScheduledEmail } from '../models/ScheduledEmail.js';
+import mongoEmailScheduler from '../services/mongoEmailScheduler.js';
 
-export const router = express.Router();
+const router = express.Router();
 
 // Initialize global cron jobs object
 global.cronJobs = global.cronJobs || {};
@@ -101,15 +102,19 @@ router.post('/', authenticateUser, async (req, res) => {
 
     const newSubscription = await subscription.save();
 
-    // Schedule email if sendEmail is true
-    if (sendEmail) {
-      const job = cron.schedule(reminderDate, () => {
-        // Logic to send email
-        console.log(`Sending email for subscription: ${newSubscription._id}`);
-      });
+    // Remove the node-cron job logic here
 
-      // Save the cron job to the global object
-      global.cronJobs[newSubscription._id] = job;
+    // Instead, schedule email only if sendEmail is true
+    if (sendEmail) {
+      await mongoEmailScheduler.scheduleEmail({
+        to: req.user.email, // or wherever the user's email is stored
+        subject: `Reminder for ${name}`,
+        text: `Your subscription for ${name} is due on ${reminderDate}`,
+        scheduledDateTime: reminderDate,
+        isRecurring: false,
+        sendEmail: true,
+        subscriptionId: newSubscription._id, // optional, for deletion later
+      });
     }
 
     res.status(201).json({
@@ -160,24 +165,28 @@ router.patch('/:id', authenticateUser, async (req, res) => {
     );
 
     if (!editSubscription) {
-      return res.status(404).json({ error: 'Subscription not found' });
-    }
-
-    // If sendEmail is updated to true, schedule the email
-    if (sendEmail && !global.cronJobs[id]) {
-      const job = cron.schedule(reminderDate, () => {
-        // Logic to send email
-        console.log(`Sending email for subscription: ${editSubscription._id}`);
+      return res.status(404).json({
+        success: false,
+        response: null,
+        message: 'Subscription not found',
       });
-
-      // Save the cron job to the global object
-      global.cronJobs[id] = job;
     }
 
-    // If sendEmail is updated to false, stop the cron job
-    if (!sendEmail && global.cronJobs[id]) {
-      global.cronJobs[id].stop();
-      delete global.cronJobs[id];
+    // If sendEmail is updated to true, schedule the email if not already scheduled
+    if (sendEmail) {
+      // Optionally, check if a scheduled email already exists for this subscription
+      await mongoEmailScheduler.scheduleEmail({
+        to: req.user.email,
+        subject: `Reminder for ${name}`,
+        text: `Your subscription for ${name} is due on ${reminderDate}`,
+        scheduledDateTime: reminderDate,
+        isRecurring: false,
+        sendEmail: true,
+        subscriptionId: editSubscription._id,
+      });
+    } else {
+      // If sendEmail is updated to false, delete any scheduled emails for this subscription
+      await ScheduledEmail.deleteMany({ subscriptionId: id });
     }
 
     res.status(200).json(editSubscription);
@@ -185,7 +194,7 @@ router.patch('/:id', authenticateUser, async (req, res) => {
     res.status(500).json({
       success: false,
       response: error,
-      message: 'Failed to fetch subscription',
+      message: 'Failed to update subscription',
     });
   }
 });
@@ -218,3 +227,5 @@ router.delete('/:id', authenticateUser, async (req, res) => {
     res.status(500).json({ message: 'Error deleting subscription', error });
   }
 });
+
+export default router;

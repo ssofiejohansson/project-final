@@ -138,8 +138,8 @@ export const SubscriptionForm = ({
         // Dispatch the custom event to refresh reminders on /email
         window.dispatchEvent(new Event("refresh-reminders"));
 
-        if (!initialData) {
-          // After successfully adding the subscription
+        if (!initialData && sendEmail) {
+          // Only send the reminder email if sendEmail is true
           await fetch(`${urlAPI}/emails`, {
             method: "POST",
             headers: {
@@ -147,7 +147,7 @@ export const SubscriptionForm = ({
               Authorization: user?.token || "",
             },
             body: JSON.stringify({
-              to: user.email, // ✅ correct if user is the logged-in user object
+              to: user.email,
               subject: `Reminder: ${formData.name} subscription`,
               text: `Hello from Beeatrice,
                     Just a friendly buzz to remind you that one of your subscriptions is coming up for renewal soon. 

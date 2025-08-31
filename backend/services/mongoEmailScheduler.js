@@ -1,7 +1,8 @@
 import cron from 'node-cron';
 import { ScheduledEmail } from '../models/ScheduledEmail.js';
-import sendEmail from '../sendEmail.js';
+import { sendEmail } from '../sendEmail.js';
 import _ from 'lodash';
+import { Subscription } from '../models/Subscription.js'; // Add this import
 
 class MongoEmailScheduler {
   constructor() {
@@ -105,6 +106,16 @@ class MongoEmailScheduler {
 
   async processEmail(email) {
     try {
+      // Fetch the related subscription
+      const subscription = await Subscription.findById(email.subscriptionId);
+
+      // If subscription doesn't exist or sendEmail is false, skip sending
+      if (!subscription || subscription.sendEmail === false) {
+        email.status = 'skipped';
+        await email.save();
+        return;
+      }
+
       // Send the email using sendEmail function
       await sendEmail({
         to: email.to,
@@ -142,15 +153,28 @@ class MongoEmailScheduler {
   }
 
   async scheduleEmail(emailData) {
+    if (!emailData.sendEmail) {
+      // Don't schedule if sendEmail is false or not set
+      return null;
+    }
     try {
-      const scheduledDateTime = new Date(emailData.scheduledDateTime);
+      const {
+        subscriptionId, // <-- add this
+        to,
+        subject,
+        text,
+        scheduledFor,
+      } = emailData;
+
+      const scheduledDateTime = new Date(scheduledFor);
 
       const scheduledEmail = new ScheduledEmail({
-        to: emailData.to,
-        subject: emailData.subject,
-        text: emailData.text,
-        scheduledDateTime: scheduledDateTime,
-        isRecurring: emailData.isRecurring || false,
+        subscriptionId, // <-- add this line
+        to,
+        subject,
+        text,
+        scheduledDateTime,
+        isRecurring: false,
         nextRun: scheduledDateTime,
         status: 'scheduled',
       });
