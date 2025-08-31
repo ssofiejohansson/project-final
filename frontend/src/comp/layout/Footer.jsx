@@ -80,9 +80,9 @@ export const Footer = () => {
       <img
         src={Logo}
         alt="SubscriBee Logo"
-        width="150"
-        height="59"
-        className="w-auto h-auto"
+        width="200"
+        height="79"
+        className="w-auto h-16"
         loading="lazy"
       />
     </footer>
