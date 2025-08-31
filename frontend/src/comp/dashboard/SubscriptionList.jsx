@@ -41,8 +41,7 @@ export const SubscriptionList = () => {
 
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
-  const [sendEmail, setSendEmail] = useState(true);
-  const [emailPrefs, setEmailPrefs] = useState({});
+  const [sendEmail, setSendEmail] = useState(true); // <-- keep this
 
   const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
   const openModalDialog = useSubscriptionStore((s) => s.openModalDialog);
@@ -122,6 +121,13 @@ export const SubscriptionList = () => {
     // await fetch("https://project-final-xhjy.onrender.com/emails/send", { ... });
   };
 
+  // Open modal and set sendEmail based on selected subscription
+  const handleOpenModal = (sub) => {
+    setSelectedSub(sub);
+    setSendEmail(sub?.sendEmail ?? true); // <-- set sendEmail from sub
+    setIsModalOpen(true);
+  };
+
   const TABLE_HEAD = [
     { head: "Name", customeStyle: "!text-left" },
     { head: "Category", customeStyle: "!text-left" },
@@ -185,7 +191,7 @@ export const SubscriptionList = () => {
                 setFilterCategory={setFilterCategory}
                 sortKey={sortKey}
                 setSortKey={setSortKey}
-                onAdd={() => openModalDialog(null)}
+                onAdd={() => handleOpenModal(null)} // <-- use handleOpenModal
               />
             </div>
           </CardHeader>
@@ -380,6 +386,8 @@ export const SubscriptionList = () => {
           }}
           subscription={selectedSub}
           onSubscriptionAdded={handleSubscriptionAdded}
+          sendEmail={sendEmail}
+          setSendEmail={setSendEmail}
         />
 
         {/* save money - contribute */}
