@@ -1,8 +1,14 @@
-import cron from 'node-cron';
-import { ScheduledEmail } from '../models/ScheduledEmail.js';
-import { sendEmail } from '../sendEmail.js';
+import express from 'express';
 import _ from 'lodash';
-import { Subscription } from '../models/Subscription.js'; // Add this import
+import cron from 'node-cron';
+
+import { ScheduledEmail } from '../models/ScheduledEmail.js';
+import { Subscription } from '../models/Subscription.js';
+import { sendEmail } from '../sendEmail.js';
+
+// Add this import
+
+const router = express.Router();
 
 class MongoEmailScheduler {
   constructor() {

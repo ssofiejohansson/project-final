@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 import { Subscription } from '../models/Subscription.js';
 
-export const router = express.Router();
+const router = express.Router();
 
 router.patch('/update-reminders', async (req, res) => {
   const authHeader = req.headers.authorization;
@@ -66,3 +66,5 @@ router.patch('/update-reminders', async (req, res) => {
     });
   }
 });
+
+export default router;

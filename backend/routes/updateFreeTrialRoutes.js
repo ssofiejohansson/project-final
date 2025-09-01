@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 import { Subscription } from '../models/Subscription.js';
 
-export const router = express.Router();
+const router = express.Router();
 
 router.patch('/update-freetrial', async (req, res) => {
   const authHeader = req.headers.authorization;
@@ -54,3 +54,5 @@ router.patch('/update-freetrial', async (req, res) => {
     });
   }
 });
+
+export default router;

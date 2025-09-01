@@ -3,7 +3,7 @@ import express from 'express';
 
 import { User } from '../models/User.js';
 
-export const router = express.Router();
+const router = express.Router();
 
 // To get all users
 router.get('/', async (req, res) => {
@@ -94,3 +94,5 @@ router.post('/login', async (req, res) => {
     });
   }
 });
+
+export default router;
