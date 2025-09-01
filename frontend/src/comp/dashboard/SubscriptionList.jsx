@@ -97,6 +97,11 @@ export const SubscriptionList = () => {
     }
   };
 
+  // Add this function inside SubscriptionList
+  const handleSubscriptionAdded = async (subscription) => {
+    // await fetch("https://project-final-xhjy.onrender.com/emails/send", { ... });
+  };
+
   // Open modal and set sendEmail based on selected subscription
   const handleOpenModal = (sub) => {
     setSendEmail(sub?.sendEmail ?? true);
@@ -212,12 +217,14 @@ export const SubscriptionList = () => {
                         ? "!p-4"
                         : "!p-4 border-b border-gray-300";
 
+                      // Check if reminder date is in the next 3 days
                       const isUpcoming = upcommingDates().includes(
                         new Date(sub.reminderDate).toISOString().split("T")[0]
                       );
 
                       return (
                         <tr key={sub._id || index}>
+                          {/* Name */}
                           <td className={classes}>
                             <div className="flex items-center gap-2">
                               <img
@@ -225,7 +232,7 @@ export const SubscriptionList = () => {
                                 alt={`${sub.name} icon`}
                                 className="w-8 h-8 object-contain"
                                 onError={(e) => {
-                                  e.target.onerror = null;
+                                  e.target.onerror = null; // Prevent infinite loop
                                   e.target.src = "/logos/placeholder.webp";
                                   e.target.alt = "Bee Icon";
                                 }}
@@ -301,7 +308,7 @@ export const SubscriptionList = () => {
                               type="checkbox"
                               checked={sub.sendEmail ?? true}
                               onChange={async () => {
-                                
+                              
                                 // await API call to update backend
                                 await fetch(`${urlAPI}/${sub._id}`, {
                                   method: "PATCH",
