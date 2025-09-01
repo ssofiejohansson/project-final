@@ -1,20 +1,5 @@
-import {
-  BellAlertIcon,
-  BookOpenIcon,
-  CakeIcon,
-  HeartIcon,
-  PencilIcon,
-  QuestionMarkCircleIcon,
-  TrashIcon,
-  TvIcon,
-} from "@heroicons/react/24/outline";
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  IconButton,
-  Typography,
-} from "@material-tailwind/react";
+import { BellAlertIcon, BookOpenIcon, CakeIcon, HeartIcon, PencilIcon, QuestionMarkCircleIcon, TrashIcon, TvIcon } from "@heroicons/react/24/outline";
+import { Card, CardBody, CardHeader, IconButton, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -38,7 +23,7 @@ export const SubscriptionList = () => {
 
   const [filterCategory, setFilterCategory] = useState("");
   const [sortKey, setSortKey] = useState("");
-  const [sendEmail, setSendEmail] = useState(true); // <-- keep this
+  const [sendEmail, setSendEmail] = useState(true); 
 
   // Use the Zustand store's openModalDialog for both add and edit:
   const openModalDialog = useSubscriptionStore((s) => s.openModalDialog);
@@ -112,15 +97,9 @@ export const SubscriptionList = () => {
     }
   };
 
-  // Add this function inside SubscriptionList
-  const handleSubscriptionAdded = async (subscription) => {
-    // Remove or comment out the email sending code here
-    // await fetch("https://project-final-xhjy.onrender.com/emails/send", { ... });
-  };
-
   // Open modal and set sendEmail based on selected subscription
   const handleOpenModal = (sub) => {
-    setSendEmail(sub?.sendEmail ?? true); // <-- set sendEmail from sub
+    setSendEmail(sub?.sendEmail ?? true);
     openModalDialog(sub);
   };
 
@@ -233,14 +212,12 @@ export const SubscriptionList = () => {
                         ? "!p-4"
                         : "!p-4 border-b border-gray-300";
 
-                      // Check if reminder date is in the next 3 days
                       const isUpcoming = upcommingDates().includes(
                         new Date(sub.reminderDate).toISOString().split("T")[0]
                       );
 
                       return (
                         <tr key={sub._id || index}>
-                          {/* Name */}
                           <td className={classes}>
                             <div className="flex items-center gap-2">
                               <img
@@ -248,7 +225,7 @@ export const SubscriptionList = () => {
                                 alt={`${sub.name} icon`}
                                 className="w-8 h-8 object-contain"
                                 onError={(e) => {
-                                  e.target.onerror = null; // Prevent infinite loop
+                                  e.target.onerror = null;
                                   e.target.src = "/logos/placeholder.webp";
                                   e.target.alt = "Bee Icon";
                                 }}
@@ -324,7 +301,7 @@ export const SubscriptionList = () => {
                               type="checkbox"
                               checked={sub.sendEmail ?? true}
                               onChange={async () => {
-                                // Optimistically update UI (optional)
+                                
                                 // await API call to update backend
                                 await fetch(`${urlAPI}/${sub._id}`, {
                                   method: "PATCH",

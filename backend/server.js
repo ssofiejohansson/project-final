@@ -5,11 +5,11 @@ import expressListEndpoints from 'express-list-endpoints';
 import mongoose from 'mongoose';
 
 import { router as emailRoutes } from './routes/emailRoutes.js';
+import mongoEmailScheduler from './routes/mongoEmailScheduler.js';
 import subscriptionRoutes from './routes/subscriptionRoutes.js';
 import updateFreeTrialRoutes from './routes/updateFreeTrialRoutes.js';
 import updateRemindersRoutes from './routes/updateRemindersRoutes.js';
 import userRoutes from './routes/userRoutes.js';
-import mongoEmailScheduler from './services/mongoEmailScheduler.js';
 
 dotenv.config();
 

@@ -2,9 +2,9 @@ import express from 'express';
 import cron from 'node-cron';
 
 import { authenticateUser } from '../authMiddleware.js';
-import { Subscription } from '../models/Subscription.js';
 import { ScheduledEmail } from '../models/ScheduledEmail.js';
-import mongoEmailScheduler from '../services/mongoEmailScheduler.js';
+import { Subscription } from '../models/Subscription.js';
+import mongoEmailScheduler from './mongoEmailScheduler.js';
 
 const router = express.Router();
 
@@ -102,18 +102,17 @@ router.post('/', authenticateUser, async (req, res) => {
 
     const newSubscription = await subscription.save();
 
-    // Remove the node-cron job logic here
 
     // Instead, schedule email only if sendEmail is true
     if (sendEmail) {
       await mongoEmailScheduler.scheduleEmail({
-        to: req.user.email, // or wherever the user's email is stored
+        to: req.user.email,
         subject: `Reminder for ${name}`,
         text: `Your subscription for ${name} is due on ${reminderDate}`,
         scheduledDateTime: reminderDate,
         isRecurring: false,
         sendEmail: true,
-        subscriptionId: newSubscription._id, // optional, for deletion later
+        subscriptionId: newSubscription._id, // Used for tracking and deletion scheduled emails later
       });
     }
 
@@ -174,7 +173,6 @@ router.patch('/:id', authenticateUser, async (req, res) => {
 
     // If sendEmail is updated to true, schedule the email if not already scheduled
     if (sendEmail) {
-      // Optionally, check if a scheduled email already exists for this subscription
       await mongoEmailScheduler.scheduleEmail({
         to: req.user.email,
         subject: `Reminder for ${name}`,
