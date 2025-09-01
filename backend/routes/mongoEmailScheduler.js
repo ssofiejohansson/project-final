@@ -186,11 +186,10 @@ class MongoEmailScheduler {
       return null;
     }
     try {
-      // const { subscriptionId, to, subject, text, scheduledFor } = emailData;
+     
       const { subscriptionId, to, subject, text, scheduledDateTime } = emailData;
 
-      // 2. Convert the scheduled date to JavaScript date Object.
-      //const scheduledDateTime = new Date(scheduledFor);
+      // 2. Convert the scheduled date to JavaScript date Object.      
       const scheduledDate = new Date(scheduledDateTime);
 
       // 3. Create a new ScheduledEmail document in MongoDB with status set to "scheduled".
@@ -198,11 +197,9 @@ class MongoEmailScheduler {
         subscriptionId,
         to,
         subject,
-        text,
-        //scheduledDateTime,
+        text,        
         scheduledDateTime: scheduledDate,
         isRecurring: false,
-        //nextRun: scheduledDateTime,
         nextRun: scheduledDate,
         status: 'scheduled',
       });
