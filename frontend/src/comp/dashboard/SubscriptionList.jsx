@@ -15,6 +15,7 @@ import { SubscriptionSave } from "./SubscriptionSave";
 export const SubscriptionList = () => {
   const user = useUserStore((state) => state.user);
   const subscriptions = useSubscriptionStore((state) => state.subscriptions);
+  const openSaveDialog = useSubscriptionStore((s) => s.openSaveDialog);
 
   const fetchSubscriptions = useSubscriptionStore(
     (state) => state.fetchSubscriptions
